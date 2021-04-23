@@ -7,7 +7,7 @@ public class Player {
     private String nickname;
     private String password;
     private int score;
-    private int coin;
+    private int coin ;
 
     public Player(String username, String nickname, String password){
         this.username = username;
