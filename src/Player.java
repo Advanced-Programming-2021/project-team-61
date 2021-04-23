@@ -61,4 +61,12 @@ public class Player {
         }
         return 0;
     }
+
+    public static ArrayList<String> getAllNickNames(){
+        ArrayList<String> allNickName = new ArrayList<>();
+        for (Player player:allPlayers) {
+            allNickName.add(player.nickname);
+        }
+        return allNickName;
+    }
 }
