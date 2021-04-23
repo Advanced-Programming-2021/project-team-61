@@ -53,4 +53,12 @@ public class Player {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public static int getScoreByNickname(String nickname){
+        for (Player player:allPlayers) {
+            if (player.nickname.equals(nickname))
+                return player.score;
+        }
+        return 0;
+    }
 }
