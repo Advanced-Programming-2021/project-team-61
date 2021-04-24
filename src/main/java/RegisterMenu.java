@@ -39,6 +39,23 @@ public class RegisterMenu {
 
 
             }
+            if(command.startsWith("user login")){
+                changed = 1;
+                String regex = "user login --username ([^\\s]+) --password ([^\\s]+)";
+                Matcher matcher = getCommandMatcher(command,regex);
+                if(matcher.find()){
+                    if(!Player.isUserNameExists(matcher.group(1)))
+                        view.printMessage(RegisterView.Commands.NOMATCH,"");
+                    else if(!Player.getPlayerByUsername(matcher.group(1)).getPassword().equals(matcher.group(2)))
+                        view.printMessage(RegisterView.Commands.NOMATCH,"");
+                    else{
+                        view.printMessage(RegisterView.Commands.LOGIN,"");
+                        MainMenu m = MainMenu.getInstance();
+                        m.run(matcher.group(1));
+
+                    }
+                }
+            }
             if(command.equals("menu show-current")){
                 changed = 1;
                 view.printMessage(RegisterView.Commands.SHOWMENU,"");

@@ -22,16 +22,15 @@ public class ScoreBoardMenu {
     }
 
     public void run(){
-        Matcher matcher;
+
         sortByNickname();
         sortByScore();
         view.printScoreBoard(allPlayerNickName);
         while(true){
             command = view.scan();
-            if ((matcher = getCommandMatcher(command,"menu exit")).find()){
-                //mainMenu.run()
-                //baad az sakhtan e mainmenu bayad dorostesh konam...
-            }else if ((matcher = getCommandMatcher(command,"menu show-current")).find()){
+            if (( getCommandMatcher(command,"menu exit")).find()){
+                break;
+            }else if (( getCommandMatcher(command,"menu show-current")).find()){
                 view.printMessage(ScoreBoardView.Commands.CURRENTMENU);
             }else{
                 view.printMessage(ScoreBoardView.Commands.INVALID);
