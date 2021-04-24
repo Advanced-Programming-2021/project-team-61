@@ -7,7 +7,9 @@ public class RegisterView {
         USEREXISTSWITHUSERNAME,
         INVALID,
         SHOWMENU,
-        FIRSTLOGIN
+        FIRSTLOGIN,
+        NOMATCH,
+        LOGIN
 
     }
     private static RegisterView r = null;
@@ -43,9 +45,18 @@ public class RegisterView {
             }
             case SHOWMENU:{
                 System.out.println("Login Menu");
+                break;
             }
             case FIRSTLOGIN:{
                 System.out.println("please login first");
+                break;
+            }
+            case NOMATCH:{
+                System.out.println("Username and password didn't match!");
+                break;
+            }
+            case LOGIN:{
+                System.out.println("user logged in successfully!");
             }
             default: break;
         }

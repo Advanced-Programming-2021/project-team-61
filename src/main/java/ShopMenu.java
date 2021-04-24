@@ -28,8 +28,7 @@ public class ShopMenu {
         while (true){
             command = view.scan();
             if ((matcher = getCommandMatcher(command,"menu exit")).find()){
-                //mainMenu.run()//write username in run()...
-                //baad az sakhtan e mainmenu bayad dorostesh konam...
+                break;
             }else if ((matcher = getCommandMatcher(command,"shop buy ([a-zA-Z]+[a-zA-Z ]*)")).find()){
                 buyCard(matcher);
             }else if ((matcher = getCommandMatcher(command,"shop show --all")).find()){
