@@ -36,7 +36,7 @@ public class ShopMenu {
             }else {
                 view.printMessage(ShopView.Commands.INVALID);
             }
-        }
+        }//adding show current menu...
     }
 
     public void buyCard(Matcher matcher){
