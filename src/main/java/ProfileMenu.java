@@ -9,6 +9,7 @@ public class ProfileMenu {
 
     private ProfileMenu(ProfileView view) {
         this.view = view;
+        //please be modified in main
 
     }
 
