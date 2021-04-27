@@ -7,7 +7,8 @@ public class Player {
     private String nickname;
     private String password;
     private int score;
-    private int coin ;
+    private int coin = 100000;
+    private ArrayList<Integer> DeckId = new ArrayList<>();
 
     public Player(String username, String nickname, String password){
         this.username = username;
@@ -68,5 +69,17 @@ public class Player {
             allNickName.add(player.nickname);
         }
         return allNickName;
+    }
+
+    public void addDeckId(Integer Id){
+        DeckId.add(Id);
+    }
+
+    public void removeDeckId(Integer Id){
+        DeckId.remove(Id);
+    }
+
+    public ArrayList<Integer> getDeckId(){
+        return DeckId;
     }
 }
