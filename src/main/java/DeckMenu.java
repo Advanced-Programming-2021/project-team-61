@@ -52,15 +52,31 @@ public class DeckMenu {
     }
 
     public void createDeck(String deckName){
-
+        if (Deck.doesPlayerHaveDeckWithThisName(deckName,Player.getPlayerByUsername(name).getDeckId())){
+            view.printMessage(DeckView.Commands.EXISTDECKALREADY,deckName,"");
+        }else {
+            new Deck(deckName, name);
+            view.printMessage(DeckView.Commands.CREATESUCCESSFULLY,"","");
+        }
     }
 
     public void deleteDeck(String deckName){
-
+        if (!Deck.doesPlayerHaveDeckWithThisName(deckName,Player.getPlayerByUsername(name).getDeckId())){
+            view.printMessage(DeckView.Commands.DONTHAVETHISDECK,deckName,"");
+        }else {
+            view.printMessage(DeckView.Commands.DELETEDECKSUCCESSFULLY,"","");
+            Player.getPlayerByUsername(name).removeDeckId(Deck.getDeckIdByDeckNameForSpecificPlayer(deckName,Player.getPlayerByUsername(name).getDeckId()));
+            //return cards for player after deleting deck...
+        }
     }
 
     public void setActivateDeck(String deckName){
-
+        if (!Deck.doesPlayerHaveDeckWithThisName(deckName,Player.getPlayerByUsername(name).getDeckId())){
+            view.printMessage(DeckView.Commands.DONTHAVETHISDECK,deckName,"");
+        }else {
+            view.printMessage(DeckView.Commands.ACTIVATESUCCESSFULLY,"","");
+            Deck.activateDeck(Deck.getDeckIdByDeckNameForSpecificPlayer(deckName,Player.getPlayerByUsername(name).getDeckId()),Player.getPlayerByUsername(name).getDeckId());
+        }
     }
 
     public void addCardToDeck(Matcher matcher){
