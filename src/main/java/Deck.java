@@ -38,20 +38,20 @@ public class Deck {
         return null;
     }
 
-    public void addCardToMainDeck(){
-
+    public void addCardToMainDeck_Deck(String cardName){
+        mainDeck.add(cardName);
     }
 
-    public void addCardToSideDeck(){
-
+    public void addCardToSideDeck_Deck(String cardName){
+        sideDeck.add(cardName);
     }
 
-    public void removeCardFromMainDeck(){
-
+    public void removeCardFromMainDeck_Deck(String cardName){
+        mainDeck.remove(cardName);
     }
 
-    public void removeCardFromSideDeck(){
-
+    public void removeCardFromSideDeck_Deck(String cardName){
+        sideDeck.remove(cardName);
     }
 
     public void deckShowAll(){
@@ -66,33 +66,46 @@ public class Deck {
 
     }
 
-    public boolean isMainDeckFull(){
-
-
+    public boolean isMainDeckFull(){//true => full
+        if (mainDeck.size()==60)
+            return true;
         return false;
     }
 
-    public boolean isSideDeckFull(){
-
-
+    public boolean isSideDeckFull(){//true => full
+        if (sideDeck.size()==15)
+            return true;
         return false;
     }
 
-    public boolean isTripletCard(){
-
-
+    public boolean isTripletCard(String cardName){//true => has 3 cards from one type
+        int number = 0;
+        for (String a:mainDeck) {
+            if (a.equals(cardName))
+                number++;
+        }
+        for (String b:sideDeck) {
+            if (b.equals(cardName))
+                number++;
+        }
+        if (number==3)
+            return true;
         return false;
     }
 
-    public boolean isCardExistInMainDeck(){
-
-
+    public boolean isCardExistInMainDeck(String cardName){//true =>
+        for (String a:mainDeck) {
+            if (a.equals(cardName))
+                return true;
+        }
         return false;
     }
 
-    public boolean isCardExistInSideDeck(){
-
-
+    public boolean isCardExistInSideDeck(String cardName){//
+        for (String a:sideDeck) {
+            if (a.equals(cardName))
+                return true;
+        }
         return false;
     }
 
