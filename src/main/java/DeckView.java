@@ -45,7 +45,7 @@ public class DeckView {
                 break;
             }
             case EXISTDECKALREADY:{
-                System.out.println("deck with name " + st + " already exists\n");
+              //  System.out.println("deck with name " + st + " already exists\n");
                 break;
             }
             case DELETEDECKSUCCESSFULLY:{
@@ -53,7 +53,7 @@ public class DeckView {
                 break;
             }
             case DONTHAVETHISDECK:{
-                System.out.println("deck with name " + st + " does not exist\n");
+              //  System.out.println("deck with name " + st + " does not exist\n");
                 break;
             }
             case ACTIVATESUCCESSFULLY:{
@@ -65,7 +65,7 @@ public class DeckView {
                 break;
             }
             case DONTHAVETHISCARD:{
-                System.out.println("card with name " + st + " does not exist\n");
+             //   System.out.println("card with name " + st + " does not exist\n");
                 break;
             }
             case FULLMAINSIDEDECK:{

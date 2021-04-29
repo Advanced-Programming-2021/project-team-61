@@ -36,13 +36,13 @@ public class DeckMenu {
             }else if ((matcher = getCommandMatcher(command, "deck set-activate ([^\\s]+)")).find()){
                 setActivateDeck(matcher.group(1));
             }else if ((matcher = getCommandMatcher(command, "deck add-card --card <card name> --deck ([^\\s]+) --side(optional)")).find()){
-                addCardToDeck();
+                //addCardToDeck();
             }else if ((matcher = getCommandMatcher(command, "deck rm-card --card <card name> --deck ([^\\s]+) --side(optional)")).find()){
-                removeCardFromDeck();
+               // removeCardFromDeck();
             }else if ((matcher = getCommandMatcher(command, "deck show --all")).find()){
                 showAllDecksOfPlayer();
             }else if ((matcher = getCommandMatcher(command, "deck show --deck-name ([^\\s]+) --side(Opt)")).find()){
-                showDeck();
+                //showDeck();
             }else if ((matcher = getCommandMatcher(command, "deck show --cards")).find()){
                 showAllCardsOfDeck();
             }else {
