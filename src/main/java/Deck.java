@@ -7,8 +7,8 @@ public class Deck {
     private static ArrayList<Deck> allDeck = new ArrayList<>();
     private String deckName;
     private int deckID;
-    private ArrayList<String> mainDeck = new ArrayList<>();//should be change to <Card>
-    private ArrayList<String> sideDeck = new ArrayList<>();//should be change to <Card>
+    private ArrayList<Card> mainDeck = new ArrayList<>();
+    private ArrayList<Card> sideDeck = new ArrayList<>();
     private boolean isActivated = false;
 
     public Deck(String deckName, String playerName){
@@ -39,19 +39,19 @@ public class Deck {
     }
 
     public void addCardToMainDeck_Deck(String cardName){
-        mainDeck.add(cardName);
+        mainDeck.add(Card.getCardByName(cardName));
     }
 
     public void addCardToSideDeck_Deck(String cardName){
-        sideDeck.add(cardName);
+        sideDeck.add(Card.getCardByName(cardName));
     }
 
     public void removeCardFromMainDeck_Deck(String cardName){
-        mainDeck.remove(cardName);
+        mainDeck.remove(Card.getCardByName(cardName));
     }
 
     public void removeCardFromSideDeck_Deck(String cardName){
-        sideDeck.remove(cardName);
+        sideDeck.remove(Card.getCardByName(cardName));
     }
 
     public void deckShowAll(){
@@ -80,12 +80,12 @@ public class Deck {
 
     public boolean isTripletCard(String cardName){//true => has 3 cards from one type
         int number = 0;
-        for (String a:mainDeck) {
-            if (a.equals(cardName))
+        for (Card a:mainDeck) {
+            if (a.cardName.equals(cardName))
                 number++;
         }
-        for (String b:sideDeck) {
-            if (b.equals(cardName))
+        for (Card b:sideDeck) {
+            if (b.cardName.equals(cardName))
                 number++;
         }
         if (number==3)
@@ -93,17 +93,17 @@ public class Deck {
         return false;
     }
 
-    public boolean isCardExistInMainDeck(String cardName){//true =>
-        for (String a:mainDeck) {
-            if (a.equals(cardName))
+    public boolean isCardExistInMainDeck(String cardName){//true => exist
+        for (Card a:mainDeck) {
+            if (a.cardName.equals(cardName))
                 return true;
         }
         return false;
     }
 
-    public boolean isCardExistInSideDeck(String cardName){//
-        for (String a:sideDeck) {
-            if (a.equals(cardName))
+    public boolean isCardExistInSideDeck(String cardName){//true => exist
+        for (Card a:sideDeck) {
+            if (a.cardName.equals(cardName))
                 return true;
         }
         return false;
@@ -116,9 +116,9 @@ public class Deck {
     }
 
     public boolean isDeckValid(){
-
-
-        return false;
+        if (mainDeck.size()<40)
+            return false;
+        return true;
     }
 
     public static boolean doesPlayerHaveDeckWithThisName(String deckName, ArrayList<Integer> DeckId){
@@ -155,11 +155,11 @@ public class Deck {
         return null;
     }
 
-    public ArrayList<String> getMainDeck() {
+    public ArrayList<Card> getMainDeck() {
         return mainDeck;
     }
 
-    public ArrayList<String> getSideDeck() {
+    public ArrayList<Card> getSideDeck() {
         return sideDeck;
     }
 
