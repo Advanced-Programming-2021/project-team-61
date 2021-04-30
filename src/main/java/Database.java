@@ -27,14 +27,19 @@ public class Database {
         }
 
     }
-
-    public static List<String[]> getMonsterCardsInformation() {
-
-        return MonsterCardsInformation;
+    private void makeObject(){
+        for(String[]row : MonsterCardsInformation){
+            new MonsterCard(row[0],Integer.parseInt(row[1]),row[2],row[3],row[4],Integer.parseInt(row[5]),Integer.parseInt(row[6]),row[7],Integer.parseInt(row[8]));
+        }
+        for(String[]row: SpellAndTrapInformation){
+            if(row[1].equals("Trap"))
+                new TrapCard(row[0],row[2],row[3],row[4],Integer.parseInt(row[5]));
+            else
+                new SpellCard(row[0],row[2],row[3],row[4],Integer.parseInt(row[5]));
+        }
     }
 
-    public static List<String[]> getSpellAndTrapInformation() {
-        return SpellAndTrapInformation;
-    }
+
+
 
 }

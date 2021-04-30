@@ -9,6 +9,7 @@ public class Player {
     private int score;
     private int coin = 100000;
     private ArrayList<Integer> DeckId = new ArrayList<>();
+    private static ArrayList<Card> playerCards = new ArrayList<>();
 
     public Player(String username, String nickname, String password){
         this.username = username;
@@ -54,6 +55,9 @@ public class Player {
     public void setPassword(String password) {
         this.password = password;
     }
+    public void setCoin(int coin){
+        this.coin -=coin;
+    }
 
     public static int getScoreByNickname(String nickname){
         for (Player player:allPlayers) {
@@ -81,5 +85,13 @@ public class Player {
 
     public ArrayList<Integer> getDeckId(){
         return DeckId;
+    }
+    public void addCard(Card card){
+        playerCards.add(card);
+
+    }
+    public void buyCard(Card card){
+        this.setCoin(card.getPrice());
+        this.addCard(card);
     }
 }
