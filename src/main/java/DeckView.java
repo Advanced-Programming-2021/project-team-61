@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class DeckView {
@@ -104,12 +106,36 @@ public class DeckView {
         }
     }
 
-    public void printAllDecksOfPlayer(){
-
+    public void printAllDecksOfPlayer(ArrayList<Integer> allDeckID){
+        System.out.println("Decks:\n");
+        System.out.println("Active Deck:\n");
+        for (Integer Id:allDeckID) {
+            if (Deck.getDeckById(Id).isActivated()){
+                System.out.println(Deck.getDeckById(Id).getDeckName() + " : main deck " + Deck.getDeckById(Id).getMainDeck().size() + " , side deck " + Deck.getDeckById(Id).getSideDeck().size() /*valid/invalid*/ );
+                allDeckID.remove(Id);
+                break;
+            }
+        }
+        System.out.println("Other Decks:\n");
+        for (Integer Id:allDeckID) {
+            System.out.println(Deck.getDeckById(Id).getDeckName() + " : main deck " + Deck.getDeckById(Id).getMainDeck().size() + " , side deck " + Deck.getDeckById(Id).getSideDeck().size() /*valid/invalid*/ );
+        }
+        //ye masale dige ham hast,dar morede in ke chegouri tartibe alefba bashe??
     }
 
-    public void printOneDeck(){
-
+    public void printOneDeck(Integer ID , String M_S){
+        /*ArrayList<String> monsters = new ArrayList<>();
+        ArrayList<String> spellTrap = new ArrayList<>();
+        ArrayList<String> cards = new ArrayList<>();
+        if (M_S.equals("M")){
+            cards = Deck.getDeckById(ID).getMainDeck();
+            for (String cardName:cards) {
+                if (cardName.
+            }
+        }else {
+            cards = Deck.getDeckById(ID).getSideDeck();
+        }
+     */
     }
 
     public void printAllCardsOfPlayer(){

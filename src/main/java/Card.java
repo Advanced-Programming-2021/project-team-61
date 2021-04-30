@@ -40,4 +40,13 @@ public class Card {
     public static ArrayList<Card> getAllCards(){
         return allCards;
     }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
 }
