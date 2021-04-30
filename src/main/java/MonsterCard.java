@@ -13,6 +13,7 @@ public class MonsterCard extends Card{
         this.MonsterType = MonsterType;
         this.defense = defense;
         this.level = level;
+        allCards.add(this);
     }
 
 }
