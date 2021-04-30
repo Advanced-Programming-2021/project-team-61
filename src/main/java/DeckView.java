@@ -106,36 +106,66 @@ public class DeckView {
         }
     }
 
-    public void printAllDecksOfPlayer(ArrayList<Integer> allDeckID){
+    public void printAllDecksOfPlayer(ArrayList<Deck> allDecks){
         System.out.println("Decks:\n");
         System.out.println("Active Deck:\n");
-        for (Integer Id:allDeckID) {
-            if (Deck.getDeckById(Id).isActivated()){
-                System.out.println(Deck.getDeckById(Id).getDeckName() + " : main deck " + Deck.getDeckById(Id).getMainDeck().size() + " , side deck " + Deck.getDeckById(Id).getSideDeck().size() /*valid/invalid*/ );
-                allDeckID.remove(Id);
+        for (Deck deck:allDecks) {
+            if (deck.isActivated()){
+                System.out.println(deck.getDeckName() + " : main deck " + deck.getMainDeck().size() + " , side deck " + deck.getSideDeck().size() /*valid/invalid*/ );
                 break;
             }
         }
         System.out.println("Other Decks:\n");
-        for (Integer Id:allDeckID) {
-            System.out.println(Deck.getDeckById(Id).getDeckName() + " : main deck " + Deck.getDeckById(Id).getMainDeck().size() + " , side deck " + Deck.getDeckById(Id).getSideDeck().size() /*valid/invalid*/ );
+        sortDeck(allDecks);
+        for (Deck deck : allDecks) {
+            if(!deck.isActivated())
+            System.out.println(deck.getDeckName() + " : main deck " + deck.getMainDeck().size() + " , side deck " + deck.getSideDeck().size() /*valid/invalid*/ );
         }
         //ye masale dige ham hast,dar morede in ke chegouri tartibe alefba bashe??
     }
 
-    public void printOneDeck(Integer ID , String M_S){
-        /*ArrayList<String> monsters = new ArrayList<>();
-        ArrayList<String> spellTrap = new ArrayList<>();
-        ArrayList<String> cards = new ArrayList<>();
-        if (M_S.equals("M")){
-            cards = Deck.getDeckById(ID).getMainDeck();
-            for (String cardName:cards) {
-                if (cardName.
-            }
-        }else {
-            cards = Deck.getDeckById(ID).getSideDeck();
+    public void printOneDeck(String deckName,ArrayList<Card> cards , String M_S){
+        ArrayList<Card> monsters = new ArrayList<>();
+        ArrayList<Card> spellTrap = new ArrayList<>();
+        for(Card card : cards){
+            if(card instanceof MonsterCard)
+                monsters.add(card);
+            else
+                spellTrap.add(card);
         }
-     */
+        System.out.println("Deck: "+deckName);
+        if (M_S.equals("M")){
+            System.out.println("Main deck:");
+            }
+        else {
+        System.out.println("Side deck:");
+        }
+        sortCards(monsters);
+        sortCards(spellTrap);
+        System.out.println("Monsters:");
+        for(Card monster : monsters)
+            System.out.println(monster.getCardName()+":"+monster.getDescription());
+        System.out.println("Spell and Traps:");
+        for(Card spell : spellTrap)
+            System.out.println(spell.getCardName()+":"+spell.getDescription());
+
+    }
+    private void sortDeck(ArrayList<Deck> allDecks){
+        for(int i = 0;i<allDecks.size()-1;i++){
+            for(int j = i; j<allDecks.size();j++){
+                if(allDecks.get(i).getDeckName().compareTo( allDecks.get(j).getDeckName())>0)
+                    Collections.swap(allDecks,i,j);
+            }
+        }
+    }
+    private void sortCards(ArrayList<Card> cards){
+        for(int i = 0;i<cards.size()-1;i++){
+            for(int j = i; j<cards.size();j++){
+                if(cards.get(i).getCardName().compareTo(cards.get(j).getCardName())>0)
+                    Collections.swap(cards,i,j);
+            }
+        }
+
     }
 
     public void printAllCardsOfPlayer(){
