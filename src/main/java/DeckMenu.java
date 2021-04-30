@@ -38,24 +38,21 @@ public class DeckMenu {
                 setActivateDeck(matcher.group(1));
             } else if ((matcher = getCommandMatcher(command, "^deck add-card --card ([a-zA-Z\\s]+) --deck ([a-zA-Z\\s]+)( --side)?$")).find()) {
                 if(matcher.group(3)==null)
-                addCardToMainDeck();
+                addCardToMainDeck(matcher.group(1),matcher.group(2));
                 else
-                    addCardToSideDeck();
+                    addCardToSideDeck(matcher.group(1),matcher.group(2));
             } else if ((matcher = getCommandMatcher(command, "^deck rm-card --card ([a-zA-Z\\s]+) --deck ([a-zA-Z\\s]+)( --side)?$")).find()) {
                 if (matcher.group(3) != null)
-                    removeCardFromSideDeck();
+                    removeCardFromSideDeck(matcher.group(1),matcher.group(2));
                 else
-                    removeCardFromMainDeck();
-
+                    removeCardFromMainDeck(matcher.group(1),matcher.group(2));
             } else if ((getCommandMatcher(command, "deck show --all")).find()) {
-                showAllDecksOfPlayer();
+                view.printAllDecksOfPlayer(Player.getPlayerByUsername(name).getDeckId());
             } else if ((getCommandMatcher(command, "^deck show --deck-name ([a-zA-Z\\s]+)(--side)?$")).find()) {
-                if(matcher.group(3)==null)
-                    //show main deck
-                showDeck();
+                if(matcher.group(2)==null)
+                    showMainDeck(matcher.group(1));
                 else
-                    //show side deck
-                showDeck();
+                    showSideDeck(matcher.group(1));
             } else if ((getCommandMatcher(command, "deck show --cards")).find()) {
                 //show all cards that are buyed
                 showAllCardsOfDeck();
@@ -149,12 +146,16 @@ public class DeckMenu {
         }
     }
 
-    public void showAllDecksOfPlayer() {
+    /*public void showAllDecksOfPlayer() {
 
+    }*/
+
+    public void showMainDeck(String deckName){
+        view.printOneDeck(Deck.getDeckById(Deck.getDeckIdByDeckNameForSpecificPlayer(deckName, Player.getPlayerByUsername(name).getDeckId())).getDeckID(),"M");
     }
 
-    public void showDeck(Matcher matcher) {
-
+    public void showSideDeck(String deckName){
+        view.printOneDeck(Deck.getDeckById(Deck.getDeckIdByDeckNameForSpecificPlayer(deckName, Player.getPlayerByUsername(name).getDeckId())).getDeckID(),"S");
     }
 
     public void showAllCardsOfDeck() {

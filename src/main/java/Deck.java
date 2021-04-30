@@ -163,7 +163,17 @@ public class Deck {
         return sideDeck;
     }
 
+    public String getDeckName() {return deckName; }
+
+    public int getDeckID() {
+        return deckID;
+    }
+
     public void setActivated(boolean activated) {
         isActivated = activated;
+    }
+
+    public boolean isActivated() {
+        return isActivated;
     }
 }
