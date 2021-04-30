@@ -8,7 +8,7 @@ public class Player {
     private String password;
     private int score;
     private int coin = 100000;
-    private ArrayList<Integer> DeckId = new ArrayList<>();
+    private ArrayList<Deck> allDecks = new ArrayList<>();
     private static ArrayList<Card> playerCards = new ArrayList<>();
 
     public Player(String username, String nickname, String password){
@@ -38,6 +38,10 @@ public class Player {
     }
     public static ArrayList<Player> getAllPlayers(){
         return allPlayers;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {
@@ -75,16 +79,16 @@ public class Player {
         return allNickName;
     }
 
-    public void addDeckId(Integer Id){
-        DeckId.add(Id);
+    public void addDeck(Deck deck){
+        allDecks.add(deck);
     }
 
-    public void removeDeckId(Integer Id){
-        DeckId.remove(Id);
+    public void removeDeck(Deck deck){
+        allDecks.remove(deck);
     }
 
-    public ArrayList<Integer> getDeckId(){
-        return DeckId;
+    public ArrayList<Deck> getAllDecks(){
+        return allDecks;
     }
     public void addCard(Card card){
         playerCards.add(card);

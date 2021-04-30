@@ -22,6 +22,7 @@ public class Card {
         return false;
     }
 
+
     public int getPrice() {
         return price;
     }

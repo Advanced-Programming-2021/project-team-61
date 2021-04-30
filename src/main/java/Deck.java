@@ -15,23 +15,22 @@ public class Deck {
         this.deckName = deckName;
         this.deckID = idCounter;
         allDeck.add(this);
-        Player.getPlayerByUsername(playerName).addDeckId(idCounter);
+        Player.getPlayerByUsername(playerName).addDeck(this);// Player.getPlayerByUsername(playerName).addDeck(this);
         idCounter++;
     }
 
-    public void deleteDeck(){
 
-    }
-
-    public static void activateDeck(Integer id, ArrayList<Integer> deckId){
-        for (Integer integer:deckId) {
-            Deck.getDeckById(integer).setActivated(false);
+    public static void activateDeck(String deckName,Player player){
+        ArrayList<Deck> allDecks = player.getAllDecks();
+        for (Deck deck : allDecks) {
+            deck.setActivated(false);
         }
-        Deck.getDeckById(id).setActivated(true);
+        Deck.getDeckByName(deckName,player).setActivated(true);
     }
 
-    public Deck getDeckByName(String deckName){
-        for (Deck deck:allDeck) {
+    public static Deck getDeckByName(String deckName,Player player){
+        ArrayList<Deck> allDecks = player.getAllDecks();
+        for (Deck deck:allDecks) {
             if (deck.deckName.equals(deckName))
                 return deck;
         }
@@ -121,9 +120,10 @@ public class Deck {
         return true;
     }
 
-    public static boolean doesPlayerHaveDeckWithThisName(String deckName, ArrayList<Integer> DeckId){
-        for (Integer Id:DeckId) {
-            if (getDeckById(Id).deckName.equals(deckName))
+    public static boolean doesPlayerHaveDeckWithThisName(String deckName, Player player){
+         ArrayList <Deck> allDecks = player.getAllDecks();
+         for( Deck deck : allDecks){
+             if(deck.deckName.equals(deckName))
                 return true;
         }
         return false;
@@ -131,29 +131,11 @@ public class Deck {
 
     ////////////////////////////////////////////
 
-    public static Deck getDeckById(Integer Id){
-        for (Deck deck:allDeck) {
-            if (deck.deckID==Id)
-                return deck;
-        }
-        return null;
-    }
 
-    public String getDeckNameById(Integer Id){
-        for (Deck deck:allDeck) {
-            if (deck.deckID==Id)
-                return deck.deckName;
-        }
-        return null;
-    }
 
-    public static Integer getDeckIdByDeckNameForSpecificPlayer(String deckName, ArrayList<Integer> DeckId){
-        for (Integer id:DeckId) {
-            if (Deck.getDeckById(id).deckName.equals(deckName))
-                return id;
-        }
-        return null;
-    }
+
+
+
 
     public ArrayList<Card> getMainDeck() {
         return mainDeck;
@@ -164,10 +146,6 @@ public class Deck {
     }
 
     public String getDeckName() {return deckName; }
-
-    public int getDeckID() {
-        return deckID;
-    }
 
     public void setActivated(boolean activated) {
         isActivated = activated;
