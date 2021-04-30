@@ -66,6 +66,8 @@ public class MainMenu {
 
             }
             case "Profile": {
+                ProfileMenu p = ProfileMenu.getInstance();
+                p.run(username);
                 break;
 
             }
