@@ -19,7 +19,6 @@ public class Deck {
         idCounter++;
     }
 
-
     public static void activateDeck(String deckName,Player player){
         ArrayList<Deck> allDecks = player.getAllDecks();
         for (Deck deck : allDecks) {
@@ -51,18 +50,6 @@ public class Deck {
 
     public void removeCardFromSideDeck_Deck(String cardName){
         sideDeck.remove(Card.getCardByName(cardName));
-    }
-
-    public void deckShowAll(){
-
-    }
-
-    public void mainDeckShow(){
-
-    }
-
-    public void sideDeckShow(){
-
     }
 
     public boolean isMainDeckFull(){//true => full
@@ -108,9 +95,11 @@ public class Deck {
         return false;
     }
 
-    public boolean doesPlayerHaveActiveDeck(){
-
-
+    public boolean doesPlayerHaveActiveDeck(ArrayList<Deck> Decks){
+        for (Deck deck:Decks) {
+            if (deck.isActivated)
+                return true;
+        }
         return false;
     }
 
@@ -143,14 +132,6 @@ public class Deck {
         }
         return null;
     }
-
-    ////////////////////////////////////////////
-
-
-
-
-
-
 
     public ArrayList<Card> getMainDeck() {
         return mainDeck;
