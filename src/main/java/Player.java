@@ -98,4 +98,29 @@ public class Player {
         this.setCoin(card.getPrice());
         this.addCard(card);
     }
+
+    public ArrayList<Card> getPlayerCards() {
+        return playerCards;
+    }
+
+    public boolean doesPlayerHaveSpecialCard(String cardName){
+        for (Card card:playerCards) {
+            if (card.cardName.equals(cardName))
+                return true;
+        }
+        return false;
+    }
+
+    public void addCardsAfterRemoveDeck(Deck deck){
+        playerCards.addAll(deck.getSideDeck());
+        playerCards.addAll(deck.getSideDeck());
+    }
+
+    public void removeCardFromPlayerAfterAddToDeck(String cardName){
+        playerCards.remove(Card.getCardByName(cardName));
+    }
+
+    public void addCardToPlayerCardsAfterRemoveFromDeck(String cardName){
+        playerCards.add(Card.getCardByName(cardName));
+    }
 }

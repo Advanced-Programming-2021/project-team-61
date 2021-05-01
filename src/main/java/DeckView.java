@@ -41,63 +41,63 @@ public class DeckView {
 
     public void printMessage(DeckView.Commands message, String st1, String st2) {
         switch (message) {
-            case CURRENTMENU:{
+            case CURRENTMENU: {
                 System.out.println("deck menu\n");
                 break;
             }
-            case CREATESUCCESSFULLY:{
+            case CREATESUCCESSFULLY: {
                 System.out.println("deck created successfully!\n");
                 break;
             }
-            case EXISTDECKALREADY:{
+            case EXISTDECKALREADY: {
                 System.out.println("deck with name " + st1 + " already exists\n");
                 break;
             }
-            case DELETEDECKSUCCESSFULLY:{
+            case DELETEDECKSUCCESSFULLY: {
                 System.out.println("deck deleted successfully\n");
                 break;
             }
-            case DONTHAVETHISDECK:{
+            case DONTHAVETHISDECK: {
                 System.out.println("deck with name " + st1 + " does not exist\n");
                 break;
             }
-            case ACTIVATESUCCESSFULLY:{
+            case ACTIVATESUCCESSFULLY: {
                 System.out.println("deck activated successfully\n");
                 break;
             }
-            case ADDCARDSUCCESSFULLY:{
+            case ADDCARDSUCCESSFULLY: {
                 System.out.println("card added to deck successfully\n");
                 break;
             }
-            case DONTHAVETHISCARD:{
+            case DONTHAVETHISCARD: {
                 System.out.println("card with name " + st1 + " does not exist\n");
                 break;
             }
-            case FULLMAINDECK:{
+            case FULLMAINDECK: {
                 System.out.println("main deck is full\n");
                 break;
             }
-            case FULLSIDEDECK:{
+            case FULLSIDEDECK: {
                 System.out.println("side deck is full\n");
                 break;
             }
-            case LIMIT3ERROR:{
-                System.out.println("there are already three cards with name " + st1 + " in deck "+ st2 + "\n");
+            case LIMIT3ERROR: {
+                System.out.println("there are already three cards with name " + st1 + " in deck " + st2 + "\n");
                 break;
             }
-            case NOTEXISTTHISCARDINMAINDECK:{
+            case NOTEXISTTHISCARDINMAINDECK: {
                 System.out.println("card with name " + st1 + " does not exist in main deck\n");
                 break;
             }
-            case NOTEXISTTHISCARDINSIDEDECK:{
+            case NOTEXISTTHISCARDINSIDEDECK: {
                 System.out.println("card with name " + st1 + " does not exist in side deck\n");
                 break;
             }
-            case REMOVECARDSUCCESSFULLY:{
+            case REMOVECARDSUCCESSFULLY: {
                 System.out.println("card removed form deck successfully\n");
                 break;
             }
-            case INVALID:{
+            case INVALID: {
                 System.out.println("invalid command\n");
                 break;
             }
@@ -106,69 +106,83 @@ public class DeckView {
         }
     }
 
-    public void printAllDecksOfPlayer(ArrayList<Deck> allDecks){
+    public void printAllDecksOfPlayer(ArrayList<Deck> allDecks) {
+        String validCheck;
         System.out.println("Decks:\n");
         System.out.println("Active Deck:\n");
-        for (Deck deck:allDecks) {
-            if (deck.isActivated()){
-                System.out.println(deck.getDeckName() + " : main deck " + deck.getMainDeck().size() + " , side deck " + deck.getSideDeck().size() /*valid/invalid*/ );
+        for (Deck deck : allDecks) {
+            if (deck.isActivated()) {
+                if (deck.isDeckValid()) {
+                    validCheck = "valid";
+                } else {
+                    validCheck = "invalid";
+                }
+                System.out.println(deck.getDeckName() + " : main deck " + deck.getMainDeck().size() + " , side deck " + deck.getSideDeck().size() + validCheck + "\n");
                 break;
             }
         }
         System.out.println("Other Decks:\n");
         sortDeck(allDecks);
         for (Deck deck : allDecks) {
-            if(!deck.isActivated())
-            System.out.println(deck.getDeckName() + " : main deck " + deck.getMainDeck().size() + " , side deck " + deck.getSideDeck().size() /*valid/invalid*/ );
+            if (deck.isDeckValid()) {
+                validCheck = "valid";
+            } else {
+                validCheck = "invalid";
+            }
+            if (!deck.isActivated())
+                System.out.println(deck.getDeckName() + " : main deck " + deck.getMainDeck().size() + " , side deck " + deck.getSideDeck().size() + validCheck + "\n");
         }
-        //ye masale dige ham hast,dar morede in ke chegouri tartibe alefba bashe??
     }
 
-    public void printOneDeck(String deckName,ArrayList<Card> cards , String M_S){
+    public void printOneDeck(String deckName, ArrayList<Card> cards, String M_S) {
         ArrayList<Card> monsters = new ArrayList<>();
         ArrayList<Card> spellTrap = new ArrayList<>();
-        for(Card card : cards){
-            if(card instanceof MonsterCard)
+        for (Card card : cards) {
+            if (card instanceof MonsterCard)
                 monsters.add(card);
             else
                 spellTrap.add(card);
         }
-        System.out.println("Deck: "+deckName);
-        if (M_S.equals("M")){
+        System.out.println("Deck: " + deckName);
+        if (M_S.equals("M")) {
             System.out.println("Main deck:");
-            }
-        else {
-        System.out.println("Side deck:");
+        } else {
+            System.out.println("Side deck:");
         }
         sortCards(monsters);
         sortCards(spellTrap);
         System.out.println("Monsters:");
-        for(Card monster : monsters)
-            System.out.println(monster.getCardName()+":"+monster.getDescription());
+        for (Card monster : monsters)
+            System.out.println(monster.getCardName() + ":" + monster.getDescription());
         System.out.println("Spell and Traps:");
-        for(Card spell : spellTrap)
-            System.out.println(spell.getCardName()+":"+spell.getDescription());
+        for (Card spell : spellTrap)
+            System.out.println(spell.getCardName() + ":" + spell.getDescription());
 
     }
-    private void sortDeck(ArrayList<Deck> allDecks){
-        for(int i = 0;i<allDecks.size()-1;i++){
-            for(int j = i; j<allDecks.size();j++){
-                if(allDecks.get(i).getDeckName().compareTo( allDecks.get(j).getDeckName())>0)
-                    Collections.swap(allDecks,i,j);
+
+    private void sortDeck(ArrayList<Deck> allDecks) {
+        for (int i = 0; i < allDecks.size() - 1; i++) {
+            for (int j = i; j < allDecks.size(); j++) {
+                if (allDecks.get(i).getDeckName().compareTo(allDecks.get(j).getDeckName()) > 0)
+                    Collections.swap(allDecks, i, j);
             }
         }
     }
-    private void sortCards(ArrayList<Card> cards){
-        for(int i = 0;i<cards.size()-1;i++){
-            for(int j = i; j<cards.size();j++){
-                if(cards.get(i).getCardName().compareTo(cards.get(j).getCardName())>0)
-                    Collections.swap(cards,i,j);
+
+    private void sortCards(ArrayList<Card> cards) {
+        for (int i = 0; i < cards.size() - 1; i++) {
+            for (int j = i; j < cards.size(); j++) {
+                if (cards.get(i).getCardName().compareTo(cards.get(j).getCardName()) > 0)
+                    Collections.swap(cards, i, j);
             }
         }
-
     }
 
-    public void printAllCardsOfPlayer(){
+    public void printAllCardsOfPlayer(ArrayList<Card> allCards) {
+        sortCards(allCards);
+        for (Card card : allCards) {
+            System.out.println(card.cardName + " : " + card.description);
+        }
 
     }
 }

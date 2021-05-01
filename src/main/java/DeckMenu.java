@@ -54,8 +54,7 @@ public class DeckMenu {
                 else
                     showSideDeck(matcher.group(1));
             } else if ((getCommandMatcher(command, "deck show --cards")).find()) {
-                //show all cards that are buyed
-                showAllCardsOfDeck();
+                view.printAllCardsOfPlayer(player.getPlayerCards());
             } else {
                 view.printMessage(DeckView.Commands.INVALID, "", "");
             }
@@ -76,8 +75,8 @@ public class DeckMenu {
             view.printMessage(DeckView.Commands.DONTHAVETHISDECK, deckName, "");
         } else {
             view.printMessage(DeckView.Commands.DELETEDECKSUCCESSFULLY, "", "");
+            player.addCardsAfterRemoveDeck(Deck.getDeckByName(deckName,player));
             player.removeDeck(Deck.getDeckByName(deckName,player));
-            //return cards for player after deleting deck...
         }
     }
 
@@ -91,7 +90,7 @@ public class DeckMenu {
     }
 
     public void addCardToMainDeck(String cardName, String deckName) {
-        if (/*is card exist for player or not*/) {
+        if (!player.doesPlayerHaveSpecialCard(cardName)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISCARD, cardName, "");
         } else if (!Deck.doesPlayerHaveDeckWithThisName(deckName, player)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISDECK, deckName, "");
@@ -102,12 +101,12 @@ public class DeckMenu {
         } else {
             view.printMessage(DeckView.Commands.ADDCARDSUCCESSFULLY, "", "");
             Deck.getDeckByName(deckName,player).addCardToMainDeck_Deck(cardName);
-            //reduce the card from player..
+            player.removeCardFromPlayerAfterAddToDeck(cardName);
         }
     }
 
     public void addCardToSideDeck(String cardName, String deckName) {
-        if (/*is card exist for player or not*/) {
+        if (!player.doesPlayerHaveSpecialCard(cardName)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISCARD, cardName, "");
         } else if (!Deck.doesPlayerHaveDeckWithThisName(deckName, player)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISDECK, deckName, "");
@@ -118,7 +117,7 @@ public class DeckMenu {
         } else {
             view.printMessage(DeckView.Commands.ADDCARDSUCCESSFULLY, "", "");
             Deck.getDeckByName(deckName,player).addCardToSideDeck_Deck(cardName);
-            //reduce the card from player..
+            player.removeCardFromPlayerAfterAddToDeck(cardName);
         }
     }
 
@@ -130,7 +129,7 @@ public class DeckMenu {
         } else {
             view.printMessage(DeckView.Commands.REMOVECARDSUCCESSFULLY, "", "");
             Deck.getDeckByName(deckName,player).removeCardFromMainDeck_Deck(cardName);
-            //return card for player after remove from deck...
+            player.addCardToPlayerCardsAfterRemoveFromDeck(cardName);
         }
     }
 
@@ -142,13 +141,10 @@ public class DeckMenu {
         } else {
             view.printMessage(DeckView.Commands.REMOVECARDSUCCESSFULLY, "", "");
             Deck.getDeckByName(deckName,player).removeCardFromSideDeck_Deck(cardName);
-            //return card for player after remove card
+            player.addCardToPlayerCardsAfterRemoveFromDeck(cardName);
         }
     }
 
-    /*public void showAllDecksOfPlayer() {
-
-    }*/
 
     public void showMainDeck(String deckName){
         if(!Deck.doesPlayerHaveDeckWithThisName(deckName,player))
@@ -158,12 +154,12 @@ public class DeckMenu {
     }
 
     public void showSideDeck(String deckName){
+        if(!Deck.doesPlayerHaveDeckWithThisName(deckName,player))
+            view.printMessage(DeckView.Commands.DONTHAVETHISDECK,deckName,"");
+        else
         view.printOneDeck(deckName,Deck.getDeckByName(deckName,player).getSideDeck(),"S");
     }
 
-    public void showAllCardsOfDeck() {
-
-    }
 
 
     private Matcher getCommandMatcher(String input, String regex) {
