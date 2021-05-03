@@ -128,6 +128,21 @@ public class Deck {
         }
         return false;
     }
+    public static boolean isPlayerHaveActivatedDeck(Player player){
+       for( Deck deck : player.getAllDecks()){
+           if(deck.isActivated)
+               return true;
+       }
+       return false;
+
+    }
+    public static Deck getActivatedDeck(Player player){
+        for(Deck deck : player.getAllDecks()){
+            if(deck.isActivated)
+                return deck;
+        }
+        return null;
+    }
 
     ////////////////////////////////////////////
 
