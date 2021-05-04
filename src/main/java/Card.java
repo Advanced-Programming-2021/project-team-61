@@ -6,6 +6,7 @@ public class Card {
     protected String cardType;
     protected String description;
     protected int price;
+    protected boolean isSelected = false;
     protected static ArrayList<Card> allCards = new ArrayList<>();
 
     protected Card(String cardName,String cardType,String description,int price){
