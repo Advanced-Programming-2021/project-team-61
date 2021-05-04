@@ -42,6 +42,12 @@ public class MainMenu {
                 changed = 1;
                 view.printMessage(MainView.Commands.MENUNAME);
             }
+            if(command.startsWith("duel --new --second-player")){
+                if(getCommandMatcher(command,"duel --new --second-player ([^\\s]+) --rounds ([\\d]+)").find()){
+                    changed = 1;
+                    menuEnter("Duel",username);
+                }
+            }
             if (changed == 0)
                 view.printMessage(MainView.Commands.INVALID);
 
@@ -52,6 +58,9 @@ public class MainMenu {
     private void menuEnter(String menuName, String username) {
         switch (menuName) {
             case "Duel": {
+                DualMenu d = DualMenu.getInstance();
+
+                d.run(username,getCommandMatcher(command,"duel --new --second-player ([^\\s]+) --rounds ([\\d]+)"));
                 break;
 
             }
