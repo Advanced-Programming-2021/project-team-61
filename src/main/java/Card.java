@@ -277,15 +277,19 @@ public class Card {
                 break;
             }
             case "Black Pendant":{
+                blackPendant();
                 break;
             }
             case "United We Stand":{
+                unitedWeStand();
                 break;
             }
             case "Magnum Shield":{
+                magnumShield();
                 break;
             }
             case "Advanced Ritual Art":{
+                advancedRitualArt();
                 break;
             }
             default:
@@ -483,6 +487,22 @@ public class Card {
     }
 
     private static void swordOfDarkDestruction(){
+
+    }
+
+    private static void blackPendant(){
+
+    }
+
+    private static void unitedWeStand(){
+
+    }
+
+    private static void magnumShield(){
+
+    }
+
+    private static void advancedRitualArt(){
 
     }
 }
