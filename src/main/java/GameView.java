@@ -3,6 +3,12 @@ import java.util.Scanner;
 public class GameView {
 
     enum Command{
+        NOTCARDSELECTED,
+        NOTBESUMMONED,
+        MONSTERZONEFULL,
+        ISSUMMONEDONCE,
+        NOTENOUGHFORTRIBUTE,
+        NOTMONSTERINADDRESS
 
     }
 
@@ -22,6 +28,32 @@ public class GameView {
         return command;
     }
     public void printMessage(Command message){
+        switch (message){
+            case NOTCARDSELECTED:{
+                System.out.println("no card is selected yet");
+                break;
+            }
+            case NOTBESUMMONED: {
+                System.out.println("you can't summon this card");
+                break;
+            }
+            case MONSTERZONEFULL:{
+                System.out.println("monster card zone is full");
+                break;
+            }
+            case ISSUMMONEDONCE: {
+                System.out.println("you already summoned/set on this turn");
+                break;
+            }
+            case NOTENOUGHFORTRIBUTE:{
+                System.out.println("there are not enough cards for tribute");
+                break;
+            }
+            case NOTMONSTERINADDRESS:{
+                System.out.println("there no monster one this address");
+                break;
+            }
+        }
 
     }
 
