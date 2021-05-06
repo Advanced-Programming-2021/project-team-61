@@ -95,6 +95,13 @@ public class Board {
         Card card = getSelectedCardFromHand();
         return card instanceof MonsterCard;
     }
+    public boolean isInHand(){
+        for(Card card : hand){
+            if(card.isSelected)
+                return true;
+        }
+        return false;
+    }
 
     public Card getSelectedCardFromHand() {
         for (Card card : hand) {
@@ -135,7 +142,8 @@ public class Board {
         }
     }
 
-    public void summon(int position) {
+    public void summon() {
+        int position = getEmptyPlaceInMonsterZone();
         switch (position) {
             case 1: {
                 setMonsterZone(2, "OO");
@@ -187,7 +195,7 @@ public class Board {
 
     }
 
-    private boolean isMonsterAvailableInMonsterZone(int position) {
+    public boolean isMonsterAvailableInMonsterZone(int position) {
         switch (position) {
             case 1: {
                 return !monsterZone[2].equals("E");
@@ -238,6 +246,35 @@ public class Board {
         }
 
 
+    }
+    private int getEmptyPlaceInMonsterZone(){
+        if(monsterZone[2].equals("E"))
+            return 1;
+        else
+        if(monsterZone[1].equals("E"))
+            return 2;
+        else
+        if(monsterZone[3].equals("E"))
+            return 3;
+        else
+        if(monsterZone[0].equals("E"))
+            return 4;
+        else
+        if(monsterZone[4].equals("E"))
+            return 5;
+        else
+            return 0;
+    }
+    public boolean isEnoughForTribute(int level){
+        switch (level){
+            case 5 : {
+                return monsterCardsInField.size()>=1;
+            }
+            case 7 : {
+                return monsterCardsInField.size()>=2;
+            }
+            default: return false;
+        }
     }
 
     private void initializeMonsterZone() {
