@@ -16,4 +16,7 @@ public class MonsterCard extends Card{
         allCards.add(this);
     }
 
+    public int getLevel() {
+        return level;
+    }
 }
