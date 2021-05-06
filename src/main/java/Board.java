@@ -278,5 +278,11 @@ public class Board {
             spellTrapZone[i] = "E";
     }
 
+    public void destroyAllMonster(){
+        for (String cardName:monsterZone) {
+            destroyCard(Card.getCardByName(cardName));
+        }
+    }
+
 
 }

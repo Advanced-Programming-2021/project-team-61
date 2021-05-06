@@ -2,12 +2,15 @@ import java.util.ArrayList;
 
 public class Card {
 
+    private static Player player;
+    private static Player rivalPlayer;
     protected String cardName;
     protected String cardType;
     protected String description;
     protected int price;
     protected boolean isSelected = false;
     protected static ArrayList<Card> allCards = new ArrayList<>();
+
 
     protected Card(String cardName,String cardType,String description,int price){
         this.cardName = cardName;
@@ -58,8 +61,11 @@ public class Card {
         return description;
     }
 
-    public static void doDescription(String cardName){
+    public static void doDescription(String cardName,Player player1,Player player2){
+        player = player1;
+        rivalPlayer = player2;
         switch (cardName){
+            case "Battle OX":
             case "Horn Imp":
             case "Silver Fang":
             case "Fireyarou":
@@ -83,10 +89,6 @@ public class Card {
             case "Wattaildragon":
             case "Spiral Serpent":
             case "Axe Raider":{//***
-                break;
-            }
-            case "Battle OX":{
-                battleOX();
                 break;
             }
             case "Yomi Ship":{
@@ -298,9 +300,6 @@ public class Card {
         }
     }
 
-    private static void battleOX(){
-
-    }
 
     private static void yomiShip(){
 
@@ -431,7 +430,7 @@ public class Card {
     }
 
     private static void raigeki(){
-
+        Board.getBoardByPlayer(rivalPlayer).destroyAllMonster();
     }
 
     private static void changeOfHeart(){
