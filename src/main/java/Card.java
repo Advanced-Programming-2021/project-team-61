@@ -451,7 +451,8 @@ public class Card {
     }
 
     private static void darkHole(){
-
+        Board.getBoardByPlayer(player).destroyAllMonster();
+        Board.getBoardByPlayer(rivalPlayer).destroyAllMonster();
     }
 
     private static void supplySquad(){
