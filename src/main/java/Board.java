@@ -293,5 +293,19 @@ public class Board {
         }
     }
 
+    public void destroyAllSpell(){
+        for (String cardName:spellTrapZone) {
+            if (Card.getCardByName(cardName) instanceof SpellCard)
+                destroyCard(Card.getCardByName(cardName));
+        }
+    }
+
+    public void destroyAllTrap(){
+        for (String cardName:spellTrapZone) {
+            if (Card.getCardByName(cardName) instanceof TrapCard)
+                destroyCard(Card.getCardByName(cardName));
+        }
+    }
+
 
 }

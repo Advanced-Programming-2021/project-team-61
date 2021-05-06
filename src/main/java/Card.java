@@ -439,7 +439,8 @@ public class Card {
     }
 
     private static void harpieFeatherDuster(){
-
+        Board.getBoardByPlayer(rivalPlayer).destroyAllSpell();
+        Board.getBoardByPlayer(rivalPlayer).destroyAllTrap();
     }
 
     private static void darkHole(){
