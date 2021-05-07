@@ -26,15 +26,15 @@ public class MainView {
     public void printMessage(Commands message){
         switch (message){
             case LOGOUT:{
-                System.out.println("user logged out successfully!");
+                System.out.println("user logged out successfully!\n");
                 break;
             }
             case INVALID:{
-                System.out.println("invalid command");
+                System.out.println("invalid command\n");
                 break;
             }
             case MENUNAME:{
-                System.out.println("Main Menu");
+                System.out.println("Main Menu\n");
                 break;
             }
             default: break;
