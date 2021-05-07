@@ -144,30 +144,11 @@ public class Board {
 
     public void summon() {
         int position = getEmptyPlaceInMonsterZone();
-        switch (position) {
-            case 1: {
-                setMonsterZone(2, "OO");
-                break;
-            }
-            case 2: {
-                setMonsterZone(3, "OO");
-                break;
-            }
-            case 3: {
-                setMonsterZone(1, "OO");
-                break;
-            }
-            case 4: {
-                setMonsterZone(4, "OO");
-                break;
-            }
-            case 5: {
-                setMonsterZone(0, "OO");
-            }
-            default:
-                break;
-        }
+        int index = getIndex(position);
+        setMonsterZone(index,"OO");
         addMonsterCardToField(position, getSelectedCardFromHand());
+        hand.remove(getSelectedCardFromHand());
+        this.setSummonedInTurn(true);
     }
 
     private boolean isSpellTrapAvailableInSpellZone(int position) {
@@ -196,26 +177,8 @@ public class Board {
     }
 
     public boolean isMonsterAvailableInMonsterZone(int position) {
-        switch (position) {
-            case 1: {
-                return !monsterZone[2].equals("E");
-            }
-            case 2: {
-                return !monsterZone[1].equals("E");
-            }
-            case 3: {
-                return !monsterZone[3].equals("E");
-            }
-            case 4: {
-                return !monsterZone[0].equals("E");
-            }
-            case 5: {
-                return !monsterZone[4].equals("E");
-            }
-            default: {
-                return false;
-            }
-        }
+        int index = getIndex(position);
+        return !monsterZone[index].equals("E");
     }
 
     private boolean isNumberValid(String address, int number) {
@@ -275,6 +238,34 @@ public class Board {
             }
             default: return false;
         }
+    }
+    private int getIndex(int position){
+        switch(position){
+            case 1 : {
+                return 2;
+            }
+            case 2 : {
+                return 3;
+            }
+            case 3 : {
+                return 1;
+            }
+            case 4 : {
+                return 0;
+            }
+            case 5 : {
+                return 4;
+            }
+            default: {
+                return 10;
+            }
+        }
+    }
+    public void tribute(int position){
+        int index = getIndex(position);
+        monsterZone[index] = "E";
+        graveYard.add(monsterCardsInField.get(position));
+        monsterCardsInField.remove(position);
     }
 
     private void initializeMonsterZone() {
