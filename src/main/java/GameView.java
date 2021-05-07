@@ -8,7 +8,8 @@ public class GameView {
         MONSTERZONEFULL,
         ISSUMMONEDONCE,
         NOTENOUGHFORTRIBUTE,
-        NOTMONSTERINADDRESS
+        NOTMONSTERINADDRESS,
+        SUMMONSUCCESSFUL
 
     }
 
@@ -51,6 +52,10 @@ public class GameView {
             }
             case NOTMONSTERINADDRESS:{
                 System.out.println("there no monster one this address");
+                break;
+            }
+            case SUMMONSUCCESSFUL:{
+                System.out.println("summoned successfully");
                 break;
             }
         }
