@@ -10,6 +10,8 @@ public class GameView {
         NOTENOUGHFORTRIBUTE,
         NOTMONSTERINADDRESS,
         SUMMONSUCCESSFUL
+        NOTMONSTERINADDRESS,
+        ENTERTHECARDNAME,
 
     }
 
@@ -56,6 +58,10 @@ public class GameView {
             }
             case SUMMONSUCCESSFUL:{
                 System.out.println("summoned successfully");
+                break;
+            }
+            case ENTERTHECARDNAME:{
+                System.out.println("please enter the cardName which you guess your rival has:");
                 break;
             }
         }
