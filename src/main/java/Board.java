@@ -307,5 +307,66 @@ public class Board {
         }
     }
 
+    public boolean isThisCardInHand_ByName(String cardName){
+        for (Card card:hand) {
+            if (card.cardName.equals(cardName))
+                return true;
+        }
+        return false;
+    }
 
+    public void destroyAllSpecialCardForPlayer(String cardName){
+        for (Card card:mainDeck) {
+            if (card.cardName.equals(cardName)) {
+                mainDeck.remove(card);
+                graveYard.add(card);
+            }
+        }
+        for (Card card:sideDeck) {
+            if (card.cardName.equals(cardName)){
+                sideDeck.remove(card);
+                graveYard.add(card);
+            }
+        }
+        for (String name:monsterZone) {
+            if (name.equals(cardName))
+                destroyCard(Card.getCardByName(name));
+        }
+        for (String name:spellTrapZone) {
+            if (name.equals(cardName))
+                destroyCard(Card.getCardByName(name));
+        }
+        for (Card card:hand) {
+            if (card.cardName.equals(cardName))
+                destroyCard(card);
+        }
+    }
+
+    //getters...
+
+
+    public ArrayList<Card> getGraveYard() {
+        return graveYard;
+    }
+
+    public ArrayList<Card> getMainDeck() {
+        return mainDeck;
+    }
+
+    public ArrayList<Card> getSideDeck() {
+        return sideDeck;
+    }
+
+    public ArrayList<Card> getHand() {
+        return hand;
+    }
+
+    public String[] getMonsterZone() {
+        return monsterZone;
+    }
+
+    public String[] getSpellTrapZone() {
+        return spellTrapZone;
+    }
+    ////////////////
 }

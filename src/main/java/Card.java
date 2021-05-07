@@ -379,7 +379,14 @@ public class Card {
     }
 
     private static void mindCrush(){
-
+        GameView.getInstance().printMessage(GameView.Command.ENTERTHECARDNAME);
+        String cardNameToDestroy = GameView.getInstance().scan();
+        if (Board.getBoardByPlayer(rivalPlayer).isThisCardInHand_ByName(cardNameToDestroy)){
+            Board.getBoardByPlayer(rivalPlayer).destroyAllSpecialCardForPlayer(cardNameToDestroy);
+        }else {
+            int a = (int)(Math.random()*(Board.getBoardByPlayer(player).getHand().size() + 1));//create random number to remove card from hand
+            Board.getBoardByPlayer(player).destroyCard(Board.getBoardByPlayer(player).getHand().get(a));
+        }
     }
 
     private static void torrentialTribute(){

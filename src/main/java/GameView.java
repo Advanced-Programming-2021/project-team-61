@@ -8,7 +8,8 @@ public class GameView {
         MONSTERZONEFULL,
         ISSUMMONEDONCE,
         NOTENOUGHFORTRIBUTE,
-        NOTMONSTERINADDRESS
+        NOTMONSTERINADDRESS,
+        ENTERTHECARDNAME,
 
     }
 
@@ -51,6 +52,10 @@ public class GameView {
             }
             case NOTMONSTERINADDRESS:{
                 System.out.println("there no monster one this address");
+                break;
+            }
+            case ENTERTHECARDNAME:{
+                System.out.println("please enter the cardName which you guess your rival has:");
                 break;
             }
         }
