@@ -359,5 +359,14 @@ public class Board {
     public String[] getSpellTrapZone() {
         return spellTrapZone;
     }
+
+    public HashMap<Integer, Card> getMonsterCardsInField() {
+        return monsterCardsInField;
+    }
+
+    public HashMap<Integer, Card> getSpellTrapCardsInField() {
+        return spellTrapCardsInField;
+    }
+
     ////////////////
 }
