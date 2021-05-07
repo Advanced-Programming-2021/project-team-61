@@ -23,6 +23,13 @@ public class Card {
         return false;
     }
 
+    public void setSelected(boolean isSelected){
+        this.isSelected = isSelected;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
 
     public int getPrice() {
         return price;
