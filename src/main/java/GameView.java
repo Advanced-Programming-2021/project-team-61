@@ -9,9 +9,12 @@ public class GameView {
         ISSUMMONEDONCE,
         NOTENOUGHFORTRIBUTE,
         NOTMONSTERINADDRESS,
-        SUMMONSUCCESSFUL
-        NOTMONSTERINADDRESS,
+        SUMMONSUCCESSFUL,
         ENTERTHECARDNAME,
+        INVALIDSELECTION,
+        CARDSELECTED,
+        CARDDESELECTED,
+        NOCARDFOUNDINGIVENPOSITION
 
     }
 
@@ -62,6 +65,22 @@ public class GameView {
             }
             case ENTERTHECARDNAME:{
                 System.out.println("please enter the cardName which you guess your rival has:");
+                break;
+            }
+            case INVALIDSELECTION:{
+                System.out.println("invalid selection");
+                break;
+            }
+            case CARDSELECTED:{
+                System.out.println("card selected");
+                break;
+            }
+            case CARDDESELECTED:{
+                System.out.println("card deselected");
+                break;
+            }
+            case NOCARDFOUNDINGIVENPOSITION:{
+                System.out.println("no card found in the given position");
                 break;
             }
         }
