@@ -29,31 +29,31 @@ public class ProfileView {
     public void printMessage(Commands message, String s) {
         switch (message) {
             case NICKNAMEEXISTS: {
-                System.out.println("user with nickname " + s + " already exists");
+                System.out.println("user with nickname " + s + " already exists\n");
                 break;
             }
             case NICKNAMESUCCESSFULL: {
-                System.out.println("nickname changed successfully!");
+                System.out.println("nickname changed successfully!\n");
                 break;
             }
             case INVALIDPASSWORD: {
-                System.out.println("current password is invalid");
+                System.out.println("current password is invalid\n");
                 break;
             }
             case ENTERNEWPASSWORD: {
-                System.out.println("please enter a new password");
+                System.out.println("please enter a new password\n");
                 break;
             }
             case PASSWORDSUCCESSFULL: {
-                System.out.println("password changed successfully!");
+                System.out.println("password changed successfully!\n");
                 break;
             }
             case INVALID: {
-                System.out.println("invalid command");
+                System.out.println("invalid command\n");
                 break;
             }
             case SHOWMENU: {
-                System.out.println("Profile Menu");
+                System.out.println("Profile Menu\n");
                 break;
             }
             default:

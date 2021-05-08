@@ -143,20 +143,20 @@ public class DeckView {
             else
                 spellTrap.add(card);
         }
-        System.out.println("Deck: " + deckName);
+        System.out.println("Deck: " + deckName + "\n");
         if (M_S.equals("M")) {
-            System.out.println("Main deck:");
+            System.out.println("Main deck:\n");
         } else {
-            System.out.println("Side deck:");
+            System.out.println("Side deck:\n");
         }
         sortCards(monsters);
         sortCards(spellTrap);
-        System.out.println("Monsters:");
+        System.out.println("Monsters:\n");
         for (Card monster : monsters)
-            System.out.println(monster.getCardName() + ":" + monster.getDescription());
-        System.out.println("Spell and Traps:");
+            System.out.println(monster.getCardName() + ":" + monster.getDescription() + "\n");
+        System.out.println("Spell and Traps:\n");
         for (Card spell : spellTrap)
-            System.out.println(spell.getCardName() + ":" + spell.getDescription());
+            System.out.println(spell.getCardName() + ":" + spell.getDescription() + "\n");
 
     }
 
@@ -181,7 +181,7 @@ public class DeckView {
     public void printAllCardsOfPlayer(ArrayList<Card> allCards) {
         sortCards(allCards);
         for (Card card : allCards) {
-            System.out.println(card.cardName + " : " + card.description);
+            System.out.println(card.cardName + " : " + card.description + "\n");
         }
 
     }

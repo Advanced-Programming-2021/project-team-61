@@ -54,7 +54,7 @@ public class ShopView {
         ArrayList<Card> allCards = Card.getAllCards();
         sort(allCards);
         for (Card allCard : allCards) {
-            System.out.print(allCard.getCardName() + ":" + allCard.getPrice());
+            System.out.print(allCard.getCardName() + ":" + allCard.getPrice() + "\n");
             System.out.println();
         }
     }
