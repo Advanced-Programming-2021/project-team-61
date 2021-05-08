@@ -149,6 +149,14 @@ public class Board {
         hand.remove(getSelectedCardFromHand());
         this.setSummonedInTurn(true);
     }
+    public void set(){
+        int position = getEmptyPlaceInMonsterZone();
+        int index = getIndex(position);
+        setMonsterZone(index,"DH");
+        addMonsterCardToField(position,getSelectedCardFromHand());
+        hand.remove(getSelectedCardFromHand());
+        this.setSummonedInTurn(true);
+    }
 
     private boolean isSpellTrapAvailableInSpellZone(int position) {
         switch (position) {
