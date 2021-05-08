@@ -4,7 +4,8 @@ import java.util.regex.Pattern;
 public class Select {
     private Player player;
     private Player rivalPlayer;
-    enum location{
+    Location location;
+    enum Location{
         MONSTER,
         MONSTEROPPONENT,
         SPELL,
@@ -20,22 +21,30 @@ public class Select {
         Matcher matcher;
         if ((getCommandMatcher(command,"select -d")).find()){
             deSelect();
+            //*setLocation(null);
         }else if ((matcher = getCommandMatcher(command,"select --monster --opponent (\\d+)")).find()){
             monsterOpponent(matcher);
+            //*setLocation(Location.MONSTEROPPONENT);
         }else if ((matcher = getCommandMatcher(command,"select --monster (\\d+)")).find()){
             monster(matcher);
+            //*setLocation(Location.MONSTER);
         }else if ((matcher = getCommandMatcher(command,"select --spell --opponent (\\d+)")).find()){
             spellOpponent(matcher);
+            //*setLocation(Location.SPELLOPPONENT);
         }else if ((matcher = getCommandMatcher(command,"select --spell (\\d+)")).find()){
-            spell(matcher));
+            spell(matcher);
+            //*setLocation(Location.SPELL);
         }else if ((getCommandMatcher(command,"select --field --opponent")).find()){
             //save information
+            //*setLocation(Location.FIELDOPPONENT);
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }else if ((getCommandMatcher(command,"select --field")).find()){
             //save information
+            //*setLocation(Location.FIELD);
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }else if ((matcher = getCommandMatcher(command,"select --hand (\\d+)")).find()){
             hand(matcher);
+            //*setLocation(Location.HAND);
         }else {
             GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
         }
@@ -103,12 +112,20 @@ public class Select {
     }
 
     private void deSelect() {
-        if (/*check is card selected yet*/) {
+        if (getLocation().equals(null)) {/////
             GameView.getInstance().printMessage(GameView.Command.NOTCARDSELECTED);
         }else {
             //remove information
             GameView.getInstance().printMessage(GameView.Command.CARDDESELECTED);
         }
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Location getLocation() {
+        return location;
     }
 
 
