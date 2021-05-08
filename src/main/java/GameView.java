@@ -14,7 +14,9 @@ public class GameView {
         INVALIDSELECTION,
         CARDSELECTED,
         CARDDESELECTED,
-        NOCARDFOUNDINGIVENPOSITION
+        NOCARDFOUNDINGIVENPOSITION,
+        NOTBESET,
+        SETSUCCESSFUL
 
     }
 
@@ -82,6 +84,12 @@ public class GameView {
             case NOCARDFOUNDINGIVENPOSITION:{
                 System.out.println("no card found in the given position\n");
                 break;
+            }
+            case NOTBESET: {
+                System.out.println("you can't set this card");
+            }
+            case SETSUCCESSFUL:{
+                System.out.println("set successfully");
             }
         }
 

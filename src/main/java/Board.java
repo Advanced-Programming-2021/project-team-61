@@ -120,7 +120,6 @@ public class Board {
                 return false;
             } else if (isCardAvailable(matcher.group(1), Integer.parseInt(matcher.group(2))))
         }
-
     }
 
     private boolean isCardAvailable(String addreess, int position) {
@@ -147,6 +146,14 @@ public class Board {
         int index = getIndex(position);
         setMonsterZone(index,"OO");
         addMonsterCardToField(position, getSelectedCardFromHand());
+        hand.remove(getSelectedCardFromHand());
+        this.setSummonedInTurn(true);
+    }
+    public void set(){
+        int position = getEmptyPlaceInMonsterZone();
+        int index = getIndex(position);
+        setMonsterZone(index,"DH");
+        addMonsterCardToField(position,getSelectedCardFromHand());
         hand.remove(getSelectedCardFromHand());
         this.setSummonedInTurn(true);
     }
@@ -251,10 +258,10 @@ public class Board {
                 return 1;
             }
             case 4 : {
-                return 0;
+                return 4;
             }
             case 5 : {
-                return 4;
+                return 0;
             }
             default: {
                 return 10;
