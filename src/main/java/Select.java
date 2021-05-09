@@ -6,6 +6,7 @@ public class Select {
     private Player rivalPlayer;
     private static Select s = null;
     Location location;
+    private int position;//for field we set 10 -- for deselect we set 0
     enum Location{
         MONSTER,
         MONSTEROPPONENT,
@@ -41,11 +42,11 @@ public class Select {
             spell(matcher);
             setLocation(Location.SPELL);
         }else if ((getCommandMatcher(command,"select --field --opponent")).find()){
-            //save information
+            position = 10;
             setLocation(Location.FIELDOPPONENT);
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }else if ((getCommandMatcher(command,"select --field")).find()){
-            //save information
+            position = 10;
             setLocation(Location.FIELD);
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }else if ((matcher = getCommandMatcher(command,"select --hand (\\d+)")).find()){
@@ -64,7 +65,7 @@ public class Select {
         }else if (Board.getBoardByPlayer(rivalPlayer).getMonsterCardsInField().size()<loc){
             GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
         }else {
-            //save information
+            position = loc;
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }
     }
@@ -76,7 +77,7 @@ public class Select {
         }else if (Board.getBoardByPlayer(player).getMonsterCardsInField().size()<loc){
             GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
         }else {
-            //save information
+            position = loc;
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }
     }
@@ -88,7 +89,7 @@ public class Select {
         }else if (Board.getBoardByPlayer(rivalPlayer).getSpellTrapCardsInField().size()<loc){
             GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
         }else {
-            //save information
+            position = loc;
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }
     }
@@ -100,7 +101,7 @@ public class Select {
         }else if (Board.getBoardByPlayer(player).getSpellTrapCardsInField().size()<loc){
             GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
         }else {
-            //save information
+            position = loc;
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }
     }
@@ -112,16 +113,16 @@ public class Select {
         }else if (Board.getBoardByPlayer(player).getHand().size()<loc){
             GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
         }else {
-            //save information
+            position = loc;
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }
     }
 
     private void deSelect() {
-        if (getLocation()==null) {/////
+        if (getLocation()==null) {
             GameView.getInstance().printMessage(GameView.Command.NOTCARDSELECTED);
         }else {
-            //remove information
+            position = 0;
             GameView.getInstance().printMessage(GameView.Command.CARDDESELECTED);
         }
     }
@@ -134,6 +135,9 @@ public class Select {
         return location;
     }
 
+    public int getPosition() {
+        return position;
+    }
 
     private Matcher getCommandMatcher(String input, String regex) {
         Pattern p = Pattern.compile(regex);
