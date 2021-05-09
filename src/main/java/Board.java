@@ -143,16 +143,14 @@ public class Board {
 
     public void summon() {
         int position = getEmptyPlaceInMonsterZone();
-        int index = getIndex(position);
-        setMonsterZone(index,"OO");
+        setMonsterZone(position-1,"OO");
         addMonsterCardToField(position, getSelectedCardFromHand());
         hand.remove(getSelectedCardFromHand());
         this.setSummonedInTurn(true);
     }
     public void set(){
         int position = getEmptyPlaceInMonsterZone();
-        int index = getIndex(position);
-        setMonsterZone(index,"DH");
+        setMonsterZone(position-1,"DH");
         addMonsterCardToField(position,getSelectedCardFromHand());
         hand.remove(getSelectedCardFromHand());
         this.setSummonedInTurn(true);
@@ -184,8 +182,7 @@ public class Board {
     }
 
     public boolean isMonsterAvailableInMonsterZone(int position) {
-        int index = getIndex(position);
-        return !monsterZone[index].equals("E");
+        return !monsterZone[position-1].equals("E");
     }
 
     private boolean isNumberValid(String address, int number) {
@@ -218,22 +215,18 @@ public class Board {
 
     }
     private int getEmptyPlaceInMonsterZone(){
-        if(monsterZone[2].equals("E"))
+        if(monsterZone[0].equals("E"))
             return 1;
-        else
         if(monsterZone[1].equals("E"))
             return 2;
-        else
-        if(monsterZone[3].equals("E"))
+        if(monsterZone[2].equals("E"))
             return 3;
-        else
-        if(monsterZone[0].equals("E"))
+        if(monsterZone[3].equals("E"))
             return 4;
-        else
         if(monsterZone[4].equals("E"))
             return 5;
-        else
-            return 0;
+        return 10;
+
     }
     public boolean isEnoughForTribute(int level){
         switch (level){
@@ -246,31 +239,10 @@ public class Board {
             default: return false;
         }
     }
-    private int getIndex(int position){
-        switch(position){
-            case 1 : {
-                return 2;
-            }
-            case 2 : {
-                return 3;
-            }
-            case 3 : {
-                return 1;
-            }
-            case 4 : {
-                return 4;
-            }
-            case 5 : {
-                return 0;
-            }
-            default: {
-                return 10;
-            }
-        }
-    }
+
+
     public void tribute(int position){
-        int index = getIndex(position);
-        monsterZone[index] = "E";
+        monsterZone[position-1] = "E";
         graveYard.add(monsterCardsInField.get(position));
         monsterCardsInField.remove(position);
     }
