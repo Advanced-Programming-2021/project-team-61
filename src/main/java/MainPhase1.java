@@ -1,3 +1,5 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainPhase1 {
     private String command;
@@ -19,11 +21,15 @@ public class MainPhase1 {
     public void run(Player me , Player rival) {
         while (true) {
             command = view.scan();
+            Matcher matcher;
             if(command.startsWith("select")){
                 Select.getInstance().run(me,rival,command);
             }
-            else if (command.equals("summon")) {
+            else if ((command.equals("summon")) {
                 ProcessSummon(Board.getBoardByPlayer(me));
+            }
+            else if ((matcher = getCommandMatcher(command,"set -- position (attack|defense)")).find()) {
+                ProcessSetPosition(Board.getBoardByPlayer(me),matcher);
             }
             else if(command.equals("set")){
                 ProcessSet(Board.getBoardByPlayer(me));
@@ -31,7 +37,6 @@ public class MainPhase1 {
             else if(command.equals("flip-summon")){
                 ProcessFlipSummon(Board.getBoardByPlayer(me));
             }
-
 
 
         }
@@ -117,5 +122,40 @@ public class MainPhase1 {
         }
     }
 
+    private void ProcessSetPosition(Board board, Matcher matcher){
+        String newPosition = matcher.group(1);
+        if (Select.getInstance().getLocation()==null){
+            view.printMessage(GameView.Command.NOTCARDSELECTED);
+        }else if (Select.getInstance().getLocation()!=Select.Location.MONSTER) {
+            view.printMessage(GameView.Command.NOTINMONSTERZONE);
+        }else if (board.getMonsterZoneChangeByNumber(Select.getInstance().getPosition() - 1)==1){
+            view.printMessage(GameView.Command.THISCARDALREADYCHANGEDINTHISTURN);
+        }else{
+            if (newPosition.equals("attack")){
+                if (!board.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals("DO")){
+                    view.printMessage(GameView.Command.THISCARDALREADYINWANTEDPOSITION);
+                }else {
+                    view.printMessage(GameView.Command.MONSTERCHANGEDPOSITIONSUCCES);
+                    board.setMonsterZoneChangeByNumber(Select.getInstance().getPosition() - 1,1);
+                    board.setMonsterZone(Select.getInstance().getPosition() - 1,"OO");
+                }
+            }else{
+                if (!board.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals("OO")){
+                    view.printMessage(GameView.Command.THISCARDALREADYINWANTEDPOSITION);
+                }else {
+                    view.printMessage(GameView.Command.MONSTERCHANGEDPOSITIONSUCCES);
+                    board.setMonsterZoneChangeByNumber(Select.getInstance().getPosition() - 1,1);
+                    board.setMonsterZone(Select.getInstance().getPosition() - 1,"DO");
+                }
+            }
+        }
+
+    }
+
+    private Matcher getCommandMatcher(String input, String regex) {
+        Pattern p = Pattern.compile(regex);
+        return p.matcher(input);
+
+    }
 }
 
