@@ -27,30 +27,30 @@ public class Select {
         Matcher matcher;
         if ((getCommandMatcher(command,"select -d")).find()){
             deSelect();
-            //*setLocation(null);
+            setLocation(null);
         }else if ((matcher = getCommandMatcher(command,"select --monster --opponent (\\d+)")).find()){
             monsterOpponent(matcher);
-            //*setLocation(Location.MONSTEROPPONENT);
+            setLocation(Location.MONSTEROPPONENT);
         }else if ((matcher = getCommandMatcher(command,"select --monster (\\d+)")).find()){
             monster(matcher);
-            //*setLocation(Location.MONSTER);
+            setLocation(Location.MONSTER);
         }else if ((matcher = getCommandMatcher(command,"select --spell --opponent (\\d+)")).find()){
             spellOpponent(matcher);
-            //*setLocation(Location.SPELLOPPONENT);
+            setLocation(Location.SPELLOPPONENT);
         }else if ((matcher = getCommandMatcher(command,"select --spell (\\d+)")).find()){
             spell(matcher);
-            //*setLocation(Location.SPELL);
+            setLocation(Location.SPELL);
         }else if ((getCommandMatcher(command,"select --field --opponent")).find()){
             //save information
-            //*setLocation(Location.FIELDOPPONENT);
+            setLocation(Location.FIELDOPPONENT);
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }else if ((getCommandMatcher(command,"select --field")).find()){
             //save information
-            //*setLocation(Location.FIELD);
+            setLocation(Location.FIELD);
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }else if ((matcher = getCommandMatcher(command,"select --hand (\\d+)")).find()){
             hand(matcher);
-            //*setLocation(Location.HAND);
+            setLocation(Location.HAND);
         }else {
             GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
         }
