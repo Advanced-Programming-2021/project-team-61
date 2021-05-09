@@ -4,6 +4,7 @@ import java.util.regex.Pattern;
 public class Select {
     private Player player;
     private Player rivalPlayer;
+    private static Select s = null;
     Location location;
     enum Location{
         MONSTER,
@@ -13,6 +14,11 @@ public class Select {
         FIELD,
         FIELDOPPONENT,
         HAND
+    }
+    public static Select getInstance(){
+        if(s==null)
+            s = new Select();
+        return s;
     }
 
     public void run(Player my, Player rival, String command){
@@ -112,7 +118,7 @@ public class Select {
     }
 
     private void deSelect() {
-        if (getLocation().equals(null)) {/////
+        if (getLocation()==null) {/////
             GameView.getInstance().printMessage(GameView.Command.NOTCARDSELECTED);
         }else {
             //remove information
