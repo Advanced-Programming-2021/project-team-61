@@ -59,18 +59,14 @@ public class Select {
     }
 
     private void monsterOpponent(Matcher matcher){
-        int loc = Integer.parseInt(matcher.group(1));
-        if (loc>5){
-            GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
-        }else if (Board.getBoardByPlayer(rivalPlayer).getMonsterCardsInField().size()<loc){
-            GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
-        }else {
-            position = loc;
-            GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
-        }
+        handleMonsterSelect(matcher, rivalPlayer);
     }
 
     private void monster(Matcher matcher){
+        handleMonsterSelect(matcher, player);
+    }
+
+    private void handleMonsterSelect(Matcher matcher, Player player) {
         int loc = Integer.parseInt(matcher.group(1));
         if (loc>5){
             GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
@@ -83,18 +79,10 @@ public class Select {
     }
 
     private void spellOpponent(Matcher matcher){
-        int loc = Integer.parseInt(matcher.group(1));
-        if (loc>5){
-            GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
-        }else if (Board.getBoardByPlayer(rivalPlayer).getSpellTrapCardsInField().size()<loc){
-            GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
-        }else {
-            position = loc;
-            GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
-        }
+        handleSpellSelect(matcher, rivalPlayer);
     }
 
-    private void spell(Matcher matcher){
+    private void handleSpellSelect(Matcher matcher, Player player) {
         int loc = Integer.parseInt(matcher.group(1));
         if (loc>5){
             GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
@@ -104,6 +92,10 @@ public class Select {
             position = loc;
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }
+    }
+
+    private void spell(Matcher matcher){
+        handleSpellSelect(matcher, player);
     }
 
     private void hand(Matcher matcher){
