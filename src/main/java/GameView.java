@@ -16,6 +16,8 @@ public class GameView {
         CARDDESELECTED,
         NOCARDFOUNDINGIVENPOSITION,
         NOTBESET,
+        NOTINMONSTERZONE,
+        NOTFLIP,
         SETSUCCESSFUL
 
     }
@@ -90,6 +92,12 @@ public class GameView {
             }
             case SETSUCCESSFUL:{
                 System.out.println("set successfully");
+            }
+            case NOTINMONSTERZONE:{
+                System.out.println("you can't change this card position");
+            }
+            case NOTFLIP:{
+                System.out.println("you can't flip summon this card");
             }
         }
 
