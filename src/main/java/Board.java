@@ -16,6 +16,7 @@ public class Board {
     private ArrayList<Card> hand = new ArrayList<>();
     private boolean isACardSelected = false;
     private boolean isSummonedInTurn = false;
+    private int[] monsterZoneChange = new int[5];
     private static ArrayList<Board> boards = new ArrayList<>();
 
 
@@ -331,8 +332,8 @@ public class Board {
         return hand;
     }
 
-    public String[] getMonsterZone() {
-        return monsterZone;
+    public String getMonsterZoneByNumber(int index) {
+        return monsterZone[index];
     }
 
     public String[] getSpellTrapZone() {
@@ -348,4 +349,19 @@ public class Board {
     }
 
     ////////////////
+
+
+    public void setMonsterZoneChangeToDefault() {
+        for (int i = 0; i < 5; i++) {
+            this.monsterZoneChange[i] = 0;
+        }
+    }
+
+    public void setMonsterZoneChangeByNumber(int index, int amount){
+        this.monsterZoneChange[index]=amount;
+    }
+
+    public int getMonsterZoneChangeByNumber(int index){
+        return monsterZoneChange[index];
+    }
 }

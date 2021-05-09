@@ -18,7 +18,10 @@ public class GameView {
         NOTBESET,
         NOTINMONSTERZONE,
         NOTFLIP,
-        SETSUCCESSFUL
+        SETSUCCESSFUL,
+        THISCARDALREADYINWANTEDPOSITION,
+        THISCARDALREADYCHANGEDINTHISTURN,
+        MONSTERCHANGEDPOSITIONSUCCES
 
     }
 
@@ -88,16 +91,32 @@ public class GameView {
                 break;
             }
             case NOTBESET: {
-                System.out.println("you can't set this card");
+                System.out.println("you can't set this card\n");
+                break;
             }
             case SETSUCCESSFUL:{
-                System.out.println("set successfully");
+                System.out.println("set successfully\n");
+                break;
             }
             case NOTINMONSTERZONE:{
-                System.out.println("you can't change this card position");
+                System.out.println("you can't change this card position\n");
+                break;
             }
             case NOTFLIP:{
-                System.out.println("you can't flip summon this card");
+                System.out.println("you can't flip summon this card\n");
+                break;
+            }
+            case THISCARDALREADYINWANTEDPOSITION:{
+                System.out.println("this card is already in the wanted position\n");
+                break;
+            }
+            case THISCARDALREADYCHANGEDINTHISTURN:{
+                System.out.println("you already changed this card position in this turn\n");
+                break;
+            }
+            case MONSTERCHANGEDPOSITIONSUCCES:{
+                System.out.println("monster card position changed successfully\n");
+                break;
             }
         }
 
