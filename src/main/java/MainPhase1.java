@@ -16,14 +16,20 @@ public class MainPhase1 {
         return m;
     }
 
-    public void run(Board board) {
+    public void run(Player me , Player rival) {
         while (true) {
             command = view.scan();
-            if (command.equals("summon")) {
-                ProcessSummon(board);
+            if(command.startsWith("select")){
+                Select.getInstance().run(me,rival,command);
+            }
+            else if (command.equals("summon")) {
+                ProcessSummon(Board.getBoardByPlayer(me));
             }
             else if(command.equals("set")){
-                ProcessSet(board);
+                ProcessSet(Board.getBoardByPlayer(me));
+            }
+            else if(command.equals("flip-summon")){
+                ProcessFlipSummon(Board.getBoardByPlayer(me));
             }
 
 
@@ -31,9 +37,9 @@ public class MainPhase1 {
         }
     }
     private void ProcessSummon(Board board){
-        if (!board.isACardSelected()) {
+        if (Select.getInstance().getLocation()==null) {
             view.printMessage(GameView.Command.NOTCARDSELECTED);
-        } else if (!board.isInHand() || !board.isMonsterCardInHand()) { //needs one more if
+        } else if (!Select.getInstance().getLocation().toString().equals("HAND") || !board.isMonsterCardInHand()) { //needs one more if
             view.printMessage(GameView.Command.NOTBESUMMONED);
         } else if (board.isMonsterZoneFull()) {
             view.printMessage(GameView.Command.MONSTERZONEFULL);
@@ -94,6 +100,20 @@ public class MainPhase1 {
         else{
             board.set();
             view.printMessage(GameView.Command.SETSUCCESSFUL);
+        }
+    }
+    private void ProcessFlipSummon(Board board){
+        if(!board.isACardSelected()){
+            view.printMessage(GameView.Command.NOTCARDSELECTED);
+        }
+        else if(!Select.getInstance().getLocation().toString().equals("MONSTER")){
+            view.printMessage(GameView.Command.NOTINMONSTERZONE);
+        }
+        else if(/*!board.getMonsterZone[Select.getposition].equals("DH"))*/){
+            view.printMessage(GameView.Command.NOTFLIP);
+        }
+        else{
+            board.setMonsterZone(/*Select.getposition*/,"OO");
         }
     }
 
