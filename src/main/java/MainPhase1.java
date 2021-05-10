@@ -25,7 +25,7 @@ public class MainPhase1 {
             if(command.startsWith("select")){
                 Select.getInstance().run(me,rival,command);
             }
-            else if ((command.equals("summon")) {
+            else if ((command.equals("summon"))) {
                 ProcessSummon(Board.getBoardByPlayer(me));
             }
             else if ((matcher = getCommandMatcher(command,"set -- position (attack|defense)")).find()) {
@@ -44,7 +44,7 @@ public class MainPhase1 {
     private void ProcessSummon(Board board){
         if (Select.getInstance().getLocation()==null) {
             view.printMessage(GameView.Command.NOTCARDSELECTED);
-        } else if (!Select.getInstance().getLocation().toString().equals("HAND") || !board.isMonsterCardInHand()) { //needs one more if
+        } else if (Select.getInstance().getLocation()!=Select.Location.HAND || !(board.getCardFromHand(Select.getInstance().getPosition()-1) instanceof MonsterCard)) { //needs one more if
             view.printMessage(GameView.Command.NOTBESUMMONED);
         } else if (board.isMonsterZoneFull()) {
             view.printMessage(GameView.Command.MONSTERZONEFULL);
@@ -90,10 +90,10 @@ public class MainPhase1 {
         }
     }
     private void ProcessSet(Board board){
-        if(!board.isACardSelected()){
+        if(Select.getInstance().getLocation()==null){
             view.printMessage(GameView.Command.NOTCARDSELECTED);
         }
-        else if(!board.isInHand() || !board.isMonsterCardInHand()){
+        else if(Select.getInstance().getLocation()!=Select.Location.HAND || !(board.getCardFromHand(Select.getInstance().getPosition()-1) instanceof MonsterCard)){
             view.printMessage(GameView.Command.NOTBESET);
         }
         else if(board.isMonsterZoneFull()){
@@ -108,17 +108,17 @@ public class MainPhase1 {
         }
     }
     private void ProcessFlipSummon(Board board){
-        if(!board.isACardSelected()){
+        if(Select.getInstance().getLocation()==null){
             view.printMessage(GameView.Command.NOTCARDSELECTED);
         }
-        else if(!Select.getInstance().getLocation().toString().equals("MONSTER")){
+        else if(Select.getInstance().getLocation()!=Select.Location.MONSTER){
             view.printMessage(GameView.Command.NOTINMONSTERZONE);
         }
-        else if(/*!board.getMonsterZone[Select.getposition].equals("DH"))*/){
+        else if(!board.getMonsterZoneByNumber(Select.getInstance().getPosition()-1).equals("DH")){//needs one more if
             view.printMessage(GameView.Command.NOTFLIP);
         }
         else{
-            board.setMonsterZone(/*Select.getposition*/,"OO");
+            board.setMonsterZone(Select.getInstance().getPosition(),"OO");
         }
     }
 
