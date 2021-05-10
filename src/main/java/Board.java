@@ -17,6 +17,7 @@ public class Board {
     private boolean isACardSelected = false;
     private boolean isSummonedInTurn = false;
     private int[] monsterZoneChange = new int[5];
+    private int[] hasAttackInTurn = new int[5];
     private static ArrayList<Board> boards = new ArrayList<>();
 
 
@@ -294,6 +295,11 @@ public class Board {
             this.monsterZoneChange[i] = 0;
         }
     }
+    private void resetAttackInTurn(){
+        for (int i = 0; i < 5; i++) {
+            this.hasAttackInTurn[i] = 0;
+        }
+    }
 
     public void setMonsterZoneChangeByNumber(int index, int amount){
         this.monsterZoneChange[index]=amount;
@@ -301,5 +307,14 @@ public class Board {
 
     public int getMonsterZoneChangeByNumber(int index){
         return monsterZoneChange[index];
+    }
+    public void setHasAttackInTurn(int index){
+        hasAttackInTurn[index] = 1;
+    }
+    public Card getMonsterCardByKey(int key){
+        return monsterCardsInField.get(key);
+    }
+    public boolean hasAttackInTurn(int index){
+        return hasAttackInTurn[index]!=0;
     }
 }
