@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.regex.Matcher;
+
 
 public class Board {
 
@@ -87,73 +87,25 @@ public class Board {
         return true;
     }
 
-    public boolean isACardSelected() {
-        return isACardSelected;
 
-    }
-
-    public boolean isMonsterCardInHand() {
-        Card card = getSelectedCardFromHand();
-        return card instanceof MonsterCard;
-    }
-    public boolean isInHand(){
-        for(Card card : hand){
-            if(card.isSelected)
-                return true;
-        }
-        return false;
-    }
-
-    public Card getSelectedCardFromHand() {
-        for (Card card : hand) {
-            if (card.isSelected)
-                return card;
-        }
-        return null;
-    }
 
     //this method needs to be put in MainPhase;
-    public boolean isSelectionValid(Matcher matcher) {
-        if (matcher.find()) {
-            if (!isCardAddressValid(matcher.group(1))) {
-                return false;
-            } else if (!isNumberValid(matcher.group(1), Integer.parseInt(matcher.group(2)))) {
-                return false;
-            } else if (isCardAvailable(matcher.group(1), Integer.parseInt(matcher.group(2))))
-        }
-    }
-
-    private boolean isCardAvailable(String addreess, int position) {
-        switch (addreess) {
-            case "--hand": {
-                return true;
-            }
-            case "--monster": {
-                if (isMonsterAvailableInMonsterZone(position))
-                    return true;
-                else
-                    return false;
 
 
-            }
-            case "--spell": { //to be completed
 
-            }
-        }
-    }
 
     public void summon() {
         int position = getEmptyPlaceInMonsterZone();
         setMonsterZone(position-1,"OO");
-        addMonsterCardToField(position, getSelectedCardFromHand());
-        hand.remove(getSelectedCardFromHand());
+        addMonsterCardToField(position ,getCardFromHand(Select.getInstance().getPosition()));
+        hand.remove(getCardFromHand(Select.getInstance().getPosition()));
         this.setSummonedInTurn(true);
     }
     public void set(){
         int position = getEmptyPlaceInMonsterZone();
         setMonsterZone(position-1,"DH");
-        addMonsterCardToField(position,getSelectedCardFromHand());
-        hand.remove(getSelectedCardFromHand());
+        addMonsterCardToField(position,getCardFromHand(Select.getInstance().getPosition()));
+        hand.remove(getCardFromHand(Select.getInstance().getPosition()));
         this.setSummonedInTurn(true);
     }
 
@@ -198,23 +150,6 @@ public class Board {
         }
     }
 
-    private boolean isCardAddressValid(String address) {
-        switch (address) {
-            case "--monster":
-            case "--hand":
-            case "--spell--opponent":
-            case "--spell":
-            case "--monster--opponent": {
-                return true;
-            }
-            //fieldZone needs to be added
-            default: {
-                return false;
-            }
-        }
-
-
-    }
     private int getEmptyPlaceInMonsterZone(){
         if(monsterZone[0].equals("E"))
             return 1;
@@ -346,6 +281,9 @@ public class Board {
 
     public HashMap<Integer, Card> getSpellTrapCardsInField() {
         return spellTrapCardsInField;
+    }
+    public Card getCardFromHand(int index){
+        return hand.get(index);
     }
 
     ////////////////
