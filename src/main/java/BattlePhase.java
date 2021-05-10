@@ -26,6 +26,8 @@ public class BattlePhase {
             if(getCommandMatcher(command,"attack (\\d+)").find()){
                 matcher = getCommandMatcher(command,"attack (\\d+)");
                 ProcessAttack(myBoard,rivalBoard,Integer.parseInt(matcher.group(1)));
+            }else if (getCommandMatcher(command,"attack direct").find()){
+                ProcessDirectAttack(myBoard,rivalBoard);
             }
 
 
@@ -65,6 +67,22 @@ public class BattlePhase {
 
 
 
+    }
+
+    private void ProcessDirectAttack(Board myBoard, Board rivalBoard){
+        if(Select.getInstance().getLocation()==null) {
+            view.printMessage(GameView.Command.NOTCARDSELECTED);
+        }else if(Select.getInstance().getLocation()!=Select.Location.MONSTER){
+            view.printMessage(GameView.Command.NOTATTACK);
+        }else if(myBoard.hasAttackInTurn(Select.getInstance().getPosition()-1)){
+            view.printMessage(GameView.Command.HASATTACKED);
+        }else if (!rivalBoard.isMonsterZoneEmpty()){//add condition that we can't have direct attack ?????
+            view.printMessage(GameView.Command.CANTDIRECTATTACK);
+        }else {
+            int damage = 0;  // =attackOfCard + extraAttack
+            view.printMessageByAddingString(GameView.Command.DIRECTATTACKSUCCESSFULLY, String.valueOf(damage));
+            // decrease lifePoint : amount => damage
+        }
     }
     private Matcher getCommandMatcher(String input,String regex){
         Pattern pattern = Pattern.compile(regex);
