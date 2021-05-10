@@ -24,7 +24,9 @@ public class GameView {
         MONSTERCHANGEDPOSITIONSUCCES,
         NOTATTACK,
         HASATTACKED,
-        NOCARDTOATTACK
+        NOCARDTOATTACK,
+        CANTDIRECTATTACK,
+        DIRECTATTACKSUCCESSFULLY
 
     }
 
@@ -122,19 +124,31 @@ public class GameView {
                 break;
             }
             case NOTATTACK:{
-                System.out.println("you can't attack with this card");
+                System.out.println("you can't attack with this card\n");
                 break;
             }
             case HASATTACKED:{
-                System.out.println("this card already attacked");
+                System.out.println("this card already attacked\n");
                 break;
             }
             case NOCARDTOATTACK:{
-                System.out.println("there is no card to attack here");
+                System.out.println("there is no card to attack here\n");
+                break;
+            }
+            case CANTDIRECTATTACK:{
+                System.out.println("you can’t attack the opponent directly\n");
                 break;
             }
         }
 
+    }
+    public void printMessageByAddingString(Command message, String s1){
+        switch (message){
+            case DIRECTATTACKSUCCESSFULLY:{
+                System.out.println("you opponent receives "+ s1 +" battale damage\n");
+                break;
+            }
+        }
     }
 
 }

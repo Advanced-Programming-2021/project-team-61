@@ -317,4 +317,14 @@ public class Board {
     public boolean hasAttackInTurn(int index){
         return hasAttackInTurn[index]!=0;
     }
+    public boolean isMonsterZoneEmpty(){
+        int count = 0;
+        for (String pos:monsterZone) {
+            if (pos.equals("E"))
+                count++;
+        }
+        if (count==5)
+            return true;
+        return false;
+    }
 }
