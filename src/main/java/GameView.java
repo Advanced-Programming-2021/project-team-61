@@ -21,7 +21,10 @@ public class GameView {
         SETSUCCESSFUL,
         THISCARDALREADYINWANTEDPOSITION,
         THISCARDALREADYCHANGEDINTHISTURN,
-        MONSTERCHANGEDPOSITIONSUCCES
+        MONSTERCHANGEDPOSITIONSUCCES,
+        NOTATTACK,
+        HASATTACKED,
+        NOCARDTOATTACK
 
     }
 
@@ -116,6 +119,18 @@ public class GameView {
             }
             case MONSTERCHANGEDPOSITIONSUCCES:{
                 System.out.println("monster card position changed successfully\n");
+                break;
+            }
+            case NOTATTACK:{
+                System.out.println("you can't attack with this card");
+                break;
+            }
+            case HASATTACKED:{
+                System.out.println("this card already attacked");
+                break;
+            }
+            case NOCARDTOATTACK:{
+                System.out.println("there is no card to attack here");
                 break;
             }
         }
