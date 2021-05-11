@@ -19,6 +19,7 @@ public class Board {
     private int[] monsterZoneChange = new int[5];
     private int[] hasAttackInTurn = new int[5];
     private static ArrayList<Board> boards = new ArrayList<>();
+    private int lifePoint;
 
 
     public Board(Player player) {
@@ -27,7 +28,16 @@ public class Board {
         this.sideDeck = Deck.getActivatedDeck(player).getSideDeck();
         this.initializeMonsterZone();
         this.initializeSpellTrapZone();
+        this.lifePoint = 8000;
         boards.add(this);
+    }
+
+    public int getLifePoint() {
+        return lifePoint;
+    }
+
+    public void setLifePoint(int lifePoint) {
+        this.lifePoint -= lifePoint;
     }
 
     public static Board getBoardByPlayer(Player player) {
@@ -316,6 +326,11 @@ public class Board {
     }
     public boolean hasAttackInTurn(int index){
         return hasAttackInTurn[index]!=0;
+    }
+    public void destroyCardInMonsterZone(int number){
+       graveYard.add(monsterCardsInField.get(number));
+        monsterCardsInField.remove(number);
+        monsterZone[number-1] = "E";
     }
     public boolean isMonsterZoneEmpty(){
         int count = 0;
