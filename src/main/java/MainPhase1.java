@@ -89,22 +89,29 @@ public class MainPhase1 {
             }
         }
     }
-    private void ProcessSet(Board board){
-        if(Select.getInstance().getLocation()==null){
+    private void ProcessSet(Board board) {
+        if (Select.getInstance().getLocation() == null) {
             view.printMessage(GameView.Command.NOTCARDSELECTED);
-        }
-        else if(Select.getInstance().getLocation()!=Select.Location.HAND || !(board.getCardFromHand(Select.getInstance().getPosition()-1) instanceof MonsterCard)){
+        } else if (Select.getInstance().getLocation() != Select.Location.HAND) {
             view.printMessage(GameView.Command.NOTBESET);
-        }
-        else if(board.isMonsterZoneFull()){
-            view.printMessage(GameView.Command.MONSTERZONEFULL);
-        }
-        else if(board.isSummonedInTurn()){
-            view.printMessage(GameView.Command.ISSUMMONEDONCE);
-        }
-        else{
-            board.set();
-            view.printMessage(GameView.Command.SETSUCCESSFUL);
+        } else {
+            if (board.getCardFromHand(Select.getInstance().getPosition()-1) instanceof MonsterCard){
+                if (board.isMonsterZoneFull()) {
+                    view.printMessage(GameView.Command.MONSTERZONEFULL);
+                } else if (board.isSummonedInTurn()) {
+                    view.printMessage(GameView.Command.ISSUMMONEDONCE);
+                } else {
+                    board.setMonster();
+                    view.printMessage(GameView.Command.SETSUCCESSFUL);
+                }
+            }else if (board.getCardFromHand(Select.getInstance().getPosition()-1) instanceof SpellCard || board.getCardFromHand(Select.getInstance().getPosition()-1) instanceof TrapCard){
+                if (board.isSpellTrapZoneFull()){
+                    view.printMessage(GameView.Command.SPELLZONEFULL);
+                }else {
+                    board.setSpellTrap();
+                    view.printMessage(GameView.Command.SETSUCCESSFUL);
+                }
+            }
         }
     }
     private void ProcessFlipSummon(Board board){

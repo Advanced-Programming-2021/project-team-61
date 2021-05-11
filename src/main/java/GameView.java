@@ -27,6 +27,7 @@ public class GameView {
         NOCARDTOATTACK,
         CANTDIRECTATTACK,
         DIRECTATTACKSUCCESSFULLY,
+        SPELLZONEFULL,
         damageOpponent,
         bothDamage,
         damageMe,
@@ -156,6 +157,10 @@ public class GameView {
             }
             case noDamage:{
                 System.out.println("no card is destroyed");
+                break;
+            }
+            case SPELLZONEFULL:{
+                System.out.println("spell card zone is full\n");
                 break;
             }
 
