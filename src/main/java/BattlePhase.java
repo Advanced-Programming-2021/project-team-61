@@ -130,9 +130,9 @@ public class BattlePhase {
         }else if (!rivalBoard.isMonsterZoneEmpty()){//add condition that we can't have direct attack ?????
             view.printMessage(GameView.Command.CANTDIRECTATTACK);
         }else {
-            int damage = 0;  // =attackOfCard + extraAttack
+            int damage = myBoard.getMonsterCardByKey(Select.getInstance().getPosition()).getAttack() + myBoard.getExtraAttackByIndex(Select.getInstance().getPosition());
             view.printMessageByAddingString(GameView.Command.DIRECTATTACKSUCCESSFULLY, damage);
-            // decrease lifePoint : amount => damage
+            myBoard.setLifePoint(damage);
         }
     }
     private Matcher getCommandMatcher(String input,String regex){

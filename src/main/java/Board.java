@@ -9,7 +9,7 @@ public class Board {
     private ArrayList<Card> mainDeck;
     private ArrayList<Card> sideDeck;
     private String[] monsterZone = new String[5];
-    private HashMap<Integer, Card> monsterCardsInField = new HashMap<>();
+    private HashMap<Integer,MonsterCard> monsterCardsInField = new HashMap<>();
     private String[] spellTrapZone = new String[5];
     private HashMap<Integer, Card> spellTrapCardsInField = new HashMap<>();
     private ArrayList<Card> graveYard = new ArrayList<>();
@@ -18,6 +18,8 @@ public class Board {
     private boolean isSummonedInTurn = false;
     private int[] monsterZoneChange = new int[5];
     private int[] hasAttackInTurn = new int[5];
+    private int[] extraAttack = new int[5];
+    private int[] extraDefence = new int[5];
     private static ArrayList<Board> boards = new ArrayList<>();
     private int lifePoint;
 
@@ -83,7 +85,7 @@ public class Board {
     }
 
     public void addMonsterCardToField(int position, Card card) {
-        monsterCardsInField.put(position, card);
+        monsterCardsInField.put(position, (MonsterCard)card);
     }
 
     public void destroyCard(Card card) {
@@ -286,7 +288,7 @@ public class Board {
         return spellTrapZone;
     }
 
-    public HashMap<Integer, Card> getMonsterCardsInField() {
+    public HashMap<Integer, MonsterCard> getMonsterCardsInField() {
         return monsterCardsInField;
     }
 
@@ -321,7 +323,7 @@ public class Board {
     public void setHasAttackInTurn(int index){
         hasAttackInTurn[index] = 1;
     }
-    public Card getMonsterCardByKey(int key){
+    public MonsterCard getMonsterCardByKey(int key){
         return monsterCardsInField.get(key);
     }
     public boolean hasAttackInTurn(int index){
@@ -341,5 +343,29 @@ public class Board {
         if (count==5)
             return true;
         return false;
+    }
+
+    //set,get,reset => extraAttack & extraDefence
+    public int getExtraAttackByIndex(int index){
+        return extraAttack[index - 1];
+    }
+    public int getExtraDefenceByIndex(int index){
+        return extraDefence[index - 1];
+    }
+    public void resetExtraAttack(){
+        for (int amount:extraAttack) {
+            amount=0;
+        }
+    }
+    public void resetExtraDefence(){
+        for (int amount:extraDefence) {
+            amount=0;
+        }
+    }
+    public void setExtraAttackByIndex(int index, int amount){
+        extraAttack[index - 1]=amount;
+    }
+    public void setExtraDefenceByIndex(int index, int amount){
+        extraDefence[index - 1]=amount;
     }
 }
