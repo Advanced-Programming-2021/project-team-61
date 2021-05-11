@@ -26,7 +26,14 @@ public class GameView {
         HASATTACKED,
         NOCARDTOATTACK,
         CANTDIRECTATTACK,
-        DIRECTATTACKSUCCESSFULLY
+        DIRECTATTACKSUCCESSFULLY,
+        damageOpponent,
+        bothDamage,
+        damageMe,
+        damageRivalDOMonster,
+        noDamage,
+        justLifePointDecrease,
+        cardName
 
     }
 
@@ -139,14 +146,49 @@ public class GameView {
                 System.out.println("you can’t attack the opponent directly\n");
                 break;
             }
+            case bothDamage:{
+                System.out.println("both you and your opponent monster cards are destroyed and no one receives damage");
+                break;
+            }
+            case damageRivalDOMonster:{
+                System.out.println("the defense position monster is destroyed");
+                break;
+            }
+            case noDamage:{
+                System.out.println("no card is destroyed");
+                break;
+            }
+
         }
 
     }
-    public void printMessageByAddingString(Command message, String s1){
+    public void printMessageByAddingString(Command message, int s1){
         switch (message){
             case DIRECTATTACKSUCCESSFULLY:{
                 System.out.println("you opponent receives "+ s1 +" battale damage\n");
                 break;
+            }
+            case damageOpponent:{
+                System.out.println("your opponent's monster is destroyed and your opponent receives "+s1+" battle damage");
+                break;
+            }
+            case damageMe:{
+                System.out.println("your monster card is destroyed and you received "+s1+" battle damage");
+                break;
+            }
+            case justLifePointDecrease:{
+                System.out.print("no card is destroyed and you received "+s1+" battle damage\n");
+                break;
+            }
+        }
+    }
+    public void printMessageByString(Command message, String s1){
+        switch (message){
+            case damageRivalDOMonster:{
+                System.out.println("opponent's monster card was "+s1+" and the defense position monster is destroyed");
+            }
+            case cardName: {
+                System.out.print("opponent's monster card was "+s1+ " and ");
             }
         }
     }
