@@ -114,12 +114,18 @@ public class Board {
         hand.remove(getCardFromHand(Select.getInstance().getPosition()));
         this.setSummonedInTurn(true);
     }
-    public void set(){
+    public void setMonster(){
         int position = getEmptyPlaceInMonsterZone();
         setMonsterZone(position-1,"DH");
         addMonsterCardToField(position,getCardFromHand(Select.getInstance().getPosition()));
         hand.remove(getCardFromHand(Select.getInstance().getPosition()));
         this.setSummonedInTurn(true);
+    }
+    public void setSpellTrap(){
+        int position = getEmptyPlaceInSpellTrapZone();
+        setSpellTrapZone(position-1,"H");
+        addSpellTrapCardToField(position,getCardFromHand(Select.getInstance().getPosition()));
+        hand.remove(getCardFromHand(Select.getInstance().getPosition()));
     }
 
     private boolean isSpellTrapAvailableInSpellZone(int position) {
@@ -163,20 +169,6 @@ public class Board {
         }
     }
 
-    private int getEmptyPlaceInMonsterZone(){
-        if(monsterZone[0].equals("E"))
-            return 1;
-        if(monsterZone[1].equals("E"))
-            return 2;
-        if(monsterZone[2].equals("E"))
-            return 3;
-        if(monsterZone[3].equals("E"))
-            return 4;
-        if(monsterZone[4].equals("E"))
-            return 5;
-        return 10;
-
-    }
     public boolean isEnoughForTribute(int level){
         switch (level){
             case 5 : {
@@ -367,5 +359,33 @@ public class Board {
     }
     public void setExtraDefenceByIndex(int index, int amount){
         extraDefence[index - 1]=amount;
+    }
+
+    public boolean isSpellTrapZoneFull() {
+        for (int i = 0; i < 5; i++) {
+            if (spellTrapZone[i].equals("E"))
+                return false;
+        }
+        return true;
+    }
+    private int getEmptyPlaceInSpellTrapZone(){
+        return handleGetEmptyPlace(spellTrapZone);
+    }
+    private int getEmptyPlaceInMonsterZone(){
+        return handleGetEmptyPlace(monsterZone);
+    }
+
+    private int handleGetEmptyPlace(String[] spellTrapZone) {
+        if(spellTrapZone[0].equals("E"))
+            return 1;
+        if(spellTrapZone[1].equals("E"))
+            return 2;
+        if(spellTrapZone[2].equals("E"))
+            return 3;
+        if(spellTrapZone[3].equals("E"))
+            return 4;
+        if(spellTrapZone[4].equals("E"))
+            return 5;
+        return 10;
     }
 }
