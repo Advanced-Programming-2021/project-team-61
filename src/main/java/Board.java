@@ -388,4 +388,13 @@ public class Board {
             return 5;
         return 10;
     }
+
+    private void showGraveyard(){
+        if (graveYard.size()==0){
+            GameView.getInstance().printMessage(GameView.Command.GRAVEYARDEMPTY);
+        }else {
+            GameView.getInstance().printGraveyard(graveYard);
+        }
+    }
+
 }
