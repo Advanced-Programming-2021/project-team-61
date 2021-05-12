@@ -55,7 +55,7 @@ public class MainPhase1 {
         }
     }
     private void ProcessTribute(Board board){
-        MonsterCard monsterCard = (MonsterCard) board.getSelectedCardFromHand();
+        MonsterCard monsterCard = (MonsterCard) board.getCardFromHand(Select.getInstance().getPosition()-1);
         if (monsterCard.getLevel() <= 4) {
             board.summon();
             view.printMessage(GameView.Command.SUMMONSUCCESSFUL);
