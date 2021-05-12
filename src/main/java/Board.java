@@ -9,7 +9,7 @@ public class Board {
     private ArrayList<Card> mainDeck;
     private ArrayList<Card> sideDeck;
     private String[] monsterZone = new String[5];
-    private HashMap<Integer, Card> monsterCardsInField = new HashMap<>();
+    private HashMap<Integer,MonsterCard> monsterCardsInField = new HashMap<>();
     private String[] spellTrapZone = new String[5];
     private HashMap<Integer, Card> spellTrapCardsInField = new HashMap<>();
     private ArrayList<Card> graveYard = new ArrayList<>();
@@ -18,6 +18,8 @@ public class Board {
     private boolean isSummonedInTurn = false;
     private int[] monsterZoneChange = new int[5];
     private int[] hasAttackInTurn = new int[5];
+    private int[] extraAttack = new int[5];
+    private int[] extraDefence = new int[5];
     private static ArrayList<Board> boards = new ArrayList<>();
     private int lifePoint;
 
@@ -83,7 +85,7 @@ public class Board {
     }
 
     public void addMonsterCardToField(int position, Card card) {
-        monsterCardsInField.put(position, card);
+        monsterCardsInField.put(position, (MonsterCard)card);
     }
 
     public void destroyCard(Card card) {
@@ -112,12 +114,18 @@ public class Board {
         hand.remove(getCardFromHand(Select.getInstance().getPosition()));
         this.setSummonedInTurn(true);
     }
-    public void set(){
+    public void setMonster(){
         int position = getEmptyPlaceInMonsterZone();
         setMonsterZone(position-1,"DH");
         addMonsterCardToField(position,getCardFromHand(Select.getInstance().getPosition()));
         hand.remove(getCardFromHand(Select.getInstance().getPosition()));
         this.setSummonedInTurn(true);
+    }
+    public void setSpellTrap(){
+        int position = getEmptyPlaceInSpellTrapZone();
+        setSpellTrapZone(position-1,"H");
+        addSpellTrapCardToField(position,getCardFromHand(Select.getInstance().getPosition()));
+        hand.remove(getCardFromHand(Select.getInstance().getPosition()));
     }
 
     private boolean isSpellTrapAvailableInSpellZone(int position) {
@@ -161,20 +169,6 @@ public class Board {
         }
     }
 
-    private int getEmptyPlaceInMonsterZone(){
-        if(monsterZone[0].equals("E"))
-            return 1;
-        if(monsterZone[1].equals("E"))
-            return 2;
-        if(monsterZone[2].equals("E"))
-            return 3;
-        if(monsterZone[3].equals("E"))
-            return 4;
-        if(monsterZone[4].equals("E"))
-            return 5;
-        return 10;
-
-    }
     public boolean isEnoughForTribute(int level){
         switch (level){
             case 5 : {
@@ -286,7 +280,7 @@ public class Board {
         return spellTrapZone;
     }
 
-    public HashMap<Integer, Card> getMonsterCardsInField() {
+    public HashMap<Integer, MonsterCard> getMonsterCardsInField() {
         return monsterCardsInField;
     }
 
@@ -321,7 +315,7 @@ public class Board {
     public void setHasAttackInTurn(int index){
         hasAttackInTurn[index] = 1;
     }
-    public Card getMonsterCardByKey(int key){
+    public MonsterCard getMonsterCardByKey(int key){
         return monsterCardsInField.get(key);
     }
     public boolean hasAttackInTurn(int index){
@@ -341,5 +335,57 @@ public class Board {
         if (count==5)
             return true;
         return false;
+    }
+
+    //set,get,reset => extraAttack & extraDefence
+    public int getExtraAttackByIndex(int index){
+        return extraAttack[index - 1];
+    }
+    public int getExtraDefenceByIndex(int index){
+        return extraDefence[index - 1];
+    }
+    public void resetExtraAttack(){
+        for (int amount:extraAttack) {
+            amount=0;
+        }
+    }
+    public void resetExtraDefence(){
+        for (int amount:extraDefence) {
+            amount=0;
+        }
+    }
+    public void setExtraAttackByIndex(int index, int amount){
+        extraAttack[index - 1]=amount;
+    }
+    public void setExtraDefenceByIndex(int index, int amount){
+        extraDefence[index - 1]=amount;
+    }
+
+    public boolean isSpellTrapZoneFull() {
+        for (int i = 0; i < 5; i++) {
+            if (spellTrapZone[i].equals("E"))
+                return false;
+        }
+        return true;
+    }
+    private int getEmptyPlaceInSpellTrapZone(){
+        return handleGetEmptyPlace(spellTrapZone);
+    }
+    private int getEmptyPlaceInMonsterZone(){
+        return handleGetEmptyPlace(monsterZone);
+    }
+
+    private int handleGetEmptyPlace(String[] spellTrapZone) {
+        if(spellTrapZone[0].equals("E"))
+            return 1;
+        if(spellTrapZone[1].equals("E"))
+            return 2;
+        if(spellTrapZone[2].equals("E"))
+            return 3;
+        if(spellTrapZone[3].equals("E"))
+            return 4;
+        if(spellTrapZone[4].equals("E"))
+            return 5;
+        return 10;
     }
 }
