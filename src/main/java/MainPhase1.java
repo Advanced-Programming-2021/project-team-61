@@ -162,11 +162,15 @@ public class MainPhase1 {
 
     }
 
-    /*private void ProcessShowCard(){
+    private void ProcessShowCard(){
         if (Select.getInstance().getLocation()==null) {
             view.printMessage(GameView.Command.NOTCARDSELECTED);
-        }else if (Select.getInstance().getLocation()!=Select.Location.)
-    }*/
+        }else if (!canISeeSelectedCard(/*rivalBoard should send*/)){
+            view.printMessage(GameView.Command.CARDISNOTVISIBLE);
+        }else {
+            //show card information...
+        }
+    }
 
     private boolean canISeeSelectedCard(Board rivalBoard){
         if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals(/*attack hide*/)){

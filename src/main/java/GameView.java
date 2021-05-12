@@ -30,6 +30,7 @@ public class GameView {
         DIRECTATTACKSUCCESSFULLY,
         SPELLZONEFULL,
         GRAVEYARDEMPTY,
+        CARDISNOTVISIBLE,
         damageOpponent,
         bothDamage,
         damageMe,
@@ -167,6 +168,10 @@ public class GameView {
             }
             case GRAVEYARDEMPTY:{
                 System.out.println("graveyard empty\n");
+                break;
+            }
+            case CARDISNOTVISIBLE:{
+                System.out.println("card is not visible\n");
                 break;
             }
 
