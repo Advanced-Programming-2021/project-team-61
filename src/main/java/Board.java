@@ -276,6 +276,10 @@ public class Board {
         return monsterZone[index];
     }
 
+    public String getSpellTrapZoneByNumber(int index) {
+        return spellTrapZone[index];
+    }
+
     public String[] getSpellTrapZone() {
         return spellTrapZone;
     }
@@ -396,5 +400,7 @@ public class Board {
             GameView.getInstance().printGraveyard(graveYard);
         }
     }
+
+
 
 }

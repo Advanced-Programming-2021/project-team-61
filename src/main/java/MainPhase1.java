@@ -36,11 +36,14 @@ public class MainPhase1 {
             }
             else if(command.equals("flip-summon")){
                 ProcessFlipSummon(Board.getBoardByPlayer(me));
+            }else if (command.equals("card show --selected")){
+                ProcessShowCard();
             }
 
 
         }
     }
+
     private void ProcessSummon(Board board){
         if (Select.getInstance().getLocation()==null) {
             view.printMessage(GameView.Command.NOTCARDSELECTED);
@@ -157,6 +160,26 @@ public class MainPhase1 {
             }
         }
 
+    }
+
+    /*private void ProcessShowCard(){
+        if (Select.getInstance().getLocation()==null) {
+            view.printMessage(GameView.Command.NOTCARDSELECTED);
+        }else if (Select.getInstance().getLocation()!=Select.Location.)
+    }*/
+
+    private boolean canISeeSelectedCard(Board rivalBoard){
+        if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals(/*attack hide*/)){
+            return false;
+        }else if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals(/*defence hide*/)) {
+            return false;
+        }else if (Select.getInstance().getLocation()== Select.Location.SPELLOPPONENT && rivalBoard.getSpellTrapZoneByNumber(Select.getInstance().getPosition() - 1).equals("H")){
+            return false;
+        }else if (Select.getInstance().getLocation()== Select.Location.FIELDOPPONENT){
+            return false;
+        }else {
+            return true;
+        }
     }
 
     private Matcher getCommandMatcher(String input, String regex) {
