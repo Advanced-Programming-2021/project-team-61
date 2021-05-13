@@ -35,12 +35,16 @@ public class MainPhase1 {
                 ProcessSet(Board.getBoardByPlayer(me));
             }
             else if(command.equals("flip-summon")){
+                ProcessFlipSummon(Board.getBoardByPlayer(me));
+            }else if (command.equals("card show --selected")){
+                ProcessShowCard();
                 ProcessFlipSummon(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
             }
 
 
         }
     }
+
     private void ProcessSummon(Board board){
         if (Select.getInstance().getLocation()==null) {
             view.printMessage(GameView.Command.NOTCARDSELECTED);
@@ -114,7 +118,7 @@ public class MainPhase1 {
             }
         }
     }
-    private void ProcessFlipSummon(Board board,Board rivalBoard){
+    private void ProcessFlipSummon(Board board){
         if(Select.getInstance().getLocation()==null){
             view.printMessage(GameView.Command.NOTCARDSELECTED);
         }
@@ -162,6 +166,30 @@ public class MainPhase1 {
     public void checktoActivateEffect(MonsterCard monsterCard,Board rivalBoard){
         if(monsterCard.getCardName().equals("Man-Eater Bug")){
             rivalBoard.destroyCardInMonsterZone(Integer.parseInt(view.scan()));
+        }
+    }
+
+    private void ProcessShowCard(){
+        if (Select.getInstance().getLocation()==null) {
+            view.printMessage(GameView.Command.NOTCARDSELECTED);
+        }else if (!canISeeSelectedCard(/*rivalBoard should send*/)){
+            view.printMessage(GameView.Command.CARDISNOTVISIBLE);
+        }else {
+            //show card information...
+        }
+    }
+
+    private boolean canISeeSelectedCard(Board rivalBoard){
+        if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals(/*attack hide*/)){
+            return false;
+        }else if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals(/*defence hide*/)) {
+            return false;
+        }else if (Select.getInstance().getLocation()== Select.Location.SPELLOPPONENT && rivalBoard.getSpellTrapZoneByNumber(Select.getInstance().getPosition() - 1).equals("H")){
+            return false;
+        }else if (Select.getInstance().getLocation()== Select.Location.FIELDOPPONENT){
+            return false;
+        }else {
+            return true;
         }
     }
 

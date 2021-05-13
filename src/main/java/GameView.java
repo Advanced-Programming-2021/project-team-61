@@ -28,6 +28,8 @@ public class GameView {
         CANTDIRECTATTACK,
         DIRECTATTACKSUCCESSFULLY,
         SPELLZONEFULL,
+        GRAVEYARDEMPTY,
+        CARDISNOTVISIBLE,
         damageOpponent,
         bothDamage,
         damageMe,
@@ -168,6 +170,14 @@ public class GameView {
                 System.out.println("you can't attack this monster");
                 break;
             }
+            case GRAVEYARDEMPTY:{
+                System.out.println("graveyard empty\n");
+                break;
+            }
+            case CARDISNOTVISIBLE:{
+                System.out.println("card is not visible\n");
+                break;
+            }
 
         }
 
@@ -200,6 +210,11 @@ public class GameView {
             case cardName: {
                 System.out.print("opponent's monster card was "+s1+ " and ");
             }
+        }
+    }
+    public void printGraveyard(ArrayList<Card> graveyard){
+        for (int i = 1; i <= graveyard.size(); i++) {
+            System.out.println(i + ". " + graveyard.get(i-1).cardName + " : " + graveyard.get(i-1).description + "\n");
         }
     }
 
