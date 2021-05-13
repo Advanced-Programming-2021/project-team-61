@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class Board {
@@ -388,4 +389,29 @@ public class Board {
             return 5;
         return 10;
     }
+    public int getCardIndex(String cardName){
+        for(Map.Entry<Integer,MonsterCard> entry : monsterCardsInField.entrySet()){
+            if(entry.getValue().getCardName().equals(cardName))
+                return entry.getKey();
+        }
+        return 0;
+        }
+    public boolean canAttack(String cardName,int index){
+        if(cardName.equals("Command knight") && (!isMonsterZoneEmpty()) && (monsterZone[index].equals("OO") || monsterZone[index].equals("DO")))
+            return false;
+        else
+            return true;
+
+    }
+
+
+
+   /* public boolean isMonsterZoneEmpty(){
+        for(int i = 0;i<5;i++){
+            if(!monsterZone[i].equals("E"))
+                return false;
+        }
+        return true;
+    }*/
+
 }

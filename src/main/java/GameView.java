@@ -34,7 +34,8 @@ public class GameView {
         damageRivalDOMonster,
         noDamage,
         justLifePointDecrease,
-        cardName
+        cardName,
+        cannotBeAttacked
 
     }
 
@@ -161,6 +162,10 @@ public class GameView {
             }
             case SPELLZONEFULL:{
                 System.out.println("spell card zone is full\n");
+                break;
+            }
+            case cannotBeAttacked:{
+                System.out.println("you can't attack this monster");
                 break;
             }
 

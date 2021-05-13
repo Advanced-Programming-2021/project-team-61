@@ -35,7 +35,7 @@ public class MainPhase1 {
                 ProcessSet(Board.getBoardByPlayer(me));
             }
             else if(command.equals("flip-summon")){
-                ProcessFlipSummon(Board.getBoardByPlayer(me));
+                ProcessFlipSummon(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
             }
 
 
@@ -114,7 +114,7 @@ public class MainPhase1 {
             }
         }
     }
-    private void ProcessFlipSummon(Board board){
+    private void ProcessFlipSummon(Board board,Board rivalBoard){
         if(Select.getInstance().getLocation()==null){
             view.printMessage(GameView.Command.NOTCARDSELECTED);
         }
@@ -126,6 +126,7 @@ public class MainPhase1 {
         }
         else{
             board.setMonsterZone(Select.getInstance().getPosition(),"OO");
+            checktoActivateEffect(board.getMonsterCardByKey(Select.getInstance().getPosition()),rivalBoard);
         }
     }
 
@@ -157,6 +158,11 @@ public class MainPhase1 {
             }
         }
 
+    }
+    public void checktoActivateEffect(MonsterCard monsterCard,Board rivalBoard){
+        if(monsterCard.getCardName().equals("Man-Eater Bug")){
+            rivalBoard.destroyCardInMonsterZone(Integer.parseInt(view.scan()));
+        }
     }
 
     private Matcher getCommandMatcher(String input, String regex) {
