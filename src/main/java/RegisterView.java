@@ -15,21 +15,19 @@ public class RegisterView {
     }
 
     private static RegisterView r = null;
-    private RegisterMenu registerMenu;
+    private RegisterMenu registerMenu = RegisterMenu.getInstance();
     public static Scanner scanner = new Scanner(System.in);
     private String command;
     private String regex;
     private Matcher matcher;
 
-    private RegisterView(RegisterMenu registerMenu) {
-        this.registerMenu = registerMenu;
+    private RegisterView() {
+
     }
 
     public static RegisterView getInstance() {
-        if (r == null) {
-            RegisterMenu m = RegisterMenu.getInstance();
-            r = new RegisterView(m);
-        }
+        if (r == null)
+            r = new RegisterView();
         return r;
     }
 

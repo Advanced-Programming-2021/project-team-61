@@ -2,18 +2,16 @@ import java.util.regex.Matcher;
 
 public class RegisterMenu {
     private static RegisterMenu r = null;
-    private RegisterView view;
+    private RegisterView view = RegisterView.getInstance();
 
 
-    private RegisterMenu(RegisterView view) {
-        this.view = view;
+    private RegisterMenu() {
+
     }
 
     public static RegisterMenu getInstance() {
-        if (r == null) {
-            RegisterView view = RegisterView.getInstance();
-            r = new RegisterMenu(view);
-        }
+        if (r == null)
+            r = new RegisterMenu();
         return r;
     }
 
@@ -33,8 +31,9 @@ public class RegisterMenu {
             view.printMessage(RegisterView.Commands.noMatch, "");
         else {
             view.printMessage(RegisterView.Commands.LOGIN, "");
-            MainMenu m = MainMenu.getInstance();
-            m.run(matcher.group(1));
+            MainView m = MainView.getInstance();
+            m.scan(matcher.group(1));
+
 
         }
     }
