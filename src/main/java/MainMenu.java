@@ -1,72 +1,30 @@
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class MainMenu {
 
     private static MainMenu m = null;
-    private String command;
-    private MainView view;
+    private MainView view = MainView.getInstance();
 
-    private MainMenu(MainView view) {
-        this.view = view;
+    private MainMenu() {
 
     }
 
     public static MainMenu getInstance() {
         if (m == null) {
-            MainView view = MainView.getInstance();
-            m = new MainMenu(view);
+            m = new MainMenu();
         }
         return m;
     }
 
-    public void run(String username) {
-        while (true) {
-            command = view.scan();
-            int changed = 0;
-            if (command.equals("user logout")) {
-                changed = 1;
-                view.printMessage(MainView.Commands.LOGOUT);
-                break;
-            }
-            if (command.startsWith("menu enter")) {
-                String regex = "menu enter ([^\\s]+)";
-                Matcher matcher = getCommandMatcher(command, regex);
-                if (matcher.find()) {
-                    changed = 1;
-                    menuEnter(matcher.group(1), username);
-                }
 
-            }
-            if(command.equals("menu show--current")){
-                changed = 1;
-                view.printMessage(MainView.Commands.MENUNAME);
-            }
-            if(command.startsWith("duel --new --second-player")){
-                if(getCommandMatcher(command,"duel --new --second-player ([^\\s]+) --rounds ([\\d]+)").find()){
-                    changed = 1;
-                    menuEnter("Duel",username);
-                }
-            }
-            if (changed == 0)
-                view.printMessage(MainView.Commands.INVALID);
-
-        }
-
-    }
-
-    private void menuEnter(String menuName, String username) {
+    public void menuEnter(String menuName, String username) {
         switch (menuName) {
             case "Duel": {
-                DualMenu d = DualMenu.getInstance();
-
-                d.run(username,getCommandMatcher(command,"duel --new --second-player ([^\\s]+) --rounds ([\\d]+)"));
+                DualView dualView = DualView.getInstance();
+                dualView.scan(username);
                 break;
-
             }
             case "Deck": {
                 break;
-
             }
             case "Scoreboard": {
                 ScoreBoardMenu m = ScoreBoardMenu.getInstance();
@@ -86,18 +44,7 @@ public class MainMenu {
                 break;
 
             }
-            default:
-                break;
+            default: break;
         }
-
-
     }
-
-    private Matcher getCommandMatcher(String input, String regex) {
-        Pattern p = Pattern.compile(regex);
-        return p.matcher(input);
-
-
-    }
-
 }
