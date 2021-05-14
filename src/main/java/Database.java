@@ -25,9 +25,10 @@ public class Database {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        makeObject();
 
     }
-    private void makeObject(){
+    public static void makeObject(){
         for(String[]row : MonsterCardsInformation){
             new MonsterCard(row[0],Integer.parseInt(row[1]),row[2],row[3],row[4],Integer.parseInt(row[5]),Integer.parseInt(row[6]),row[7],Integer.parseInt(row[8]));
         }
@@ -39,7 +40,7 @@ public class Database {
         }
     }
 
-
-
-
+    public static List<String[]> getMonsterCardsInformation() {
+        return MonsterCardsInformation;
+    }
 }
