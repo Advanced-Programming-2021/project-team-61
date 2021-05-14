@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Card {
 
@@ -12,21 +13,22 @@ public class Card {
     protected static ArrayList<Card> allCards = new ArrayList<>();
 
 
-    protected Card(String cardName,String cardType,String description,int price){
+    protected Card(String cardName, String cardType, String description, int price) {
         this.cardName = cardName;
         this.cardType = cardType;
         this.description = description;
         this.price = price;
     }
-    public static boolean isCardAvailable(String cardName){
-        for(int i = 0;i<allCards.size();i++){
-            if(allCards.get(i).cardName.equals(cardName))
+
+    public static boolean isCardAvailable(String cardName) {
+        for (int i = 0; i < allCards.size(); i++) {
+            if (allCards.get(i).cardName.equals(cardName))
                 return true;
         }
         return false;
     }
 
-    public void setSelected(boolean isSelected){
+    public void setSelected(boolean isSelected) {
         this.isSelected = isSelected;
     }
 
@@ -42,14 +44,15 @@ public class Card {
         return cardName;
     }
 
-    public static Card getCardByName(String cardName){
-        for(int i = 0;i<allCards.size();i++){
-            if(allCards.get(i).cardName.equals(cardName))
+    public static Card getCardByName(String cardName) {
+        for (int i = 0; i < allCards.size(); i++) {
+            if (allCards.get(i).cardName.equals(cardName))
                 return allCards.get(i);
         }
         return null;
     }
-    public static ArrayList<Card> getAllCards(){
+
+    public static ArrayList<Card> getAllCards() {
         return allCards;
     }
 
@@ -61,10 +64,10 @@ public class Card {
         return description;
     }
 
-    public static void doDescription(String cardName,Player player1,Player player2){
+    public static void doDescription(String cardName, Player player1, Player player2) {
         player = player1;
         rivalPlayer = player2;
-        switch (cardName){
+        switch (cardName) {
             case "Battle OX":
             case "Horn Imp":
             case "Silver Fang":
@@ -88,214 +91,214 @@ public class Card {
             case "Dark Blade":
             case "Wattaildragon":
             case "Spiral Serpent":
-            case "Axe Raider":{//***
+            case "Axe Raider": {//***
                 break;
             }
-            case "Yomi Ship":{
-                yomiShip();
+            case "Yomi Ship": {
+                yomiShip(player);
                 break;
             }
             case "Suijin": {
                 suijin();
                 break;
             }
-            case "Crab Turtle":{
+            case "Crab Turtle": {
                 crabTurtle();
                 break;
             }
-            case "Skull Guardian":{
+            case "Skull Guardian": {
                 skullGuardian();
                 break;
             }
-            case "Man-Eater Bug":{
+            case "Man-Eater Bug": {
                 man_EaterBug();
                 break;
             }
-            case "Gate Guardian":{
+            case "Gate Guardian": {
                 gateGuardian();
                 break;
             }
-            case "Scanner":{
+            case "Scanner": {
                 scanner();
                 break;
             }
-            case "Marshmallon":{
+            case "Marshmallon": {
                 marshmallon();
                 break;
             }
-            case "Beast King Barbaros":{
+            case "Beast King Barbaros": {
                 beastKingBarbaros();
                 break;
             }
-            case "Texchanger":{
+            case "Texchanger": {
                 texchanger();
                 break;
             }
-            case "The Calculator":{
+            case "The Calculator": {
                 theCalculator();
                 break;
             }
-            case "Mirage Dragon":{
+            case "Mirage Dragon": {
                 mirageDragon();
                 break;
             }
-            case "Herald of Creation":{
+            case "Herald of Creation": {
                 heraldofCreation();
                 break;
             }
-            case "Exploder Dragon":{
+            case "Exploder Dragon": {
                 exploderDragon();
                 break;
             }
-            case "Terratiger, the Empowered Warrior":{
+            case "Terratiger, the Empowered Warrior": {
                 terratigeTheEmpoweredWarrior();
                 break;
             }
-            case "The Tricky":{
+            case "The Tricky": {
                 theTricky();
                 break;
             }
-            case "Command Knight":{
-                commandKnight();
+            case "Command Knight": {
+                commandKnight(player);
                 break;
             }
-            case "Trap Hole":{
+            case "Trap Hole": {
                 trapHole();
                 break;
             }
-            case "Mirror Force":{
+            case "Mirror Force": {
                 mirrorForce();
                 break;
             }
-            case "Magic Cylinder":{
+            case "Magic Cylinder": {
                 magicCylinder();
                 break;
             }
-            case "Mind Crush":{
+            case "Mind Crush": {
                 mindCrush();
                 break;
             }
-            case "Torrential Tribute":{
+            case "Torrential Tribute": {
                 torrentialTribute();
                 break;
             }
-            case "Time Seal":{
+            case "Time Seal": {
                 timeSeal();
                 break;
             }
-            case "Negate Attack":{
+            case "Negate Attack": {
                 negateAttack();
                 break;
             }
-            case "Solemn Warning":{
+            case "Solemn Warning": {
                 solemnWarning();
                 break;
             }
-            case "Magic Jamamer":{
+            case "Magic Jamamer": {
                 magicJamamer();
                 break;
             }
-            case "Call of The Haunted":{
+            case "Call of The Haunted": {
                 callofTheHaunted();
                 break;
             }
-            case "Vanity's Emptiness":{
+            case "Vanity's Emptiness": {
                 vanityEmptiness();
                 break;
             }
-            case "Wall of Revealing Light":{
+            case "Wall of Revealing Light": {
                 wallofRevealingLight();
                 break;
             }
-            case "Monster Reborn":{
+            case "Monster Reborn": {
                 monsterReborn();
                 break;
             }
-            case "Terraforming":{
+            case "Terraforming": {
                 terraforming();
                 break;
             }
-            case "Pot of Greed":{
+            case "Pot of Greed": {
                 potOfGreed();
                 break;
             }
-            case "Raigeki":{
+            case "Raigeki": {
                 raigeki();
                 break;
             }
-            case "Change of Heart":{
+            case "Change of Heart": {
                 changeOfHeart();
                 break;
             }
-            case "Swords of Revealing Light":{
+            case "Swords of Revealing Light": {
                 swordsOfRevealingLight();
                 break;
             }
-            case "Harpie's Feather Duster":{
+            case "Harpie's Feather Duster": {
                 harpieFeatherDuster();
                 break;
             }
-            case "Dark Hole":{
+            case "Dark Hole": {
                 darkHole();
                 break;
             }
-            case "Supply Squad":{
+            case "Supply Squad": {
                 supplySquad();
                 break;
             }
-            case "Spell Absorption":{
+            case "Spell Absorption": {
                 spellAbsorption();
                 break;
             }
-            case "Messenger of peace":{
+            case "Messenger of peace": {
                 messengerOfPeace();
                 break;
             }
-            case "Twin Twisters":{
+            case "Twin Twisters": {
                 twinTwisters();
                 break;
             }
-            case "Mystical space typhoon":{
+            case "Mystical space typhoon": {
                 mysticalSpaceTyphoon();
                 break;
             }
-            case "Ring of defense":{
+            case "Ring of defense": {
                 ringOfDefense();
                 break;
             }
-            case "Yami":{
+            case "Yami": {
                 yami();
                 break;
             }
-            case "Forest":{
+            case "Forest": {
                 forest();
                 break;
             }
-            case "Closed Forest":{
+            case "Closed Forest": {
                 closedForest();
                 break;
             }
-            case "Umiiruka":{
+            case "Umiiruka": {
                 umiiruka();
                 break;
             }
-            case "Sword of dark destruction":{
+            case "Sword of dark destruction": {
                 swordOfDarkDestruction();
                 break;
             }
-            case "Black Pendant":{
+            case "Black Pendant": {
                 blackPendant();
                 break;
             }
-            case "United We Stand":{
+            case "United We Stand": {
                 unitedWeStand();
                 break;
             }
-            case "Magnum Shield":{
+            case "Magnum Shield": {
                 magnumShield();
                 break;
             }
-            case "Advanced Ritual Art":{
+            case "Advanced Ritual Art": {
                 advancedRitualArt();
                 break;
             }
@@ -305,220 +308,232 @@ public class Card {
     }
 
 
-    private static void yomiShip(){
+    public static void yomiShip(Player player) {
+
 
     }
 
-    private static void suijin(){
+    private static void suijin() {
 
     }
 
-    private static void crabTurtle(){
+    private static void crabTurtle() {
 
     }
 
-    private static void skullGuardian(){
+    private static void skullGuardian() {
 
     }
 
-    private static void man_EaterBug(){
+    private static void man_EaterBug() {
 
     }
 
-    private static void gateGuardian(){
+    private static void gateGuardian() {
 
     }
 
-    private static void scanner(){
+    private static void scanner() {
 
     }
 
-    private static void marshmallon(){
+    private static void marshmallon() {
 
     }
 
-    private static void beastKingBarbaros(){
+    private static void beastKingBarbaros() {
 
     }
 
-    private static void texchanger(){
+    private static void texchanger() {
 
     }
 
-    private static void theCalculator(){
+    private static void theCalculator() {
 
     }
 
-    private static void mirageDragon(){
+    private static void mirageDragon() {
 
     }
 
-    private static void heraldofCreation(){
+    private static void heraldofCreation() {
 
     }
 
-    private static void exploderDragon(){
+    private static void exploderDragon() {
 
     }
 
-    private static void terratigeTheEmpoweredWarrior(){
+    private static void terratigeTheEmpoweredWarrior() {
 
     }
 
-    private static void theTricky(){
+    private static void theTricky() {
 
     }
 
-    private static void commandKnight(){
+    private static void commandKnight(Player player) {
+        Board board = Board.getBoardByPlayer(player);
+        int index = board.getCardIndex("Command Knight");
+        if (!board.getMonsterCardByKey(index).isEffectActivated()) {
+            if (board.getMonsterZoneByNumber(index - 1).equals("OO") || board.getMonsterZoneByNumber(index - 1).equals("DO")) {
+                for (int i = 1; i < 6; i++) {
+                    if (board.isMonsterAvailableInMonsterZone(i))
+                        board.setExtraAttackByIndex(i - 1, 400);
+                }
+                board.getMonsterCardByKey(index).setEffectActivated(true);
+            }
+        }
 
     }
 
-    private static void trapHole(){
+    private static void trapHole() {
 
     }
 
-    private static void mirrorForce(){
+    private static void mirrorForce() {
 
     }
 
-    private static void magicCylinder(){
+    private static void magicCylinder() {
 
     }
 
-    private static void mindCrush(){
+    private static void mindCrush() {
         GameView.getInstance().printMessage(GameView.Command.ENTERTHECARDNAME);
         String cardNameToDestroy = GameView.getInstance().scan();
-        if (Board.getBoardByPlayer(rivalPlayer).isThisCardInHand_ByName(cardNameToDestroy)){
+        if (Board.getBoardByPlayer(rivalPlayer).isThisCardInHand_ByName(cardNameToDestroy)) {
             Board.getBoardByPlayer(rivalPlayer).destroyAllSpecialCardForPlayer(cardNameToDestroy);
-        }else {
-            int a = (int)(Math.random()*(Board.getBoardByPlayer(player).getHand().size() + 1));//create random number to remove card from hand
+        } else {
+            int a = (int) (Math.random() * (Board.getBoardByPlayer(player).getHand().size() + 1));//create random number to remove card from hand
             Board.getBoardByPlayer(player).destroyCard(Board.getBoardByPlayer(player).getHand().get(a));
         }
     }
 
-    private static void torrentialTribute(){
+    private static void torrentialTribute() {
 
     }
 
-    private static void timeSeal(){
+    private static void timeSeal() {
 
     }
 
-    private static void negateAttack(){
+    private static void negateAttack() {
 
     }
 
-    private static void solemnWarning(){
+    private static void solemnWarning() {
 
     }
 
-    private static void magicJamamer(){
+    private static void magicJamamer() {
 
     }
 
-    private static void callofTheHaunted(){
+    private static void callofTheHaunted() {
 
     }
 
-    private static void vanityEmptiness(){
+    private static void vanityEmptiness() {
 
     }
 
-    private static void wallofRevealingLight(){
+    private static void wallofRevealingLight() {
 
     }
 
-    private static void monsterReborn(){
+    private static void monsterReborn() {
 
     }
 
-    private static void terraforming(){
+    private static void terraforming() {
 
     }
 
-    private static void potOfGreed(){
+    private static void potOfGreed() {
 
     }
 
-    private static void raigeki(){
+    private static void raigeki() {
         Board.getBoardByPlayer(rivalPlayer).destroyAllMonster();
     }
 
-    private static void changeOfHeart(){
+    private static void changeOfHeart() {
 
     }
 
-    private static void swordsOfRevealingLight(){
+    private static void swordsOfRevealingLight() {
 
     }
 
-    private static void harpieFeatherDuster(){
+    private static void harpieFeatherDuster() {
         Board.getBoardByPlayer(rivalPlayer).destroyAllSpell();
         Board.getBoardByPlayer(rivalPlayer).destroyAllTrap();
     }
 
-    private static void darkHole(){
+    private static void darkHole() {
         Board.getBoardByPlayer(player).destroyAllMonster();
         Board.getBoardByPlayer(rivalPlayer).destroyAllMonster();
     }
 
-    private static void supplySquad(){
+    private static void supplySquad() {
 
     }
 
-    private static void spellAbsorption(){
+    private static void spellAbsorption() {
 
     }
 
-    private static void messengerOfPeace(){
+    private static void messengerOfPeace() {
 
     }
 
-    private static void twinTwisters(){
+    private static void twinTwisters() {
 
     }
 
-    private static void mysticalSpaceTyphoon(){
+    private static void mysticalSpaceTyphoon() {
 
     }
 
-    private static void ringOfDefense(){
+    private static void ringOfDefense() {
 
     }
 
-    private static void yami(){
+    private static void yami() {
 
     }
 
-    private static void forest(){
+    private static void forest() {
 
     }
 
-    private static void closedForest(){
+    private static void closedForest() {
 
     }
 
-    private static void umiiruka(){
+    private static void umiiruka() {
 
     }
 
-    private static void swordOfDarkDestruction(){
+    private static void swordOfDarkDestruction() {
 
     }
 
-    private static void blackPendant(){
+    private static void blackPendant() {
 
     }
 
-    private static void unitedWeStand(){
+    private static void unitedWeStand() {
 
     }
 
-    private static void magnumShield(){
+    private static void magnumShield() {
 
     }
 
-    private static void advancedRitualArt(){
+    private static void advancedRitualArt() {
 
     }
 }
