@@ -35,10 +35,13 @@ public class MainPhase1 {
                 ProcessSet(Board.getBoardByPlayer(me));
             }
             else if(command.equals("flip-summon")){
-                ProcessFlipSummon(Board.getBoardByPlayer(me));
+                ProcessFlipSummon(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
             }else if (command.equals("card show --selected")){
                 ProcessShowCard();
-                ProcessFlipSummon(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
+               // ProcessFlipSummon(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
+            }
+            else if(command.equals("activate effect")){
+               ProcessActivation(Board.getBoardByPlayer(me));
             }
 
 
@@ -118,7 +121,7 @@ public class MainPhase1 {
             }
         }
     }
-    private void ProcessFlipSummon(Board board){
+    private void ProcessFlipSummon(Board board,Board rivalBoard){
         if(Select.getInstance().getLocation()==null){
             view.printMessage(GameView.Command.NOTCARDSELECTED);
         }
@@ -192,11 +195,32 @@ public class MainPhase1 {
             return true;
         }
     }
+    private void ProcessActivation(Board board){
+        if(Select.getInstance().getLocation()==null){
+            view.printMessage(GameView.Command.NOTCARDSELECTED);
+        }
+        else if(!(Select.getInstance().getCard() instanceof SpellCard)){
+            view.printMessage(GameView.Command.notSpellCard);
+        }
+        else if(board.getSpellTrapZoneByNumber(Select.getInstance().getPosition()-1).equals("O")){
+            view.printMessage(GameView.Command.isActivated);
+        }
+        else if(Select.getInstance().getLocation()== Select.Location.HAND && board.isSpellTrapZoneFull()){//needs one more if
+            view.printMessage(GameView.Command.spellZoneFull);
+        }
+        else if(false){//prepration??
+            board.getSpellTrapByKey(1);
+        }
+        else{
+            board.activateEffect();
+        }
+    }
 
     private Matcher getCommandMatcher(String input, String regex) {
         Pattern p = Pattern.compile(regex);
         return p.matcher(input);
 
     }
+
 }
 
