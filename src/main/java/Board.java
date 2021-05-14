@@ -13,6 +13,8 @@ public class Board {
     private HashMap<Integer,MonsterCard> monsterCardsInField = new HashMap<>();
     private String[] spellTrapZone = new String[5];
     private HashMap<Integer, Card> spellTrapCardsInField = new HashMap<>();
+    private String fieldZoneCondition;
+    private Card fieldZoneCard;
     private ArrayList<Card> graveYard = new ArrayList<>();
     private ArrayList<Card> hand = new ArrayList<>();
     private boolean isACardSelected = false;
@@ -31,6 +33,7 @@ public class Board {
         this.sideDeck = Deck.getActivatedDeck(player).getSideDeck();
         this.initializeMonsterZone();
         this.initializeSpellTrapZone();
+        this.initializeFieldZone();
         this.lifePoint = 8000;
         boards.add(this);
     }
@@ -199,6 +202,10 @@ public class Board {
     private void initializeSpellTrapZone() {
         for (int i = 0; i < 5; i++)
             spellTrapZone[i] = "E";
+    }
+
+    private void initializeFieldZone(){
+        fieldZoneCondition = "E";
     }
 
     public void destroyAllMonster(){
@@ -430,6 +437,16 @@ public class Board {
             GameView.getInstance().printGraveyard(graveYard);
         }
     }
+
+    private void setFieldZoneCondition(String condition){
+        fieldZoneCondition = condition;
+    }
+
+    private void setFieldZoneCard(Card card){
+        fieldZoneCard = card;
+    }
+
+
 
 
 
