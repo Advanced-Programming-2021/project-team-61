@@ -7,6 +7,7 @@ public class Select {
     private static Select s = null;
     Location location;
     private int position;//for field we set 10 -- for deselect we set 0
+    private Card card;
     enum Location{
         MONSTER,
         MONSTEROPPONENT,
@@ -70,9 +71,10 @@ public class Select {
         int loc = Integer.parseInt(matcher.group(1));
         if (loc>5){
             GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
-        }else if (Board.getBoardByPlayer(player).getMonsterCardsInField().size()<loc){
+        }else if (Board.getBoardByPlayer(player).getMonsterZoneByNumber(loc - 1).equals("E")){
             GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
         }else {
+            card = Board.getBoardByPlayer(player).getMonsterCardByKey(loc);
             position = loc;
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }
@@ -86,10 +88,11 @@ public class Select {
         int loc = Integer.parseInt(matcher.group(1));
         if (loc>5){
             GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
-        }else if (Board.getBoardByPlayer(player).getSpellTrapCardsInField().size()<loc){
+        }else if (Board.getBoardByPlayer(player).getSpellTrapZoneByNumber(loc - 1).equals("E")){
             GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
         }else {
             position = loc;
+            card = Board.getBoardByPlayer(player).getSpellTrapByKey(loc);
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }
     }
@@ -105,6 +108,7 @@ public class Select {
         }else if (Board.getBoardByPlayer(player).getHand().size()<loc){
             GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
         }else {
+            card = Board.getBoardByPlayer(player).getCardFromHand(loc - 1);
             position = loc;
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }
@@ -129,6 +133,10 @@ public class Select {
 
     public int getPosition() {
         return position;
+    }
+
+    public Card getCard() {
+        return card;
     }
 
     private Matcher getCommandMatcher(String input, String regex) {
