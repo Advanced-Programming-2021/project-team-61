@@ -100,6 +100,18 @@ public class Board {
         }
         return true;
     }
+    public void activateEffect(){
+        if(Select.getInstance().getLocation()== Select.Location.HAND){
+            int emptyPlace = getEmptyPlaceInSpellTrapZone();
+           spellTrapZone[emptyPlace] = "O";
+           addSpellTrapCardToField(emptyPlace,getCardFromHand(Select.getInstance().getPosition()));
+           hand.remove(Select.getInstance().getPosition()-1);
+        }
+       else if(Select.getInstance().getLocation() == Select.Location.SPELL){
+            spellTrapZone[Select.getInstance().getPosition()-1] = "O";
+        }
+
+    }
 
 
 
@@ -158,17 +170,7 @@ public class Board {
         return !monsterZone[position-1].equals("E");
     }
 
-    private boolean isNumberValid(String address, int number) {
-        switch (address) {
-            case "--hand": {
-                return (number <= hand.size() && number >= 1);
-            }
-            //fieldZone needs to be added
-            default: {
-                return (number <= 5 && number >= 1);
-            }
-        }
-    }
+
 
     public boolean isEnoughForTribute(int level){
         switch (level){
@@ -276,6 +278,8 @@ public class Board {
     public String getMonsterZoneByNumber(int index) {
         return monsterZone[index];
     }
+    public String getSpellTrapZoneByNumber(int index){return spellTrapZone[index];}
+    public Card getSpellTrapByKey(int key){return spellTrapCardsInField.get(key);}
 
     public String[] getSpellTrapZone() {
         return spellTrapZone;
@@ -370,7 +374,11 @@ public class Board {
         return true;
     }
     private int getEmptyPlaceInSpellTrapZone(){
-        return handleGetEmptyPlace(spellTrapZone);
+        for(int i = 0;i<spellTrapZone.length;i++){
+            if(spellTrapZone[i].equals("E"))
+                return i;
+        }
+        return 10;
     }
     private int getEmptyPlaceInMonsterZone(){
         return handleGetEmptyPlace(monsterZone);
