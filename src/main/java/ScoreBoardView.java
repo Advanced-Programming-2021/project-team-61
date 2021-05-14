@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ScoreBoardView {
     enum Commands {
@@ -8,7 +10,9 @@ public class ScoreBoardView {
     }
 
     private static ScoreBoardView s = null;
+    private ScoreBoardMenu scoreBoardMenu;
     public static Scanner scanner = new Scanner(System.in);
+    private String command;
 
     private ScoreBoardView() {
     }
@@ -19,9 +23,26 @@ public class ScoreBoardView {
         return s;
     }
 
-    public String scan() {
-        String command = scanner.nextLine();
-        return command;
+    public void scan() {
+        scoreBoardMenu = ScoreBoardMenu.getInstance();
+        while (true) {
+            command = scanner.nextLine();
+            if (( getCommandMatcher(command,"menu exit")).find()) {
+                break;
+            }
+            else if (( getCommandMatcher(command,"menu show-current")).find()){
+                printMessage(Commands.CURRENTMENU);
+            }
+            else if(command.equals("scoreboard show")){
+              scoreBoardMenu.sortByNickname();
+              scoreBoardMenu.sortByScore();
+              printScoreBoard(scoreBoardMenu.getAllPlayerNickName());
+            }
+            else{
+                printMessage(Commands.INVALID);
+            }
+
+        }
     }
 
     public void printMessage(Commands message) {
@@ -53,5 +74,10 @@ public class ScoreBoardView {
                 System.out.println(rank + "-" + nickname + Player.getScoreByNickname(nickname) + "\n");
             }
         }
+    }
+    private Matcher getCommandMatcher(String input, String regex) {
+        Pattern p = Pattern.compile(regex);
+        return p.matcher(input);
+
     }
 }

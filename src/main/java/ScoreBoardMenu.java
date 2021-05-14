@@ -6,36 +6,14 @@ import java.util.regex.Pattern;
 //first we run bubbleSort on nickNames;after that we run bubble sort on scores;
 public class ScoreBoardMenu {
     private static ScoreBoardMenu s = null;
-    private ScoreBoardView view;
-    private String command;
     private ArrayList<String> allPlayerNickName = Player.getAllNickNames();
-    private ScoreBoardMenu(ScoreBoardView view) {
-        this.view = view;
+    private ScoreBoardMenu() {
     }
 
     public static ScoreBoardMenu getInstance() {
-        if (s == null) {
-            ScoreBoardView view = ScoreBoardView.getInstance();
-            s = new ScoreBoardMenu(view);
-        }
+        if (s == null)
+            s = new ScoreBoardMenu();
         return s;
-    }
-
-    public void run(){
-
-        sortByNickname();
-        sortByScore();
-        view.printScoreBoard(allPlayerNickName);
-        while(true){
-            command = view.scan();
-            if (( getCommandMatcher(command,"menu exit")).find()){
-                break;
-            }else if (( getCommandMatcher(command,"menu show-current")).find()){
-                view.printMessage(ScoreBoardView.Commands.CURRENTMENU);
-            }else{
-                view.printMessage(ScoreBoardView.Commands.INVALID);
-            }
-        }
     }
 
     public void sortByNickname(){
@@ -52,11 +30,7 @@ public class ScoreBoardMenu {
             }
         }
     }
-
-    private Matcher getCommandMatcher(String input, String regex) {
-        Pattern p = Pattern.compile(regex);
-        return p.matcher(input);
-
+    public  ArrayList<String> getAllPlayerNickName() {
+        return allPlayerNickName;
     }
-
 }
