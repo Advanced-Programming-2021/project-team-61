@@ -37,7 +37,7 @@ public class MainPhase1 {
             else if(command.equals("flip-summon")){
                 ProcessFlipSummon(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
             }else if (command.equals("card show --selected")){
-                ProcessShowCard();
+                ProcessShowCard(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
                // ProcessFlipSummon(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
             }
             else if(command.equals("activate effect")){
