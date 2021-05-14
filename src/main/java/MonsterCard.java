@@ -27,4 +27,13 @@ public class MonsterCard extends Card{
     public int getDefense() {
         return defense;
     }
+
+    public void printACardComplete(MonsterCard card){
+        System.out.println("Name : " + card.cardName);
+        System.out.println("Level : " + card.level);
+        System.out.println("Type : " + card.cardType);
+        System.out.println("ATK : " + card.attack);
+        System.out.println("DEF : " + card.defense);
+        System.out.println("Description : " + card.description);
+    }
 }
