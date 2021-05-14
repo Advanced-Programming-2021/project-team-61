@@ -6,62 +6,22 @@ public class DeckMenu {
 
     private static DeckMenu s = null;
     private DeckView view;
-    private String command;
-    private Player player;
 
-    private DeckMenu(DeckView view) {
-        this.view = view;
+
+    private DeckMenu() {
+
     }
 
     public static DeckMenu getInstance() {
         if (s == null) {
-            DeckView view = DeckView.getInstance();
-            s = new DeckMenu(view);
+            s = new DeckMenu();
         }
         return s;
     }
 
-    public void run(String username) {
-        player = Player.getPlayerByUsername(username);
-        Matcher matcher;
-        while (true) {
-            command = view.scan();
-            if ((getCommandMatcher(command, "menu exit")).find()) {
-                break;
-            } else if ((getCommandMatcher(command, "menu show-current")).find()) {
-                view.printMessage(DeckView.Commands.CURRENTMENU, "", "");
-            } else if ((matcher = getCommandMatcher(command, "^deck create ([a-zA-Z\\s]+)$")).find()) {
-                createDeck(matcher.group(1));
-            } else if ((matcher = getCommandMatcher(command, "^deck delete ([a-zA-Z\\s]+)$")).find()) {
-                deleteDeck(matcher.group(1));
-            } else if ((matcher = getCommandMatcher(command, "^deck set-activate ([a-zA-Z\\s]+)$")).find()) {
-                setActivateDeck(matcher.group(1));
-            } else if ((matcher = getCommandMatcher(command, "^deck add-card --card ([a-zA-Z\\s]+) --deck ([a-zA-Z\\s]+)( --side)?$")).find()) {
-                if(matcher.group(3)==null)
-                addCardToMainDeck(matcher.group(1),matcher.group(2));
-                else
-                    addCardToSideDeck(matcher.group(1),matcher.group(2));
-            } else if ((matcher = getCommandMatcher(command, "^deck rm-card --card ([a-zA-Z\\s]+) --deck ([a-zA-Z\\s]+)( --side)?$")).find()) {
-                if (matcher.group(3) != null)
-                    removeCardFromSideDeck(matcher.group(1),matcher.group(2));
-                else
-                    removeCardFromMainDeck(matcher.group(1),matcher.group(2));
-            } else if ((getCommandMatcher(command, "deck show --all")).find()) {
-                view.printAllDecksOfPlayer(player.getAllDecks());
-            } else if ((getCommandMatcher(command, "^deck show --deck-name ([a-zA-Z\\s]+)(--side)?$")).find()) {
-                if(matcher.group(2)==null)
-                    showMainDeck(matcher.group(1));
-                else
-                    showSideDeck(matcher.group(1));
-            } else if ((getCommandMatcher(command, "deck show --cards")).find()) {
-                view.printAllCardsOfPlayer(player.getPlayerCards());
-            } else {
-                view.printMessage(DeckView.Commands.INVALID, "", "");
-            }
-        }
-    }
 
-    public void createDeck(String deckName) {
+    public void createDeck(String deckName,Player player) {
+        view = DeckView.getInstance();
         if (Deck.doesPlayerHaveDeckWithThisName(deckName, player)) {
             view.printMessage(DeckView.Commands.EXISTDECKALREADY, deckName, "");
         } else {
@@ -70,7 +30,8 @@ public class DeckMenu {
         }
     }
 
-    public void deleteDeck(String deckName) {
+    public void deleteDeck(String deckName,Player player) {
+        view = DeckView.getInstance();
         if (!Deck.doesPlayerHaveDeckWithThisName(deckName, player)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISDECK, deckName, "");
         } else {
@@ -80,7 +41,8 @@ public class DeckMenu {
         }
     }
 
-    public void setActivateDeck(String deckName) {
+    public void setActivateDeck(String deckName,Player player) {
+        view = DeckView.getInstance();
         if (!Deck.doesPlayerHaveDeckWithThisName(deckName, player)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISDECK, deckName, "");
         } else {
@@ -89,7 +51,8 @@ public class DeckMenu {
         }
     }
 
-    public void addCardToMainDeck(String cardName, String deckName) {
+    public void addCardToMainDeck(String cardName, String deckName,Player player) {
+        view = DeckView.getInstance();
         if (!player.doesPlayerHaveSpecialCard(cardName)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISCARD, cardName, "");
         } else if (!Deck.doesPlayerHaveDeckWithThisName(deckName, player)) {
@@ -105,7 +68,8 @@ public class DeckMenu {
         }
     }
 
-    public void addCardToSideDeck(String cardName, String deckName) {
+    public void addCardToSideDeck(String cardName, String deckName,Player player) {
+        view = DeckView.getInstance();
         if (!player.doesPlayerHaveSpecialCard(cardName)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISCARD, cardName, "");
         } else if (!Deck.doesPlayerHaveDeckWithThisName(deckName, player)) {
@@ -121,7 +85,8 @@ public class DeckMenu {
         }
     }
 
-    public void removeCardFromMainDeck(String cardName, String deckName) {
+    public void removeCardFromMainDeck(String cardName, String deckName,Player player) {
+        view = DeckView.getInstance();
         if (!Deck.doesPlayerHaveDeckWithThisName(deckName, player)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISDECK, deckName, "");
         } else if (!Deck.getDeckByName(deckName,player).isCardExistInMainDeck(cardName)) {
@@ -133,7 +98,8 @@ public class DeckMenu {
         }
     }
 
-    public void removeCardFromSideDeck(String cardName, String deckName) {
+    public void removeCardFromSideDeck(String cardName, String deckName,Player player) {
+        view = DeckView.getInstance();
         if (!Deck.doesPlayerHaveDeckWithThisName(deckName, player)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISDECK, deckName, "");
         } else if (!Deck.getDeckByName(deckName,player).isCardExistInSideDeck(cardName)) {
@@ -146,24 +112,19 @@ public class DeckMenu {
     }
 
 
-    public void showMainDeck(String deckName){
+    public void showMainDeck(String deckName,Player player){
+        view = DeckView.getInstance();
         if(!Deck.doesPlayerHaveDeckWithThisName(deckName,player))
             view.printMessage(DeckView.Commands.DONTHAVETHISDECK,deckName,"");
         else
         view.printOneDeck(deckName,Deck.getDeckByName(deckName,player).getMainDeck(),"M");
     }
 
-    public void showSideDeck(String deckName){
+    public void showSideDeck(String deckName,Player player){
+        view = DeckView.getInstance();
         if(!Deck.doesPlayerHaveDeckWithThisName(deckName,player))
             view.printMessage(DeckView.Commands.DONTHAVETHISDECK,deckName,"");
         else
         view.printOneDeck(deckName,Deck.getDeckByName(deckName,player).getSideDeck(),"S");
-    }
-
-
-
-    private Matcher getCommandMatcher(String input, String regex) {
-        Pattern p = Pattern.compile(regex);
-        return p.matcher(input);
     }
 }
