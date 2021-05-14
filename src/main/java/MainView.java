@@ -13,7 +13,6 @@ public class MainView {
     private MainMenu mainMenu = MainMenu.getInstance();
     private String command;
     private String username;
-    private String regex;
     private Matcher matcher;
 
     private MainView() {
@@ -33,12 +32,9 @@ public class MainView {
             if (command.equals("user logout")) {
                 printMessage(Commands.LOGOUT);
                 break;
-            } else if (command.startsWith("menu enter")) {
-                regex = "menu enter ([^\\s]+)";
-                matcher = getCommandMatcher(command, regex);
-                if (matcher.find())
-                    mainMenu.menuEnter(matcher.group(1), username);
-            } else if (command.equals("menu show--current"))
+            } else if ((matcher = getCommandMatcher(command, "menu enter ([^\\s]+)")).find())
+                mainMenu.menuEnter(matcher.group(1), username);
+            else if (command.equals("menu show--current"))
                 printMessage(Commands.menuName);
             else
                 printMessage(Commands.INVALID);

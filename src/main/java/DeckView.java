@@ -96,59 +96,59 @@ public class DeckView {
                 break;
             }
             case CREATESUCCESSFULLY: {
-                System.out.println("deck created successfully!\n");
+                System.out.println("deck created successfully!");
                 break;
             }
             case EXISTDECKALREADY: {
-                System.out.println("deck with name " + st1 + " already exists\n");
+                System.out.println("deck with name " + st1 + " already exists");
                 break;
             }
             case DELETEDECKSUCCESSFULLY: {
-                System.out.println("deck deleted successfully\n");
+                System.out.println("deck deleted successfully");
                 break;
             }
             case DONTHAVETHISDECK: {
-                System.out.println("deck with name " + st1 + " does not exist\n");
+                System.out.println("deck with name " + st1 + " does not exist");
                 break;
             }
             case ACTIVATESUCCESSFULLY: {
-                System.out.println("deck activated successfully\n");
+                System.out.println("deck activated successfully");
                 break;
             }
             case ADDCARDSUCCESSFULLY: {
-                System.out.println("card added to deck successfully\n");
+                System.out.println("card added to deck successfully");
                 break;
             }
             case DONTHAVETHISCARD: {
-                System.out.println("card with name " + st1 + " does not exist\n");
+                System.out.println("card with name " + st1 + " does not exist");
                 break;
             }
             case FULLMAINDECK: {
-                System.out.println("main deck is full\n");
+                System.out.println("main deck is full");
                 break;
             }
             case FULLSIDEDECK: {
-                System.out.println("side deck is full\n");
+                System.out.println("side deck is full");
                 break;
             }
             case LIMIT3ERROR: {
-                System.out.println("there are already three cards with name " + st1 + " in deck " + st2 + "\n");
+                System.out.println("there are already three cards with name " + st1 + " in deck " + st2);
                 break;
             }
             case NOTEXISTTHISCARDINMAINDECK: {
-                System.out.println("card with name " + st1 + " does not exist in main deck\n");
+                System.out.println("card with name " + st1 + " does not exist in main deck");
                 break;
             }
             case NOTEXISTTHISCARDINSIDEDECK: {
-                System.out.println("card with name " + st1 + " does not exist in side deck\n");
+                System.out.println("card with name " + st1 + " does not exist in side deck");
                 break;
             }
             case REMOVECARDSUCCESSFULLY: {
-                System.out.println("card removed form deck successfully\n");
+                System.out.println("card removed form deck successfully");
                 break;
             }
             case INVALID: {
-                System.out.println("invalid command\n");
+                System.out.println("invalid command");
                 break;
             }
             default:

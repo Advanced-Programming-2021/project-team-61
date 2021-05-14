@@ -3,7 +3,7 @@ import java.util.regex.Matcher;
 public class ProfileMenu {
 
     private static ProfileMenu p = null;
-    private ProfileView view = ProfileView.getInstance();
+    private ProfileView view;
 
     private ProfileMenu() {
         //please be modified in main
@@ -17,6 +17,7 @@ public class ProfileMenu {
     }
 
     public void changePassword(Player player, Matcher matcher) {
+        view = ProfileView.getInstance();
         if (!player.getPassword().equals(matcher.group(1)))
             view.printMessage(ProfileView.Commands.INVALIDPassword, "");
         else {
@@ -30,6 +31,7 @@ public class ProfileMenu {
     }
 
     public void changeNickname(Player player, Matcher matcher) {
+        view = ProfileView.getInstance();
         if (Player.isNickNameExists(matcher.group(1))) {
             view.printMessage(ProfileView.Commands.NicknameExists, matcher.group(1));
         } else {

@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class ShopMenu {
 
     private static ShopMenu s = null;
-    private ShopView view = ShopView.getInstance();
+    private ShopView view;
 
     private ShopMenu() {
 
@@ -20,6 +20,7 @@ public class ShopMenu {
     }
 
     public void buyCard(Matcher matcher, Player player) {
+        view = ShopView.getInstance();
         if (!Card.isCardAvailable(matcher.group(1)))
             view.printMessage(ShopView.Commands.WrongName);
         else if (Card.getCardByName(matcher.group(1)).getPrice() > player.getCoin())

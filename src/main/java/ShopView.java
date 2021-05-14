@@ -13,7 +13,7 @@ public class ShopView {
     }
 
     private static ShopView s = null;
-    private ShopMenu shopMenu = ShopMenu.getInstance();
+    private ShopMenu shopMenu;
     public static Scanner scanner = new Scanner(System.in);
     private String command;
     private Matcher matcher;
@@ -29,6 +29,7 @@ public class ShopView {
     }
 
     public void scan(String username) {
+        shopMenu = ShopMenu.getInstance();
         while (true){
         command = scanner.nextLine();
             if ((matcher = getCommandMatcher(command, "menu exit")).find())

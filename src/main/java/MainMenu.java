@@ -2,7 +2,6 @@
 public class MainMenu {
 
     private static MainMenu m = null;
-    private MainView view = MainView.getInstance();
 
     private MainMenu() {
 
@@ -24,23 +23,25 @@ public class MainMenu {
                 break;
             }
             case "Deck": {
+                DeckView deckView = DeckView.getInstance();
+                deckView.scan(username);
                 break;
             }
             case "Scoreboard": {
-                ScoreBoardMenu m = ScoreBoardMenu.getInstance();
-                m.run();
+                ScoreBoardView scoreBoardView = ScoreBoardView.getInstance();
+                scoreBoardView.scan();
                 break;
 
             }
             case "Profile": {
-                ProfileMenu p = ProfileMenu.getInstance();
-                p.run(username);
+                ProfileView profileView = ProfileView.getInstance();
+                profileView.scan(username);
                 break;
 
             }
             case "Shop": {
-                ShopMenu s = ShopMenu.getInstance();
-                s.run(username);
+               ShopView shopView = ShopView.getInstance();
+               shopView.scan(username);
                 break;
 
             }

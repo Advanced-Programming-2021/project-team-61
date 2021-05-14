@@ -2,7 +2,7 @@ import java.util.regex.Matcher;
 
 public class RegisterMenu {
     private static RegisterMenu r = null;
-    private RegisterView view = RegisterView.getInstance();
+    private RegisterView view;
 
 
     private RegisterMenu() {
@@ -16,6 +16,7 @@ public class RegisterMenu {
     }
 
     public void userCreateProcess(Matcher matcher) {
+        view = RegisterView.getInstance();
         if (Player.isUserNameExists(matcher.group(1)))
             view.printMessage(RegisterView.Commands.userExistsWithUsername, matcher.group(1));
         else if (Player.isNickNameExists(matcher.group(2)))
@@ -25,6 +26,7 @@ public class RegisterMenu {
     }
 
     public void loginProcess(Matcher matcher) {
+        view = RegisterView.getInstance();
         if (!Player.isUserNameExists(matcher.group(1)))
             view.printMessage(RegisterView.Commands.noMatch, "");
         else if (!Player.getPlayerByUsername(matcher.group(1)).getPassword().equals(matcher.group(2)))
