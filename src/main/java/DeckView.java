@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DeckView {
 
@@ -23,7 +25,10 @@ public class DeckView {
     }
 
     private static DeckView s = null;
+    private DeckMenu deckMenu;
     public static Scanner scanner = new Scanner(System.in);
+    private String command;
+    private Matcher matcher;
 
     private DeckView() {
     }
@@ -34,9 +39,54 @@ public class DeckView {
         return s;
     }
 
-    public String scan() {
-        String command = scanner.nextLine();
-        return command;
+    public void  scan(String username) {
+        Player player = Player.getPlayerByUsername(username);
+        deckMenu = DeckMenu.getInstance();
+        while (true){
+            command = scanner.nextLine();
+            if ((getCommandMatcher(command, "menu exit")).find()) {
+                break;
+            }
+            else if ((getCommandMatcher(command, "menu show-current")).find()) {
+                printMessage(Commands.CURRENTMENU, "", "");
+            }
+            else if ((matcher = getCommandMatcher(command, "^deck create ([a-zA-Z\\s]+)$")).find()) {
+               deckMenu.createDeck(matcher.group(1),player);
+            }
+            else if ((matcher = getCommandMatcher(command, "^deck delete ([a-zA-Z\\s]+)$")).find()) {
+               deckMenu.deleteDeck(matcher.group(1),player);
+            }
+            else if ((matcher = getCommandMatcher(command, "^deck set-activate ([a-zA-Z\\s]+)$")).find()) {
+               deckMenu.setActivateDeck(matcher.group(1),player);
+            }
+            else if ((matcher = getCommandMatcher(command, "^deck add-card --card ([a-zA-Z\\s]+) --deck ([a-zA-Z\\s]+)( --side)?$")).find()) {
+                if(matcher.group(3)==null)
+                  deckMenu.addCardToMainDeck(matcher.group(1),matcher.group(2),player);
+                else
+                  deckMenu.addCardToSideDeck(matcher.group(1),matcher.group(2),player);
+            }
+            else if ((matcher = getCommandMatcher(command, "^deck rm-card --card ([a-zA-Z\\s]+) --deck ([a-zA-Z\\s]+)( --side)?$")).find()) {
+                if (matcher.group(3) != null)
+                   deckMenu.removeCardFromSideDeck(matcher.group(1),matcher.group(2),player);
+                else
+                  deckMenu.removeCardFromMainDeck(matcher.group(1),matcher.group(2),player);
+            }
+            else if ((getCommandMatcher(command, "deck show --all")).find()) {
+                printAllDecksOfPlayer(player.getAllDecks());
+            }
+            else if ((getCommandMatcher(command, "^deck show --deck-name ([a-zA-Z\\s]+)(--side)?$")).find()) {
+                if(matcher.group(2)==null)
+                  deckMenu.showMainDeck(matcher.group(1),player);
+                else
+                   deckMenu.showSideDeck(matcher.group(1),player);
+            }
+            else if ((getCommandMatcher(command, "deck show --cards")).find()) {
+                printAllCardsOfPlayer(player.getPlayerCards());
+            }
+            else {
+                printMessage(DeckView.Commands.INVALID, "", "");
+            }
+        }
     }
 
     public void printMessage(DeckView.Commands message, String st1, String st2) {
@@ -170,5 +220,9 @@ public class DeckView {
 
     public void printAllCardsOfPlayer(){
 
+    }
+    private Matcher getCommandMatcher(String input, String regex) {
+        Pattern p = Pattern.compile(regex);
+        return p.matcher(input);
     }
 }
