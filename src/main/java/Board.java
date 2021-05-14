@@ -446,6 +446,14 @@ public class Board {
         fieldZoneCard = card;
     }
 
+    private String getFieldZoneCondition(){
+        return fieldZoneCondition;
+    }
+
+    private Card getFieldZoneCard(){
+        return fieldZoneCard;
+    }
+
 
 
 
