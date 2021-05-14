@@ -233,5 +233,35 @@ public class GameView {
             System.out.println(i + ". " + graveyard.get(i-1).cardName + " : " + graveyard.get(i-1).description + "\n");
         }
     }
+    public void showBoard(Board myBoard, Board rivalBoard){
+        System.out.println(rivalBoard.getPlayer().getNickname() + ":" +rivalBoard.getLifePoint());
+        int numberOfCard = rivalBoard.getHand().size();
+        int numberOfTab = 6;
+        System.out.print("\t");
+        for (int i = 0; i < numberOfCard; i++) {
+            for (int j = 0; j < numberOfTab; j++) {
+                System.out.print("\t");
+            }
+            System.out.print("C");
+            numberOfTab = 1;
+        }
+        System.out.println();
+        System.out.println(rivalBoard.getMainDeck().size());
+        System.out.println("\t" + rivalBoard.getSpellTrapZoneByNumber(3) + "\t" + rivalBoard.getSpellTrapZoneByNumber(1) + "\t" + rivalBoard.getSpellTrapZoneByNumber(0) + "\t" + rivalBoard.getSpellTrapZoneByNumber(2) + "\t" + rivalBoard.getSpellTrapZoneByNumber(4) );
+        System.out.println("\t" + rivalBoard.getMonsterZoneByNumber(3) + "\t" + rivalBoard.getMonsterZoneByNumber(1) + "\t" + rivalBoard.getMonsterZoneByNumber(0) + "\t" + rivalBoard.getMonsterZoneByNumber(2) + "\t" + rivalBoard.getMonsterZoneByNumber(4) );
+        System.out.println(rivalBoard.getGraveYard().size() + "\t \t \t \t \t \t" + rivalBoard.getFieldZoneCondition());
+        System.out.println();
+        System.out.println("--------------------------");
+        System.out.println();
+        System.out.println(myBoard.getFieldZoneCondition() + "\t \t \t \t \t \t" + myBoard.getGraveYard().size());
+        System.out.println("\t" + myBoard.getMonsterZoneByNumber(4) + "\t" + myBoard.getMonsterZoneByNumber(2) + "\t" + myBoard.getMonsterZoneByNumber(0) + "\t" + myBoard.getMonsterZoneByNumber(1) + "\t" + myBoard.getMonsterZoneByNumber(3) );
+        System.out.println("\t" + myBoard.getSpellTrapZoneByNumber(4) + "\t" + myBoard.getSpellTrapZoneByNumber(2) + "\t" + myBoard.getSpellTrapZoneByNumber(0) + "\t" + myBoard.getSpellTrapZoneByNumber(1) + "\t" + myBoard.getSpellTrapZoneByNumber(3));
+        System.out.println(" \t \t \t \t \t \t" + myBoard.getMainDeck().size());
+        for (int i = 0; i < myBoard.getHand().size(); i++) {
+            System.out.print("C\t");
+        }
+        System.out.println();
+        System.out.println(myBoard.getPlayer().getNickname() + ":" + myBoard.getLifePoint());
+    }
 
 }

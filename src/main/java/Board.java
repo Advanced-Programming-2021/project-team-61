@@ -430,7 +430,7 @@ public class Board {
     }*/
 
 
-    private void showGraveyard(){
+    public void showGraveyard(){
         if (graveYard.size()==0){
             GameView.getInstance().printMessage(GameView.Command.GRAVEYARDEMPTY);
         }else {
@@ -438,19 +438,19 @@ public class Board {
         }
     }
 
-    private void setFieldZoneCondition(String condition){
+    public void setFieldZoneCondition(String condition){
         fieldZoneCondition = condition;
     }
 
-    private void setFieldZoneCard(Card card){
+    public void setFieldZoneCard(Card card){
         fieldZoneCard = card;
     }
 
-    private String getFieldZoneCondition(){
+    public String getFieldZoneCondition(){
         return fieldZoneCondition;
     }
 
-    private Card getFieldZoneCard(){
+    public Card getFieldZoneCard(){
         return fieldZoneCard;
     }
 
