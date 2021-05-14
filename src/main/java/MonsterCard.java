@@ -1,5 +1,6 @@
 public class MonsterCard extends Card{
 
+
     private int level;
     private int attack;
     private int defense;
@@ -28,7 +29,7 @@ public class MonsterCard extends Card{
         return defense;
     }
 
-    public void printACardComplete(MonsterCard card){
+    public static void printACardComplete(MonsterCard card){
         System.out.println("Name : " + card.cardName);
         System.out.println("Level : " + card.level);
         System.out.println("Type : " + card.cardType);

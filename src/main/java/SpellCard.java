@@ -9,7 +9,7 @@ public class SpellCard extends Card{
 
     }
 
-    public void printACardComplete(SpellCard card){
+    public static void printACardComplete(SpellCard card){
         System.out.println("Name : " + card.cardName);
         System.out.println("Spell");
         System.out.println("Type : " + card.status);

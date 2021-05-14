@@ -264,4 +264,31 @@ public class GameView {
         System.out.println(myBoard.getPlayer().getNickname() + ":" + myBoard.getLifePoint());
     }
 
+    public void showCard_hand(Board myBoard, int index){
+        Card card = myBoard.getCardFromHand(index);
+        if (card instanceof MonsterCard)
+            MonsterCard.printACardComplete((MonsterCard) card);
+        else if (card instanceof SpellCard)
+            SpellCard.printACardComplete((SpellCard) card);
+        else if (card instanceof TrapCard)
+            TrapCard.printACardComplete((TrapCard) card);
+    }
+
+    public void showCard_myMonster(Board myBoard, int index){
+        MonsterCard card = myBoard.getMonsterCardByKey(index);
+        MonsterCard.printACardComplete(card);
+    }
+
+    public void showCard_mySpellTrap(Board myBoard, int index){
+        Card card = myBoard.getSpellTrapByKey(index);
+        if (card instanceof SpellCard)
+            SpellCard.printACardComplete((SpellCard) card);
+        else if (card instanceof TrapCard)
+            TrapCard.printACardComplete((TrapCard) card);
+    }
+
+
+
+
+
 }
