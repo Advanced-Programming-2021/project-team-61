@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameView {
@@ -37,7 +38,10 @@ public class GameView {
         noDamage,
         justLifePointDecrease,
         cardName,
-        cannotBeAttacked
+        cannotBeAttacked,
+        notSpellCard,
+        isActivated,
+        spellZoneFull
 
     }
 
@@ -176,6 +180,18 @@ public class GameView {
             }
             case CARDISNOTVISIBLE:{
                 System.out.println("card is not visible\n");
+                break;
+            }
+            case notSpellCard:{
+                System.out.println("activate effect is only for spell cards");
+                break;
+            }
+            case isActivated:{
+                System.out.println("you have already activated this card");
+                break;
+            }
+            case spellZoneFull:{
+                System.out.println("spell card zone is full");
                 break;
             }
 
