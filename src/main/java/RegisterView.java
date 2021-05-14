@@ -15,10 +15,9 @@ public class RegisterView {
     }
 
     private static RegisterView r = null;
-    private RegisterMenu registerMenu = RegisterMenu.getInstance();
+    private RegisterMenu registerMenu;
     public static Scanner scanner = new Scanner(System.in);
     private String command;
-    private String regex;
     private Matcher matcher;
 
     private RegisterView() {
@@ -32,21 +31,14 @@ public class RegisterView {
     }
 
     public void scan() {
+        registerMenu = RegisterMenu.getInstance();
         while (true) {
             command = scanner.nextLine();
-            if (command.startsWith("user create ")) {
-                regex = "user create --username ([^\\s]+) --nickname ([^\\s]+) --password ([^\\s]+)";
-                matcher = getCommandMatcher(command, regex);
-                if (matcher.find()) {
-                    registerMenu.userCreateProcess(matcher);
-                }
-            } else if (command.startsWith("user login")) {
-                regex = "user login --username ([^\\s]+) --password ([^\\s]+)";
-                matcher = getCommandMatcher(command, regex);
-                if (matcher.find()) {
-                    registerMenu.loginProcess(matcher);
-                }
-            } else if (command.equals("menu show-current")) {
+            if ((matcher = getCommandMatcher(command, "user create --username ([^\\s]+) --nickname ([^\\s]+) --password ([^\\s]+)")).find())
+                registerMenu.userCreateProcess(matcher);
+            else if ((matcher = getCommandMatcher(command, "user login --username ([^\\s]+) --password ([^\\s]+)")).find())
+                registerMenu.loginProcess(matcher);
+            else if (command.equals("menu show-current")) {
                 printMessage(Commands.showMenu, "");
             } else if (command.startsWith("menu enter")) {
                 printMessage(Commands.firstLogin, "");
@@ -60,34 +52,34 @@ public class RegisterView {
     public void printMessage(Commands message, String s) {
         switch (message) {
             case successful: {
-                System.out.println("user created successfully!\n");
+                System.out.println("user created successfully!");
                 break;
             }
             case userExistsWithNickname: {
-                System.out.println("user with nickname " + s + " already exists\n");
+                System.out.println("user with nickname " + s + " already exists");
                 break;
             }
             case userExistsWithUsername: {
-                System.out.println("user with username " + s + " already exists\n");
+                System.out.println("user with username " + s + " already exists");
                 break;
             }
             case invalid: {
-                System.out.println("invalid command\n");
+                System.out.println("invalid command");
             }
             case showMenu: {
-                System.out.println("Login Menu\n");
+                System.out.println("Login Menu");
                 break;
             }
             case firstLogin: {
-                System.out.println("please login first\n");
+                System.out.println("please login first");
                 break;
             }
             case noMatch: {
-                System.out.println("Username and password didn't match!\n");
+                System.out.println("Username and password didn't match!");
                 break;
             }
             case LOGIN: {
-                System.out.println("user logged in successfully!\n");
+                System.out.println("user logged in successfully!");
             }
             default:
                 break;

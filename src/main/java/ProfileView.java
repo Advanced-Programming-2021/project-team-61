@@ -13,9 +13,8 @@ public class ProfileView {
     }
 
     private static ProfileView view = null;
-    private ProfileMenu profileMenu = ProfileMenu.getInstance();
+    private ProfileMenu profileMenu;
     private String command;
-    private String regex;
     private Matcher matcher;
 
     private ProfileView() {
@@ -31,18 +30,13 @@ public class ProfileView {
 
     public void scan(String username) {
         while (true) {
+            profileMenu = ProfileMenu.getInstance();
             command = RegisterView.scanner.nextLine();
-            if (command.startsWith("profile change --nickname")) {
-                regex = "profile change --nickname ([^\\s]+)";
-                matcher = getCommandMatcher(command, regex);
-                if (matcher.find())
-                    profileMenu.changeNickname(Player.getPlayerByUsername(username), matcher);
-            } else if (command.startsWith("profile change --password --current")) {
-                regex = "profile change --password --current ([^\\s]+) --new ([^\\s]+)";
-                matcher = getCommandMatcher(command, regex);
-                if (matcher.find())
-                    profileMenu.changePassword(Player.getPlayerByUsername(username), matcher);
-            } else if (command.equals("menu exit"))
+            if ((matcher = getCommandMatcher(command, "profile change --nickname ([^\\s]+)")).find())
+                profileMenu.changeNickname(Player.getPlayerByUsername(username), matcher);
+            else if ((matcher = getCommandMatcher(command, "profile change --password --current ([^\\s]+) --new ([^\\s]+)")).find())
+                profileMenu.changePassword(Player.getPlayerByUsername(username), matcher);
+            else if (command.equals("menu exit"))
                 break;
             else if (command.equals("menu show--current"))
                 printMessage(Commands.showMenu, "");
@@ -56,31 +50,31 @@ public class ProfileView {
     public void printMessage(Commands message, String s) {
         switch (message) {
             case NicknameExists: {
-                System.out.println("user with nickname " + s + " already exists\n");
+                System.out.println("user with nickname " + s + " already exists");
                 break;
             }
             case NickNameSuccessful: {
-                System.out.println("nickname changed successfully!\n");
+                System.out.println("nickname changed successfully!");
                 break;
             }
             case INVALIDPassword: {
-                System.out.println("current password is invalid\n");
+                System.out.println("current password is invalid");
                 break;
             }
             case EnterNewPassword: {
-                System.out.println("please enter a new password\n");
+                System.out.println("please enter a new password");
                 break;
             }
             case PasswordSuccessful: {
-                System.out.println("password changed successfully!\n");
+                System.out.println("password changed successfully!");
                 break;
             }
             case INVALID: {
-                System.out.println("invalid command\n");
+                System.out.println("invalid command");
                 break;
             }
             case showMenu: {
-                System.out.println("Profile Menu\n");
+                System.out.println("Profile Menu");
                 break;
             }
             default:
