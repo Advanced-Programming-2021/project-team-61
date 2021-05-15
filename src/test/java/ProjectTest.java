@@ -1,3 +1,6 @@
+import Controller.*;
+import Model.Deck;
+import Model.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -5,8 +8,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ProjectTest {
 

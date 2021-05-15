@@ -1,3 +1,5 @@
+package Model;
+
 public class SpellCard extends Card{
 
     private String status;

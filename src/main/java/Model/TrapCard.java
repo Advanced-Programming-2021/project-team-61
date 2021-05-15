@@ -1,3 +1,5 @@
+package Model;
+
 public class TrapCard extends Card{
 
     private String status;

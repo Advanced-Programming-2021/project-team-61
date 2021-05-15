@@ -1,8 +1,12 @@
+package View;
+
+import Controller.DualMenu;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DualView {
-    enum Commands {
+  public enum Commands {
         playerTwoNotExist,
         hasNoActiveDeck,
         roundInvalid,

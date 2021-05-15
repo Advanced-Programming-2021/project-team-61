@@ -1,3 +1,7 @@
+package Model;
+
+import View.GameView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;

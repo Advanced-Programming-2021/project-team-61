@@ -1,3 +1,7 @@
+package Model;
+
+import View.GameView;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,7 +12,7 @@ public class Select {
     Location location;
     private int position;//for field we set 10 -- for deselect we set 0
     private Card card;
-    enum Location{
+    public enum Location{
         MONSTER,
         MONSTEROPPONENT,
         SPELL,

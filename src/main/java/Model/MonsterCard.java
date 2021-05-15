@@ -1,3 +1,5 @@
+package Model;
+
 public class MonsterCard extends Card{
 
     private int level;
@@ -5,6 +7,7 @@ public class MonsterCard extends Card{
     private int defense;
     private String attribute;
     private String MonsterType;
+    private boolean isEffectActivated = false;
 
     public MonsterCard(String cardName,int level,String attribute,String MonsterType,String type,int attack,int defense,String description,int price ){
         super(cardName,type,description,price);
@@ -26,5 +29,13 @@ public class MonsterCard extends Card{
 
     public int getDefense() {
         return defense;
+    }
+
+    public boolean isEffectActivated() {
+        return isEffectActivated;
+    }
+
+    public void setEffectActivated(boolean effectActivated) {
+        isEffectActivated = effectActivated;
     }
 }

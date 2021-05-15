@@ -1,3 +1,9 @@
+package View;
+
+import Controller.ShopMenu;
+import Model.Card;
+import Model.Player;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -5,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ShopView {
-    enum Commands {
+    public enum Commands {
         CurrentMenu,
         WrongName,
         EnoughMoney,
