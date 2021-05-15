@@ -62,14 +62,6 @@ public class Board {
         return this.player;
     }
 
-    public void setSummonedInTurn(boolean summonedInTurn) {
-        isSummonedInTurn = summonedInTurn;
-    }
-
-    public boolean isSummonedInTurn() {
-        return isSummonedInTurn;
-    }
-
     public void createHand() {
         Collections.shuffle(mainDeck);
         for (int i = 0; i < 6; i++)
@@ -127,26 +119,6 @@ public class Board {
 
 
 
-    public void summon() {
-        int position = getEmptyPlaceInMonsterZone();
-        setMonsterZone(position-1,"OO");
-        addMonsterCardToField(position ,getCardFromHand(Select.getInstance().getPosition()));
-        hand.remove(getCardFromHand(Select.getInstance().getPosition()));
-        this.setSummonedInTurn(true);
-    }
-    public void setMonster(){
-        int position = getEmptyPlaceInMonsterZone();
-        setMonsterZone(position-1,"DH");
-        addMonsterCardToField(position,getCardFromHand(Select.getInstance().getPosition()));
-        hand.remove(getCardFromHand(Select.getInstance().getPosition()));
-        this.setSummonedInTurn(true);
-    }
-    public void setSpellTrap(){
-        int position = getEmptyPlaceInSpellTrapZone();
-        setSpellTrapZone(position-1,"H");
-        addSpellTrapCardToField(position,getCardFromHand(Select.getInstance().getPosition()));
-        hand.remove(getCardFromHand(Select.getInstance().getPosition()));
-    }
 
     private boolean isSpellTrapAvailableInSpellZone(int position) {
         switch (position) {
@@ -174,28 +146,7 @@ public class Board {
     }
 
     public boolean isMonsterAvailableInMonsterZone(int position) {
-        return !monsterZone[position-1].equals("E");
-    }
-
-
-
-    public boolean isEnoughForTribute(int level){
-        switch (level){
-            case 5 : {
-                return monsterCardsInField.size()>=1;
-            }
-            case 7 : {
-                return monsterCardsInField.size()>=2;
-            }
-            default: return false;
-        }
-    }
-
-
-    public void tribute(int position){
-        monsterZone[position-1] = "E";
-        graveYard.add(monsterCardsInField.get(position));
-        monsterCardsInField.remove(position);
+        return !monsterZone[position].equals("E");
     }
 
     private void initializeMonsterZone() {
@@ -328,9 +279,6 @@ public class Board {
     public int getMonsterZoneChangeByNumber(int index){
         return monsterZoneChange[index];
     }
-    public void setHasAttackInTurn(int index){
-        hasAttackInTurn[index] = 1;
-    }
     public MonsterCard getMonsterCardByKey(int key){
         return monsterCardsInField.get(key);
     }
@@ -377,21 +325,11 @@ public class Board {
         extraDefence[index - 1]=amount;
     }
 
-    public boolean isSpellTrapZoneFull() {
-        for (int i = 0; i < 5; i++) {
-            if (spellTrapZone[i].equals("E"))
-                return false;
-        }
-        return true;
+
+    public int getEmptyPlaceInSpellTrapZone(){
+       return handleGetEmptyPlace(spellTrapZone);
     }
-    private int getEmptyPlaceInSpellTrapZone(){
-        for(int i = 0;i<spellTrapZone.length;i++){
-            if(spellTrapZone[i].equals("E"))
-                return i;
-        }
-        return 10;
-    }
-    private int getEmptyPlaceInMonsterZone(){
+    public int getEmptyPlaceInMonsterZone(){
         return handleGetEmptyPlace(monsterZone);
     }
 
@@ -457,7 +395,12 @@ public class Board {
     public Card getFieldZoneCard(){
         return fieldZoneCard;
     }
-
+    public String[] getMonsterZone(){
+        return this.monsterZone;
+    }
+    public void removeMonsterCardFromZone(int key){
+        this.monsterCardsInField.remove(key);
+    }
 
 
 
