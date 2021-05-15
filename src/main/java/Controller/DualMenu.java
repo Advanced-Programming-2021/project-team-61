@@ -3,6 +3,7 @@ package Controller;
 import Model.Board;
 import Model.Deck;
 import Model.Player;
+import View.DeckView;
 import View.DualView;
 
 import java.util.regex.Matcher;
@@ -10,7 +11,7 @@ import java.util.regex.Matcher;
 
 public class DualMenu {
     private static DualMenu d = null;
-    private DualView view = DualView.getInstance();
+    private DualView view ;
     private DualMenu(){
 
     }
@@ -21,8 +22,9 @@ public class DualMenu {
     }
 
     public void ProcessNewGame(Matcher matcher,String username){
+        view = DualView.getInstance();
         if(!isPlayer2Exist(matcher.group(1))){
-           view.printMessage(DualView.Commands.playerTwoNotExist,"");
+            view.printMessage(DualView.Commands.playerTwoNotExist,"");
         }
         else if(!isPlayerHaveActivatedDeck(Player.getPlayerByUsername(username))){
            view.printMessage(DualView.Commands.hasNoActiveDeck,username);
