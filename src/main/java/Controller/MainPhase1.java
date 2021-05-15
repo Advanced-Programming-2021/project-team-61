@@ -3,6 +3,7 @@ package Controller;
 import Model.*;
 import View.GameView;
 import View.MainPhaseView;
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -44,8 +45,10 @@ public class MainPhase1 {
         } else {
             if (!IsMonsterEnoughForTribute(board, monsterCard))
                 view.printMessage(MainPhaseView.Commands.NotEnoughCardsForTribute);
-            else
-                Tribute(board, monsterCard);
+            else {
+               if(Tribute(board,monsterCard))
+                   summonMonster(board,monsterCard);
+            }
         }
     }
 
@@ -110,8 +113,12 @@ public class MainPhase1 {
 
     public void checkToActivateEffect(MonsterCard monsterCard, Board rivalBoard) {
         if (monsterCard.getCardName().equals("Man-Eater Bug")) {
+            System.out.println("you can destroy a monster card of your rival Do you want to do that?");
             Scanner scanner = new Scanner(System.in);
+            if(scanner.nextLine().equals("Yes!"))
             rivalBoard.destroyCardInMonsterZone(scanner.nextInt());
+            else
+                System.out.println("OK!");
         }
     }
 
@@ -177,8 +184,8 @@ public class MainPhase1 {
 
     private boolean isMonsterZoneFull(Board board) {
         String[] monsterZone = board.getMonsterZone();
-        for (int i = 0; i < monsterZone.length; i++) {
-            if (monsterZone[i].equals("E"))
+        for (String s : monsterZone) {
+            if (s.equals("E"))
                 return false;
         }
         return true;
@@ -200,35 +207,36 @@ public class MainPhase1 {
             return board.getMonsterCardsInField().size() >= 2;
     }
 
-    private void Tribute(Board board, MonsterCard monsterCard) {
+    private boolean Tribute(Board board, MonsterCard monsterCard) {
         Scanner scanner = new Scanner(System.in);
         int address;
         int address2;
         int level = monsterCard.getLevel();
         if (level <= 6) {
             address = scanner.nextInt();
-            if (!board.isMonsterAvailableInMonsterZone(address - 1))
+            if (!board.isMonsterAvailableInMonsterZone(address - 1)){
                 view.printMessage(MainPhaseView.Commands.NoMonsterInAddress);
-            else {
-                board.setMonsterZone(address - 1, "E");
-                board.removeMonsterCardFromZone(address);
-                int emptyPlace = board.getEmptyPlaceInMonsterZone();
-                board.addMonsterCardToField(emptyPlace, monsterCard);
+                return false;
             }
-        } else {
+             else{
+             board.removeMonsterCardFromZone(address);
+             return true;
+             }
+        }
+        else {
             address = scanner.nextInt();
             address2 = scanner.nextInt();
-            if (!board.isMonsterAvailableInMonsterZone(address) || !board.isMonsterAvailableInMonsterZone(address2))
-                view.printMessage(MainPhaseView.Commands.NoMonsterInAddress);
-            else {
+            if (!board.isMonsterAvailableInMonsterZone(address) || !board.isMonsterAvailableInMonsterZone(address2)){
+              view.printMessage(MainPhaseView.Commands.NoMonsterInAddress);
+              return false;
+            }
+            else{
                 board.removeMonsterCardFromZone(address);
                 board.removeMonsterCardFromZone(address2);
-                int emptyPlace = board.getEmptyPlaceInMonsterZone();
-                board.addMonsterCardToField(emptyPlace, monsterCard);
+                return true;
             }
         }
-
-    }
+}
 
     private void setMonster(Board board, MonsterCard monsterCard) {
         int emptyPlace = board.getEmptyPlaceInMonsterZone();
@@ -301,13 +309,16 @@ public class MainPhase1 {
     private boolean isSelectedCardInSpellOpponent() {
         return Select.getInstance().getLocation() == Select.Location.SPELLOPPONENT;
     }
-    private boolean isSelectedCardSpell(){
-       return Select.getInstance().getCard() instanceof SpellCard;
+
+    private boolean isSelectedCardSpell() {
+        return Select.getInstance().getCard() instanceof SpellCard;
     }
-    private boolean isSpellActivated(Board board){
+
+    private boolean isSpellActivated(Board board) {
         return board.getSpellTrapZoneByNumber(Select.getInstance().getPosition() - 1).equals("O");
     }
-    private boolean isSpellTrapHidden(Board board){
+
+    private boolean isSpellTrapHidden(Board board) {
         return board.getSpellTrapZoneByNumber(Select.getInstance().getPosition() - 1).equals("H");
     }
 }

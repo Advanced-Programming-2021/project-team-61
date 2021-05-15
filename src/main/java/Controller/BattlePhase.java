@@ -4,62 +4,40 @@ import Model.Board;
 import Model.MonsterCard;
 import Model.Player;
 import Model.Select;
+import View.BattlePhaseView;
 import View.GameView;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Scanner;
+
 
 public class BattlePhase {
 
     private static BattlePhase b = null;
-    private static GameView view;
-    private String command;
-    private Matcher matcher;
+    private BattlePhaseView view;
 
-    private BattlePhase(GameView view){
-        this.view = view;
+    private BattlePhase(){
     }
 
     public static BattlePhase getInstance(){
         if(b == null){
-            b = new BattlePhase(GameView.getInstance());
+            b = new BattlePhase();
         }
         return b;
     }
-    public void run(Player me , Player rival){
-        Board myBoard = Board.getBoardByPlayer(me);
-        Board rivalBoard = Board.getBoardByPlayer(rival);
-        while(true){
-            command = view.scan();
-            if(getCommandMatcher(command,"attack (\\d+)").find()){
-                matcher = getCommandMatcher(command,"attack (\\d+)");
-                ProcessAttack(myBoard,rivalBoard,Integer.parseInt(matcher.group(1)));
-            }else if (getCommandMatcher(command,"attack direct").find()){
-                ProcessDirectAttack(myBoard,rivalBoard);
-            }
 
-
-
-
+    public void ProcessAttack(Board myBoard, Board rivalBoard, int number){
+        if(!isACardSelected())
+            view.printMessage(BattlePhaseView.Commands.noCardSelected,0,"");
+        else if(!isSelectedCardInMonsterZone()){
+            view.printMessage(BattlePhaseView.Commands.notAttack,0,"");
         }
-
-
-
-
-    }
-    private void ProcessAttack(Board myBoard, Board rivalBoard, int number){
-        if(Select.getInstance().getLocation()==null)
-            view.printMessage(GameView.Command.NOTCARDSELECTED);
-        else if(Select.getInstance().getLocation()!= Select.Location.MONSTER){
-            view.printMessage(GameView.Command.NOTATTACK);
+        else if(hasAttackedInTurn(myBoard)){
+           view.printMessage(BattlePhaseView.Commands.hasAttacked,0,"");
         }
-        else if(myBoard.hasAttackInTurn(Select.getInstance().getPosition()-1)){
-           view.printMessage(GameView.Command.HASATTACKED);
-        }
-        else if(rivalBoard.getMonsterZoneByNumber(number -1).equals("E"))
-            view.printMessage(GameView.Command.NOCARDTOATTACK);
+        else if(!isMonsterAvailable(rivalBoard,number))
+            view.printMessage(BattlePhaseView.Commands.noCardToAttack,0,"");
         else{
-            attack((MonsterCard)myBoard.getMonsterCardByKey(Select.getInstance().getPosition()),(MonsterCard)rivalBoard.getMonsterCardByKey(number),myBoard,rivalBoard,number);
+            attack(myBoard.getMonsterCardByKey(Select.getInstance().getPosition()),rivalBoard.getMonsterCardByKey(number),myBoard,rivalBoard,number);
 
 
 
@@ -73,97 +51,121 @@ public class BattlePhase {
 
     }
     private void attack(MonsterCard myMonster, MonsterCard rivalMonster, Board myBoard, Board rivalBoard, int number){
+        checkSuspiousCardBeforeAttack(rivalMonster,myMonster,myBoard);
         String status = rivalBoard.getMonsterZoneByNumber(number-1);
         if(status.equals("OO"))
-            attackOO((MonsterCard)myBoard.getMonsterCardByKey(Select.getInstance().getPosition()),(MonsterCard)rivalBoard.getMonsterCardByKey(number),myBoard,rivalBoard,number);
+            attackOO(myMonster,rivalMonster,myBoard,rivalBoard,number);
         else if(status.equals("DO"))
-            attackDO((MonsterCard)myBoard.getMonsterCardByKey(Select.getInstance().getPosition()),(MonsterCard)rivalBoard.getMonsterCardByKey(number),myBoard,rivalBoard,number);
+            attackDO(myBoard.getMonsterCardByKey(Select.getInstance().getPosition()),rivalBoard.getMonsterCardByKey(number),myBoard,rivalBoard,number);
         else{
-            attackDH((MonsterCard)myBoard.getMonsterCardByKey(Select.getInstance().getPosition()),(MonsterCard)rivalBoard.getMonsterCardByKey(number),myBoard,rivalBoard,number);
+            attackDH(myBoard.getMonsterCardByKey(Select.getInstance().getPosition()),rivalBoard.getMonsterCardByKey(number),myBoard,rivalBoard,number);
         }
 
     }
     private void attackOO(MonsterCard myMonster, MonsterCard rivalMonster, Board myBoard, Board rivalBoard, int number){
         if(!rivalBoard.canAttack(rivalMonster.getCardName(),number-1))
-            view.printMessage(GameView.Command.cannotBeAttacked);
+            view.printMessage(BattlePhaseView.Commands.cannotBeAttacked,0,"");
         else{
         if(myMonster.getAttack() > rivalMonster.getAttack()){
             int damage = myMonster.getAttack() - rivalMonster.getAttack();
-            checkSpecialCards(rivalMonster,myBoard);
+            checkSuspiciousCardAfterAttack(rivalMonster,myBoard);
             rivalBoard.destroyCardInMonsterZone(number);
             rivalBoard.setLifePoint(damage);
-            view.printMessageByAddingString(GameView.Command.damageOpponent,damage);
+            view.printMessage(BattlePhaseView.Commands.damageOpponent,damage,"");
+
         }
         else if(myMonster.getAttack() == rivalMonster.getAttack()){
             myBoard.destroyCardInMonsterZone(Select.getInstance().getPosition());
             rivalBoard.destroyCardInMonsterZone(number);
-            view.printMessage(GameView.Command.bothDamage);
+            view.printMessage(BattlePhaseView.Commands.bothDamage,0,"");
         }
         else if(myMonster.getAttack() < rivalMonster.getAttack()){
             myBoard.destroyCardInMonsterZone(Select.getInstance().getPosition());
             int damage = rivalMonster.getAttack() - myMonster.getAttack();
             myBoard.setLifePoint(damage);
-            view.printMessageByAddingString(GameView.Command.damageMe,damage);
+            view.printMessage(BattlePhaseView.Commands.damageMe,damage,"");
         }}
     }
     private void attackDO(MonsterCard myMonster, MonsterCard rivalMonster, Board myBoard, Board rivalBoard, int number){
         if(rivalMonster.getCardName().equals("Command Knight"))
-            view.printMessage(GameView.Command.cannotBeAttacked);
+            view.printMessage(BattlePhaseView.Commands.cannotBeAttacked,0,"");
         else{
         if(rivalMonster.getDefense() < myMonster.getAttack()){
-            checkSpecialCards(rivalMonster,myBoard);
+            checkSuspiciousCardAfterAttack(rivalMonster,myBoard);
             rivalBoard.destroyCardInMonsterZone(number);
-            view.printMessage(GameView.Command.damageRivalDOMonster);
+            view.printMessage(BattlePhaseView.Commands.damageRivalMonster,0,"");
+
         }
         else if(rivalMonster.getDefense() == myMonster.getAttack()){
-            view.printMessage(GameView.Command.noDamage);
+            view.printMessage(BattlePhaseView.Commands.noDamage,0,"");
         }
         else if(rivalMonster.getDefense() > myMonster.getAttack()){
             int damage = rivalMonster.getDefense() - myMonster.getAttack();
             myBoard.setLifePoint(damage);
-            view.printMessageByAddingString(GameView.Command.justLifePointDecrease,damage);
-        }}
+            view.printMessage(BattlePhaseView.Commands.justLifePointDecrease,damage,"");
+        }
+        }
     }
     private void attackDH(MonsterCard myMonster, MonsterCard rivalMonster, Board myBoard, Board rivalBoard, int number){
         if(rivalMonster.getDefense() < myMonster.getAttack()){
-            checkSpecialCards(rivalMonster,myBoard);
+            checkSuspiciousCardAfterAttack(rivalMonster,myBoard);
             rivalBoard.destroyCardInMonsterZone(number);
-            view.printMessageByString(GameView.Command.damageRivalDOMonster,rivalMonster.getCardName());
+            view.printMessage(BattlePhaseView.Commands.damageRivalMonsterHidden,0,rivalMonster.getCardName());
         }
         else if(rivalMonster.getDefense() == myMonster.getAttack()){
-            view.printMessageByString(GameView.Command.noDamage,rivalMonster.getCardName());
+            view.printMessage(BattlePhaseView.Commands.noDamageHidden,0,rivalMonster.getCardName());
         }
         else if(rivalMonster.getDefense() > myMonster.getAttack()){
             int damage = rivalMonster.getDefense() - myMonster.getAttack();
             myBoard.setLifePoint(damage);
-            view.printMessageByString(GameView.Command.cardName,rivalMonster.getCardName());
-            view.printMessageByAddingString(GameView.Command.justLifePointDecrease,damage);
+            view.printMessage(BattlePhaseView.Commands.justLifePointDecreaseHidden,damage,rivalMonster.getCardName());
         }
 
     }
 
-    private void ProcessDirectAttack(Board myBoard, Board rivalBoard){
-        if(Select.getInstance().getLocation()==null) {
-            view.printMessage(GameView.Command.NOTCARDSELECTED);
-        }else if(Select.getInstance().getLocation()!= Select.Location.MONSTER){
-            view.printMessage(GameView.Command.NOTATTACK);
-        }else if(myBoard.hasAttackInTurn(Select.getInstance().getPosition()-1)){
-            view.printMessage(GameView.Command.HASATTACKED);
+    public void ProcessDirectAttack(Board myBoard, Board rivalBoard){
+        if(!isACardSelected()) {
+            view.printMessage(BattlePhaseView.Commands.noCardSelected,0,"");
+        }else if(!isSelectedCardInMonsterZone()){
+            view.printMessage(BattlePhaseView.Commands.notAttack,0,"");
+        }else if(hasAttackedInTurn(myBoard)){
+            view.printMessage(BattlePhaseView.Commands.hasAttacked,0,"");
         }else if (!rivalBoard.isMonsterZoneEmpty()){//add condition that we can't have direct attack ?????
-            view.printMessage(GameView.Command.CANTDIRECTATTACK);
+            view.printMessage(BattlePhaseView.Commands.noCardToAttack,0,"");
         }else {
             int damage = myBoard.getMonsterCardByKey(Select.getInstance().getPosition()).getAttack() + myBoard.getExtraAttackByIndex(Select.getInstance().getPosition());
-            view.printMessageByAddingString(GameView.Command.DIRECTATTACKSUCCESSFULLY, damage);
+            view.printMessage(BattlePhaseView.Commands.directAttackSuccessful, damage,"");
             myBoard.setLifePoint(damage);
         }
     }
-    private void checkSpecialCards(MonsterCard rivalMonster, Board myBoard){
-        if(rivalMonster.getCardName().equals("Yomi Ship")){
-          myBoard.destroyCardInMonsterZone(Select.getInstance().getPosition());
+    private void checkSuspiousCardBeforeAttack(MonsterCard monsterCard,MonsterCard myMonster,Board myBoard){
+        if(monsterCard.getCardName().equals("Suijin")){
+            System.out.println("do you want to activate the effect of your card?");
+            Scanner scanner = new Scanner(System.in);
+            if(scanner.nextLine().equals("Yes"))
+                myBoard.setExtraAttackByIndex(Select.getInstance().getPosition() -1,-1*(myMonster.getAttack()+myBoard.getExtraAttackByIndex(Select.getInstance().getPosition())-1));
         }
     }
-    private Matcher getCommandMatcher(String input,String regex){
-        Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(input);
+    private void checkSuspiciousCardAfterAttack(MonsterCard monsterCard,Board myBoard){
+        if(monsterCard.getCardName().equals("Yomi Ship")){
+            myBoard.destroyCardInMonsterZone(Select.getInstance().getPosition());
+            myBoard.setMonsterZone(Select.getInstance().getPosition() -1,"E" );
+        }
+
+
+    }
+
+    private boolean isACardSelected(){
+        return Select.getInstance().getLocation()!=null;
+    }
+    private boolean isSelectedCardInMonsterZone() {
+        return Select.getInstance().getLocation() == Select.Location.MONSTER;
+    }
+    private boolean hasAttackedInTurn(Board board){
+      int x = board.getHasAttackInTurn(Select.getInstance().getPosition() - 1);
+        return x !=0;
+    }
+    private boolean isMonsterAvailable(Board board,int number){
+        return !board.getMonsterZoneByNumber(number -1).equals("E");
     }
 }
