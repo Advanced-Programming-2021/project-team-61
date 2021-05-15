@@ -1,6 +1,6 @@
 package View;
 
-import Model.Card;
+import Model.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
