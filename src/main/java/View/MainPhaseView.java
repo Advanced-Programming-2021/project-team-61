@@ -6,10 +6,11 @@ import java.util.regex.Pattern;
 import Controller.MainPhase1;
 import Model.Board;
 import Model.Player;
+import Model.Select;
 
 public class MainPhaseView {
 
-    enum Commands{
+  public enum Commands{
         NoCardSelected,
         CannotBeSummoned,
         MonsterZoneFull,
@@ -25,7 +26,11 @@ public class MainPhaseView {
         MonsterChangedPositionSuccessful,
         CannotFlip,
         FlipSuccessful,
-        Invalid
+        Invalid,
+        SpellZoneFull,
+        CardIsNotVisible,
+        NotSpellCard,
+        isActivated
     }
 
     private static MainPhaseView m = null;
@@ -64,6 +69,13 @@ public class MainPhaseView {
             else if(command.equals("activate effect")){
                mainPhase1.ProcessActivation(Board.getBoardByPlayer(me));
             }
+           else if(command.startsWith("select")){
+                Select.getInstance().run(me,rival,command);
+            }
+           else if(command.equals("next phase")){
+               break;
+            }
+
 
 
 
@@ -75,7 +87,7 @@ public class MainPhaseView {
 
         }
     }
-    public void PrintMessage(Commands message){
+    public void printMessage(Commands message){
         switch (message){
             case NoCardSelected:{
                 System.out.println("no card is selected yet");
@@ -142,6 +154,23 @@ public class MainPhaseView {
                 System.out.println("invalid command");
                 break;
             }
+            case SpellZoneFull:{
+                System.out.println("spell card zone is full");
+                break;
+            }
+            case CardIsNotVisible:{
+                System.out.println("card is not visible");
+                break;
+            }
+            case NotSpellCard:{
+                System.out.println("activate effect is only for spell cards");
+                break;
+            }
+            case isActivated:{
+                System.out.println("you have already activated this card");
+                break;
+            }
+
 
 
 
