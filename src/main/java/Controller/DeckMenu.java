@@ -1,6 +1,8 @@
-import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+package Controller;
+
+import Model.Deck;
+import Model.Player;
+import View.DeckView;
 
 public class DeckMenu {
 
@@ -20,7 +22,7 @@ public class DeckMenu {
     }
 
 
-    public void createDeck(String deckName,Player player) {
+    public void createDeck(String deckName, Player player) {
         view = DeckView.getInstance();
         if (Deck.doesPlayerHaveDeckWithThisName(deckName, player)) {
             view.printMessage(DeckView.Commands.EXISTDECKALREADY, deckName, "");
@@ -30,7 +32,7 @@ public class DeckMenu {
         }
     }
 
-    public void deleteDeck(String deckName,Player player) {
+    public void deleteDeck(String deckName, Player player) {
         view = DeckView.getInstance();
         if (!Deck.doesPlayerHaveDeckWithThisName(deckName, player)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISDECK, deckName, "");
@@ -41,7 +43,7 @@ public class DeckMenu {
         }
     }
 
-    public void setActivateDeck(String deckName,Player player) {
+    public void setActivateDeck(String deckName, Player player) {
         view = DeckView.getInstance();
         if (!Deck.doesPlayerHaveDeckWithThisName(deckName, player)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISDECK, deckName, "");
@@ -51,7 +53,7 @@ public class DeckMenu {
         }
     }
 
-    public void addCardToMainDeck(String cardName, String deckName,Player player) {
+    public void addCardToMainDeck(String cardName, String deckName, Player player) {
         view = DeckView.getInstance();
         if (!player.doesPlayerHaveSpecialCard(cardName)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISCARD, cardName, "");
@@ -68,7 +70,7 @@ public class DeckMenu {
         }
     }
 
-    public void addCardToSideDeck(String cardName, String deckName,Player player) {
+    public void addCardToSideDeck(String cardName, String deckName, Player player) {
         view = DeckView.getInstance();
         if (!player.doesPlayerHaveSpecialCard(cardName)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISCARD, cardName, "");
@@ -85,7 +87,7 @@ public class DeckMenu {
         }
     }
 
-    public void removeCardFromMainDeck(String cardName, String deckName,Player player) {
+    public void removeCardFromMainDeck(String cardName, String deckName, Player player) {
         view = DeckView.getInstance();
         if (!Deck.doesPlayerHaveDeckWithThisName(deckName, player)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISDECK, deckName, "");
@@ -98,7 +100,7 @@ public class DeckMenu {
         }
     }
 
-    public void removeCardFromSideDeck(String cardName, String deckName,Player player) {
+    public void removeCardFromSideDeck(String cardName, String deckName, Player player) {
         view = DeckView.getInstance();
         if (!Deck.doesPlayerHaveDeckWithThisName(deckName, player)) {
             view.printMessage(DeckView.Commands.DONTHAVETHISDECK, deckName, "");
@@ -112,19 +114,19 @@ public class DeckMenu {
     }
 
 
-    public void showMainDeck(String deckName,Player player){
+    public void showMainDeck(String deckName, Player player){
         view = DeckView.getInstance();
         if(!Deck.doesPlayerHaveDeckWithThisName(deckName,player))
             view.printMessage(DeckView.Commands.DONTHAVETHISDECK,deckName,"");
         else
-        view.printOneDeck(deckName,Deck.getDeckByName(deckName,player).getMainDeck(),"M");
+        view.printOneDeck(deckName, Deck.getDeckByName(deckName,player).getMainDeck(),"M");
     }
 
-    public void showSideDeck(String deckName,Player player){
+    public void showSideDeck(String deckName, Player player){
         view = DeckView.getInstance();
         if(!Deck.doesPlayerHaveDeckWithThisName(deckName,player))
             view.printMessage(DeckView.Commands.DONTHAVETHISDECK,deckName,"");
         else
-        view.printOneDeck(deckName,Deck.getDeckByName(deckName,player).getSideDeck(),"S");
+        view.printOneDeck(deckName, Deck.getDeckByName(deckName,player).getSideDeck(),"S");
     }
 }

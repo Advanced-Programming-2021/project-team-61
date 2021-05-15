@@ -1,4 +1,5 @@
-import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
+package Model;
+
 import java.util.ArrayList;
 
 public class Deck {
@@ -15,7 +16,7 @@ public class Deck {
         this.deckName = deckName;
         this.deckID = idCounter;
         allDeck.add(this);
-        Player.getPlayerByUsername(playerName).addDeck(this);// Player.getPlayerByUsername(playerName).addDeck(this);
+        Player.getPlayerByUsername(playerName).addDeck(this);// Model.Player.getPlayerByUsername(playerName).addDeck(this);
         idCounter++;
     }
 

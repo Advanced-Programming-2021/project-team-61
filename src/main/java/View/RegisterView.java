@@ -1,9 +1,13 @@
+package View;
+
+import Controller.RegisterMenu;
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegisterView {
-    enum Commands {
+  public enum Commands {
         successful,
         userExistsWithNickname,
         userExistsWithUsername,

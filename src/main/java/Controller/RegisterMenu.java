@@ -1,3 +1,9 @@
+package Controller;
+
+import Model.Player;
+import View.MainView;
+import View.RegisterView;
+
 import java.util.regex.Matcher;
 
 public class RegisterMenu {

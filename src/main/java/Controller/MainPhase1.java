@@ -1,3 +1,9 @@
+package Controller;
+
+
+import Model.*;
+import View.GameView;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -6,17 +12,16 @@ public class MainPhase1 {
     private static MainPhase1 m = null;
     private GameView view;
 
-    private MainPhase1(GameView view) {
-        this.view = view;
-
+    private MainPhase1() {
     }
 
     public static MainPhase1 getInstance() {
-        if (m == null) {
-            m = new MainPhase1(GameView.getInstance());
-        }
+        if (m == null)
+           m = new MainPhase1();
         return m;
     }
+    //??
+    private MainPhase1 mainPhase1 = MainPhase1.getInstance();
 
     public void run(Player me , Player rival) {
         while (true) {
@@ -37,8 +42,7 @@ public class MainPhase1 {
             else if(command.equals("flip-summon")){
                 ProcessFlipSummon(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
             }else if (command.equals("card show --selected")){
-                ProcessShowCard();
-               // ProcessFlipSummon(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
+                ProcessShowCard(Board.getBoardByPlayer(rival));
             }
             else if(command.equals("activate effect")){
                ProcessActivation(Board.getBoardByPlayer(me));
@@ -48,7 +52,7 @@ public class MainPhase1 {
         }
     }
 
-    private void ProcessSummon(Board board){
+    public void ProcessSummon(Board board){
         if (Select.getInstance().getLocation()==null) {
             view.printMessage(GameView.Command.NOTCARDSELECTED);
         } else if (Select.getInstance().getLocation()!=Select.Location.HAND || !(board.getCardFromHand(Select.getInstance().getPosition()-1) instanceof MonsterCard)) { //needs one more if
@@ -96,7 +100,7 @@ public class MainPhase1 {
             }
         }
     }
-    private void ProcessSet(Board board) {
+    public void ProcessSet(Board board) {
         if (Select.getInstance().getLocation() == null) {
             view.printMessage(GameView.Command.NOTCARDSELECTED);
         } else if (Select.getInstance().getLocation() != Select.Location.HAND) {
@@ -121,7 +125,7 @@ public class MainPhase1 {
             }
         }
     }
-    private void ProcessFlipSummon(Board board,Board rivalBoard){
+    public void ProcessFlipSummon(Board board,Board rivalBoard){
         if(Select.getInstance().getLocation()==null){
             view.printMessage(GameView.Command.NOTCARDSELECTED);
         }
@@ -137,7 +141,7 @@ public class MainPhase1 {
         }
     }
 
-    private void ProcessSetPosition(Board board, Matcher matcher){
+    public void ProcessSetPosition(Board board, Matcher matcher){
         String newPosition = matcher.group(1);
         if (Select.getInstance().getLocation()==null){
             view.printMessage(GameView.Command.NOTCARDSELECTED);
@@ -172,10 +176,10 @@ public class MainPhase1 {
         }
     }
 
-    private void ProcessShowCard(){
+    public void ProcessShowCard(Board rival){
         if (Select.getInstance().getLocation()==null) {
             view.printMessage(GameView.Command.NOTCARDSELECTED);
-        }else if (!canISeeSelectedCard(/*rivalBoard should send*/)){
+        }else if (!canISeeSelectedCard(rival)){/*rivalBoard should send*/
             view.printMessage(GameView.Command.CARDISNOTVISIBLE);
         }else {
             //show card information...
@@ -183,9 +187,9 @@ public class MainPhase1 {
     }
 
     private boolean canISeeSelectedCard(Board rivalBoard){
-        if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals(/*attack hide*/)){
+        if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals("")){/*attack hide*/
             return false;
-        }else if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals(/*defence hide*/)) {
+        }else if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals("")) {/*defence hide*/
             return false;
         }else if (Select.getInstance().getLocation()== Select.Location.SPELLOPPONENT && rivalBoard.getSpellTrapZoneByNumber(Select.getInstance().getPosition() - 1).equals("H")){
             return false;
@@ -195,7 +199,7 @@ public class MainPhase1 {
             return true;
         }
     }
-    private void ProcessActivation(Board board){
+    public void ProcessActivation(Board board){
         if(Select.getInstance().getLocation()==null){
             view.printMessage(GameView.Command.NOTCARDSELECTED);
         }

@@ -1,7 +1,10 @@
+package Controller;
+
+import Model.Player;
+
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 //man nemitoonam testesh konam,chun bayad az mainMenu biam toye in menu...
 //first we run bubbleSort on nickNames;after that we run bubble sort on scores;
 public class ScoreBoardMenu {

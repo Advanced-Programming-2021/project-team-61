@@ -1,5 +1,10 @@
+package Controller;
+
+import Model.Card;
+import Model.Player;
+import View.ShopView;
+
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 //we should add a attribute in mainMenu that save username which login,
 //after that when we go to each menu,enter with this name...

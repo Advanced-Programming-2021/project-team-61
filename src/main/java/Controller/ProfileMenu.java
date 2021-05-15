@@ -1,3 +1,8 @@
+package Controller;
+
+import Model.Player;
+import View.ProfileView;
+
 import java.util.regex.Matcher;
 
 public class ProfileMenu {

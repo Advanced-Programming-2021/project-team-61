@@ -1,9 +1,13 @@
+package View;
+
+import Model.Card;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameView {
 
-    enum Command{
+    public enum Command{
         NOTCARDSELECTED,
         NOTBESUMMONED,
         MONSTERZONEFULL,
@@ -63,31 +67,31 @@ public class GameView {
     public void printMessage(Command message){
         switch (message){
             case NOTCARDSELECTED:{
-                System.out.println("no card is selected yet\n");
+                System.out.println("no card is selected yet");
                 break;
             }
             case NOTBESUMMONED: {
-                System.out.println("you can't summon this card\n");
+                System.out.println("you can't summon this card");
                 break;
             }
             case MONSTERZONEFULL:{
-                System.out.println("monster card zone is full\n");
+                System.out.println("monster card zone is full");
                 break;
             }
             case ISSUMMONEDONCE: {
-                System.out.println("you already summoned/set on this turn\n");
+                System.out.println("you already summoned/set on this turn");
                 break;
             }
             case NOTENOUGHFORTRIBUTE:{
-                System.out.println("there are not enough cards for tribute\n");
+                System.out.println("there are not enough cards for tribute");
                 break;
             }
             case NOTMONSTERINADDRESS:{
-                System.out.println("there no monster one this address\n");
+                System.out.println("there no monster one this address");
                 break;
             }
             case SUMMONSUCCESSFUL:{
-                System.out.println("summoned successfully\n");
+                System.out.println("summoned successfully");
                 break;
             }
             case ENTERTHECARDNAME:{
@@ -111,31 +115,31 @@ public class GameView {
                 break;
             }
             case NOTBESET: {
-                System.out.println("you can't set this card\n");
+                System.out.println("you can't set this card");
                 break;
             }
             case SETSUCCESSFUL:{
-                System.out.println("set successfully\n");
+                System.out.println("set successfully");
                 break;
             }
             case NOTINMONSTERZONE:{
-                System.out.println("you can't change this card position\n");
+                System.out.println("you can't change this card position");
                 break;
             }
             case NOTFLIP:{
-                System.out.println("you can't flip summon this card\n");
+                System.out.println("you can't flip summon this card");
                 break;
             }
             case THISCARDALREADYINWANTEDPOSITION:{
-                System.out.println("this card is already in the wanted position\n");
+                System.out.println("this card is already in the wanted position");
                 break;
             }
             case THISCARDALREADYCHANGEDINTHISTURN:{
-                System.out.println("you already changed this card position in this turn\n");
+                System.out.println("you already changed this card position in this turn");
                 break;
             }
             case MONSTERCHANGEDPOSITIONSUCCES:{
-                System.out.println("monster card position changed successfully\n");
+                System.out.println("monster card position changed successfully");
                 break;
             }
             case NOTATTACK:{
@@ -230,7 +234,7 @@ public class GameView {
     }
     public void printGraveyard(ArrayList<Card> graveyard){
         for (int i = 1; i <= graveyard.size(); i++) {
-            System.out.println(i + ". " + graveyard.get(i-1).cardName + " : " + graveyard.get(i-1).description + "\n");
+            System.out.println(i + ". " + graveyard.get(i-1).getCardName() + " : " + graveyard.get(i-1).getDescription() + "\n");
         }
     }
 

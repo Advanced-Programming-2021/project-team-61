@@ -1,3 +1,5 @@
+package Model;
+
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import java.io.FileReader;

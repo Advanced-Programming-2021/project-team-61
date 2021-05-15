@@ -1,3 +1,11 @@
+package View;
+
+import Controller.DeckMenu;
+import Model.Card;
+import Model.Deck;
+import Model.MonsterCard;
+import Model.Player;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -6,7 +14,7 @@ import java.util.regex.Pattern;
 
 public class DeckView {
 
-    enum Commands {
+   public enum Commands {
         CURRENTMENU,
         CREATESUCCESSFULLY,
         EXISTDECKALREADY,
@@ -159,7 +167,7 @@ public class DeckView {
     public void printAllDecksOfPlayer(ArrayList<Deck> allDecks) {
         String validCheck;
         System.out.println("Decks:\n");
-        System.out.println("Active Deck:\n");
+        System.out.println("Active Model.Deck:\n");
         for (Deck deck : allDecks) {
             if (deck.isActivated()) {
                 if (deck.isDeckValid()) {
@@ -193,7 +201,7 @@ public class DeckView {
             else
                 spellTrap.add(card);
         }
-        System.out.println("Deck: " + deckName + "\n");
+        System.out.println("Model.Deck: " + deckName + "\n");
         if (M_S.equals("M")) {
             System.out.println("Main deck:\n");
         } else {
@@ -231,7 +239,7 @@ public class DeckView {
     public void printAllCardsOfPlayer(ArrayList<Card> allCards) {
         sortCards(allCards);
         for (Card card : allCards) {
-            System.out.println(card.cardName + " : " + card.description + "\n");
+            System.out.println(card.getCardName() + " : " + card.getDescription() + "\n");
         }
 
     }

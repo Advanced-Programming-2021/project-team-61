@@ -1,3 +1,6 @@
+package Controller;
+
+import View.*;
 
 public class MainMenu {
 
@@ -22,7 +25,7 @@ public class MainMenu {
                 dualView.scan(username);
                 break;
             }
-            case "Deck": {
+            case "Model.Deck": {
                 DeckView deckView = DeckView.getInstance();
                 deckView.scan(username);
                 break;

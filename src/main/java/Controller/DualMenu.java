@@ -1,3 +1,10 @@
+package Controller;
+
+import Model.Board;
+import Model.Deck;
+import Model.Player;
+import View.DualView;
+
 import java.util.regex.Matcher;
 
 
@@ -29,9 +36,9 @@ public class DualMenu {
         }
         else{
             for(int i = 1; i < Integer.parseInt(matcher.group(2)) ; i++){
-                createGame(Player.getPlayerByUsername(username),Player.getPlayerByUsername(matcher.group(1)));
+                createGame(Player.getPlayerByUsername(username), Player.getPlayerByUsername(matcher.group(1)));
                 GameController g = GameController.getInstance();
-                g.run(Board.getBoardByPlayer(Player.getPlayerByUsername(username)),Board.getBoardByPlayer(Player.getPlayerByUsername(matcher.group(1))));
+                g.run(Board.getBoardByPlayer(Player.getPlayerByUsername(username)), Board.getBoardByPlayer(Player.getPlayerByUsername(matcher.group(1))));
 
             }
 
@@ -50,7 +57,7 @@ public class DualMenu {
         return Deck.isPlayerHaveActivatedDeck(player);
 
     }
-    private void createGame(Player playerOne,Player playerTwo){
+    private void createGame(Player playerOne, Player playerTwo){
         new Board(playerOne);
         new Board(playerTwo);
     }

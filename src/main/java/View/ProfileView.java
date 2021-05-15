@@ -1,8 +1,13 @@
+package View;
+
+import Controller.ProfileMenu;
+import Model.Player;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ProfileView {
-    enum Commands {
+   public enum Commands {
         INVALID,
         NickNameSuccessful,
         NicknameExists,
