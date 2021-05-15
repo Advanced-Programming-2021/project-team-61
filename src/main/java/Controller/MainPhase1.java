@@ -20,8 +20,6 @@ public class MainPhase1 {
            m = new MainPhase1();
         return m;
     }
-    //??
-    private MainPhase1 mainPhase1 = MainPhase1.getInstance();
 
     public void run(Player me , Player rival) {
         while (true) {
@@ -42,7 +40,8 @@ public class MainPhase1 {
             else if(command.equals("flip-summon")){
                 ProcessFlipSummon(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
             }else if (command.equals("card show --selected")){
-                ProcessShowCard(Board.getBoardByPlayer(rival));
+                ProcessShowCard(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
+               // ProcessFlipSummon(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
             }
             else if(command.equals("activate effect")){
                ProcessActivation(Board.getBoardByPlayer(me));
@@ -52,7 +51,7 @@ public class MainPhase1 {
         }
     }
 
-    public void ProcessSummon(Board board){
+    private void ProcessSummon(Board board){
         if (Select.getInstance().getLocation()==null) {
             view.printMessage(GameView.Command.NOTCARDSELECTED);
         } else if (Select.getInstance().getLocation()!=Select.Location.HAND || !(board.getCardFromHand(Select.getInstance().getPosition()-1) instanceof MonsterCard)) { //needs one more if
@@ -176,20 +175,34 @@ public class MainPhase1 {
         }
     }
 
-    public void ProcessShowCard(Board rival){
+    private void ProcessShowCard(Board myBoard, Board rivalBoard){
         if (Select.getInstance().getLocation()==null) {
             view.printMessage(GameView.Command.NOTCARDSELECTED);
-        }else if (!canISeeSelectedCard(rival)){/*rivalBoard should send*/
+        }else if (!canISeeSelectedCard(rivalBoard)){
             view.printMessage(GameView.Command.CARDISNOTVISIBLE);
         }else {
             //show card information...
+            if (Select.getInstance().getLocation()== Select.Location.HAND){
+                view.showCard_hand(myBoard, Select.getInstance().getPosition() - 1);
+            }else if (Select.getInstance().getLocation()== Select.Location.MONSTER){
+                view.showCard_myMonster(myBoard, Select.getInstance().getPosition());
+            }else if (Select.getInstance().getLocation()== Select.Location.SPELL){
+                view.showCard_mySpellTrap(myBoard, Select.getInstance().getPosition());
+            }else if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT){
+                view.showCard_myMonster(rivalBoard, Select.getInstance().getPosition());
+            }else if (Select.getInstance().getLocation()== Select.Location.SPELLOPPONENT){
+                view.showCard_mySpellTrap(rivalBoard, Select.getInstance().getPosition());
+            }// Should I show the card in myField and opponentField?????
+
         }
     }
 
+
+
     private boolean canISeeSelectedCard(Board rivalBoard){
-        if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals("")){/*attack hide*/
+        if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals(/*attack hide*/)){
             return false;
-        }else if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals("")) {/*defence hide*/
+        }else if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals(/*defence hide*/)) {
             return false;
         }else if (Select.getInstance().getLocation()== Select.Location.SPELLOPPONENT && rivalBoard.getSpellTrapZoneByNumber(Select.getInstance().getPosition() - 1).equals("H")){
             return false;

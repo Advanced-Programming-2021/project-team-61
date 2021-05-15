@@ -10,4 +10,11 @@ public class SpellCard extends Card{
         allCards.add(this);
 
     }
+
+    public static void printACardComplete(SpellCard card){
+        System.out.println("Name : " + card.cardName);
+        System.out.println("Spell");
+        System.out.println("Type : " + card.status);
+        System.out.println("Description : " + card.description);
+    }
 }

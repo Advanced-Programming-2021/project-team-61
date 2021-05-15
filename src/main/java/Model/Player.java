@@ -125,4 +125,8 @@ public class Player {
     public void addCardToPlayerCardsAfterRemoveFromDeck(String cardName){
         playerCards.add(Card.getCardByName(cardName));
     }
+
+    public String getNickname() {
+        return nickname;
+    }
 }
