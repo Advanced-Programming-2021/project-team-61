@@ -14,7 +14,7 @@ public class DualView {
     }
 
     private static DualView view = null;
-    private DualMenu dualMenu = DualMenu.getInstance();
+    private DualMenu dualMenu ;
     private String command;
     private String regex;
     private Matcher matcher;
@@ -30,6 +30,7 @@ public class DualView {
     }
 
     public void scan(String username) {
+        dualMenu = DualMenu.getInstance();
         while (true) {
             command = RegisterView.scanner.nextLine();
             if (command.startsWith("duel --new --second-player")) {

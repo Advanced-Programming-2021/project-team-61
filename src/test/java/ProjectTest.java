@@ -1,10 +1,12 @@
 import Controller.*;
+import Model.Database;
 import Model.Deck;
 import Model.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.PrintStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -57,6 +59,11 @@ class ProjectTest {
     public void testDeckMenu(){
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
+        File f = new File("src\\main\\resources\\Monster.csv");
+        String absolute = f.getAbsolutePath();
+        File f2 = new File("src\\main\\resources\\SpellTrap.csv");
+        String absolute2 = f2.getAbsolutePath();
+        Database.readDataLineByLine(absolute, absolute2);
         DeckMenu deckMenu = DeckMenu.getInstance();
         String command2 ="shop buy Black Pendant";
         String regex2 = "shop buy ([a-zA-Z]+[a-zA-Z ]*)";

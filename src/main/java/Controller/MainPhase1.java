@@ -41,7 +41,6 @@ public class MainPhase1 {
                 ProcessFlipSummon(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
             }else if (command.equals("card show --selected")){
                 ProcessShowCard(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
-               // ProcessFlipSummon(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
             }
             else if(command.equals("activate effect")){
                ProcessActivation(Board.getBoardByPlayer(me));
@@ -181,7 +180,6 @@ public class MainPhase1 {
         }else if (!canISeeSelectedCard(rivalBoard)){
             view.printMessage(GameView.Command.CARDISNOTVISIBLE);
         }else {
-            //show card information...
             if (Select.getInstance().getLocation()== Select.Location.HAND){
                 view.showCard_hand(myBoard, Select.getInstance().getPosition() - 1);
             }else if (Select.getInstance().getLocation()== Select.Location.MONSTER){
@@ -200,9 +198,7 @@ public class MainPhase1 {
 
 
     private boolean canISeeSelectedCard(Board rivalBoard){
-        if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals(/*attack hide*/)){
-            return false;
-        }else if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals("DH")) {
+        if (Select.getInstance().getLocation()== Select.Location.MONSTEROPPONENT && rivalBoard.getMonsterZoneByNumber(Select.getInstance().getPosition() - 1).equals("DH")) {
             return false;
         }else if (Select.getInstance().getLocation()== Select.Location.SPELLOPPONENT && rivalBoard.getSpellTrapZoneByNumber(Select.getInstance().getPosition() - 1).equals("H")){
             return false;
