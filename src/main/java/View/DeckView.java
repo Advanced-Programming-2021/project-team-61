@@ -47,7 +47,7 @@ public class DeckView {
             if ((getCommandMatcher(command, "menu exit")).find()) {
                 break;
             }
-            else if ((getCommandMatcher(command, "menu show-current")).find()) {
+            else if ((getCommandMatcher(command, "msc")).find()) {
                 printMessage(Commands.CURRENTMENU, "", "");
             }
             else if ((matcher = getCommandMatcher(command, "^deck create ([a-zA-Z\\s]+)$")).find()) {

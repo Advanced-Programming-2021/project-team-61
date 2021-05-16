@@ -45,7 +45,7 @@ public class ShopView {
             }
             else if ((matcher = getCommandMatcher(command, "shop show --all")).find())
                 printAllCards();
-            else if (command.equals("menu show --current"))
+            else if (command.equals("msc"))
                 printMessage(Commands.CurrentMenu);
             else
                 printMessage(Commands.INVALID);

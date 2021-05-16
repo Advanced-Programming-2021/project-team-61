@@ -37,7 +37,7 @@ public class MainView {
                 break;
             } else if ((matcher = getCommandMatcher(command, "menu enter ([^\\s]+)")).find())
                 mainMenu.menuEnter(matcher.group(1), username);
-            else if (command.equals("menu show--current"))
+            else if (command.equals("msc"))
                 printMessage(Commands.menuName);
             else
                 printMessage(Commands.INVALID);
