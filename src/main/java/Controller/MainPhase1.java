@@ -253,7 +253,7 @@ public class MainPhase1 {
 
     private void setSpellTrap(Board board) {
         int emptyPlace = board.getEmptyPlaceInSpellTrapZone();
-        board.setMonsterZone(emptyPlace, "H");
+        board.setSpellTrapZone(emptyPlace, "H");
         board.addSpellTrapCardToField(emptyPlace + 1, board.getCardFromHand(Select.getInstance().getPosition()));
         view.printMessage(MainPhaseView.Commands.SetSuccessful);
     }
