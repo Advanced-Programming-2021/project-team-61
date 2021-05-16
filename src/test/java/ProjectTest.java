@@ -20,8 +20,8 @@ class ProjectTest {
         System.setOut(new PrintStream(outContent));
         RegisterMenu menu = RegisterMenu.getInstance();
         Player player = new Player("alirez","ali","1234");
-        String command = "user create --username alireza --nickname ali --password 1234";
-        String regex = "user create --username ([^\\s]+) --nickname ([^\\s]+) --password ([^\\s]+)";
+        String command = "user create --u alireza --n ali --p 1234";
+        String regex = "user create --u ([^\\s]+) --n ([^\\s]+) --p ([^\\s]+)";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(command);
         if(m.find()){
@@ -88,6 +88,8 @@ class ProjectTest {
 
 
     }
+
+
 
 
 
