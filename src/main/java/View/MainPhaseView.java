@@ -114,7 +114,7 @@ public class MainPhaseView {
                 break;
             }
             case NoMonsterInAddress:{
-                System.out.println("there no monster one this address\n");
+                System.out.println("there no monster one this address");
                 break;
 
             }
