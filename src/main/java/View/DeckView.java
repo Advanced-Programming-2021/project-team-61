@@ -100,7 +100,7 @@ public class DeckView {
     public void printMessage(DeckView.Commands message, String st1, String st2) {
         switch (message) {
             case CURRENTMENU: {
-                System.out.println("deck menu\n");
+                System.out.println("deck menu");
                 break;
             }
             case CREATESUCCESSFULLY: {
@@ -166,8 +166,8 @@ public class DeckView {
 
     public void printAllDecksOfPlayer(ArrayList<Deck> allDecks) {
         String validCheck;
-        System.out.println("Decks:\n");
-        System.out.println("Active Model.Deck:\n");
+        System.out.println("Decks:");
+        System.out.println("Active Model.Deck:");
         for (Deck deck : allDecks) {
             if (deck.isActivated()) {
                 if (deck.isDeckValid()) {
@@ -175,11 +175,11 @@ public class DeckView {
                 } else {
                     validCheck = "invalid";
                 }
-                System.out.println(deck.getDeckName() + " : main deck " + deck.getMainDeck().size() + " , side deck " + deck.getSideDeck().size() + validCheck + "\n");
+                System.out.println(deck.getDeckName() + " : main deck " + deck.getMainDeck().size() + " , side deck " + deck.getSideDeck().size() + validCheck);
                 break;
             }
         }
-        System.out.println("Other Decks:\n");
+        System.out.println("Other Decks:");
         sortDeck(allDecks);
         for (Deck deck : allDecks) {
             if (deck.isDeckValid()) {
@@ -188,7 +188,7 @@ public class DeckView {
                 validCheck = "invalid";
             }
             if (!deck.isActivated())
-                System.out.println(deck.getDeckName() + " : main deck " + deck.getMainDeck().size() + " , side deck " + deck.getSideDeck().size() + validCheck + "\n");
+                System.out.println(deck.getDeckName() + " : main deck " + deck.getMainDeck().size() + " , side deck " + deck.getSideDeck().size() + validCheck);
         }
     }
 
@@ -201,20 +201,20 @@ public class DeckView {
             else
                 spellTrap.add(card);
         }
-        System.out.println("Model.Deck: " + deckName + "\n");
+        System.out.println("Model.Deck: " + deckName );
         if (M_S.equals("M")) {
-            System.out.println("Main deck:\n");
+            System.out.println("Main deck:");
         } else {
-            System.out.println("Side deck:\n");
+            System.out.println("Side deck:");
         }
         sortCards(monsters);
         sortCards(spellTrap);
-        System.out.println("Monsters:\n");
+        System.out.println("Monsters:");
         for (Card monster : monsters)
-            System.out.println(monster.getCardName() + ":" + monster.getDescription() + "\n");
-        System.out.println("Spell and Traps:\n");
+            System.out.println(monster.getCardName() + ":" + monster.getDescription());
+        System.out.println("Spell and Traps:");
         for (Card spell : spellTrap)
-            System.out.println(spell.getCardName() + ":" + spell.getDescription() + "\n");
+            System.out.println(spell.getCardName() + ":" + spell.getDescription());
 
     }
 
@@ -239,7 +239,7 @@ public class DeckView {
     public void printAllCardsOfPlayer(ArrayList<Card> allCards) {
         sortCards(allCards);
         for (Card card : allCards) {
-            System.out.println(card.getCardName() + " : " + card.getDescription() + "\n");
+            System.out.println(card.getCardName() + " : " + card.getDescription());
         }
 
     }

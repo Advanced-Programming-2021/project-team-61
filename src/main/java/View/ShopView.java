@@ -59,15 +59,15 @@ public class ShopView {
                 break;
             }
             case WrongName: {
-                System.out.println("there is no card with this name\n");
+                System.out.println("there is no card with this name");
                 break;
             }
             case EnoughMoney: {
-                System.out.println("not enough money\n");
+                System.out.println("not enough money");
                 break;
             }
             case INVALID: {
-                System.out.println("invalid command\n");
+                System.out.println("invalid command");
                 break;
             }
             default:
@@ -79,7 +79,7 @@ public class ShopView {
         ArrayList<Card> allCards = Card.getAllCards();
         sort(allCards);
         for (Card allCard : allCards) {
-            System.out.print(allCard.getCardName() + ":" + allCard.getPrice() + "\n");
+            System.out.print(allCard.getCardName() + ":" + allCard.getPrice());
             System.out.println();
         }
     }

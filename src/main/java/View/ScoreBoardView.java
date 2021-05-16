@@ -53,11 +53,11 @@ public class ScoreBoardView {
     public void printMessage(Commands message) {
         switch (message) {
             case INVALID: {
-                System.out.println("invalid command\n");
+                System.out.println("invalid command");
                 break;
             }
             case CURRENTMENU: {
-                System.out.println("ScoreBoard Menu\n");
+                System.out.println("ScoreBoard Menu");
                 break;
             }
             default:
@@ -69,14 +69,14 @@ public class ScoreBoardView {
         int rank = 0;
         int currentScore = -1;
         if (allPlayerNickname.size()==0){
-            System.out.println("we don't have any player...\n");
+            System.out.println("we don't have any player...");
         }else {
             for (String nickname:allPlayerNickname) {
                 if (currentScore != Player.getScoreByNickname(nickname)){
                     rank++;
                     currentScore = Player.getScoreByNickname(nickname);
                 }
-                System.out.println(rank + "-" + nickname + Player.getScoreByNickname(nickname) + "\n");
+                System.out.println(rank + "-" + nickname + Player.getScoreByNickname(nickname) );
             }
         }
     }

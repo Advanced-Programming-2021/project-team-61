@@ -105,23 +105,23 @@ public class GameView {
                 break;
             }
             case ENTERTHECARDNAME:{
-                System.out.println("please enter the cardName which you guess your rival has:\n");
+                System.out.println("please enter the cardName which you guess your rival has:");
                 break;
             }
             case INVALIDSELECTION:{
-                System.out.println("invalid selection\n");
+                System.out.println("invalid selection");
                 break;
             }
             case CARDSELECTED:{
-                System.out.println("card selected\n");
+                System.out.println("card selected");
                 break;
             }
             case CARDDESELECTED:{
-                System.out.println("card deselected\n");
+                System.out.println("card deselected");
                 break;
             }
             case NOCARDFOUNDINGIVENPOSITION:{
-                System.out.println("no card found in the given position\n");
+                System.out.println("no card found in the given position");
                 break;
             }
             case NOTBESET: {
@@ -153,19 +153,19 @@ public class GameView {
                 break;
             }
             case NOTATTACK:{
-                System.out.println("you can't attack with this card\n");
+                System.out.println("you can't attack with this card");
                 break;
             }
             case HASATTACKED:{
-                System.out.println("this card already attacked\n");
+                System.out.println("this card already attacked");
                 break;
             }
             case NOCARDTOATTACK:{
-                System.out.println("there is no card to attack here\n");
+                System.out.println("there is no card to attack here");
                 break;
             }
             case CANTDIRECTATTACK:{
-                System.out.println("you can’t attack the opponent directly\n");
+                System.out.println("you can’t attack the opponent directly");
                 break;
             }
             case bothDamage:{
@@ -189,11 +189,11 @@ public class GameView {
                 break;
             }
             case GRAVEYARDEMPTY:{
-                System.out.println("graveyard empty\n");
+                System.out.println("graveyard empty");
                 break;
             }
             case CARDISNOTVISIBLE:{
-                System.out.println("card is not visible\n");
+                System.out.println("card is not visible");
                 break;
             }
             case notSpellCard:{
@@ -215,7 +215,7 @@ public class GameView {
     public void printMessageByAddingString(Command message, int s1){
         switch (message){
             case DIRECTATTACKSUCCESSFULLY:{
-                System.out.println("you opponent receives "+ s1 +" battale damage\n");
+                System.out.println("you opponent receives "+ s1 +" battale damage");
                 break;
             }
             case damageOpponent:{
@@ -227,7 +227,7 @@ public class GameView {
                 break;
             }
             case justLifePointDecrease:{
-                System.out.print("no card is destroyed and you received "+s1+" battle damage\n");
+                System.out.print("no card is destroyed and you received "+s1+" battle damage");
                 break;
             }
         }
@@ -244,7 +244,7 @@ public class GameView {
     }
     public void printGraveyard(ArrayList<Card> graveyard){
         for (int i = 1; i <= graveyard.size(); i++) {
-            System.out.println(i + ". " + graveyard.get(i-1).getCardName() + " : " + graveyard.get(i-1).getDescription() + "\n");
+            System.out.println(i + ". " + graveyard.get(i-1).getCardName() + " : " + graveyard.get(i-1).getDescription());
         }
     }
     public void showBoard(Board myBoard, Board rivalBoard){
