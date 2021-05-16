@@ -282,8 +282,8 @@ public class Board {
     public MonsterCard getMonsterCardByKey(int key){
         return monsterCardsInField.get(key);
     }
-    public boolean hasAttackInTurn(int index){
-        return hasAttackInTurn[index]!=0;
+    public int getHasAttackInTurn(int index){
+        return hasAttackInTurn[index];
     }
     public void destroyCardInMonsterZone(int number){
        graveYard.add(monsterCardsInField.get(number));
