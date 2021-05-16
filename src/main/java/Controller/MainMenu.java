@@ -25,7 +25,7 @@ public class MainMenu {
                 dualView.scan(username);
                 break;
             }
-            case "Model.Deck": {
+            case "Deck": {
                 DeckView deckView = DeckView.getInstance();
                 deckView.scan(username);
                 break;
