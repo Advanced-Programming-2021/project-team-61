@@ -76,7 +76,7 @@ public class ScoreBoardView {
                     rank++;
                     currentScore = Player.getScoreByNickname(nickname);
                 }
-                System.out.println(rank + "-" + nickname + Player.getScoreByNickname(nickname) );
+                System.out.println(rank + " - " + nickname + Player.getScoreByNickname(nickname) );
             }
         }
     }
