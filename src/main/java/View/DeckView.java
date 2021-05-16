@@ -201,7 +201,7 @@ public class DeckView {
             else
                 spellTrap.add(card);
         }
-        System.out.println("Model.Deck: " + deckName );
+        System.out.println("Deck: " + deckName );
         if (M_S.equals("M")) {
             System.out.println("Main deck:");
         } else {
