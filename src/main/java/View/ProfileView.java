@@ -43,7 +43,7 @@ public class ProfileView {
                 profileMenu.changePassword(Player.getPlayerByUsername(username), matcher);
             else if (command.equals("menu exit"))
                 break;
-            else if (command.equals("menu show--current"))
+            else if (command.equals("msc"))
                 printMessage(Commands.showMenu, "");
             else
                 printMessage(ProfileView.Commands.INVALID, "");

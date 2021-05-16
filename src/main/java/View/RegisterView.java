@@ -42,7 +42,7 @@ public class RegisterView {
                 registerMenu.userCreateProcess(matcher);
             else if ((matcher = getCommandMatcher(command, "user login --u ([^\\s]+) --p ([^\\s]+)")).find())
                 registerMenu.loginProcess(matcher);
-            else if (command.equals("menu show-current")) {
+            else if (command.equals("msc")) {
                 printMessage(Commands.showMenu, "");
             } else if (command.startsWith("menu enter")) {
                 printMessage(Commands.firstLogin, "");

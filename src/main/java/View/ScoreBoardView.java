@@ -35,7 +35,7 @@ public class ScoreBoardView {
             if (( getCommandMatcher(command,"menu exit")).find()) {
                 break;
             }
-            else if (( getCommandMatcher(command,"menu show-current")).find()){
+            else if (( getCommandMatcher(command,"msc")).find()){
                 printMessage(Commands.CURRENTMENU);
             }
             else if(command.equals("scoreboard show")){
