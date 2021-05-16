@@ -38,9 +38,9 @@ public class RegisterView {
         registerMenu = RegisterMenu.getInstance();
         while (true) {
             command = scanner.nextLine();
-            if ((matcher = getCommandMatcher(command, "user create --username ([^\\s]+) --nickname ([^\\s]+) --password ([^\\s]+)")).find())
+            if ((matcher = getCommandMatcher(command, "user create --u ([^\\s]+) --n ([^\\s]+) --p ([^\\s]+)")).find())
                 registerMenu.userCreateProcess(matcher);
-            else if ((matcher = getCommandMatcher(command, "user login --username ([^\\s]+) --password ([^\\s]+)")).find())
+            else if ((matcher = getCommandMatcher(command, "user login --u ([^\\s]+) --p ([^\\s]+)")).find())
                 registerMenu.loginProcess(matcher);
             else if (command.equals("menu show-current")) {
                 printMessage(Commands.showMenu, "");
