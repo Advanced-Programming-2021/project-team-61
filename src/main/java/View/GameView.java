@@ -47,7 +47,8 @@ public class GameView {
         isActivated,
         spellZoneFull,
         playerWins,
-        pleaseEnterTheCardNumber
+        pleaseEnterTheCardNumber,
+        cantGetCardFromDeck
 
     }
 
@@ -212,6 +213,9 @@ public class GameView {
             }
             case pleaseEnterTheCardNumber:{
                 System.out.println("please enter the number which you want summon:");
+            }
+            case cantGetCardFromDeck:{
+                System.out.println("you can't get a card from deck in this turn");
             }
 
         }

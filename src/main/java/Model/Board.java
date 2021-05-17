@@ -27,6 +27,7 @@ public class Board {
     private int[] hasAttackInTurn = new int[5];
     private int[] extraAttack = new int[5];
     private int[] extraDefence = new int[5];
+    private boolean canGetCardFromDeck = true;
     private static ArrayList<Board> boards = new ArrayList<>();
     private int lifePoint;
     private int numberOfWins = 0;
@@ -78,7 +79,12 @@ public class Board {
     }
 
     public void addCardToHand() {
-        hand.add(mainDeck.get(0));
+        if (isCanGetCardFromDeck()) {
+            hand.add(mainDeck.get(0));
+        }else {
+            GameView.getInstance().printMessage(GameView.Command.cantGetCardFromDeck);
+            setCanGetCardFromDeck(true);
+        }
     }
 
     public void setMonsterZone(int index, String manner) {
@@ -414,7 +420,11 @@ public class Board {
         this.monsterCardsInField.remove(key);
     }
 
+    public boolean isCanGetCardFromDeck() {
+        return canGetCardFromDeck;
+    }
 
-
-
+    public void setCanGetCardFromDeck(boolean canGetCardFromDeck) {
+        this.canGetCardFromDeck = canGetCardFromDeck;
+    }
 }

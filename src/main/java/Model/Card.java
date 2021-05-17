@@ -419,8 +419,8 @@ public class Card {
         Board.getBoardByPlayer(rivalPlayer).destroyAllMonster();
     }
 
-    private static void timeSeal() {
-
+    private static void timeSeal() {  //trap
+        Board.getBoardByPlayer(rivalPlayer).setCanGetCardFromDeck(false);
     }
 
     private static void negateAttack() {
