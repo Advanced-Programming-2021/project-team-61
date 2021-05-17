@@ -396,8 +396,8 @@ public class Card {
 
     }
 
-    private static void mirrorForce() {
-
+    private static void mirrorForce() { //trap
+        Board.getBoardByPlayer(player).setMirrorForceEffect(true);
     }
 
     private static void magicCylinder() {

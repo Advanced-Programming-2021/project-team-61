@@ -28,6 +28,7 @@ public class Board {
     private int[] extraAttack = new int[5];
     private int[] extraDefence = new int[5];
     private boolean canGetCardFromDeck = true;
+    private boolean mirrorForceEffect = false;
     private static ArrayList<Board> boards = new ArrayList<>();
     private int lifePoint;
     private int numberOfWins = 0;
@@ -181,6 +182,15 @@ public class Board {
     public void destroyAllMonster(){
         for (String cardName:monsterZone) {
             destroyCard(Card.getCardByName(cardName));
+        }
+    }
+
+    public void destroyAllMonsterInAttack(){
+        for (int i = 0; i < 5; i++) {
+            if (getMonsterZoneByNumber(i).equals("OO")) {
+                destroyCard((Card) getMonsterCardByKey(i - 1));
+                setMonsterZone(i,"E");
+            }
         }
     }
 
@@ -427,4 +437,13 @@ public class Board {
     public void setCanGetCardFromDeck(boolean canGetCardFromDeck) {
         this.canGetCardFromDeck = canGetCardFromDeck;
     }
+
+    public boolean isMirrorForceEffectActive() {
+        return mirrorForceEffect;
+    }
+
+    public void setMirrorForceEffect(boolean mirrorForceEffect) {
+        this.mirrorForceEffect = mirrorForceEffect;
+    }
 }
+

@@ -48,7 +48,8 @@ public class GameView {
         spellZoneFull,
         playerWins,
         pleaseEnterTheCardNumber,
-        cantGetCardFromDeck
+        cantGetCardFromDeck,
+        cantAttackInThisTurn
 
     }
 
@@ -213,9 +214,15 @@ public class GameView {
             }
             case pleaseEnterTheCardNumber:{
                 System.out.println("please enter the number which you want summon:");
+                break;
             }
             case cantGetCardFromDeck:{
                 System.out.println("you can't get a card from deck in this turn");
+                break;
+            }
+            case cantAttackInThisTurn:{
+                System.out.println("you can't attack in this turn");
+                break;
             }
 
         }
