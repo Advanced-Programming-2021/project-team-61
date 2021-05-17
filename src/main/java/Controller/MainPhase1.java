@@ -219,7 +219,7 @@ public class MainPhase1 {
 
     }
 
-    private void summonMonster(Board board, MonsterCard monsterCard) {
+    public void summonMonster(Board board, MonsterCard monsterCard) {
         int emptyPlace = board.getEmptyPlaceInMonsterZone();
         board.setMonsterZone(emptyPlace, "OO");
         board.addMonsterCardToField(emptyPlace + 1, monsterCard);

@@ -46,7 +46,8 @@ public class GameView {
         notSpellCard,
         isActivated,
         spellZoneFull,
-        playerWins
+        playerWins,
+        pleaseEnterTheCardNumber
 
     }
 
@@ -208,6 +209,9 @@ public class GameView {
             case spellZoneFull:{
                 System.out.println("spell card zone is full");
                 break;
+            }
+            case pleaseEnterTheCardNumber:{
+                System.out.println("please enter the number which you want summon:");
             }
 
         }

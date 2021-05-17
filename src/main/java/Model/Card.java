@@ -1,6 +1,8 @@
 package Model;
 
+import Controller.MainPhase1;
 import View.GameView;
+import sun.jvm.hotspot.debugger.posix.elf.ELFException;
 
 import java.util.ArrayList;
 
@@ -435,8 +437,22 @@ public class Card {
     }
 
     private static void callofTheHaunted() {
-
+        GameView.getInstance().printGraveyard(Board.getBoardByPlayer(player).getGraveYard());
+        GameView.getInstance().printMessage(GameView.Command.pleaseEnterTheCardNumber);
+        int cardNumber ;//= Integer.parseInt(GameView.getInstance().scan());
+        while (true){
+            cardNumber = Integer.parseInt(GameView.getInstance().scan());
+            if (!(Board.getBoardByPlayer(player).getGraveYard().get(cardNumber - 1) instanceof MonsterCard)) {
+                GameView.getInstance().printMessage(GameView.Command.NOTBESUMMONED);
+                GameView.getInstance().printMessage(GameView.Command.pleaseEnterTheCardNumber);
+            }
+            else
+                break;
+        }
+        MainPhase1.getInstance().summonMonster(Board.getBoardByPlayer(player),(MonsterCard) Board.getBoardByPlayer(player).getGraveYard().get(cardNumber - 1));
+        GameView.getInstance().printMessage(GameView.Command.SUMMONSUCCESSFUL);
     }
+
 
     private static void vanityEmptiness() {
 
