@@ -45,7 +45,8 @@ public class GameView {
         cannotBeAttacked,
         notSpellCard,
         isActivated,
-        spellZoneFull
+        spellZoneFull,
+        playerWins
 
     }
 
@@ -239,6 +240,9 @@ public class GameView {
             }
             case cardName: {
                 System.out.print("opponent's monster card was "+s1+ " and ");
+            }
+            case playerWins:{
+                System.out.println(s1+" won the game and the score is 0-0");
             }
         }
     }

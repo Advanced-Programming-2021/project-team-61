@@ -40,7 +40,7 @@ public class DualMenu {
             for(int i = 1; i < Integer.parseInt(matcher.group(2)) ; i++){
                 createGame(Player.getPlayerByUsername(username), Player.getPlayerByUsername(matcher.group(1)));
                 GameController g = GameController.getInstance();
-                g.run(Board.getBoardByPlayer(Player.getPlayerByUsername(username)), Board.getBoardByPlayer(Player.getPlayerByUsername(matcher.group(1))));
+                g.run(Player.getPlayerByUsername(username), Player.getPlayerByUsername(matcher.group(1)));
 
             }
 

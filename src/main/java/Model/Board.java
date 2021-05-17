@@ -29,6 +29,7 @@ public class Board {
     private int[] extraDefence = new int[5];
     private static ArrayList<Board> boards = new ArrayList<>();
     private int lifePoint;
+    private int numberOfWins = 0;
 
 
     public Board(Player player) {
@@ -40,6 +41,14 @@ public class Board {
         this.initializeFieldZone();
         this.lifePoint = 8000;
         boards.add(this);
+    }
+
+    public void setNumberOfWins() {
+        this.numberOfWins+=1;
+    }
+
+    public int getNumberOfWins() {
+        return numberOfWins;
     }
 
     public int getLifePoint() {
@@ -313,16 +322,19 @@ public class Board {
             amount=0;
         }
     }
+    public void resetExtraAttackByNumber(int index){
+        extraAttack[index] = 0;
+    }
     public void resetExtraDefence(){
         for (int amount:extraDefence) {
             amount=0;
         }
     }
     public void setExtraAttackByIndex(int index, int amount){
-        extraAttack[index - 1]=amount;
+        extraAttack[index - 1]+=amount;
     }
     public void setExtraDefenceByIndex(int index, int amount){
-        extraDefence[index - 1]=amount;
+        extraDefence[index - 1]+=amount;
     }
 
 

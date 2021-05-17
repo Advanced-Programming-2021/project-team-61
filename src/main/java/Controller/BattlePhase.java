@@ -7,6 +7,7 @@ import Model.Select;
 import View.BattlePhaseView;
 import View.GameView;
 
+import java.nio.charset.MalformedInputException;
 import java.util.Scanner;
 
 
@@ -14,6 +15,7 @@ public class BattlePhase {
 
     private static BattlePhase b = null;
     private BattlePhaseView view;
+    private GameView gameView;
 
     private BattlePhase(){
     }
@@ -51,7 +53,7 @@ public class BattlePhase {
 
     }
     private void attack(MonsterCard myMonster, MonsterCard rivalMonster, Board myBoard, Board rivalBoard, int number){
-        checkSuspiousCardBeforeAttack(rivalMonster,myMonster,myBoard);
+        checkSuspiousCardBeforeAttack(rivalMonster,myMonster,myBoard,rivalBoard,number);
         String status = rivalBoard.getMonsterZoneByNumber(number-1);
         if(status.equals("OO"))
             attackOO(myMonster,rivalMonster,myBoard,rivalBoard,number);
@@ -70,8 +72,12 @@ public class BattlePhase {
             int damage = myMonster.getAttack() - rivalMonster.getAttack();
             checkSuspiciousCardAfterAttack(rivalMonster,myBoard);
             rivalBoard.destroyCardInMonsterZone(number);
+            if(!isExplorerCard(rivalMonster,myMonster,myBoard)){
             rivalBoard.setLifePoint(damage);
             view.printMessage(BattlePhaseView.Commands.damageOpponent,damage,"");
+            }
+
+
 
         }
         else if(myMonster.getAttack() == rivalMonster.getAttack()){
@@ -84,16 +90,20 @@ public class BattlePhase {
             int damage = rivalMonster.getAttack() - myMonster.getAttack();
             myBoard.setLifePoint(damage);
             view.printMessage(BattlePhaseView.Commands.damageMe,damage,"");
-        }}
+        }
+        if(isGameFinished(myBoard,rivalBoard))
+            CalculateScores(myBoard,rivalBoard);
+        }
     }
     private void attackDO(MonsterCard myMonster, MonsterCard rivalMonster, Board myBoard, Board rivalBoard, int number){
-        if(rivalMonster.getCardName().equals("Command Knight"))
+        if(rivalMonster.getCardName().equals("Command Knight") && !rivalBoard.isMonsterZoneEmpty() && !rivalBoard.getMonsterZoneByNumber(number-1).equals("DH"))
             view.printMessage(BattlePhaseView.Commands.cannotBeAttacked,0,"");
         else{
         if(rivalMonster.getDefense() < myMonster.getAttack()){
             checkSuspiciousCardAfterAttack(rivalMonster,myBoard);
             rivalBoard.destroyCardInMonsterZone(number);
-            view.printMessage(BattlePhaseView.Commands.damageRivalMonster,0,"");
+            if(!isExplorerCard(rivalMonster,myMonster,myBoard))
+              view.printMessage(BattlePhaseView.Commands.damageRivalMonster,0,"");
 
         }
         else if(rivalMonster.getDefense() == myMonster.getAttack()){
@@ -110,6 +120,7 @@ public class BattlePhase {
         if(rivalMonster.getDefense() < myMonster.getAttack()){
             checkSuspiciousCardAfterAttack(rivalMonster,myBoard);
             rivalBoard.destroyCardInMonsterZone(number);
+            if(!isExplorerCard(rivalMonster,myMonster,myBoard))
             view.printMessage(BattlePhaseView.Commands.damageRivalMonsterHidden,0,rivalMonster.getCardName());
         }
         else if(rivalMonster.getDefense() == myMonster.getAttack()){
@@ -136,15 +147,36 @@ public class BattlePhase {
             int damage = myBoard.getMonsterCardByKey(Select.getInstance().getPosition()).getAttack() + myBoard.getExtraAttackByIndex(Select.getInstance().getPosition());
             view.printMessage(BattlePhaseView.Commands.directAttackSuccessful, damage,"");
             myBoard.setLifePoint(damage);
+            if(isGameFinished(myBoard,rivalBoard)){
+                CalculateScores(myBoard,rivalBoard);
+            }
         }
     }
-    private void checkSuspiousCardBeforeAttack(MonsterCard monsterCard,MonsterCard myMonster,Board myBoard){
-        if(monsterCard.getCardName().equals("Suijin")){
-            System.out.println("do you want to activate the effect of your card?");
-            Scanner scanner = new Scanner(System.in);
-            if(scanner.nextLine().equals("Yes"))
-                myBoard.setExtraAttackByIndex(Select.getInstance().getPosition() -1,-1*(myMonster.getAttack()+myBoard.getExtraAttackByIndex(Select.getInstance().getPosition())-1));
+
+    private void checkSuspiousCardBeforeAttack(MonsterCard monsterCard,MonsterCard myMonster,Board myBoard,Board rivalBoard,int number){
+
+        if(monsterCard.getCardName().equals("Marshmallon") && rivalBoard.getMonsterZoneByNumber(number-1).equals("DH"))
+            myBoard.setLifePoint(1000);
+        else if(myMonster.getCardName().equals("The Calculator")){
+            int attack = 0;
+            for(int i = 0;i<myBoard.getMonsterZone().length;i++){
+                if(myBoard.getMonsterZone()[i].equals("OO"))
+                  attack += myBoard.getMonsterCardByKey(i+1).getLevel();
+            }
+            attack *=300;
+            myBoard.resetExtraAttackByNumber(Select.getInstance().getPosition()-1);
+            myBoard.setExtraAttackByIndex(Select.getInstance().getPosition()-1,attack );
         }
+
+    }
+    private boolean isExplorerCard(MonsterCard monsterCard,MonsterCard myMonster,Board board){
+        if(monsterCard.getCardName().equals("Explorer Dragon")){
+            board.destroyCardInMonsterZone(Select.getInstance().getPosition());
+            return true;
+        }
+        else
+            return false;
+
     }
     private void checkSuspiciousCardAfterAttack(MonsterCard monsterCard,Board myBoard){
         if(monsterCard.getCardName().equals("Yomi Ship")){
@@ -167,5 +199,22 @@ public class BattlePhase {
     }
     private boolean isMonsterAvailable(Board board,int number){
         return !board.getMonsterZoneByNumber(number -1).equals("E");
+    }
+    private boolean isGameFinished(Board myBoard,Board rivalBoard){
+        return (myBoard.getLifePoint()<=0 || rivalBoard.getLifePoint()<=0);
+    }
+    private void CalculateScores(Board myBoard,Board rivalBoard){
+        gameView = GameView.getInstance();
+        if(myBoard.getLifePoint()<=0){
+            rivalBoard.setNumberOfWins();
+            gameView.printMessageByString(GameView.Command.playerWins,rivalBoard.getPlayer().getUsername());
+        }
+        else{
+            myBoard.setNumberOfWins();
+            gameView.printMessageByString(GameView.Command.playerWins,myBoard.getPlayer().getUsername());
+        }
+        view.setGameFinished(true);
+        GameController.getInstance().setGameFinished(true);
+
     }
 }

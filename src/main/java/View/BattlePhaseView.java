@@ -1,6 +1,7 @@
 package View;
 
 import Controller.BattlePhase;
+import Controller.GameController;
 import Model.Board;
 import Model.Player;
 
@@ -38,6 +39,7 @@ public class BattlePhaseView {
     private Scanner scanner = RegisterView.scanner;
     private String command;
     private Matcher matcher;
+    private boolean isGameFinished = false;
 
     private BattlePhaseView() {
 
@@ -56,9 +58,15 @@ public class BattlePhaseView {
                 break;
             else if((matcher = getCommandMatcher(command,"attack (\\d+)")).find()){
               battlePhase.ProcessAttack(myBoard,rivalBoard,Integer.parseInt(matcher.group(1)));
+              if(isGameFinished){
+                  break;
+              }
+
             }
             else if (getCommandMatcher(command,"attack direct").find()){
                battlePhase.ProcessDirectAttack(myBoard,rivalBoard);
+               if(isGameFinished)
+                   break;
             }
 
 
@@ -147,6 +155,9 @@ public class BattlePhaseView {
 
 
 
+    }
+    public void setGameFinished(boolean gameFinished){
+        isGameFinished = gameFinished;
     }
     private Matcher getCommandMatcher(String input, String regex){
         Pattern pattern = Pattern.compile(regex);

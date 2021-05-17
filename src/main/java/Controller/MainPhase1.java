@@ -3,6 +3,7 @@ package Controller;
 import Model.*;
 import View.GameView;
 import View.MainPhaseView;
+import View.RegisterView;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -42,12 +43,16 @@ public class MainPhase1 {
         MonsterCard monsterCard = (MonsterCard) board.getCardFromHand(Select.getInstance().getPosition() - 1);
         if (monsterCard.getLevel() <= 4) {
             summonMonster(board, monsterCard);
+            Select.getInstance().deSelect();
+            processTerratiger(monsterCard,board);
         } else {
             if (!IsMonsterEnoughForTribute(board, monsterCard))
                 view.printMessage(MainPhaseView.Commands.NotEnoughCardsForTribute);
             else {
-               if(Tribute(board,monsterCard))
+               if(Tribute(board,monsterCard)){
                    summonMonster(board,monsterCard);
+                   Select.getInstance().deSelect();
+               }
             }
         }
     }
@@ -65,6 +70,7 @@ public class MainPhase1 {
             else {
                 MonsterCard monsterCard = (MonsterCard) board.getCardFromHand(Select.getInstance().getPosition() - 1);
                 setMonster(board, monsterCard);
+                Select.getInstance().deSelect();
                 view.printMessage(MainPhaseView.Commands.SetSuccessful);
             }
         } else if (isCardInHandSpellTrap(board)) {
@@ -84,6 +90,7 @@ public class MainPhase1 {
             view.printMessage(MainPhaseView.Commands.CannotFlip);
         } else {
             flipSummonMonster(board);
+            Select.getInstance().deSelect();
             checkToActivateEffect(board.getMonsterCardByKey(Select.getInstance().getPosition()), rivalBoard);
         }
     }
@@ -167,6 +174,26 @@ public class MainPhase1 {
             board.getSpellTrapByKey(1);
         } else
             board.activateEffect();
+    }
+    private void processTerratiger(MonsterCard monsterCard,Board board){
+        if(monsterCard.getCardName().equals("Terratiger, the Empowered Warrior")){
+            System.out.println("Do you want to activate your effect?");
+            Scanner scanner = RegisterView.scanner;
+            if(scanner.nextLine().equals("yes")){
+                System.out.println("please choose a monster in your hand which its level is lower than 4");
+                if( !board.isMonsterAvailableInMonsterZone(scanner.nextInt()-1))
+                    System.out.println("no monster card there!");
+                else{
+                   MonsterCard monsterCard1 = (MonsterCard) board.getCardFromHand(scanner.nextInt()-1);
+                   if(monsterCard1.getLevel()>4)
+                       System.out.println("cannot summon this");
+                   else
+                    summonMonster(board,(MonsterCard) board.getCardFromHand(scanner.nextInt()-1));}
+            }
+
+
+        }
+
     }
 
     private boolean isACardSelected() {
@@ -320,6 +347,11 @@ public class MainPhase1 {
 
     private boolean isSpellTrapHidden(Board board) {
         return board.getSpellTrapZoneByNumber(Select.getInstance().getPosition() - 1).equals("H");
+    }
+    private boolean isGameFinished(Board myBoard,Board rivalBoard){
+        return myBoard.getLifePoint() <= 0 || rivalBoard.getLifePoint() <= 0;
+
+
     }
 }
 
