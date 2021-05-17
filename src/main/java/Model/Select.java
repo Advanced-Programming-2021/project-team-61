@@ -33,7 +33,7 @@ public class Select {
         Matcher matcher;
         if ((getCommandMatcher(command,"select -d")).find()){
             deSelect();
-            setLocation(null);
+
         }else if ((matcher = getCommandMatcher(command,"select --monster --opponent (\\d+)")).find()){
             monsterOpponent(matcher);
             setLocation(Location.MONSTEROPPONENT);
@@ -118,10 +118,11 @@ public class Select {
         }
     }
 
-    private void deSelect() {
+    public void deSelect() {
         if (getLocation()==null) {
             GameView.getInstance().printMessage(GameView.Command.NOTCARDSELECTED);
         }else {
+            setLocation(null);
             position = 0;
             GameView.getInstance().printMessage(GameView.Command.CARDDESELECTED);
         }
