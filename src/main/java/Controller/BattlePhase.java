@@ -53,14 +53,20 @@ public class BattlePhase {
 
     }
     private void attack(MonsterCard myMonster, MonsterCard rivalMonster, Board myBoard, Board rivalBoard, int number){
-        checkSuspiousCardBeforeAttack(rivalMonster,myMonster,myBoard,rivalBoard,number);
-        String status = rivalBoard.getMonsterZoneByNumber(number-1);
-        if(status.equals("OO"))
-            attackOO(myMonster,rivalMonster,myBoard,rivalBoard,number);
-        else if(status.equals("DO"))
-            attackDO(myBoard.getMonsterCardByKey(Select.getInstance().getPosition()),rivalBoard.getMonsterCardByKey(number),myBoard,rivalBoard,number);
-        else{
-            attackDH(myBoard.getMonsterCardByKey(Select.getInstance().getPosition()),rivalBoard.getMonsterCardByKey(number),myBoard,rivalBoard,number);
+        if (rivalBoard.isMirrorForceEffectActive()){
+            myBoard.destroyAllMonsterInAttack();
+            gameView.printMessage(GameView.Command.cantAttackInThisTurn);
+            rivalBoard.setMirrorForceEffect(false);
+        }else {
+            checkSuspiousCardBeforeAttack(rivalMonster, myMonster, myBoard, rivalBoard, number);
+            String status = rivalBoard.getMonsterZoneByNumber(number - 1);
+            if (status.equals("OO"))
+                attackOO(myMonster, rivalMonster, myBoard, rivalBoard, number);
+            else if (status.equals("DO"))
+                attackDO(myBoard.getMonsterCardByKey(Select.getInstance().getPosition()), rivalBoard.getMonsterCardByKey(number), myBoard, rivalBoard, number);
+            else {
+                attackDH(myBoard.getMonsterCardByKey(Select.getInstance().getPosition()), rivalBoard.getMonsterCardByKey(number), myBoard, rivalBoard, number);
+            }
         }
 
     }
@@ -134,21 +140,27 @@ public class BattlePhase {
 
     }
 
-    public void ProcessDirectAttack(Board myBoard, Board rivalBoard){
-        if(!isACardSelected()) {
-            view.printMessage(BattlePhaseView.Commands.noCardSelected,0,"");
-        }else if(!isSelectedCardInMonsterZone()){
-            view.printMessage(BattlePhaseView.Commands.notAttack,0,"");
-        }else if(hasAttackedInTurn(myBoard)){
-            view.printMessage(BattlePhaseView.Commands.hasAttacked,0,"");
-        }else if (!rivalBoard.isMonsterZoneEmpty()){//add condition that we can't have direct attack ?????
-            view.printMessage(BattlePhaseView.Commands.noCardToAttack,0,"");
+    public void ProcessDirectAttack(Board myBoard, Board rivalBoard) {
+        if (rivalBoard.isMirrorForceEffectActive()){
+            myBoard.destroyAllMonsterInAttack();
+            gameView.printMessage(GameView.Command.cantAttackInThisTurn);
+            rivalBoard.setMirrorForceEffect(false);
         }else {
-            int damage = myBoard.getMonsterCardByKey(Select.getInstance().getPosition()).getAttack() + myBoard.getExtraAttackByIndex(Select.getInstance().getPosition());
-            view.printMessage(BattlePhaseView.Commands.directAttackSuccessful, damage,"");
-            myBoard.setLifePoint(damage);
-            if(isGameFinished(myBoard,rivalBoard)){
-                CalculateScores(myBoard,rivalBoard);
+            if (!isACardSelected()) {
+                view.printMessage(BattlePhaseView.Commands.noCardSelected, 0, "");
+            } else if (!isSelectedCardInMonsterZone()) {
+                view.printMessage(BattlePhaseView.Commands.notAttack, 0, "");
+            } else if (hasAttackedInTurn(myBoard)) {
+                view.printMessage(BattlePhaseView.Commands.hasAttacked, 0, "");
+            } else if (!rivalBoard.isMonsterZoneEmpty()) {//add condition that we can't have direct attack ?????
+                view.printMessage(BattlePhaseView.Commands.noCardToAttack, 0, "");
+            } else {
+                int damage = myBoard.getMonsterCardByKey(Select.getInstance().getPosition()).getAttack() + myBoard.getExtraAttackByIndex(Select.getInstance().getPosition());
+                view.printMessage(BattlePhaseView.Commands.directAttackSuccessful, damage, "");
+                myBoard.setLifePoint(damage);
+                if (isGameFinished(myBoard, rivalBoard)) {
+                    CalculateScores(myBoard, rivalBoard);
+                }
             }
         }
     }
