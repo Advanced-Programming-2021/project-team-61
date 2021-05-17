@@ -378,7 +378,7 @@ public class Card {
 
     }
 
-    private static void commandKnight(Player player) {
+    private static void commandKnight(Player player) {  //monster
         Board board = Board.getBoardByPlayer(player);
         int index = board.getCardIndex("Command Knight");
         if (!board.getMonsterCardByKey(index).isEffectActivated()) {
@@ -390,7 +390,6 @@ public class Card {
                 board.getMonsterCardByKey(index).setEffectActivated(true);
             }
         }
-
     }
 
     private static void trapHole() {
@@ -405,7 +404,7 @@ public class Card {
 
     }
 
-    private static void mindCrush() {
+    private static void mindCrush() {  //trap
         GameView.getInstance().printMessage(GameView.Command.ENTERTHECARDNAME);
         String cardNameToDestroy = GameView.getInstance().scan();
         if (Board.getBoardByPlayer(rivalPlayer).isThisCardInHand_ByName(cardNameToDestroy)) {
@@ -416,8 +415,8 @@ public class Card {
         }
     }
 
-    private static void torrentialTribute() {
-
+    private static void torrentialTribute() {  //trap
+        Board.getBoardByPlayer(rivalPlayer).destroyAllMonster();
     }
 
     private static void timeSeal() {
@@ -436,7 +435,7 @@ public class Card {
 
     }
 
-    private static void callofTheHaunted() {
+    private static void callofTheHaunted() {  //trap
         GameView.getInstance().printGraveyard(Board.getBoardByPlayer(player).getGraveYard());
         GameView.getInstance().printMessage(GameView.Command.pleaseEnterTheCardNumber);
         int cardNumber ;//= Integer.parseInt(GameView.getInstance().scan());
@@ -474,7 +473,7 @@ public class Card {
 
     }
 
-    private static void raigeki() {
+    private static void raigeki() {  //spell
         Board.getBoardByPlayer(rivalPlayer).destroyAllMonster();
     }
 
@@ -486,12 +485,12 @@ public class Card {
 
     }
 
-    private static void harpieFeatherDuster() {
+    private static void harpieFeatherDuster() {  //spell
         Board.getBoardByPlayer(rivalPlayer).destroyAllSpell();
         Board.getBoardByPlayer(rivalPlayer).destroyAllTrap();
     }
 
-    private static void darkHole() {
+    private static void darkHole() { //spell
         Board.getBoardByPlayer(player).destroyAllMonster();
         Board.getBoardByPlayer(rivalPlayer).destroyAllMonster();
     }
