@@ -36,16 +36,13 @@ public class Select {
 
         }else if ((matcher = getCommandMatcher(command,"select --monster --opponent (\\d+)")).find()){
             monsterOpponent(matcher);
-            setLocation(Location.MONSTEROPPONENT);
         }else if ((matcher = getCommandMatcher(command,"select --monster (\\d+)")).find()){
             monster(matcher);
-            setLocation(Location.MONSTER);
         }else if ((matcher = getCommandMatcher(command,"select --spell --opponent (\\d+)")).find()){
             spellOpponent(matcher);
-            setLocation(Location.SPELLOPPONENT);
         }else if ((matcher = getCommandMatcher(command,"select --spell (\\d+)")).find()){
             spell(matcher);
-            setLocation(Location.SPELL);
+
         }else if ((getCommandMatcher(command,"select --field --opponent")).find()){
             position = 10;
             setLocation(Location.FIELDOPPONENT);
@@ -56,53 +53,66 @@ public class Select {
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
         }else if ((matcher = getCommandMatcher(command,"select --hand (\\d+)")).find()){
             hand(matcher);
-            setLocation(Location.HAND);
-        }else {
+        }else if(command.startsWith("select")) {
             GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
         }
+        else
+            GameView.getInstance().printMessage(GameView.Command.invalidCommand);
 
     }
 
     private void monsterOpponent(Matcher matcher){
-        handleMonsterSelect(matcher, rivalPlayer);
+       if(handleMonsterSelect(matcher, rivalPlayer) == 1)
+        setLocation(Location.MONSTEROPPONENT);
     }
 
     private void monster(Matcher matcher){
-        handleMonsterSelect(matcher, player);
+       if(handleMonsterSelect(matcher, player) == 1)
+           setLocation(Location.MONSTER);
     }
 
-    private void handleMonsterSelect(Matcher matcher, Player player) {
+    private int  handleMonsterSelect(Matcher matcher, Player player) {
         int loc = Integer.parseInt(matcher.group(1));
         if (loc>5){
             GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
+            return 0;
         }else if (Board.getBoardByPlayer(player).getMonsterZoneByNumber(loc - 1).equals("E")){
             GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
+            return 0;
         }else {
             card = Board.getBoardByPlayer(player).getMonsterCardByKey(loc);
             position = loc;
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
+            return 1;
         }
     }
 
     private void spellOpponent(Matcher matcher){
-        handleSpellSelect(matcher, rivalPlayer);
+        if(handleSpellSelect(matcher, rivalPlayer) == 1)
+            setLocation(Location.SPELLOPPONENT);
+
     }
 
-    private void handleSpellSelect(Matcher matcher, Player player) {
+    private int handleSpellSelect(Matcher matcher, Player player) {
         int loc = Integer.parseInt(matcher.group(1));
         if (loc>5){
             GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
+            return 0;
         }else if (Board.getBoardByPlayer(player).getSpellTrapZoneByNumber(loc - 1).equals("E")){
             GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
+            return 1;
         }else {
             position = loc;
             card = Board.getBoardByPlayer(player).getSpellTrapByKey(loc);
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
+            return 1;
         }
     }
 
     private void spell(Matcher matcher){
-        handleSpellSelect(matcher, player);
+       if(handleSpellSelect(matcher, player) == 1)
+           setLocation(Location.SPELL);
+
     }
 
     private void hand(Matcher matcher){
@@ -114,7 +124,9 @@ public class Select {
         }else {
             card = Board.getBoardByPlayer(player).getCardFromHand(loc - 1);
             position = loc;
+            setLocation(Location.HAND);
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
+
         }
     }
 
@@ -123,8 +135,10 @@ public class Select {
             GameView.getInstance().printMessage(GameView.Command.NOTCARDSELECTED);
         }else {
             setLocation(null);
+            card = null;
             position = 0;
             GameView.getInstance().printMessage(GameView.Command.CARDDESELECTED);
+
         }
     }
 
