@@ -13,17 +13,17 @@ public class Board {
     private Player player;
     private ArrayList<Card> mainDeck;
     private ArrayList<Card> sideDeck;
-    private String[] monsterZone = new String[5];
-    private HashMap<Integer,MonsterCard> monsterCardsInField = new HashMap<>();
-    private String[] spellTrapZone = new String[5];
-    private HashMap<Integer, Card> spellTrapCardsInField = new HashMap<>();
+   // private String[] monsterZone = new String[5];
+    //private HashMap<Integer,MonsterCard> monsterCardsInField = new HashMap<>();
+   // private String[] spellTrapZone = new String[5];
+  //  private HashMap<Integer, Card> spellTrapCardsInField = new HashMap<>();
     private String fieldZoneCondition;
     private Card fieldZoneCard;
     private ArrayList<Card> graveYard = new ArrayList<>();
     private ArrayList<Card> hand = new ArrayList<>();
-    private boolean isACardSelected = false;
-    private boolean isSummonedInTurn = false;
-    private int[] monsterZoneChange = new int[5];
+    //private boolean isACardSelected = false;
+    //private boolean isSummonedInTurn = false;
+    //private int[] monsterZoneChange = new int[5];
     private int[] hasAttackInTurn = new int[5];
     private int[] extraAttack = new int[5];
     private int[] extraDefence = new int[5];
@@ -32,18 +32,19 @@ public class Board {
     private static ArrayList<Board> boards = new ArrayList<>();
     private int lifePoint;
     private int numberOfWins = 0;
+    private MonsterField[] monstersInField = new MonsterField[5];
+    private SpellTrapField[] spellTrapsInField = new SpellTrapField[5];
 
 
     public Board(Player player) {
         this.player = player;
         this.mainDeck = Deck.getActivatedDeck(player).getMainDeck();
         this.sideDeck = Deck.getActivatedDeck(player).getSideDeck();
-        this.initializeMonsterZone();
-        this.initializeSpellTrapZone();
         this.initializeFieldZone();
         this.lifePoint = 8000;
         boards.add(this);
     }
+
 
     public void setNumberOfWins() {
         this.numberOfWins+=1;
@@ -68,9 +69,20 @@ public class Board {
         }
         return null;
     }
+    public int getNumberOfMonstersInField(){
+        int counter = 0;
+        for(int i = 0; i < 5; i++){
+            if(monstersInField[i] != null)
+                counter++;
+        }
+        return counter;
+    }
 
     public Player getPlayer() {
         return this.player;
+    }
+    public SpellTrapField[] getSpellTrapsInField(){
+        return spellTrapsInField;
     }
 
     public void createHand() {
@@ -78,52 +90,58 @@ public class Board {
         for (int i = 0; i < 6; i++)
             hand.add(mainDeck.get(i));
     }
+    public SpellTrapField getSpellTrapByIndex(int index){
+        return spellTrapsInField[index];
+    }
 
-    public void addCardToHand() {
+    public String addCardToHand() {
         if (isCanGetCardFromDeck()) {
+            String cardName = mainDeck.get(0).getCardName();
             hand.add(mainDeck.get(0));
+            return cardName;
         }else {
             GameView.getInstance().printMessage(GameView.Command.cantGetCardFromDeck);
             setCanGetCardFromDeck(true);
+            return null;
         }
     }
 
-    public void setMonsterZone(int index, String manner) {
-        monsterZone[index] = manner;
+
+
+
+    public void addSpellTrapCardToField(int position, Card card,String status) {
+        spellTrapsInField[position] = new SpellTrapField(card,status);
     }
 
-    public void setSpellTrapZone(int index, String manner) {
-        spellTrapZone[index] = manner;
+    public void addMonsterCardToField(int number,MonsterCard monsterCard,String status) {
+        monstersInField[number] = new MonsterField(monsterCard,status);
     }
-
-    public void addSpellTrapCardToField(int position, Card card) {
-        spellTrapCardsInField.put(position, card);
-    }
-
-    public void addMonsterCardToField(int position, Card card) {
-        monsterCardsInField.put(position, (MonsterCard)card);
+    public void resetPutInThisTurn(){
+        for(int i = 0; i < 5;i++){
+            if(monstersInField[i]!= null)
+                monstersInField[i].setPutInThisTurn(false);
+        }
     }
 
     public void destroyCard(Card card) {
         graveYard.add(card);
     }
 
-    public boolean isMonsterZoneFull() {
+   /* public boolean isMonsterZoneFull() {
         for (int i = 0; i < 5; i++) {
             if (monsterZone[i].equals("E"))
                 return false;
         }
         return true;
-    }
+    }*/
     public void activateEffect(){
         if(Select.getInstance().getLocation()== Select.Location.HAND){
             int emptyPlace = getEmptyPlaceInSpellTrapZone();
-           spellTrapZone[emptyPlace] = "O";
-           addSpellTrapCardToField(emptyPlace,getCardFromHand(Select.getInstance().getPosition()));
+           addSpellTrapCardToField(emptyPlace,getCardFromHand(Select.getInstance().getPosition() - 1),"O");
            hand.remove(Select.getInstance().getPosition()-1);
         }
        else if(Select.getInstance().getLocation() == Select.Location.SPELL){
-            spellTrapZone[Select.getInstance().getPosition()-1] = "O";
+            getSpellTrapByIndex(Select.getInstance().getPosition() -1) .setStatus("O");
         }
 
     }
@@ -137,62 +155,41 @@ public class Board {
 
 
     private boolean isSpellTrapAvailableInSpellZone(int position) {
-        switch (position) {
-            case 1: {
-                return !spellTrapZone[2].equals("E");
-            }
-            case 2: {
-                return !spellTrapZone[1].equals("E");
-            }
-            case 3: {
-                return !spellTrapZone[3].equals("E");
-            }
-            case 4: {
-                return !spellTrapZone[0].equals("E");
-            }
-            case 5: {
-                return !spellTrapZone[4].equals("E");
-            }
-            default: {
-                return false;
-            }
-        }
-
-
+        return spellTrapsInField[position] != null;
     }
 
     public boolean isMonsterAvailableInMonsterZone(int position) {
-        return !monsterZone[position].equals("E");
+        return monstersInField[position] != null;
     }
 
-    private void initializeMonsterZone() {
-        for (int i = 0; i < 5; i++)
-            monsterZone[i] = "E";
-    }
 
-    private void initializeSpellTrapZone() {
-        for (int i = 0; i < 5; i++)
-            spellTrapZone[i] = "E";
-    }
+
 
     private void initializeFieldZone(){
         fieldZoneCondition = "E";
     }
 
     public void destroyAllMonster(){
-        for (String cardName:monsterZone) {
-            destroyCard(Card.getCardByName(cardName));
+        for (int i = 0; i < 5; i++) {
+            if(monstersInField[i] != null)
+                destroyMonsterCardByIndex(i);
         }
     }
 
     public void destroyAllMonsterInAttack(){
         for (int i = 0; i < 5; i++) {
-            if (getMonsterZoneByNumber(i).equals("OO")) {
-                destroyCard((Card) getMonsterCardByKey(i - 1));
-                setMonsterZone(i,"E");
+            if (monstersInField[i] != null && monstersInField[i].getStatus().equals("OO")) {
+                destroyMonsterCardByIndex(i);
             }
         }
     }
+
+    public void destroyMonsterCardByIndex(int index) {
+        MonsterCard monsterCard = monstersInField[index].getMonsterCard();
+        monstersInField[index].removeMonsterField();
+        destroyCard(monsterCard);
+    }
+
 
     public void destroyAllSpell(){
         for (String cardName:spellTrapZone) {
@@ -262,23 +259,6 @@ public class Board {
         return hand;
     }
 
-    public String getMonsterZoneByNumber(int index) {
-        return monsterZone[index];
-    }
-    public String getSpellTrapZoneByNumber(int index){return spellTrapZone[index];}
-    public Card getSpellTrapByKey(int key){return spellTrapCardsInField.get(key);}
-
-    public String[] getSpellTrapZone() {
-        return spellTrapZone;
-    }
-
-    public HashMap<Integer, MonsterCard> getMonsterCardsInField() {
-        return monsterCardsInField;
-    }
-
-    public HashMap<Integer, Card> getSpellTrapCardsInField() {
-        return spellTrapCardsInField;
-    }
     public Card getCardFromHand(int index){
         return hand.get(index);
     }
@@ -297,33 +277,25 @@ public class Board {
         }
     }
 
-    public void setMonsterZoneChangeByNumber(int index, int amount){
-        this.monsterZoneChange[index]=amount;
+    public MonsterField getMonsterByIndex(int index){
+        return monstersInField[index];
     }
-
-    public int getMonsterZoneChangeByNumber(int index){
-        return monsterZoneChange[index];
-    }
-    public MonsterCard getMonsterCardByKey(int key){
-        return monsterCardsInField.get(key);
+    public MonsterCard getMonsterCardByNumber(int number){
+        return monstersInField[number].getMonsterCard();
     }
     public int getHasAttackInTurn(int index){
         return hasAttackInTurn[index];
     }
-    public void destroyCardInMonsterZone(int number){
-       graveYard.add(monsterCardsInField.get(number));
-        monsterCardsInField.remove(number);
-        monsterZone[number-1] = "E";
-    }
     public boolean isMonsterZoneEmpty(){
-        int count = 0;
-        for (String pos:monsterZone) {
-            if (pos.equals("E"))
-                count++;
+        for(int i = 0; i < 5; i++){
+            if(monstersInField[i] == null)
+                return true;
         }
-        if (count==5)
-            return true;
         return false;
+
+    }
+    public MonsterField[] getMonstersInField(){
+        return monstersInField;
     }
 
     //set,get,reset => extraAttack & extraDefence
@@ -355,25 +327,21 @@ public class Board {
 
 
     public int getEmptyPlaceInSpellTrapZone(){
-       return handleGetEmptyPlace(spellTrapZone);
+        for(int i = 0; i < 5 ;i ++){
+            if(spellTrapsInField[i] == null)
+                return i;
+        }
+        return 0;
     }
     public int getEmptyPlaceInMonsterZone(){
-        return handleGetEmptyPlace(monsterZone);
+        for(int i = 0; i < 5;i++){
+            if(monstersInField[i] == null)
+                return i;
+        }
+        return 0;
+
     }
 
-    private int handleGetEmptyPlace(String[] spellTrapZone) {
-        if(spellTrapZone[0].equals("E"))
-            return 1;
-        if(spellTrapZone[1].equals("E"))
-            return 2;
-        if(spellTrapZone[2].equals("E"))
-            return 3;
-        if(spellTrapZone[3].equals("E"))
-            return 4;
-        if(spellTrapZone[4].equals("E"))
-            return 5;
-        return 10;
-    }
     public int getCardIndex(String cardName){
         for(Map.Entry<Integer,MonsterCard> entry : monsterCardsInField.entrySet()){
             if(entry.getValue().getCardName().equals(cardName))
@@ -382,10 +350,7 @@ public class Board {
         return 0;
         }
     public boolean canAttack(String cardName,int index){
-        if(cardName.equals("Command knight") && (!isMonsterZoneEmpty()) && (monsterZone[index].equals("OO") || monsterZone[index].equals("DO")))
-            return false;
-        else
-            return true;
+        return !cardName.equals("Command knight") || (isMonsterZoneEmpty()) || (!monstersInField[index].getStatus().equals("OO") && !monstersInField[index].getStatus().equals("DO"));
 
     }
 
@@ -416,6 +381,7 @@ public class Board {
         fieldZoneCard = card;
     }
 
+
     public String getFieldZoneCondition(){
         return fieldZoneCondition;
     }
@@ -423,12 +389,10 @@ public class Board {
     public Card getFieldZoneCard(){
         return fieldZoneCard;
     }
-    public String[] getMonsterZone(){
+   /* public String[] getMonsterZone(){
         return this.monsterZone;
-    }
-    public void removeMonsterCardFromZone(int key){
-        this.monsterCardsInField.remove(key);
-    }
+    }*/
+
 
     public boolean isCanGetCardFromDeck() {
         return canGetCardFromDeck;
