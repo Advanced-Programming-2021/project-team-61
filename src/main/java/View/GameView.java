@@ -49,7 +49,9 @@ public class GameView {
         playerWins,
         pleaseEnterTheCardNumber,
         cantGetCardFromDeck,
-        cantAttackInThisTurn
+        cantAttackInThisTurn,
+        invalidCommand,
+        newCardAddedToHand
 
     }
 
@@ -224,6 +226,10 @@ public class GameView {
                 System.out.println("you can't attack in this turn");
                 break;
             }
+            case invalidCommand:{
+                System.out.println("invalid command!");
+                break;
+            }
 
         }
 
@@ -258,6 +264,9 @@ public class GameView {
             }
             case playerWins:{
                 System.out.println(s1+" won the game and the score is 0-0");
+            }
+            case newCardAddedToHand:{
+                System.out.println("new card added to the hand :"+" "+ s1);
             }
         }
     }
