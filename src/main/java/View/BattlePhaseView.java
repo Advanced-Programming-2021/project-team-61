@@ -25,7 +25,8 @@ public class BattlePhaseView {
         justLifePointDecreaseHidden,
         noDamageHidden,
         damageRivalMonsterHidden,
-        directAttackSuccessful
+        directAttackSuccessful,
+        actionNotAllowedHere
 
 
 
@@ -50,6 +51,7 @@ public class BattlePhaseView {
         return battlePhaseView;
     }
     public void scan(Player me , Player rival){
+        printPhaseName();
         Board myBoard = Board.getBoardByPlayer(me);
         Board rivalBoard = Board.getBoardByPlayer(rival);
         while (true){
@@ -68,6 +70,12 @@ public class BattlePhaseView {
                if(isGameFinished)
                    break;
             }
+            else if(command.equals("summon"))
+                printMessage(Commands.actionNotAllowedHere,0,"");
+            else if(command.equals("set"))
+                printMessage(Commands.actionNotAllowedHere,0,"");
+            else if(command.startsWith("set --position"))
+                printMessage(Commands.actionNotAllowedHere,0,"");
 
 
 
@@ -79,6 +87,11 @@ public class BattlePhaseView {
 
         }
     }
+
+    private void printPhaseName() {
+        System.out.println("phase : Battle Phase");
+    }
+
     public void printMessage(Commands message,int damage,String name){
         switch (message){
             case noCardSelected:{
@@ -140,6 +153,10 @@ public class BattlePhaseView {
             }
             case directAttackSuccessful:{
                 System.out.println("you opponent receives "+ damage +" battle damage");
+                break;
+            }
+            case actionNotAllowedHere:{
+                System.out.println("action not allowed in this phase");
                 break;
             }
 
