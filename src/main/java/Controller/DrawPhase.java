@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Board;
+import View.GameView;
 
 public class DrawPhase {
     private static DrawPhase drawPhase = null;
@@ -14,6 +15,13 @@ public class DrawPhase {
         return drawPhase;
     }
     public void run(Board board){
-        board.addCardToHand();
+       printPhaseName(); 
+       String cardName =  board.addCardToHand();
+       GameView.getInstance().printMessageByString(GameView.Command.newCardAddedToHand,cardName);
+        
+    }
+
+    private void printPhaseName() {
+        System.out.println("phase : draw phase");
     }
 }
