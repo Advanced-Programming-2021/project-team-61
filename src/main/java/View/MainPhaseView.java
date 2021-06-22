@@ -48,6 +48,7 @@ public class MainPhaseView {
         return m;
     }
     public void scan(Player me , Player rival){
+        printPhaseName();
         mainPhase1 = MainPhase1.getInstance();
         while (true){
             command = scanner.nextLine();
@@ -87,6 +88,11 @@ public class MainPhaseView {
 
         }
     }
+
+    private void printPhaseName() {
+        System.out.println("phase : main Phase");
+    }
+
     public void printMessage(Commands message){
         switch (message){
             case NoCardSelected:{
