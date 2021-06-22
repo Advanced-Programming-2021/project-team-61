@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Board;
+import Model.MonsterField;
 import Model.Player;
 import View.BattlePhaseView;
 import View.MainPhaseView;
@@ -24,8 +25,8 @@ public class GameController {
     public void run(Player player1, Player player2){
         myTurn = player1;
         notMyTurn = player2;
-        setGame(myTurn,notMyTurn);
-        playGame(myTurn,notMyTurn);
+        setGame();
+        playGame();
         //print mainPhase
        //going to main phase to get commands
        //going to end phase
@@ -34,43 +35,64 @@ public class GameController {
 
 
     }
-    private void playGame(Player myTurn,Player notMyTurn){
-        startGame(myTurn,notMyTurn);
+    private void playGame(){
+        startGame();
         while(true){
-            enterDrawPhase(myTurn);
-            enterMainPhase(myTurn, notMyTurn);
-            enterBattlePhase(myTurn, notMyTurn);
+            enterDrawPhase();
             if(isGameFinished)
                 break;
+            enterMainPhase();
+            enterBattlePhase();
             if(hasAttackedInBattlePhase)
-                enterMainPhase(myTurn,notMyTurn);
+             enterMainPhase();
             enterEndPhase(notMyTurn);
-            temp = myTurn;
-            myTurn = notMyTurn;
-            notMyTurn = temp;
+            changeTurn();
         }
 
 
     }
-    private void startGame(Player myTurn,Player notMyTurn){
-        enterMainPhase(myTurn,notMyTurn);
+
+    private void changeTurn() {
+       MonsterField[] monsterFields =  Board.getBoardByPlayer(myTurn).getMonstersInField();
+       reset(monsterFields);
+        temp = myTurn;
+        myTurn = notMyTurn;
+        notMyTurn = temp;
+    }
+
+    private void reset(MonsterField[] monsterFields) {
+        for(int i = 0 ; i < 5; i++){
+            if(monsterFields[i] != null){
+                monsterFields[i].setStatusChangedInTurn(false);
+                monsterFields[i].setPutInThisTurn(false);
+                monsterFields[i].setHasAttackedInTurn(false);
+            }
+        }
+    }
+
+    private void startGame(){
+        enterMainPhase();
         enterEndPhase(notMyTurn);
         temp = myTurn;
         myTurn = notMyTurn;
         notMyTurn = temp;
-        enterMainPhase(myTurn,notMyTurn);
-        enterBattlePhase(myTurn,notMyTurn);
+        enterMainPhase();
+        enterBattlePhase();
         enterEndPhase(notMyTurn);
+        temp = myTurn;
+        myTurn = notMyTurn;
+        notMyTurn = temp;
+
     }
-    private void enterDrawPhase(Player myTurn){
+    private void enterDrawPhase(){
         DrawPhase drawPhase = DrawPhase.getInstance();
         drawPhase.run(Board.getBoardByPlayer(myTurn));
     }
-    private void enterMainPhase(Player myTurn,Player notMyTurn){
+    private void enterMainPhase(){
         MainPhaseView mainPhaseView = MainPhaseView.getInstance();
         mainPhaseView.scan(myTurn,notMyTurn);
     }
-    private void enterBattlePhase(Player myTurn,Player notMyTurn){
+    private void enterBattlePhase(){
         BattlePhaseView battlePhaseView = BattlePhaseView.getInstance();
         battlePhaseView.scan(myTurn,notMyTurn);
     }
@@ -78,7 +100,7 @@ public class GameController {
         EndPhase endPhase = EndPhase.getInstance();
         endPhase.changeTurn(notMyTurn);
     }
-    private void setGame(Player player1, Player player2){
+    private void setGame(){
         Board.getBoardByPlayer(myTurn).createHand();
         Board.getBoardByPlayer(notMyTurn).createHand();
     }
