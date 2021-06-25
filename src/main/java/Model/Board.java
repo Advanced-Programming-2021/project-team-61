@@ -61,6 +61,9 @@ public class Board {
     public void decreaseLifePoint(int lifePoint) {
         this.lifePoint -= lifePoint;
     }
+    public void increaseLifePoint(int lifePoint){
+        this.lifePoint += lifePoint;
+    }
 
     public static Board getBoardByPlayer(Player player) {
         for (Board board : boards) {
@@ -104,6 +107,19 @@ public class Board {
             setCanGetCardFromDeck(true);
             return null;
         }
+    }
+    public int getNumberOfSpellTrapsInField(){
+        int counter = 0;
+        for(int i = 0 ; i < 5 ; i++){
+            if(spellTrapsInField[i] != null)
+                counter++;
+        }
+        return counter;
+    }
+    public void destroySpellTrapCardByIndex(int index){
+        Card card = spellTrapsInField[index].getCard();
+        spellTrapsInField[index].remove();
+        destroyCard(card);
     }
 
 
