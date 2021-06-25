@@ -41,6 +41,7 @@ public class BattlePhaseView {
     private String command;
     private Matcher matcher;
     private boolean isGameFinished = false;
+    private boolean haveToBreak = false;
 
     private BattlePhaseView() {
 
@@ -52,11 +53,12 @@ public class BattlePhaseView {
     }
     public void scan(Player me , Player rival){
         printPhaseName();
+        setController();
         Board myBoard = Board.getBoardByPlayer(me);
         Board rivalBoard = Board.getBoardByPlayer(rival);
         while (true){
             command = scanner.nextLine();
-            if(command.equals("next phase"))
+            if(command.equals("next phase") || haveToBreak)
                 break;
             else if((matcher = getCommandMatcher(command,"attack (\\d+)")).find()){
               battlePhase.ProcessAttack(myBoard,rivalBoard,Integer.parseInt(matcher.group(1)));
@@ -86,6 +88,10 @@ public class BattlePhaseView {
 
 
         }
+    }
+
+    private void setController() {
+        this.battlePhase = BattlePhase.getInstance();
     }
 
     private void printPhaseName() {
@@ -173,6 +179,11 @@ public class BattlePhaseView {
 
 
     }
+
+    public void setHaveToBreak(boolean haveToBreak) {
+        this.haveToBreak = haveToBreak;
+    }
+
     public void setGameFinished(boolean gameFinished){
         isGameFinished = gameFinished;
     }
