@@ -51,7 +51,7 @@ public class GameView {
         cantGetCardFromDeck,
         cantAttackInThisTurn,
         invalidCommand,
-        newCardAddedToHand
+        newCardAddedToHand,
 
     }
 
@@ -77,8 +77,7 @@ public class GameView {
     }
 
     public String scan(){
-        String command = scanner.nextLine();
-        return command;
+        return scanner.nextLine();
     }
     public void printMessage(Command message){
         switch (message){
@@ -289,15 +288,15 @@ public class GameView {
         }
         System.out.println();
         System.out.println(rivalBoard.getMainDeck().size());
-        System.out.println("\t" + rivalBoard.getSpellTrapZoneByNumber(3) + "\t" + rivalBoard.getSpellTrapZoneByNumber(1) + "\t" + rivalBoard.getSpellTrapZoneByNumber(0) + "\t" + rivalBoard.getSpellTrapZoneByNumber(2) + "\t" + rivalBoard.getSpellTrapZoneByNumber(4) );
-        System.out.println("\t" + rivalBoard.getMonsterZoneByNumber(3) + "\t" + rivalBoard.getMonsterZoneByNumber(1) + "\t" + rivalBoard.getMonsterZoneByNumber(0) + "\t" + rivalBoard.getMonsterZoneByNumber(2) + "\t" + rivalBoard.getMonsterZoneByNumber(4) );
+        System.out.println("\t" + rivalBoard.getSpellTrapByIndex(3).getStatus() + "\t" + rivalBoard.getSpellTrapByIndex(1).getStatus() + "\t" + rivalBoard.getSpellTrapByIndex(0).getStatus() + "\t" + rivalBoard.getSpellTrapByIndex(2).getStatus() + "\t" + rivalBoard.getSpellTrapByIndex(4).getStatus() );
+        System.out.println("\t" + rivalBoard.getMonsterByIndex(3).getStatus() + "\t" + rivalBoard.getMonsterByIndex(1).getStatus() + "\t" + rivalBoard.getMonsterByIndex(0).getStatus() + "\t" + rivalBoard.getMonsterByIndex(2).getStatus() + "\t" + rivalBoard.getMonsterByIndex(4).getStatus() );
         System.out.println(rivalBoard.getGraveYard().size() + "\t \t \t \t \t \t" + rivalBoard.getFieldZoneCondition());
         System.out.println();
         System.out.println("--------------------------");
         System.out.println();
         System.out.println(myBoard.getFieldZoneCondition() + "\t \t \t \t \t \t" + myBoard.getGraveYard().size());
-        System.out.println("\t" + myBoard.getMonsterZoneByNumber(4) + "\t" + myBoard.getMonsterZoneByNumber(2) + "\t" + myBoard.getMonsterZoneByNumber(0) + "\t" + myBoard.getMonsterZoneByNumber(1) + "\t" + myBoard.getMonsterZoneByNumber(3) );
-        System.out.println("\t" + myBoard.getSpellTrapZoneByNumber(4) + "\t" + myBoard.getSpellTrapZoneByNumber(2) + "\t" + myBoard.getSpellTrapZoneByNumber(0) + "\t" + myBoard.getSpellTrapZoneByNumber(1) + "\t" + myBoard.getSpellTrapZoneByNumber(3));
+        System.out.println("\t" + myBoard.getMonsterByIndex(4).getStatus() + "\t" + myBoard.getMonsterByIndex(2).getStatus() + "\t" + myBoard.getMonsterByIndex(0).getStatus() + "\t" + myBoard.getMonsterByIndex(1).getStatus() + "\t" + myBoard.getMonsterByIndex(3).getStatus() );
+        System.out.println("\t" + myBoard.getSpellTrapByIndex(4).getStatus() + "\t" + myBoard.getSpellTrapByIndex(2).getStatus() + "\t" + myBoard.getSpellTrapByIndex(0).getStatus() + "\t" + myBoard.getSpellTrapByIndex(1).getStatus() + "\t" + myBoard.getSpellTrapByIndex(3).getStatus());
         System.out.println(" \t \t \t \t \t \t" + myBoard.getMainDeck().size());
         for (int i = 0; i < myBoard.getHand().size(); i++) {
             System.out.print("C\t");
@@ -317,12 +316,12 @@ public class GameView {
     }
 
     public void showCard_myMonster(Board myBoard, int index){
-        MonsterCard card = myBoard.getMonsterCardByKey(index);
+        MonsterCard card = myBoard.getMonsterByIndex(index).getMonsterCard();
         MonsterCard.printACardComplete(card);
     }
 
     public void showCard_mySpellTrap(Board myBoard, int index){
-        Card card = myBoard.getSpellTrapByKey(index);
+        Card card = myBoard.getSpellTrapByIndex(index).getCard();
         if (card instanceof SpellCard)
             SpellCard.printACardComplete((SpellCard) card);
         else if (card instanceof TrapCard)
