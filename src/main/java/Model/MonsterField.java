@@ -8,6 +8,8 @@ public class MonsterField {
     private boolean isStatusChangedInTurn;
     private boolean isPutInThisTurn;
     private boolean hasAttackedInTurn;
+    private boolean isEffectActivated;
+    private int extraAttackPoint;
     private static ArrayList<MonsterField> monsterFields = new ArrayList<>();
     public MonsterField(MonsterCard monsterCard,String status){
         this.monsterCard = monsterCard;
@@ -15,8 +17,26 @@ public class MonsterField {
         this.isPutInThisTurn = true;
         this.isStatusChangedInTurn = false;
         this.hasAttackedInTurn = false;
+        this.isEffectActivated = false;
+        this.extraAttackPoint = 0;
         monsterFields.add(this);
 
+    }
+
+    public void increaseExtraAttackPoint(int extraAttackPoint) {
+        this.extraAttackPoint += extraAttackPoint;
+    }
+
+    public int getExtraAttackPoint() {
+        return extraAttackPoint;
+    }
+
+    public boolean isEffectActivated() {
+        return isEffectActivated;
+    }
+
+    public void setEffectActivated(boolean effectActivated) {
+        isEffectActivated = effectActivated;
     }
 
     public boolean isHasAttackedInTurn() {
