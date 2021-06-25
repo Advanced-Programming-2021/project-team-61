@@ -52,6 +52,7 @@ public class GameView {
         cantAttackInThisTurn,
         invalidCommand,
         newCardAddedToHand,
+        askToChooseMonsterFromGraveYard
 
     }
 
@@ -223,6 +224,10 @@ public class GameView {
             }
             case cantAttackInThisTurn:{
                 System.out.println("you can't attack in this turn");
+                break;
+            }
+            case askToChooseMonsterFromGraveYard:{
+                System.out.println("please choose a monster Card from the graveyard");
                 break;
             }
             case invalidCommand:{
