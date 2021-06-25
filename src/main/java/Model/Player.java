@@ -64,6 +64,9 @@ public class Player {
     public void setCoin(int coin){
         this.coin -=coin;
     }
+    public void increaseCoin(int coin){
+        this.coin += coin;
+    }
 
     public static int getScoreByNickname(String nickname){
         for (Player player:allPlayers) {
