@@ -10,6 +10,7 @@ public class MonsterField {
     private boolean hasAttackedInTurn;
     private boolean isEffectActivated;
     private int extraAttackPoint;
+    private int extraDefensePoint;
     private static ArrayList<MonsterField> monsterFields = new ArrayList<>();
     public MonsterField(MonsterCard monsterCard,String status){
         this.monsterCard = monsterCard;
@@ -19,8 +20,21 @@ public class MonsterField {
         this.hasAttackedInTurn = false;
         this.isEffectActivated = false;
         this.extraAttackPoint = 0;
+        this.extraDefensePoint = 0;
         monsterFields.add(this);
 
+    }
+    public void increaseExtraDefense(int extraDefensePoint){
+        this.extraDefensePoint += extraDefensePoint;
+    }
+    public int getExtraDefensePoint(){
+        return extraDefensePoint;
+    }
+    public void decreaseDefensePoint(int extraDefensePoint){
+        this.extraDefensePoint -= extraDefensePoint;
+    }
+    public void decreaseAttackPoint(int extraAttackPoint){
+        this.extraAttackPoint-=extraAttackPoint;
     }
 
     public void increaseExtraAttackPoint(int extraAttackPoint) {
