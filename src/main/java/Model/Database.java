@@ -45,4 +45,52 @@ public class Database {
     public static List<String[]> getMonsterCardsInformation() {
         return MonsterCardsInformation;
     }
+
+    public static void AISetup(){
+        new Player("AI","AI","AI");
+        new Deck("AI","AI");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Battle Ox");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Battle Ox");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Axe Raider");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Axe Raider");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Horn Imp");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Horn Imp");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Silver Fang");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Silver Fang");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Fireyarou");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Fireyarou");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Curtain of Dark Ones");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Curtain of Dark Ones");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Feral Imp");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Feral Imp");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Dark Magician");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Dark Magician");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Wattkid");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Wattkid");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Baby Dragon");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Baby Dragon");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Hero of the East");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Battle Warrior");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Hero of the East");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Battle Warrior");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Crawling dragon");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Crawling dragon");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Flame Manipulator");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Flame Manipulator");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Blue-Eyes White Dragon");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Blue-Eyes White Dragon");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Slot Machine");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Slot Machine");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Haniwa");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Haniwa");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Bitron");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Bitron");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Leotron");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Leotron");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Alexandrite Dragon");
+        Deck.getDeckByName("AI",Player.getPlayerByUsername("AI")).addCardToMainDeck_Deck("Alexandrite Dragon");
+
+        Deck.activateDeck("AI",Player.getPlayerByUsername("AI"));
+    }
+
 }
