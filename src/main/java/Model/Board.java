@@ -59,6 +59,10 @@ public class Board {
         this.lifePoint += lifePoint;
     }
 
+    public void increaseLIfePoint(int lifePoint){
+        this.lifePoint += lifePoint;
+    }
+
     public static Board getBoardByPlayer(Player player) {
         for (Board board : boards) {
             if (board.player.getUsername().equals(player.getUsername()))
