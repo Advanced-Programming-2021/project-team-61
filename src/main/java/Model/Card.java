@@ -2,7 +2,7 @@ package Model;
 
 import Controller.MainPhase1;
 import View.GameView;
-import sun.jvm.hotspot.debugger.posix.elf.ELFException;
+
 
 import java.util.ArrayList;
 
@@ -164,15 +164,13 @@ public class Card {
                 break;
             }
             case "Command Knight": {
-                commandKnight(player);
+              //  commandKnight(player);
                 break;
             }
             case "Trap Hole": {
-                trapHole();
                 break;
             }
             case "Mirror Force": {
-                mirrorForce();
                 break;
             }
             case "Magic Cylinder": {
@@ -188,7 +186,6 @@ public class Card {
                 break;
             }
             case "Time Seal": {
-                timeSeal();
                 break;
             }
             case "Negate Attack": {
@@ -204,7 +201,6 @@ public class Card {
                 break;
             }
             case "Call of The Haunted": {
-                callofTheHaunted();
                 break;
             }
             case "Vanity's Emptiness": {
@@ -378,26 +374,23 @@ public class Card {
 
     }
 
-    private static void commandKnight(Player player) {  //monster
-        Board board = Board.getBoardByPlayer(player);
-        int index = board.getCardIndex("Command Knight");
-        if (!board.getMonsterCardByKey(index).isEffectActivated()) {
-            if (board.getMonsterZoneByNumber(index - 1).equals("OO") || board.getMonsterZoneByNumber(index - 1).equals("DO")) {
-                for (int i = 1; i < 6; i++) {
-                    if (board.isMonsterAvailableInMonsterZone(i))
-                        board.setExtraAttackByIndex(i - 1, 400);
-                }
-                board.getMonsterCardByKey(index).setEffectActivated(true);
+    public static void activateCommandKnightEffect(Board board) {  //monster
+      //  Board board = Board.getBoardByPlayer(player);
+        for(int i = 0 ; i < 5; i++){
+            if(board.isMonsterAvailableInMonsterZone(i)){
+                board.getMonsterByIndex(i).increaseExtraAttackPoint(400);
             }
         }
     }
 
-    private static void trapHole() {
+    private static void trapHole(Board rivalBoard, MonsterField monsterField) {
+        monsterField.removeMonsterField();
+
 
     }
 
-    private static void mirrorForce() { //trap
-        Board.getBoardByPlayer(player).setMirrorForceEffect(true);
+    public static void activateMirrorForceEffect(Board myBoard) { //trap
+        myBoard.destroyAllMonsterInAttack();
     }
 
     private static void magicCylinder() {
@@ -419,8 +412,8 @@ public class Card {
         Board.getBoardByPlayer(rivalPlayer).destroyAllMonster();
     }
 
-    private static void timeSeal() {  //trap
-        Board.getBoardByPlayer(rivalPlayer).setCanGetCardFromDeck(false);
+    public static void activateTimeSealEffect(Board rivalBoard) {  //trap
+        rivalBoard.setCanGetCardFromDeck(false);
     }
 
     private static void negateAttack() {
@@ -435,7 +428,7 @@ public class Card {
 
     }
 
-    private static void callofTheHaunted() {  //trap
+    public static void activateCallOfTheHauntedEffect(Board board) {  //trap
         GameView.getInstance().printGraveyard(Board.getBoardByPlayer(player).getGraveYard());
         GameView.getInstance().printMessage(GameView.Command.pleaseEnterTheCardNumber);
         int cardNumber ;//= Integer.parseInt(GameView.getInstance().scan());
