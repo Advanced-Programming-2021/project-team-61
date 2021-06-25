@@ -44,6 +44,10 @@ public class MonsterCard extends Card{
         return isEffectActivated;
     }
 
+    public String getMonsterType() {
+        return MonsterType;
+    }
+
     public void setEffectActivated(boolean effectActivated) {
         isEffectActivated = effectActivated;
     }
