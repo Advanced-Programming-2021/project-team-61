@@ -171,7 +171,7 @@ public class MainPhase1 {
         else if (isSelectedCardInHand() && isSpellTrapZoneFull(board)) {//needs one more if
             view.printMessage(MainPhaseView.Commands.SpellZoneFull);
         } else if (false) {//prepration??
-            board.getSpellTrapByKey(1);
+            board.getSpellTrapByIndex(1).getCard();
         } else
             board.activateEffect();
     }
@@ -221,6 +221,11 @@ public class MainPhase1 {
     public void summonMonster(Board board, MonsterCard monsterCard) {
         int emptyPlace = board.getEmptyPlaceInMonsterZone();
         board.addMonsterCardToField(emptyPlace, monsterCard,"OO");
+        if(monsterCard.getCardName().equals("Command Knight")){
+            board.getMonsterByIndex(emptyPlace).setEffectActivated(true);
+            Card.activateCommandKnightEffect(board);
+        }
+
         view.printMessage(MainPhaseView.Commands.SummonSuccessful);
     }
 
