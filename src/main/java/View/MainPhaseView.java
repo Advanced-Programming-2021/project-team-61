@@ -83,7 +83,9 @@ public class MainPhaseView {
            else if(command.equals("next phase")){
                break;
             }
-
+           else if ((matcher = getCommandMatcher(command,"increase --LP (\\d+)")).find()) {
+                Board.getBoardByPlayer(me).increaseLIfePoint(Integer.parseInt(matcher.group(1)));
+            }
 
 
 
