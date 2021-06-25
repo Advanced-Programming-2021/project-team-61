@@ -13,7 +13,7 @@ public class GameController {
     private Player notMyTurn;
     private Player temp;
     private boolean hasAttackedInBattlePhase = false;
-    private boolean isGameFinished = false;
+    private boolean isFirstTurn = true;
 
     private GameController(){
     }
@@ -36,17 +36,28 @@ public class GameController {
 
     }
     private void playGame(){
-        startGame();
         while(true){
+            if(isFirstTurn){
+                enterMainPhase();
+                enterEndPhase(notMyTurn);
+                changeTurn();
+                isFirstTurn = false;
+            }
+            else{
             enterDrawPhase();
-            if(isGameFinished)
+            if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn)))
                 break;
             enterMainPhase();
+            if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn)))
+                break;
             enterBattlePhase();
+                if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn)))
+                    break;
             if(hasAttackedInBattlePhase)
              enterMainPhase();
             enterEndPhase(notMyTurn);
             changeTurn();
+            }
         }
 
 
@@ -69,21 +80,6 @@ public class GameController {
             }
         }
     }
-
-    private void startGame(){
-        enterMainPhase();
-        enterEndPhase(notMyTurn);
-        temp = myTurn;
-        myTurn = notMyTurn;
-        notMyTurn = temp;
-        enterMainPhase();
-        enterBattlePhase();
-        enterEndPhase(notMyTurn);
-        temp = myTurn;
-        myTurn = notMyTurn;
-        notMyTurn = temp;
-
-    }
     private void enterDrawPhase(){
         DrawPhase drawPhase = DrawPhase.getInstance();
         drawPhase.run(Board.getBoardByPlayer(myTurn));
@@ -105,7 +101,11 @@ public class GameController {
         Board.getBoardByPlayer(notMyTurn).createHand();
     }
 
-    public void setGameFinished(boolean gameFinished) {
-        isGameFinished = gameFinished;
+    public void setHasAttackedInBattlePhase(boolean hasAttackedInBattlePhase) {
+        this.hasAttackedInBattlePhase = hasAttackedInBattlePhase;
+    }
+
+    private boolean isGameFinished(Board myBoard, Board rivalBoard){
+        return (myBoard.getLifePoint()<=0 || rivalBoard.getLifePoint()<=0);
     }
 }
