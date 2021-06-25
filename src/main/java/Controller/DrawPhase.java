@@ -6,6 +6,7 @@ import View.GameView;
 public class DrawPhase {
     private static DrawPhase drawPhase = null;
 
+
     private DrawPhase(){
 
     }
@@ -15,11 +16,19 @@ public class DrawPhase {
         return drawPhase;
     }
     public void run(Board board){
-       printPhaseName(); 
+       printPhaseName();
+       if(board.isCanGetCardFromDeck()){
        String cardName =  board.addCardToHand();
        GameView.getInstance().printMessageByString(GameView.Command.newCardAddedToHand,cardName);
+       }
+       else{
+           board.setCanGetCardFromDeck(true);
+           GameView.getInstance().printMessage(GameView.Command.cantGetCardFromDeck);
+
+        }
         
     }
+
 
     private void printPhaseName() {
         System.out.println("phase : draw phase");
