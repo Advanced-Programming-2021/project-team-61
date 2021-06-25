@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import Controller.MainPhase1;
 import Model.Board;
+import Model.Card;
 import Model.Player;
 import Model.Select;
 
@@ -72,6 +73,12 @@ public class MainPhaseView {
             }
            else if(command.startsWith("select")){
                 Select.getInstance().run(me,rival,command);
+            }
+           else if(command.equals("activate Call Of the Haunted")){
+                Card.activateCallOfTheHauntedEffect(Board.getBoardByPlayer(me));
+            }
+           else if(command.equals("activate Time Seal")){
+               Card.activateTimeSealEffect(Board.getBoardByPlayer(rival));
             }
            else if(command.equals("next phase")){
                break;
