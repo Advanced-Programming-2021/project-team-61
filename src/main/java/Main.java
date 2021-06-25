@@ -12,6 +12,7 @@ public class Main {
         File f2 = new File("src\\main\\resources\\SpellTrap.csv");
         String absolute2 = f2.getAbsolutePath();
         Database.readDataLineByLine(absolute, absolute2);
+        Database.AISetup();
      //  List<String[]> x = Model.Database.getMonsterCardsInformation();
       //  for (String[] y: x) {
        //     System.out.println(y[0]);
