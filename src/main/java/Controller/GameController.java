@@ -4,6 +4,7 @@ import Model.Board;
 import Model.MonsterField;
 import Model.Player;
 import View.BattlePhaseView;
+import View.GameView;
 import View.MainPhaseView;
 
 public class GameController {
@@ -15,6 +16,7 @@ public class GameController {
     private boolean hasAttackedInBattlePhase = false;
     private boolean isFirstTurn = true;
     private boolean isSurrendered = false;
+    private boolean isSummonedInThisTurn = false;
 
     private GameController(){
     }
@@ -46,25 +48,55 @@ public class GameController {
             }
             else{
             enterDrawPhase();
-            if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn)))
+            if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn))){
+                findWinner();
+                giveScores();
                 break;
+            }
+
             enterMainPhase();
-            if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn)))
+            enterStandByPhase();
+            if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn))){
+                findWinner();
+                giveScores();
                 break;
+            }
             if(isSurrendered){
+                GameView.getInstance().printWinner(notMyTurn,myTurn);
+                giveScores();
                 break;
             }
             enterBattlePhase();
-                if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn)))
+                if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn))){
+                    findWinner();
+                    giveScores();
                     break;
-            if(hasAttackedInBattlePhase)
-             enterMainPhase();
-            enterEndPhase(notMyTurn);
-            changeTurn();
+                }
+            if(hasAttackedInBattlePhase){
+                enterMainPhase();
+                findWinner();
+                giveScores();
+
+            }
+
+               enterEndPhase(notMyTurn);
+               changeTurn();
             }
         }
 
 
+    }
+    public boolean isSummonedInTurn() {
+        return isSummonedInThisTurn;
+    }
+
+    public void setSummonedInTurn(boolean summonedInTurn) {
+        isSummonedInThisTurn = summonedInTurn;
+    }
+
+    private void enterStandByPhase() {
+        StandByPhase standByPhase = StandByPhase.getInstance();
+        standByPhase.run(Board.getBoardByPlayer(myTurn));
     }
 
     private void changeTurn() {
@@ -115,5 +147,18 @@ public class GameController {
 
     private boolean isGameFinished(Board myBoard, Board rivalBoard){
         return (myBoard.getLifePoint()<=0 || rivalBoard.getLifePoint()<=0);
+    }
+    private void giveScores(){
+        myTurn.setCoin(1000 + Board.getBoardByPlayer(myTurn).getLifePoint());
+        myTurn.setScore(Board.getBoardByPlayer(myTurn).getLifePoint());
+        notMyTurn.setCoin(1000 + Board.getBoardByPlayer(notMyTurn).getLifePoint());
+        notMyTurn.setScore(Board.getBoardByPlayer(notMyTurn).getLifePoint());
+    }
+    private void findWinner(){
+        if(Board.getBoardByPlayer(myTurn).getLifePoint()<=0){
+            GameView.getInstance().printWinner(myTurn,notMyTurn);
+        }
+        else
+            GameView.getInstance().printWinner(notMyTurn,myTurn);
     }
 }
