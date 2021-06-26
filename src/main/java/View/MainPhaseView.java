@@ -102,6 +102,7 @@ public class MainPhaseView {
             }
             else if ((matcher = getCommandMatcher(command,"duel set-winner ([^\\s]+)")).find()){
                 GameView.getInstance().printWinner(me,rival);
+                gameController.setCheat(true);
                 //win the game...
             }
 

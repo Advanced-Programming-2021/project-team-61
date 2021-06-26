@@ -10,7 +10,8 @@ public class DualView {
         playerTwoNotExist,
         hasNoActiveDeck,
         roundInvalid,
-        inValid
+        inValid,
+        deckInvalid
     }
 
     private static DualView view = null;
@@ -62,6 +63,10 @@ public class DualView {
             }
             case inValid: {
                 System.out.println("invalid command");
+                break;
+            }
+            case deckInvalid:{
+                System.out.println(s+ " 's deck is invalid");
                 break;
             }
 

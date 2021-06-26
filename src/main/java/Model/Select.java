@@ -100,7 +100,7 @@ public class Select {
             return 0;
         }else if (Board.getBoardByPlayer(player).getSpellTrapByIndex(loc - 1) == null){
             GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
-            return 1;
+            return 0;
         }else {
             position = loc;
             card = Board.getBoardByPlayer(player).getSpellTrapByIndex(loc - 1).getCard();
@@ -120,8 +120,12 @@ public class Select {
         if (loc>6){
             GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
         }else if (Board.getBoardByPlayer(player).getHand().size()<loc){
+            GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
+        }
+        else if(Board.getBoardByPlayer(player).getHand().get(loc - 1) == null){
             GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
-        }else {
+        }
+        else {
             card = Board.getBoardByPlayer(player).getCardFromHand(loc - 1);
             position = loc;
             setLocation(Location.HAND);

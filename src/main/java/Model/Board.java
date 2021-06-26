@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.EffectController;
+import Controller.MainPhase1;
 import View.GameView;
 
 import java.util.ArrayList;
@@ -125,6 +126,7 @@ public class Board {
     public void destroySpellTrapCardByIndex(int index){
         Card card = spellTrapsInField[index].getCard();
         spellTrapsInField[index].remove();
+        spellTrapsInField[index] = null;
         destroyCard(card);
     }
 
@@ -160,68 +162,21 @@ public class Board {
         if(Select.getInstance().getLocation()== Select.Location.HAND){
             int emptyPlace = getEmptyPlaceInSpellTrapZone();
            addSpellTrapCardToField(emptyPlace,getCardFromHand(Select.getInstance().getPosition() - 1),"O");
-           activateEffectOfCard(Select.getInstance().getCard());
+          MainPhase1.getInstance(). activateEffectOfCard(Select.getInstance().getCard());
            hand.remove(Select.getInstance().getPosition()-1);
+           Select.getInstance().deSelect();
         }
        else if(Select.getInstance().getLocation() == Select.Location.SPELL){
             getSpellTrapByIndex(Select.getInstance().getPosition() -1) .setStatus("O");
-            activateEffectOfCard(Select.getInstance().getCard());
+            MainPhase1.getInstance().activateEffectOfCard(Select.getInstance().getCard());
+            Select.getInstance().deSelect();
         }
 
     }
 
-    private void activateEffectOfCard(Card card) {
-        String cardName = card.getCardName();
-        switch (cardName){
-            case "Monster Reborn" :{
-                EffectController.getInstance().activateMonsterRebornEffect();
-                break;
-            }
-            case "Terraforming" :{
-                EffectController.getInstance().activateTerraformingEffect();
-                break;
-            }
-            case "Raigeki" : {
-                EffectController.getInstance().activateRaigekiEffect();
-                break;
-            }
-            case "Dark Hole" : {
-                EffectController.getInstance().activateDarkHoleEffect();
-                break;
-            }
-            case "Spell Absorption" : {
-                EffectController.getInstance().activateSpellAbsorptionEffect();
-                break;
-            }
-            case "Messenger of peace" : {
-                EffectController.getInstance().activateMessengerEffect();
-                break;
-            }
-            case "Twin Twisters" : {
-                EffectController.getInstance().activateTwinTwisters();
-                break;
-            }
-            case "Yami" : {
-                EffectController.getInstance().activateYamiEffect();
-                break;
-            }
-            case "Forest" : {
-                EffectController.getInstance().activateForestEffect();
-                break;
-            }
-            case "UMIRUKA" : {
-                EffectController.getInstance().activateUmirukaEffect();
-                break;
-            }
-            case "Mystical space typhoon": {
-                EffectController.getInstance().activateMysticalSpaceTyphoon();
-                break;
-            }
-        }
-    }
 
 
-    //this method needs to be put in MainPhase;
+
 
 
 
@@ -260,6 +215,7 @@ public class Board {
     public void destroyMonsterCardByIndex(int index) {
         MonsterCard monsterCard = monstersInField[index].getMonsterCard();
         monstersInField[index].removeMonsterField();
+        monstersInField[index] = null;
         destroyCard(monsterCard);
     }
 
@@ -436,9 +392,7 @@ public class Board {
     public Card getFieldZoneCard(){
         return fieldZoneCard;
     }
-   /* public String[] getMonsterZone(){
-        return this.monsterZone;
-    }*/
+
 
 
     public boolean isCanGetCardFromDeck() {
@@ -473,10 +427,6 @@ public class Board {
         this.isMessengerEffectActivated = isMessengerEffectActivated;
     }
 
-    public boolean isMessengerEffectActivated() {
-        return isMessengerEffectActivated;
-    }
-
     public boolean isNegateAttackAvailable() {
         for(int i = 0; i < 5 ; i++){
             if(spellTrapsInField[i] != null && spellTrapsInField[i].getCard().getCardName().equals("Negate Attack"))
@@ -485,6 +435,18 @@ public class Board {
         }
         return false;
 
+    }
+
+    public boolean isGraveYardEmpty() {
+        return this.graveYard.size() == 0;
+    }
+
+    public int getTrapIndexByName(String cardName) {
+        for(int i = 0 ; i < 5; i++){
+            if(spellTrapsInField[i] != null && spellTrapsInField[i].getCard().getCardName().equals(cardName))
+                return i;
+        }
+        return 10;
     }
 }
 

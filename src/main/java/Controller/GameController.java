@@ -17,6 +17,7 @@ public class GameController {
     private boolean isFirstTurn = true;
     private boolean isSurrendered = false;
     private boolean isSummonedInThisTurn = false;
+    private boolean cheat = true;
 
     private GameController(){
     }
@@ -66,6 +67,10 @@ public class GameController {
                 giveScores();
                 break;
             }
+            if(cheat){
+                giveScores();
+                break;
+            }
             enterBattlePhase();
                 if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn))){
                     findWinner();
@@ -85,6 +90,9 @@ public class GameController {
         }
 
 
+    }
+    public void setCheat(boolean cheat){
+        this.cheat = cheat;
     }
     public boolean isSummonedInTurn() {
         return isSummonedInThisTurn;

@@ -20,6 +20,7 @@ public class StandByPhase {
         if(( i = isMessengerCardAvailable(myBoard)) != -1){
             System.out.println("you can give 100 LP to destroy Messenger of peace card in standByPhase");
             if(scanner.nextLine().equals("yes")){
+                myBoard.decreaseLifePoint(100);
                 myBoard.destroySpellTrapCardByIndex(i);
                 myBoard.setIsMessengerEffectActivated(false);
                 EffectController.getInstance().deactivateMessengerEffect();
@@ -32,7 +33,7 @@ public class StandByPhase {
 
     private int isMessengerCardAvailable(Board myBoard) {
        for(int i = 0 ; i < 5; i++){
-       if(myBoard.getMonsterByIndex(i)!= null && myBoard.getSpellTrapByIndex(i).getCard().getCardName().equals("Messenger Of peace"))
+       if(myBoard.getMonsterByIndex(i)!= null && myBoard.getSpellTrapByIndex(i).getCard().getCardName().equals("Messenger Of peace") && myBoard.getSpellTrapByIndex(i).getStatus().equals("O"))
            return i;
        }
        return -1;

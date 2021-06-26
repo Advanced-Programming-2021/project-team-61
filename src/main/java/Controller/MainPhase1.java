@@ -13,6 +13,7 @@ public class MainPhase1 {
     private static MainPhase1 m = null;
     private MainPhaseView view;
     private GameView gameView;
+    private EffectController effectController;
 
     private MainPhase1() {
     }
@@ -28,11 +29,11 @@ public class MainPhase1 {
         gameView = GameView.getInstance();
         if (!isACardSelected()) {
             view.printMessage(MainPhaseView.Commands.NoCardSelected);
-        } else if (!isSelectedCardInHand() || !isCardInHandMonsterCard(board)) { //needs one more if
+        } else if (!isSelectedCardInHand() || !isCardInHandMonsterCard(board)) {
             view.printMessage(MainPhaseView.Commands.CannotBeSummoned);
         } else if (isMonsterZoneFull(board)) {
             view.printMessage(MainPhaseView.Commands.MonsterZoneFull);
-        } else if (gameView.isSummonedInTurn()) {
+        } else if (GameController.getInstance().isSummonedInTurn()) {
             view.printMessage(MainPhaseView.Commands.SummonIsDoneOnce);
         } else {
             ProcessTribute(board);
@@ -65,7 +66,7 @@ public class MainPhase1 {
         else if (isCardInHandMonsterCard(board)) {
             if (isMonsterZoneFull(board))
                 view.printMessage(MainPhaseView.Commands.MonsterZoneFull);
-            else if (gameView.isSummonedInTurn())
+            else if (GameController.getInstance().isSummonedInTurn())
                 view.printMessage(MainPhaseView.Commands.SummonIsDoneOnce);
             else {
                 MonsterCard monsterCard = (MonsterCard) board.getCardFromHand(Select.getInstance().getPosition() - 1);
@@ -76,8 +77,9 @@ public class MainPhase1 {
         } else if (isCardInHandSpellTrap(board)) {
             if (isSpellTrapZoneFull(board))
                 view.printMessage(MainPhaseView.Commands.SpellZoneFull);
-            else
+            else{
                 setSpellTrap(board);
+            }
         }
     }
 
@@ -105,12 +107,13 @@ public class MainPhase1 {
             view.printMessage(MainPhaseView.Commands.AlreadyChangedPositionInTurn);
         else {
             if (newPosition.equals("attack")) {
-                if (isMonsterCardInTheWantedPosition(board, "DO"))
+                if (isMonsterCardInTheWantedPosition(board, "OO"))
                     view.printMessage(MainPhaseView.Commands.TheCardInWantedPosition);
                 else
                     setAttackMonsterCard(board);
+
             } else {
-                if (isMonsterCardInTheWantedPosition(board, "OO"))
+                if (isMonsterCardInTheWantedPosition(board, "DO"))
                     view.printMessage(MainPhaseView.Commands.TheCardInWantedPosition);
                 else
                     setDefenseMonsterCard(board);
@@ -140,13 +143,13 @@ public class MainPhase1 {
             if (isSelectedCardInHand()) {
                 gameView.showCard_hand(myBoard, Select.getInstance().getPosition() - 1);
             } else if (isSelectedCardInMonsterZone()) {
-                gameView.showCard_myMonster(myBoard, Select.getInstance().getPosition());
+                gameView.showCard_myMonster(myBoard, Select.getInstance().getPosition() - 1);
             } else if (isSelectedCardInSpellZone()) {
-                gameView.showCard_mySpellTrap(myBoard, Select.getInstance().getPosition());
+                gameView.showCard_mySpellTrap(myBoard, Select.getInstance().getPosition() - 1);
             } else if (isSelectedCardInMonsterOpponent()) {
-                gameView.showCard_myMonster(rivalBoard, Select.getInstance().getPosition());
+                gameView.showCard_myMonster(rivalBoard, Select.getInstance().getPosition() - 1);
             } else if (isSelectedCardInSpellOpponent()) {
-                gameView.showCard_mySpellTrap(rivalBoard, Select.getInstance().getPosition());
+                gameView.showCard_mySpellTrap(rivalBoard, Select.getInstance().getPosition() - 1);
             }// Should I show the card in myField and opponentField?????
 
         }
@@ -162,6 +165,7 @@ public class MainPhase1 {
     }
 
     public void ProcessActivation(Board board,Board rival) {
+        setEffectController(board,rival);
         if (!isACardSelected())
             view.printMessage(MainPhaseView.Commands.NoCardSelected);
         else if (!isSelectedCardSpell())
@@ -170,18 +174,77 @@ public class MainPhase1 {
             view.printMessage(MainPhaseView.Commands.isActivated);
         else if (isSelectedCardInHand() && isSpellTrapZoneFull(board)) {//needs one more if
             view.printMessage(MainPhaseView.Commands.SpellZoneFull);
-        } else if (!isPreprationPreparedForSpecialCards(rival)) {//prepration??
+        } else if (!isPreprationPreparedForSpecialCards(rival,board)) {
             view.printMessage(MainPhaseView.Commands.noPreparatipn);
         } else
             board.activateEffect();
     }
 
-    private boolean isPreprationPreparedForSpecialCards(Board rival) {
+    private void setEffectController(Board me,Board rival) {
+        effectController = EffectController.getInstance();
+        effectController.setMyBoard(me);
+        effectController.setRivalBoard(rival);
+    }
+
+    public void activateEffectOfCard(Card card) {
+        String cardName = card.getCardName();
+        switch (cardName){
+            case "Monster Reborn" :{
+                effectController.activateMonsterRebornEffect();
+                break;
+            }
+            case "Terraforming" :{
+                effectController.activateTerraformingEffect();
+                break;
+            }
+            case "Raigeki" : {
+                effectController.activateRaigekiEffect();
+                break;
+            }
+            case "Dark Hole" : {
+                effectController.activateDarkHoleEffect();
+                break;
+            }
+            case "Spell Absorption" : {
+                effectController.activateSpellAbsorptionEffect();
+                break;
+            }
+            case "Messenger of peace" : {
+                effectController.activateMessengerEffect();
+                break;
+            }
+            case "Twin Twisters" : {
+                effectController.activateTwinTwisters();
+                break;
+            }
+            case "Yami" : {
+                effectController.activateYamiEffect();
+                break;
+            }
+            case "Forest" : {
+                effectController.activateForestEffect();
+                break;
+            }
+            case "UMIRUKA" : {
+                effectController.activateUmirukaEffect();
+                break;
+            }
+            case "Mystical space typhoon": {
+                effectController.activateMysticalSpaceTyphoon();
+                break;
+            }
+        }
+    }
+
+    private boolean isPreprationPreparedForSpecialCards(Board rival,Board my) {
         if(Select.getInstance().getCard().getCardName().equals("Twin Twisters")){
             return !rival.isSpellTrapFieldEmpty();
         }
         if(Select.getInstance().getCard().getCardName().equals("Mystical space typhoon")){
             return !rival.isSpellTrapFieldEmpty();
+        }
+        if(Select.getInstance().getCard().getCardName().equals("Monster Reborn")){
+            return !my.isGraveYardEmpty() && !my.isMonsterZoneEmpty() && !rival.isGraveYardEmpty();
         }
         return true;
     }
@@ -192,14 +255,16 @@ public class MainPhase1 {
             Scanner scanner = RegisterView.scanner;
             if(scanner.nextLine().equals("yes")){
                 System.out.println("please choose a monster in your hand which its level is lower than 4");
-                if( !board.isMonsterAvailableInMonsterZone(scanner.nextInt()-1))
+                if( !board.isThisCardInHand_ByName(scanner.nextLine()))
                     System.out.println("no monster card there!");
                 else{
-                   MonsterCard monsterCard1 = (MonsterCard) board.getCardFromHand(scanner.nextInt()-1);
+                    System.out.println("please type the number of that card");
+                    int x = scanner.nextInt();
+                   MonsterCard monsterCard1 = (MonsterCard) board.getCardFromHand(x-1);
                    if(monsterCard1.getLevel()>4)
                        System.out.println("cannot summon this");
                    else
-                    summonMonster(board,(MonsterCard) board.getCardFromHand(scanner.nextInt()-1));}
+                    summonMonster(board,(MonsterCard) board.getCardFromHand(x-1));}
             }
 
 
@@ -267,7 +332,7 @@ public class MainPhase1 {
         else {
             address = scanner.nextInt();
             address2 = scanner.nextInt();
-            if (!board.isMonsterAvailableInMonsterZone(address) || !board.isMonsterAvailableInMonsterZone(address2)){
+            if (!board.isMonsterAvailableInMonsterZone(address -1) || !board.isMonsterAvailableInMonsterZone(address2 -1)){
               view.printMessage(MainPhaseView.Commands.NoMonsterInAddress);
               return false;
             }
@@ -303,6 +368,7 @@ public class MainPhase1 {
         int emptyPlace = board.getEmptyPlaceInSpellTrapZone();
         board.addSpellTrapCardToField(emptyPlace, board.getCardFromHand(Select.getInstance().getPosition() - 1),"H");
         view.printMessage(MainPhaseView.Commands.SetSuccessful);
+        Select.getInstance().deSelect();
     }
 
     private boolean isSelectedCardInMonsterZone() {

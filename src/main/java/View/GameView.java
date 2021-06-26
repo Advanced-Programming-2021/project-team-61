@@ -60,7 +60,6 @@ public class GameView {
 
     private Scanner scanner = RegisterView.scanner;
     private static GameView g = null;
-    private boolean isSummonedInTurn = false;
 
     private GameView(){
 
@@ -71,13 +70,7 @@ public class GameView {
         return g;
     }
 
-    public boolean isSummonedInTurn() {
-        return isSummonedInTurn;
-    }
 
-    public void setSummonedInTurn(boolean summonedInTurn) {
-        isSummonedInTurn = summonedInTurn;
-    }
 
     public String scan(){
         return scanner.nextLine();
