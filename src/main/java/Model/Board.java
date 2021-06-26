@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.EffectController;
 import View.GameView;
 
 import java.util.ArrayList;
@@ -159,14 +160,65 @@ public class Board {
         if(Select.getInstance().getLocation()== Select.Location.HAND){
             int emptyPlace = getEmptyPlaceInSpellTrapZone();
            addSpellTrapCardToField(emptyPlace,getCardFromHand(Select.getInstance().getPosition() - 1),"O");
+           activateEffectOfCard(Select.getInstance().getCard());
            hand.remove(Select.getInstance().getPosition()-1);
         }
        else if(Select.getInstance().getLocation() == Select.Location.SPELL){
             getSpellTrapByIndex(Select.getInstance().getPosition() -1) .setStatus("O");
+            activateEffectOfCard(Select.getInstance().getCard());
         }
 
     }
 
+    private void activateEffectOfCard(Card card) {
+        String cardName = card.getCardName();
+        switch (cardName){
+            case "Monster Reborn" :{
+                EffectController.getInstance().activateMonsterRebornEffect();
+                break;
+            }
+            case "Terraforming" :{
+                EffectController.getInstance().activateTerraformingEffect();
+                break;
+            }
+            case "Raigeki" : {
+                EffectController.getInstance().activateRaigekiEffect();
+                break;
+            }
+            case "Dark Hole" : {
+                EffectController.getInstance().activateDarkHoleEffect();
+                break;
+            }
+            case "Spell Absorption" : {
+                EffectController.getInstance().activateSpellAbsorptionEffect();
+                break;
+            }
+            case "Messenger of peace" : {
+                EffectController.getInstance().activateMessengerEffect();
+                break;
+            }
+            case "Twin Twisters" : {
+                EffectController.getInstance().activateTwinTwisters();
+                break;
+            }
+            case "Yami" : {
+                EffectController.getInstance().activateYamiEffect();
+                break;
+            }
+            case "Forest" : {
+                EffectController.getInstance().activateForestEffect();
+                break;
+            }
+            case "UMIRUKA" : {
+                EffectController.getInstance().activateUmirukaEffect();
+                break;
+            }
+            case "Mystical space typhoon": {
+                EffectController.getInstance().activateMysticalSpaceTyphoon();
+                break;
+            }
+        }
+    }
 
 
     //this method needs to be put in MainPhase;
@@ -397,12 +449,21 @@ public class Board {
         this.canGetCardFromDeck = canGetCardFromDeck;
     }
 
-    public boolean isMirrorForceAvailable() {
+    public boolean checkMirrorForceAvailable() {
         for(int i = 0 ; i < 5; i++){
-            if(spellTrapsInField[i]!= null && spellTrapsInField[i].getCard().getCardName().equals("Mirror Force"))
-                return true;
+            if(spellTrapsInField[i]!= null && spellTrapsInField[i].getCard().getCardName().equals("Mirror Force")){
+                return GameView.getInstance().printToActivateCardInRivalTurn(this.getPlayer());
+
+            }
         }
         return false;
+    }
+    public boolean isSpellTrapFieldEmpty(){
+        for(int i = 0; i < 5 ;i++){
+            if(spellTrapsInField[i]!=null)
+                return false;
+        }
+        return true;
     }
 
     public void setMirrorForceEffect(boolean mirrorForceEffect) {
@@ -414,6 +475,16 @@ public class Board {
 
     public boolean isMessengerEffectActivated() {
         return isMessengerEffectActivated;
+    }
+
+    public boolean isNegateAttackAvailable() {
+        for(int i = 0; i < 5 ; i++){
+            if(spellTrapsInField[i] != null && spellTrapsInField[i].getCard().getCardName().equals("Negate Attack"))
+                return true;
+
+        }
+        return false;
+
     }
 }
 

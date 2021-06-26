@@ -3,11 +3,15 @@ package View;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import Controller.EffectController;
+import Controller.GameController;
 import Controller.MainPhase1;
 import Model.Board;
 import Model.Card;
 import Model.Player;
 import Model.Select;
+import javafx.scene.effect.Effect;
 
 public class MainPhaseView {
 
@@ -31,7 +35,8 @@ public class MainPhaseView {
         SpellZoneFull,
         CardIsNotVisible,
         NotSpellCard,
-        isActivated
+        isActivated,
+        noPreparatipn
     }
 
     private static MainPhaseView m = null;
@@ -39,6 +44,7 @@ public class MainPhaseView {
     private Scanner scanner = RegisterView.scanner;
     private MainPhase1 mainPhase1;
     private Matcher matcher;
+    private GameController gameController;
 
     private MainPhaseView(){
 
@@ -51,6 +57,7 @@ public class MainPhaseView {
     public void scan(Player me , Player rival){
         printPhaseName();
         mainPhase1 = MainPhase1.getInstance();
+        gameController = GameController.getInstance();
         while (true){
             command = scanner.nextLine();
             if ((command.equals("summon"))) {
@@ -69,16 +76,23 @@ public class MainPhaseView {
                mainPhase1.ProcessShowCard(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
             }
             else if(command.equals("activate effect")){
-               mainPhase1.ProcessActivation(Board.getBoardByPlayer(me));
+               mainPhase1.ProcessActivation(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
             }
            else if(command.startsWith("select")){
                 Select.getInstance().run(me,rival,command);
             }
            else if(command.equals("activate Call Of the Haunted")){
-                Card.activateCallOfTheHauntedEffect(Board.getBoardByPlayer(me));
+                EffectController.getInstance().activateCallOfTheHauntedEffect();
             }
            else if(command.equals("activate Time Seal")){
-               Card.activateTimeSealEffect(Board.getBoardByPlayer(rival));
+               EffectController.getInstance().activateTimeSealEffect();
+            }
+           else if(command.equals("activate Mind Crush")){
+               EffectController.getInstance().activateMindCrushEffect();
+            }
+           else if(command.equals("surrender")){
+               gameController.setSurrendered(true);
+               break;
             }
            else if(command.equals("next phase")){
                break;
@@ -183,6 +197,10 @@ public class MainPhaseView {
             }
             case isActivated:{
                 System.out.println("you have already activated this card");
+                break;
+            }
+            case noPreparatipn:{
+                System.out.println("preparations of this spell are not done yet");
                 break;
             }
 

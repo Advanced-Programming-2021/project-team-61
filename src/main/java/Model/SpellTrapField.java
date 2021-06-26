@@ -13,6 +13,8 @@ public class SpellTrapField {
         spellTrapFields.add(this);
     }
 
+
+
     public String getStatus() {
         return status;
     }

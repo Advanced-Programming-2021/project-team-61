@@ -161,7 +161,7 @@ public class MainPhase1 {
         else return Select.getInstance().getLocation() != Select.Location.FIELDOPPONENT;
     }
 
-    public void ProcessActivation(Board board) {
+    public void ProcessActivation(Board board,Board rival) {
         if (!isACardSelected())
             view.printMessage(MainPhaseView.Commands.NoCardSelected);
         else if (!isSelectedCardSpell())
@@ -170,11 +170,22 @@ public class MainPhase1 {
             view.printMessage(MainPhaseView.Commands.isActivated);
         else if (isSelectedCardInHand() && isSpellTrapZoneFull(board)) {//needs one more if
             view.printMessage(MainPhaseView.Commands.SpellZoneFull);
-        } else if (false) {//prepration??
-            board.getSpellTrapByIndex(1).getCard();
+        } else if (!isPreprationPreparedForSpecialCards(rival)) {//prepration??
+            view.printMessage(MainPhaseView.Commands.noPreparatipn);
         } else
             board.activateEffect();
     }
+
+    private boolean isPreprationPreparedForSpecialCards(Board rival) {
+        if(Select.getInstance().getCard().getCardName().equals("Twin Twisters")){
+            return !rival.isSpellTrapFieldEmpty();
+        }
+        if(Select.getInstance().getCard().getCardName().equals("Mystical space typhoon")){
+            return !rival.isSpellTrapFieldEmpty();
+        }
+        return true;
+    }
+
     private void processTerratiger(MonsterCard monsterCard,Board board){
         if(monsterCard.getCardName().equals("Terratiger, the Empowered Warrior")){
             System.out.println("Do you want to activate your effect?");

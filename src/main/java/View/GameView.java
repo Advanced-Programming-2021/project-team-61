@@ -1,5 +1,6 @@
 package View;
 
+import Controller.EffectController;
 import Model.*;
 
 import java.util.ArrayList;
@@ -52,7 +53,8 @@ public class GameView {
         cantAttackInThisTurn,
         invalidCommand,
         newCardAddedToHand,
-        askToChooseMonsterFromGraveYard
+        askToChooseMonsterFromGraveYard,
+        preprationNotPrepared
 
     }
 
@@ -230,6 +232,10 @@ public class GameView {
                 System.out.println("please choose a monster Card from the graveyard");
                 break;
             }
+            case preprationNotPrepared:{
+                System.out.println("preparations of this spell card are not done yet");
+                break;
+            }
             case invalidCommand:{
                 System.out.println("invalid command!");
                 break;
@@ -273,6 +279,25 @@ public class GameView {
                 System.out.println("new card added to the hand :"+" "+ s1);
             }
         }
+    }
+    public void printWinner(Player winner,Player loser){
+        System.out.println(winner.getUsername() + " won the game and the score is: "+Board.getBoardByPlayer(winner).getLifePoint()+"-"+Board.getBoardByPlayer(loser).getLifePoint());
+    }
+    public boolean printToActivateCardInRivalTurn(Player player){
+        System.out.println("now it will be "+player.getUsername()+" 's turn");
+        System.out.println("do you want to activate your trap card?");
+        String s = scanner.nextLine();
+        if(s.equals("yes")){
+            System.out.println("spell/trap activated");
+            EffectController.getInstance().activateMirrorForceEffect();
+            return true;
+        }
+        else{
+            System.out.println("OK!");
+            return false;
+
+        }
+
     }
     public void printGraveyard(ArrayList<Card> graveyard){
         for (int i = 1; i <= graveyard.size(); i++) {
