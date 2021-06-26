@@ -11,6 +11,7 @@ public class EffectController {
     private Board rivalBoard;
     private static EffectController e = null;
     private Scanner scanner = new Scanner(System.in);
+    private boolean isMessengerEffectActivated = false;
     private EffectController(){
 
     }
@@ -167,4 +168,17 @@ public class EffectController {
         }
 
 }
+ public void activateMessengerEffect(){
+        for(int i = 0 ; i < 5; i++){
+            if(myBoard.getMonsterByIndex(i) != null && myBoard.getMonsterByIndex(i).getMonsterCard().getAttack()>= 1500)
+                myBoard.getMonsterByIndex(i).setCanAttack(false);
+        }
+ }
+ public void deactivateMessengerEffect(){
+        for(int i = 0 ; i < 5; i++){
+            if(myBoard.getMonsterByIndex(i)!= null && !myBoard.getMonsterByIndex(i).isCanAttack()){
+                myBoard.getMonsterByIndex(i).setCanAttack(true);
+            }
+        }
+ }
 }
