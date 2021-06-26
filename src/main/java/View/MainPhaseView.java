@@ -100,7 +100,10 @@ public class MainPhaseView {
            else if ((matcher = getCommandMatcher(command,"increase --LP (\\d+)")).find()) {
                 Board.getBoardByPlayer(me).increaseLIfePoint(Integer.parseInt(matcher.group(1)));
             }
-
+            else if ((matcher = getCommandMatcher(command,"duel set-winner ([^\\s]+)")).find()){
+                GameView.getInstance().printWinner(me,rival);
+                //win the game...
+            }
 
 
 
