@@ -55,11 +55,15 @@ public class BattlePhase {
     }
 
     private void attack(MonsterField myMonster, MonsterField rivalMonster, Board myBoard, Board rivalBoard, int number){
-        if (rivalBoard.isMirrorForceAvailable()){
-            Card.activateMirrorForceEffect(myBoard);
+        if (rivalBoard.checkMirrorForceAvailable()){
             gameView.printMessage(GameView.Command.cantAttackInThisTurn);
             rivalBoard.setMirrorForceEffect(false);
         }
+        else{
+            if(rivalBoard.isNegateAttackAvailable()){
+                view.setHaveToBreak(true);
+            }
+
         else {
             checkSuspiousCardBeforeAttack(rivalMonster, myMonster, myBoard);
             if (rivalMonster.getStatus().equals("OO"))
@@ -69,6 +73,7 @@ public class BattlePhase {
             else {
                 attackDH(myMonster, rivalMonster, myBoard, rivalBoard, number);
             }
+        }
         }
 
     }
@@ -160,7 +165,7 @@ public class BattlePhase {
     public void ProcessDirectAttack(Board myBoard, Board rivalBoard) {
         setView();
         setController();
-        if (rivalBoard.isMirrorForceAvailable()){
+        if (rivalBoard.checkMirrorForceAvailable()){
             myBoard.destroyAllMonsterInAttack();
             gameView.printMessage(GameView.Command.cantAttackInThisTurn);
             rivalBoard.setMirrorForceEffect(false);
@@ -236,12 +241,18 @@ public class BattlePhase {
         gameView = GameView.getInstance();
         if(myBoard.getLifePoint()<=0){
             rivalBoard.setNumberOfWins();
-            gameView.printMessageByString(GameView.Command.playerWins,rivalBoard.getPlayer().getUsername());
+            gameView.printWinner(rivalBoard.getPlayer(),myBoard.getPlayer());
+
         }
         else{
             myBoard.setNumberOfWins();
-            gameView.printMessageByString(GameView.Command.playerWins,myBoard.getPlayer().getUsername());
+            gameView.printWinner(myBoard.getPlayer(),rivalBoard.getPlayer());
         }
+        myBoard.getPlayer().setCoin(1000 + myBoard.getLifePoint());
+        myBoard.getPlayer().setScore(myBoard.getLifePoint());
+        rivalBoard.getPlayer().setCoin(1000 + rivalBoard.getLifePoint());
+        rivalBoard.getPlayer().setScore(rivalBoard.getLifePoint());
+
         view.setGameFinished(true);
 
     }
