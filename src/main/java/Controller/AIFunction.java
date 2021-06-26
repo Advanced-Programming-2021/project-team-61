@@ -21,20 +21,24 @@ public class AIFunction {
         MainPhaseView.getInstance().printMessage(MainPhaseView.Commands.SummonSuccessful);
     }
 
-	public void processAttack(){
-        int rivalCounter=1;
-	    for (int i = 1; i <= 5; i++) {
-            if (!myBoard.isMonsterAvailableInMonsterZone(i)){
-                break;
-            }else{
-                for (;rivalCounter<=5;rivalCounter++){
+    public void processAttack(){
+        int rivalCounter=0;
+        int i=0;
+        while (i<=4){
+            if (myBoard.isMonsterAvailableInMonsterZone(i) && rivalCounter<=4){
+                for (;rivalCounter<=4;rivalCounter++){
                     if (rivalBoard.isMonsterAvailableInMonsterZone(rivalCounter)){
                         BattlePhase.getInstance().attack(myBoard.getMonsterByIndex(i),rivalBoard.getMonsterByIndex(rivalCounter),myBoard,rivalBoard,rivalCounter-1);
+                        i++;
                         break;
                     }
                 }
                 rivalCounter++;
+            }else if (myBoard.isMonsterAvailableInMonsterZone(i)){
                 BattlePhase.getInstance().directAttackAI(myBoard.getMonsterByIndex(i).getMonsterCard(),rivalBoard);
+                i++;
+            }else {
+                i++;
             }
         }
     }
