@@ -58,7 +58,7 @@ public class GameController {
                 if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn)))
                     break;
             if(hasAttackedInBattlePhase)
-             enterMainPhase();
+                enterMainPhase();
             enterEndPhase(notMyTurn);
             changeTurn();
             }

@@ -54,7 +54,7 @@ public class BattlePhase {
         this.view = BattlePhaseView.getInstance();
     }
 
-    private void attack(MonsterField myMonster, MonsterField rivalMonster, Board myBoard, Board rivalBoard, int number){
+    public void attack(MonsterField myMonster, MonsterField rivalMonster, Board myBoard, Board rivalBoard, int number){
         if (rivalBoard.checkMirrorForceAvailable()){
             gameView.printMessage(GameView.Command.cantAttackInThisTurn);
             rivalBoard.setMirrorForceEffect(false);
