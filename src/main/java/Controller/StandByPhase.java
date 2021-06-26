@@ -17,6 +17,7 @@ public class StandByPhase {
         return s;
     }
     public void run(Board myBoard){
+        printPhase();
         if(( i = isMessengerCardAvailable(myBoard)) != -1){
             System.out.println("you can give 100 LP to destroy Messenger of peace card in standByPhase");
             if(scanner.nextLine().equals("yes")){
@@ -29,6 +30,10 @@ public class StandByPhase {
                 System.out.println("OK!");
 
         }
+    }
+
+    private void printPhase() {
+        System.out.println("Phase : StandByPhase");
     }
 
     private int isMessengerCardAvailable(Board myBoard) {

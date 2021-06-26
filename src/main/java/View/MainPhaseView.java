@@ -45,6 +45,7 @@ public class MainPhaseView {
     private MainPhase1 mainPhase1;
     private Matcher matcher;
     private GameController gameController;
+    private EffectController effectController;
 
     private MainPhaseView(){
 
@@ -56,6 +57,9 @@ public class MainPhaseView {
     }
     public void scan(Player me , Player rival){
         printPhaseName();
+        effectController = EffectController.getInstance();
+        effectController.setMyBoard(Board.getBoardByPlayer(me));
+        effectController.setRivalBoard(Board.getBoardByPlayer(rival));
         mainPhase1 = MainPhase1.getInstance();
         gameController = GameController.getInstance();
         while (true){
@@ -90,6 +94,9 @@ public class MainPhaseView {
            else if(command.equals("activate Mind Crush")){
                EffectController.getInstance().activateMindCrushEffect();
             }
+           else if(command.equals("activate torrential tribute")){
+               EffectController.getInstance().activateTorrentialTributeEffect();
+            }
            else if(command.equals("surrender")){
                gameController.setSurrendered(true);
                break;
@@ -102,8 +109,12 @@ public class MainPhaseView {
             }
             else if ((matcher = getCommandMatcher(command,"duel set-winner ([^\\s]+)")).find()){
                 GameView.getInstance().printWinner(me,rival);
+                Board.getBoardByPlayer(me).increaseNumberOfWins();
                 gameController.setCheat(true);
                 //win the game...
+            }
+            else if(command.equals("show graveyard")){
+                Board.getBoardByPlayer(me).showGraveyard();
             }
 
 

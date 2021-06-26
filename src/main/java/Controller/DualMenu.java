@@ -51,8 +51,19 @@ public class DualMenu {
                 g.run(Player.getPlayerByUsername(username), Player.getPlayerByUsername(matcher.group(1)));
 
             }
+            printWinnerOfMatch(Player.getPlayerByUsername(username),Player.getPlayerByUsername(matcher.group(1)));
 
         }
+
+
+    }
+
+    private void printWinnerOfMatch(Player me, Player rival) {
+        if(Board.getBoardByPlayer(me).getNumberOfWins() > Board.getBoardByPlayer(rival).getNumberOfWins()){
+            System.out.println(me.getUsername()+" 's won the whole match with score"+" "+me.getScore()+"-"+rival.getScore());
+        }
+        else
+            System.out.println(rival.getUsername()+" 's won the whole match with score"+" "+rival.getScore()+"-"+me.getScore());
 
 
     }

@@ -64,6 +64,7 @@ public class GameController {
             }
             if(isSurrendered){
                 GameView.getInstance().printWinner(notMyTurn,myTurn);
+                Board.getBoardByPlayer(notMyTurn).increaseNumberOfWins();
                 giveScores();
                 break;
             }
@@ -123,6 +124,7 @@ public class GameController {
                 monsterFields[i].setHasAttackedInTurn(false);
             }
         }
+        isSummonedInThisTurn = false;
     }
     private void enterDrawPhase(){
         DrawPhase drawPhase = DrawPhase.getInstance();
@@ -164,9 +166,12 @@ public class GameController {
     }
     private void findWinner(){
         if(Board.getBoardByPlayer(myTurn).getLifePoint()<=0){
-            GameView.getInstance().printWinner(myTurn,notMyTurn);
-        }
-        else
             GameView.getInstance().printWinner(notMyTurn,myTurn);
+            Board.getBoardByPlayer(notMyTurn).increaseNumberOfWins();
+        }
+        else{
+            GameView.getInstance().printWinner(myTurn,notMyTurn);
+            Board.getBoardByPlayer(myTurn).increaseNumberOfWins();
+        }
     }
 }
