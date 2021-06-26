@@ -14,6 +14,7 @@ public class GameController {
     private Player temp;
     private boolean hasAttackedInBattlePhase = false;
     private boolean isFirstTurn = true;
+    private boolean isSurrendered = false;
 
     private GameController(){
     }
@@ -50,6 +51,9 @@ public class GameController {
             enterMainPhase();
             if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn)))
                 break;
+            if(isSurrendered){
+                break;
+            }
             enterBattlePhase();
                 if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn)))
                     break;
@@ -103,6 +107,10 @@ public class GameController {
 
     public void setHasAttackedInBattlePhase(boolean hasAttackedInBattlePhase) {
         this.hasAttackedInBattlePhase = hasAttackedInBattlePhase;
+    }
+
+    public void setSurrendered(boolean surrendered) {
+        isSurrendered = surrendered;
     }
 
     private boolean isGameFinished(Board myBoard, Board rivalBoard){

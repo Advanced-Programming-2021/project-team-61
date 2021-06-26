@@ -76,11 +76,11 @@ public class Select {
         if (loc>5){
             GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
             return 0;
-        }else if (Board.getBoardByPlayer(player).getMonsterZoneByNumber(loc - 1).equals("E")){
+        }else if (Board.getBoardByPlayer(player).getMonsterByIndex(loc - 1) == null){
             GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
             return 0;
         }else {
-            card = Board.getBoardByPlayer(player).getMonsterCardByKey(loc);
+            card = Board.getBoardByPlayer(player).getMonsterByIndex(loc - 1).getMonsterCard();
             position = loc;
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
             return 1;
@@ -98,12 +98,12 @@ public class Select {
         if (loc>5){
             GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
             return 0;
-        }else if (Board.getBoardByPlayer(player).getSpellTrapZoneByNumber(loc - 1).equals("E")){
+        }else if (Board.getBoardByPlayer(player).getSpellTrapByIndex(loc - 1) == null){
             GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
             return 1;
         }else {
             position = loc;
-            card = Board.getBoardByPlayer(player).getSpellTrapByKey(loc);
+            card = Board.getBoardByPlayer(player).getSpellTrapByIndex(loc - 1).getCard();
             GameView.getInstance().printMessage(GameView.Command.CARDSELECTED);
             return 1;
         }

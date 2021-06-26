@@ -39,6 +39,15 @@ public class Player {
         }
         return false;
     }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public static ArrayList<Player> getAllPlayers(){
         return allPlayers;
     }
