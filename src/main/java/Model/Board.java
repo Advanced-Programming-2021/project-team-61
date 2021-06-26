@@ -34,6 +34,7 @@ public class Board {
     private int numberOfWins = 0;
     private MonsterField[] monstersInField = new MonsterField[5];
     private SpellTrapField[] spellTrapsInField = new SpellTrapField[5];
+    private boolean isMessengerEffectActivated = false;
 
 
     public Board(Player player) {
@@ -406,6 +407,13 @@ public class Board {
 
     public void setMirrorForceEffect(boolean mirrorForceEffect) {
         this.mirrorForceEffect = mirrorForceEffect;
+    }
+    public void setIsMessengerEffectActivated(boolean isMessengerEffectActivated){
+        this.isMessengerEffectActivated = isMessengerEffectActivated;
+    }
+
+    public boolean isMessengerEffectActivated() {
+        return isMessengerEffectActivated;
     }
 }
 
