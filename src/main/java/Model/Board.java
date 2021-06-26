@@ -34,6 +34,7 @@ public class Board {
     private int numberOfWins = 0;
     private MonsterField[] monstersInField = new MonsterField[5];
     private SpellTrapField[] spellTrapsInField = new SpellTrapField[5];
+    private boolean isMessengerEffectActivated = false;
 
 
     public Board(Player player) {
@@ -60,6 +61,9 @@ public class Board {
 
     public void decreaseLifePoint(int lifePoint) {
         this.lifePoint -= lifePoint;
+    }
+    public void increaseLifePoint(int lifePoint){
+        this.lifePoint += lifePoint;
     }
 
     public void increaseLIfePoint(int lifePoint){
@@ -108,6 +112,19 @@ public class Board {
             setCanGetCardFromDeck(true);
             return null;
         }
+    }
+    public int getNumberOfSpellTrapsInField(){
+        int counter = 0;
+        for(int i = 0 ; i < 5 ; i++){
+            if(spellTrapsInField[i] != null)
+                counter++;
+        }
+        return counter;
+    }
+    public void destroySpellTrapCardByIndex(int index){
+        Card card = spellTrapsInField[index].getCard();
+        spellTrapsInField[index].remove();
+        destroyCard(card);
     }
 
 
@@ -390,6 +407,13 @@ public class Board {
 
     public void setMirrorForceEffect(boolean mirrorForceEffect) {
         this.mirrorForceEffect = mirrorForceEffect;
+    }
+    public void setIsMessengerEffectActivated(boolean isMessengerEffectActivated){
+        this.isMessengerEffectActivated = isMessengerEffectActivated;
+    }
+
+    public boolean isMessengerEffectActivated() {
+        return isMessengerEffectActivated;
     }
 }
 
