@@ -7,7 +7,15 @@ import View.MainPhaseView;
 public class AIFunction {
     private Board myBoard;
     private Board rivalBoard;
+    private static AIFunction A = null;
 
+    private AIFunction(){
+    }
+    public static AIFunction getInstance(){
+        if(A ==null)
+            A = new AIFunction();
+        return A;
+    }
     public void run(Board me, Board rival){
         myBoard = me;
         rivalBoard = rival;

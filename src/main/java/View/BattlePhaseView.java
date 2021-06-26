@@ -57,6 +57,7 @@ public class BattlePhaseView {
         Board myBoard = Board.getBoardByPlayer(me);
         Board rivalBoard = Board.getBoardByPlayer(rival);
         while (true){
+            GameView.getInstance().showBoard(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
             command = scanner.nextLine();
             if(command.equals("next phase") || haveToBreak)
                 break;

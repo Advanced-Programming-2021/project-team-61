@@ -63,6 +63,7 @@ public class MainPhaseView {
         mainPhase1 = MainPhase1.getInstance();
         gameController = GameController.getInstance();
         while (true){
+            GameView.getInstance().showBoard(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
             command = scanner.nextLine();
             if ((command.equals("summon"))) {
                mainPhase1.ProcessSummon(Board.getBoardByPlayer(me));
