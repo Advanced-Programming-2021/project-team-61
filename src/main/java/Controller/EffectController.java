@@ -26,7 +26,7 @@ public class EffectController {
     public void setRivalBoard(Board rivalBoard){
         this.rivalBoard = rivalBoard;
     }
-    public void activateCallOfTheHauntedEffect(Board board) {  //trap
+    public void activateCallOfTheHauntedEffect() {  //trap
         GameView.getInstance().printGraveyard(myBoard.getGraveYard());
         GameView.getInstance().printMessage(GameView.Command.pleaseEnterTheCardNumber);
         int cardNumber ;//= Integer.parseInt(GameView.getInstance().scan());
