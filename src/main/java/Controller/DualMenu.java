@@ -40,7 +40,6 @@ public class DualMenu {
             view.printMessage(DualView.Commands.deckInvalid,matcher.group(1));
 
         }
-        //add deck is valid or not
         else if(!isRoundValid(Integer.parseInt(matcher.group(2)))){
          view.printMessage(DualView.Commands.roundInvalid,"");
         }
