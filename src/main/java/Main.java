@@ -13,10 +13,7 @@ public class Main {
         String absolute2 = f2.getAbsolutePath();
         Database.readDataLineByLine(absolute, absolute2);
         Database.AISetup();
-     //  List<String[]> x = Model.Database.getMonsterCardsInformation();
-      //  for (String[] y: x) {
-       //     System.out.println(y[0]);
-       // }
+
        RegisterView registerView = RegisterView.getInstance();
         registerView.scan();
 
