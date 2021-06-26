@@ -15,19 +15,11 @@ public class Board {
     private Player player;
     private ArrayList<Card> mainDeck;
     private ArrayList<Card> sideDeck;
-   // private String[] monsterZone = new String[5];
-    //private HashMap<Integer,MonsterCard> monsterCardsInField = new HashMap<>();
-   // private String[] spellTrapZone = new String[5];
-  //  private HashMap<Integer, Card> spellTrapCardsInField = new HashMap<>();
     private String fieldZoneCondition;
     private Card fieldZoneCard;
     private ArrayList<Card> graveYard = new ArrayList<>();
     private ArrayList<Card> hand = new ArrayList<>();
-    //private boolean isACardSelected = false;
-    //private boolean isSummonedInTurn = false;
-    //private int[] monsterZoneChange = new int[5];
-   // private int[] hasAttackInTurn = new int[5];
-   // private int[] extraAttack = new int[5];
+
     private int[] extraDefence = new int[5];
     private boolean canGetCardFromDeck = true;
     private boolean mirrorForceEffect = false;
@@ -49,7 +41,7 @@ public class Board {
     }
 
 
-    public void setNumberOfWins() {
+    public void increaseNumberOfWins() {
         this.numberOfWins+=1;
     }
 
@@ -151,13 +143,7 @@ public class Board {
         graveYard.add(card);
     }
 
-   /* public boolean isMonsterZoneFull() {
-        for (int i = 0; i < 5; i++) {
-            if (monsterZone[i].equals("E"))
-                return false;
-        }
-        return true;
-    }*/
+
     public void activateEffect(){
         if(Select.getInstance().getLocation()== Select.Location.HAND){
             int emptyPlace = getEmptyPlaceInSpellTrapZone();
@@ -269,7 +255,7 @@ public class Board {
         }
     }
 
-    //getters...
+
 
 
     public ArrayList<Card> getGraveYard() {
@@ -313,20 +299,6 @@ public class Board {
 
     //set,get,reset => extraAttack & extraDefence
 
-    public int getExtraDefenceByIndex(int index){
-        return extraDefence[index - 1];
-    }
-
-
-    public void resetExtraDefence(){
-        for (int amount:extraDefence) {
-            amount=0;
-        }
-    }
-
-    public void setExtraDefenceByIndex(int index, int amount){
-        extraDefence[index - 1]+=amount;
-    }
 
 
     public int getEmptyPlaceInSpellTrapZone(){
@@ -345,27 +317,12 @@ public class Board {
 
     }
 
-   /* public int getCardIndex(String cardName){
-        for(Map.Entry<Integer,MonsterCard> entry : monsterCardsInField.entrySet()){
-            if(entry.getValue().getCardName().equals(cardName))
-                return entry.getKey();
-        }
-        return 0;
-        }*/
     public boolean canAttack(MonsterField monsterField){
         return monsterField.getMonsterCard().getCardName().equals("Command knight") || (isMonsterZoneEmpty()) || !monsterField.isEffectActivated();
 
     }
 
 
-
-   /* public boolean isMonsterZoneEmpty(){
-        for(int i = 0;i<5;i++){
-            if(!monsterZone[i].equals("E"))
-                return false;
-        }
-        return true;
-    }*/
 
 
     public void showGraveyard(){

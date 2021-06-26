@@ -44,6 +44,7 @@ public class MainPhase1 {
         MonsterCard monsterCard = (MonsterCard) board.getCardFromHand(Select.getInstance().getPosition() - 1);
         if (monsterCard.getLevel() <= 4) {
             summonMonster(board, monsterCard);
+            GameController.getInstance().setSummonedInTurn(true);
             Select.getInstance().deSelect();
             processTerratiger(monsterCard,board);
         } else {
@@ -73,6 +74,7 @@ public class MainPhase1 {
                 setMonster(board, monsterCard);
                 Select.getInstance().deSelect();
                 view.printMessage(MainPhaseView.Commands.SetSuccessful);
+                GameController.getInstance().setSummonedInTurn(true);
             }
         } else if (isCardInHandSpellTrap(board)) {
             if (isSpellTrapZoneFull(board))
