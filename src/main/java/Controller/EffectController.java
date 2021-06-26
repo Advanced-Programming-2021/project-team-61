@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Board;
 import Model.MonsterCard;
+import Model.Select;
 import View.GameView;
 
 import java.util.Scanner;
@@ -30,8 +31,9 @@ public class EffectController {
         GameView.getInstance().printGraveyard(myBoard.getGraveYard());
         GameView.getInstance().printMessage(GameView.Command.pleaseEnterTheCardNumber);
         int cardNumber ;//= Integer.parseInt(GameView.getInstance().scan());
+
         while (true){
-            cardNumber = Integer.parseInt(GameView.getInstance().scan());
+            cardNumber = (scanner.nextInt());
             if (!(myBoard.getGraveYard().get(cardNumber - 1) instanceof MonsterCard)) {
                 GameView.getInstance().printMessage(GameView.Command.NOTBESUMMONED);
                 GameView.getInstance().printMessage(GameView.Command.pleaseEnterTheCardNumber);
@@ -41,9 +43,11 @@ public class EffectController {
         }
         MainPhase1.getInstance().summonMonster(myBoard,(MonsterCard) myBoard.getGraveYard().get(cardNumber - 1));
         GameView.getInstance().printMessage(GameView.Command.SUMMONSUCCESSFUL);
+        myBoard.destroySpellTrapCardByIndex(myBoard.getTrapIndexByName("Call of the Haunted"));
     }
     public void activateTimeSealEffect() {  //trap
         rivalBoard.setCanGetCardFromDeck(false);
+        myBoard.destroySpellTrapCardByIndex(myBoard.getTrapIndexByName("Time Seal"));
     }
     public void activateMirrorForceEffect() { //trap
         rivalBoard.destroyAllMonsterInAttack();
@@ -57,6 +61,7 @@ public class EffectController {
             int a = (int) (Math.random() * (myBoard.getHand().size() + 1));//create random number to remove card from hand
             myBoard.destroyCard(myBoard.getHand().get(a));
         }
+        myBoard.destroySpellTrapCardByIndex(myBoard.getTrapIndexByName("Mind Crush"));
     }
     public void activateTorrentialTributeEffect() {  //trap
         rivalBoard.destroyAllMonster();
@@ -82,16 +87,18 @@ public class EffectController {
           GameView.getInstance().printGraveyard(rivalBoard.getGraveYard());
         }
        GameView.getInstance().printMessage(GameView.Command.askToChooseMonsterFromGraveYard);
-       System.out.println("please enter the number of a monster card");
+       System.out.println("please select a monster card");
        int x = scanner.nextInt();
        if(choose.equals("yours")){
-           myBoard.addMonsterCardToField(x,(MonsterCard) myBoard.getGraveYard().get(x - 1),"OO");
+           myBoard.addMonsterCardToField(myBoard.getEmptyPlaceInMonsterZone(),(MonsterCard) myBoard.getGraveYard().get(x - 1),"OO");
            myBoard.getGraveYard().remove(myBoard.getGraveYard().get(x -1));
        }
         else{
-           myBoard.addMonsterCardToField(x,(MonsterCard) rivalBoard.getGraveYard().get(x - 1),"OO");
+           myBoard.addMonsterCardToField(rivalBoard.getEmptyPlaceInMonsterZone(),(MonsterCard) rivalBoard.getGraveYard().get(x - 1),"OO");
            rivalBoard.getGraveYard().remove(rivalBoard.getGraveYard().get(x - 1));
        }
+       myBoard.destroySpellTrapCardByIndex(Select.getInstance().getPosition() - 1);
+
 
    }
    public void activateTerraformingEffect(){
@@ -99,28 +106,33 @@ public class EffectController {
        String cardName = scanner.nextLine();
        for(int i = 0 ;i < myBoard.getMainDeck().size();i++){
            if(myBoard.getMainDeck().get(i).getCardName().equals(cardName)){
-               myBoard.getMainDeck().remove(i);
                myBoard.getHand().add(myBoard.getMainDeck().get(i));
+               myBoard.getMainDeck().remove(i);
                break;
            }
        }
+       myBoard.destroySpellTrapCardByIndex(Select.getInstance().getPosition() - 1);
 
 
    }
    public void activateRaigekiEffect(){
         rivalBoard.destroyAllMonster();
+        myBoard.destroySpellTrapCardByIndex(Select.getInstance().getPosition() - 1);
+
    }
    public void activateDarkHoleEffect(){
         rivalBoard.destroyAllMonster();
         myBoard.destroyAllMonster();
+        myBoard.destroySpellTrapCardByIndex(Select.getInstance().getPosition() - 1);
    }
    public void activateSpellAbsorptionEffect(){
         myBoard.increaseLifePoint(500);
+       myBoard.destroySpellTrapCardByIndex(Select.getInstance().getPosition() - 1);
    }
    public void activateTwinTwisters(){
        System.out.println("choose a number in hand card to remove it");
        int x = scanner.nextInt();
-       myBoard.getHand().remove(x);
+       myBoard.getHand().remove(x - 1);
        System.out.println("choose a card to destroy");
        x = scanner.nextInt();
        rivalBoard.destroySpellTrapCardByIndex(x - 1);
@@ -130,12 +142,14 @@ public class EffectController {
            System.out.println("no more spell traps available");
        else
            rivalBoard.destroySpellTrapCardByIndex(x - 1);
+       myBoard.destroySpellTrapCardByIndex(Select.getInstance().getPosition() - 1);
 
    }
    public void activateMysticalSpaceTyphoon(){
        System.out.println("choose a number to destroy card");
        int x = scanner.nextInt();
        rivalBoard.destroySpellTrapCardByIndex(x - 1);
+       myBoard.destroySpellTrapCardByIndex(Select.getInstance().getPosition() - 1);
    }
    public void activateYamiEffect(){
         for(int i = 0 ; i < 5 ;i++){
@@ -149,6 +163,7 @@ public class EffectController {
             }
 
         }
+       myBoard.destroySpellTrapCardByIndex(Select.getInstance().getPosition() - 1);
    }
    public void activateForestEffect(){
        for(int i = 0 ; i < 5 ;i++){
@@ -158,6 +173,7 @@ public class EffectController {
            }
 
    }
+       myBoard.destroySpellTrapCardByIndex(Select.getInstance().getPosition() - 1);
 }
   public void activateUmirukaEffect(){
         for(int i = 0; i < 5; i++){
@@ -166,6 +182,7 @@ public class EffectController {
                 myBoard.getMonsterByIndex(i).decreaseDefensePoint(400);
             }
         }
+      myBoard.destroySpellTrapCardByIndex(Select.getInstance().getPosition() - 1);
 
 }
  public void activateMessengerEffect(){

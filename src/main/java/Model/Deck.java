@@ -96,18 +96,9 @@ public class Deck {
         return false;
     }
 
-    public boolean doesPlayerHaveActiveDeck(ArrayList<Deck> Decks){
-        for (Deck deck:Decks) {
-            if (deck.isActivated)
-                return true;
-        }
-        return false;
-    }
 
     public boolean isDeckValid(){
-        if (mainDeck.size()<40)
-            return false;
-        return true;
+        return mainDeck.size() >= 40;
     }
 
     public static boolean doesPlayerHaveDeckWithThisName(String deckName, Player player){

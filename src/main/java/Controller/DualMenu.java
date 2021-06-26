@@ -32,6 +32,14 @@ public class DualMenu {
         else if(!isPlayerHaveActivatedDeck(Player.getPlayerByUsername(matcher.group(1)))){
            view.printMessage(DualView.Commands.hasNoActiveDeck,matcher.group(1));
         }
+        else if(!isDeckValid(Player.getPlayerByUsername(username))){
+            view.printMessage(DualView.Commands.deckInvalid,username);
+
+        }
+        else if(!isDeckValid(Player.getPlayerByUsername(matcher.group(1)))){
+            view.printMessage(DualView.Commands.deckInvalid,matcher.group(1));
+
+        }
         //add deck is valid or not
         else if(!isRoundValid(Integer.parseInt(matcher.group(2)))){
          view.printMessage(DualView.Commands.roundInvalid,"");
@@ -48,6 +56,12 @@ public class DualMenu {
 
 
     }
+
+    private boolean isDeckValid(Player player) {
+       return Deck.getActivatedDeck(player).isDeckValid();
+
+    }
+
     private boolean isRoundValid(int rounds){
         return rounds >= 0 && rounds <= 3;
     }
