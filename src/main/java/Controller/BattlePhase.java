@@ -182,7 +182,7 @@ public class BattlePhase {
             } else {
                 int damage = myBoard.getMonsterByIndex(Select.getInstance().getPosition() - 1).getMonsterCard().getAttack() + myBoard.getMonsterByIndex(Select.getInstance().getPosition() -1).getExtraAttackPoint();
                 view.printMessage(BattlePhaseView.Commands.directAttackSuccessful, damage, "");
-                myBoard.decreaseLifePoint(damage);
+                rivalBoard.decreaseLifePoint(damage);
                 myBoard.getMonsterByIndex(Select.getInstance().getPosition() - 1).setHasAttackedInTurn(true);
                 gameController.setHasAttackedInBattlePhase(true);
 
@@ -255,5 +255,11 @@ public class BattlePhase {
 
         view.setGameFinished(true);
 
+    }
+
+    public void directAttackAI(MonsterCard myMonster,Board rivalBoard){
+        int damage = myMonster.getAttack();
+        view.printMessage(BattlePhaseView.Commands.directAttackSuccessful, damage, "");
+        rivalBoard.decreaseLifePoint(damage);
     }
 }
