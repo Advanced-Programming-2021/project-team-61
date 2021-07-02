@@ -1,0 +1,70 @@
+package View;
+
+import Controller.ProfileMenu;
+import Model.Player;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class ProfileView {
+   public enum Commands {
+        INVALID,
+        NickNameSuccessful,
+        NicknameExists,
+        INVALIDPassword,
+        EnterNewPassword,
+        PasswordSuccessful,
+        showMenu
+    }
+
+    private static ProfileView view = null;
+    private ProfileMenu profileMenu;
+    private String command;
+    private Matcher matcher;
+
+    private ProfileView() {
+
+    }
+
+    public static ProfileView getInstance() {
+        if (view == null)
+            view = new ProfileView();
+        return view;
+
+    }
+
+    public void printMessage(Commands message, String s) {
+        switch (message) {
+            case NicknameExists: {
+                System.out.println("user with nickname " + s + " already exists");
+                break;
+            }
+            case NickNameSuccessful: {
+                System.out.println("nickname changed successfully!");
+                break;
+            }
+            case INVALIDPassword: {
+                System.out.println("current password is invalid");
+                break;
+            }
+            case EnterNewPassword: {
+                System.out.println("please enter a new password");
+                break;
+            }
+            case PasswordSuccessful: {
+                System.out.println("password changed successfully!");
+                break;
+            }
+            case INVALID: {
+                System.out.println("invalid command");
+                break;
+            }
+            case showMenu: {
+                System.out.println("Profile Menu");
+                break;
+            }
+            default:
+                break;
+        }
+    }
+}
