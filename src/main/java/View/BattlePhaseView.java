@@ -37,7 +37,7 @@ public class BattlePhaseView {
     }
     private static BattlePhaseView battlePhaseView = null;
     private BattlePhase battlePhase;
-    private Scanner scanner = RegisterView.scanner;
+    private Scanner scanner = new Scanner(System.in);
     private String command;
     private Matcher matcher;
     private boolean isGameFinished = false;

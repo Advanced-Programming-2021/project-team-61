@@ -1,8 +1,8 @@
-package sample;
-
+import View.Logic;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import sample.View.Logic;
+import View.Logic;
+
 
 public class Main extends Application {
 

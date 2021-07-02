@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 
 import Controller.EffectController;
 import Controller.GameController;
+import Controller.MainPhase1;
 import Model.Board;
 import Model.Player;
 import Model.Select;
@@ -38,7 +39,7 @@ public class MainPhaseView {
 
     private static MainPhaseView m = null;
     private String command;
-    private Scanner scanner = RegisterView.scanner;
+    private Scanner scanner = new Scanner(System.in);
     private MainPhase1 mainPhase1;
     private Matcher matcher;
     private GameController gameController;

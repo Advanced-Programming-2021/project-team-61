@@ -58,7 +58,7 @@ public class GameView {
 
     }
 
-    private Scanner scanner = RegisterView.scanner;
+    private Scanner scanner = new Scanner(System.in);
     private static GameView g = null;
 
     private GameView(){

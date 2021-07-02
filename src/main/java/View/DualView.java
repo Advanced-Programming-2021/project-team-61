@@ -2,6 +2,7 @@ package View;
 
 import Controller.DualMenu;
 
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,7 +34,7 @@ public class DualView {
     public void scan(String username) {
         dualMenu = DualMenu.getInstance();
         while (true) {
-            command = RegisterView.scanner.nextLine();
+            command = new Scanner(System.in).nextLine();
             if (command.startsWith("duel --new --second-player")) {
                 regex = "duel --new --second-player ([^\\s]+) --rounds ([\\d]+)";
                 matcher = getCommandMatcher(command, regex);
