@@ -27,10 +27,10 @@ public class DualMenu {
             view.printMessage(DualView.Commands.playerTwoNotExist,"");
         }
         else if(!isPlayerHaveActivatedDeck(Player.getPlayerByUsername(username))){
-           view.printMessage(DualView.Commands.hasNoActiveDeck,username);
+            view.printMessage(DualView.Commands.hasNoActiveDeck,username);
         }
         else if(!isPlayerHaveActivatedDeck(Player.getPlayerByUsername(matcher.group(1)))){
-           view.printMessage(DualView.Commands.hasNoActiveDeck,matcher.group(1));
+            view.printMessage(DualView.Commands.hasNoActiveDeck,matcher.group(1));
         }
         else if(!isDeckValid(Player.getPlayerByUsername(username))){
             view.printMessage(DualView.Commands.deckInvalid,username);
@@ -41,7 +41,7 @@ public class DualMenu {
 
         }
         else if(!isRoundValid(Integer.parseInt(matcher.group(2)))){
-         view.printMessage(DualView.Commands.roundInvalid,"");
+            view.printMessage(DualView.Commands.roundInvalid,"");
         }
         else{
             for(int i = 1; i < Integer.parseInt(matcher.group(2)) ; i++){
@@ -68,7 +68,7 @@ public class DualMenu {
     }
 
     private boolean isDeckValid(Player player) {
-       return Deck.getActivatedDeck(player).isDeckValid();
+        return Deck.getActivatedDeck(player).isDeckValid();
 
     }
 

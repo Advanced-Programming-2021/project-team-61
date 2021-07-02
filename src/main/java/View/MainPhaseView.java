@@ -6,16 +6,13 @@ import java.util.regex.Pattern;
 
 import Controller.EffectController;
 import Controller.GameController;
-import Controller.MainPhase1;
 import Model.Board;
-import Model.Card;
 import Model.Player;
 import Model.Select;
-import javafx.scene.effect.Effect;
 
 public class MainPhaseView {
 
-  public enum Commands{
+    public enum Commands{
         NoCardSelected,
         CannotBeSummoned,
         MonsterZoneFull,
@@ -66,46 +63,46 @@ public class MainPhaseView {
             GameView.getInstance().showBoard(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
             command = scanner.nextLine();
             if ((command.equals("summon"))) {
-               mainPhase1.ProcessSummon(Board.getBoardByPlayer(me));
+                mainPhase1.ProcessSummon(Board.getBoardByPlayer(me));
             }
             else if ((matcher = getCommandMatcher(command,"set -- position (attack|defense)")).find()) {
-                  mainPhase1.ProcessSetPosition(Board.getBoardByPlayer(me),matcher);
+                mainPhase1.ProcessSetPosition(Board.getBoardByPlayer(me),matcher);
             }
             else if(command.equals("set")){
-               mainPhase1.ProcessSet(Board.getBoardByPlayer(me));
+                mainPhase1.ProcessSet(Board.getBoardByPlayer(me));
             }
             else if(command.equals("flip-summon")){
-               mainPhase1.ProcessFlipSummon(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
+                mainPhase1.ProcessFlipSummon(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
             }
             else if (command.equals("card show --selected")){
-               mainPhase1.ProcessShowCard(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
+                mainPhase1.ProcessShowCard(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
             }
             else if(command.equals("activate effect")){
-               mainPhase1.ProcessActivation(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
+                mainPhase1.ProcessActivation(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
             }
-           else if(command.startsWith("select")){
+            else if(command.startsWith("select")){
                 Select.getInstance().run(me,rival,command);
             }
-           else if(command.equals("activate Call Of the Haunted")){
+            else if(command.equals("activate Call Of the Haunted")){
                 EffectController.getInstance().activateCallOfTheHauntedEffect();
             }
-           else if(command.equals("activate Time Seal")){
-               EffectController.getInstance().activateTimeSealEffect();
+            else if(command.equals("activate Time Seal")){
+                EffectController.getInstance().activateTimeSealEffect();
             }
-           else if(command.equals("activate Mind Crush")){
-               EffectController.getInstance().activateMindCrushEffect();
+            else if(command.equals("activate Mind Crush")){
+                EffectController.getInstance().activateMindCrushEffect();
             }
-           else if(command.equals("activate torrential tribute")){
-               EffectController.getInstance().activateTorrentialTributeEffect();
+            else if(command.equals("activate torrential tribute")){
+                EffectController.getInstance().activateTorrentialTributeEffect();
             }
-           else if(command.equals("surrender")){
-               gameController.setSurrendered(true);
-               break;
+            else if(command.equals("surrender")){
+                gameController.setSurrendered(true);
+                break;
             }
-           else if(command.equals("next phase")){
-               break;
+            else if(command.equals("next phase")){
+                break;
             }
-           else if ((matcher = getCommandMatcher(command,"increase --LP (\\d+)")).find()) {
+            else if ((matcher = getCommandMatcher(command,"increase --LP (\\d+)")).find()) {
                 Board.getBoardByPlayer(me).increaseLIfePoint(Integer.parseInt(matcher.group(1)));
             }
             else if ((matcher = getCommandMatcher(command,"duel set-winner ([^\\s]+)")).find()){

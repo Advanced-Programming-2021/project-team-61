@@ -16,17 +16,17 @@ public class DrawPhase {
         return drawPhase;
     }
     public void run(Board board){
-       printPhaseName();
-       if(board.isCanGetCardFromDeck()){
-       String cardName =  board.addCardToHand();
-       GameView.getInstance().printMessageByString(GameView.Command.newCardAddedToHand,cardName);
-       }
-       else{
-           board.setCanGetCardFromDeck(true);
-           GameView.getInstance().printMessage(GameView.Command.cantGetCardFromDeck);
+        printPhaseName();
+        if(board.isCanGetCardFromDeck()){
+            String cardName =  board.addCardToHand();
+            GameView.getInstance().printMessageByString(GameView.Command.newCardAddedToHand,cardName);
+        }
+        else{
+            board.setCanGetCardFromDeck(true);
+            GameView.getInstance().printMessage(GameView.Command.cantGetCardFromDeck);
 
         }
-        
+
     }
 
 

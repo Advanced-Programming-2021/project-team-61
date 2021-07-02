@@ -43,8 +43,8 @@ public class MainMenu {
 
             }
             case "Shop": {
-               ShopView shopView = ShopView.getInstance();
-               shopView.scan(username);
+                ShopView shopView = ShopView.getInstance();
+                shopView.scan(username);
                 break;
 
             }

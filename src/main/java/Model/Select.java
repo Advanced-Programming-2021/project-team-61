@@ -62,13 +62,13 @@ public class Select {
     }
 
     private void monsterOpponent(Matcher matcher){
-       if(handleMonsterSelect(matcher, rivalPlayer) == 1)
-        setLocation(Location.MONSTEROPPONENT);
+        if(handleMonsterSelect(matcher, rivalPlayer) == 1)
+            setLocation(Location.MONSTEROPPONENT);
     }
 
     private void monster(Matcher matcher){
-       if(handleMonsterSelect(matcher, player) == 1)
-           setLocation(Location.MONSTER);
+        if(handleMonsterSelect(matcher, player) == 1)
+            setLocation(Location.MONSTER);
     }
 
     private int  handleMonsterSelect(Matcher matcher, Player player) {
@@ -110,8 +110,8 @@ public class Select {
     }
 
     private void spell(Matcher matcher){
-       if(handleSpellSelect(matcher, player) == 1)
-           setLocation(Location.SPELL);
+        if(handleSpellSelect(matcher, player) == 1)
+            setLocation(Location.SPELL);
 
     }
 

@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DualView {
-  public enum Commands {
+    public enum Commands {
         playerTwoNotExist,
         hasNoActiveDeck,
         roundInvalid,

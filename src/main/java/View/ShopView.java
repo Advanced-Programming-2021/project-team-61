@@ -37,14 +37,14 @@ public class ShopView {
     public void scan(String username) {
         shopMenu = ShopMenu.getInstance();
         while (true){
-        command = scanner.nextLine();
+            command = scanner.nextLine();
             if ((matcher = getCommandMatcher(command, "menu exit")).find())
                 break;
             else if ((matcher = getCommandMatcher(command,"increase --money (\\d+)")).find()){
                 Player.getPlayerByUsername(username).increaseCoin(Integer.parseInt(matcher.group(1)));
             }
             else if ((matcher = getCommandMatcher(command, "shop buy ([a-zA-Z]+[a-zA-Z ]*)")).find()){
-               shopMenu.buyCard(matcher, Player.getPlayerByUsername(username));
+                shopMenu.buyCard(matcher, Player.getPlayerByUsername(username));
             }
             else if ((matcher = getCommandMatcher(command, "shop show --all")).find())
                 printAllCards();

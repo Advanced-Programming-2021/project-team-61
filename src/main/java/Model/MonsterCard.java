@@ -31,6 +31,15 @@ public class MonsterCard extends Card{
         return defense;
     }
 
+    public static void printACardComplete(MonsterCard card){
+        System.out.println("Name : " + card.cardName);
+        System.out.println("Level : " + card.level);
+        System.out.println("Type : " + card.cardType);
+        System.out.println("ATK : " + card.attack);
+        System.out.println("DEF : " + card.defense);
+        System.out.println("Description : " + card.description);
+    }
+
     public boolean isEffectActivated() {
         return isEffectActivated;
     }

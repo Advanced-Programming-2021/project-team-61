@@ -32,61 +32,64 @@ public class GameController {
         setGame();
         playGame();
         //print mainPhase
-       //going to main phase to get commands
-       //going to end phase
+        //going to main phase to get commands
+        //going to end phase
 
 
 
 
     }
     private void playGame(){
-        while(true){
-            if(isFirstTurn){
+        while(true) {
+            if (isFirstTurn) {
                 enterMainPhase();
                 enterEndPhase(notMyTurn);
                 changeTurn();
                 isFirstTurn = false;
-            }
-            else{
-            enterDrawPhase();
-            if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn))){
-                findWinner();
-                giveScores();
-                break;
-            }
+            } else {
+                if (myTurn.getUsername().equals("AI")) {
+                    AIFunction.getInstance().run(Board.getBoardByPlayer(myTurn), Board.getBoardByPlayer(notMyTurn));
+                    changeTurn();
+                } else {
+                    enterDrawPhase();
+                    if (isGameFinished(Board.getBoardByPlayer(myTurn), Board.getBoardByPlayer(notMyTurn))) {
+                        findWinner();
+                        giveScores();
+                        break;
+                    }
 
-            enterMainPhase();
-            enterStandByPhase();
-            if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn))){
-                findWinner();
-                giveScores();
-                break;
-            }
-            if(isSurrendered){
-                GameView.getInstance().printWinner(notMyTurn,myTurn);
-                Board.getBoardByPlayer(notMyTurn).increaseNumberOfWins();
-                giveScores();
-                break;
-            }
-            if(cheat){
-                giveScores();
-                break;
-            }
-            enterBattlePhase();
-                if(isGameFinished(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn))){
-                    findWinner();
-                    giveScores();
-                    break;
+                    enterMainPhase();
+                    enterStandByPhase();
+                    if (isGameFinished(Board.getBoardByPlayer(myTurn), Board.getBoardByPlayer(notMyTurn))) {
+                        findWinner();
+                        giveScores();
+                        break;
+                    }
+                    if (isSurrendered) {
+                        GameView.getInstance().printWinner(notMyTurn, myTurn);
+                        giveScores();
+                        break;
+                    }
+                    if (cheat) {
+                        giveScores();
+                        break;
+                    }
+                    enterBattlePhase();
+                    if (isGameFinished(Board.getBoardByPlayer(myTurn), Board.getBoardByPlayer(notMyTurn))) {
+                        findWinner();
+                        giveScores();
+                        break;
+                    }
+                    if (hasAttackedInBattlePhase) {
+                        enterMainPhase();
+                        findWinner();
+                        giveScores();
+
+                    }
+
+                    enterEndPhase(notMyTurn);
+                    changeTurn();
                 }
-            if(hasAttackedInBattlePhase){
-                enterMainPhase();
-                findWinner();
-                giveScores();
-
-            }
-
-               enterEndPhase(notMyTurn);
-               changeTurn();
             }
         }
 
@@ -109,8 +112,8 @@ public class GameController {
     }
 
     private void changeTurn() {
-       MonsterField[] monsterFields =  Board.getBoardByPlayer(myTurn).getMonstersInField();
-       reset(monsterFields);
+        MonsterField[] monsterFields =  Board.getBoardByPlayer(myTurn).getMonstersInField();
+        reset(monsterFields);
         temp = myTurn;
         myTurn = notMyTurn;
         notMyTurn = temp;

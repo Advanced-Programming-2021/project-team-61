@@ -1,4 +1,4 @@
-/*package Controller;
+package Controller;
 
 import Model.Player;
 
@@ -37,4 +37,3 @@ public class ScoreBoardMenu {
         return allPlayerNickName;
     }
 }
-*/

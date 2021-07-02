@@ -37,11 +37,11 @@ public class StandByPhase {
     }
 
     private int isMessengerCardAvailable(Board myBoard) {
-       for(int i = 0 ; i < 5; i++){
-       if(myBoard.getMonsterByIndex(i)!= null && myBoard.getSpellTrapByIndex(i).getCard().getCardName().equals("Messenger Of peace") && myBoard.getSpellTrapByIndex(i).getStatus().equals("O"))
-           return i;
-       }
-       return -1;
+        for(int i = 0 ; i < 5; i++){
+            if(myBoard.getMonsterByIndex(i)!= null && myBoard.getSpellTrapByIndex(i).getCard().getCardName().equals("Messenger Of peace") && myBoard.getSpellTrapByIndex(i).getStatus().equals("O"))
+                return i;
+        }
+        return -1;
     }
 
 }

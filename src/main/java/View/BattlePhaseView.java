@@ -62,16 +62,16 @@ public class BattlePhaseView {
             if(command.equals("next phase") || haveToBreak)
                 break;
             else if((matcher = getCommandMatcher(command,"attack (\\d+)")).find()){
-              battlePhase.ProcessAttack(myBoard,rivalBoard,Integer.parseInt(matcher.group(1)));
-              if(isGameFinished){
-                  break;
-              }
+                battlePhase.ProcessAttack(myBoard,rivalBoard,Integer.parseInt(matcher.group(1)));
+                if(isGameFinished){
+                    break;
+                }
 
             }
             else if (getCommandMatcher(command,"attack direct").find()){
-               battlePhase.ProcessDirectAttack(myBoard,rivalBoard);
-               if(isGameFinished)
-                   break;
+                battlePhase.ProcessDirectAttack(myBoard,rivalBoard);
+                if(isGameFinished)
+                    break;
             }
             else if(command.equals("summon"))
                 printMessage(Commands.actionNotAllowedHere,0,"");

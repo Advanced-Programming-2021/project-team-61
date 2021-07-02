@@ -102,19 +102,19 @@ public class Deck {
     }
 
     public static boolean doesPlayerHaveDeckWithThisName(String deckName, Player player){
-         ArrayList <Deck> allDecks = player.getAllDecks();
-         for( Deck deck : allDecks){
-             if(deck.deckName.equals(deckName))
+        ArrayList <Deck> allDecks = player.getAllDecks();
+        for( Deck deck : allDecks){
+            if(deck.deckName.equals(deckName))
                 return true;
         }
         return false;
     }
     public static boolean isPlayerHaveActivatedDeck(Player player){
-       for( Deck deck : player.getAllDecks()){
-           if(deck.isActivated)
-               return true;
-       }
-       return false;
+        for( Deck deck : player.getAllDecks()){
+            if(deck.isActivated)
+                return true;
+        }
+        return false;
 
     }
     public static Deck getActivatedDeck(Player player){
