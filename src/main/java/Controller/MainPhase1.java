@@ -254,7 +254,7 @@ public class MainPhase1 {
     private void processTerratiger(MonsterCard monsterCard,Board board){
         if(monsterCard.getCardName().equals("Terratiger, the Empowered Warrior")){
             System.out.println("Do you want to activate your effect?");
-            Scanner scanner = RegisterView.scanner;
+            Scanner scanner = new Scanner(System.in);
             if(scanner.nextLine().equals("yes")){
                 System.out.println("please choose a monster in your hand which its level is lower than 4");
                 if( !board.isThisCardInHand_ByName(scanner.nextLine()))

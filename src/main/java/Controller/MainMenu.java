@@ -38,7 +38,7 @@ public class MainMenu {
             }
             case "Profile": {
                 ProfileView profileView = ProfileView.getInstance();
-                profileView.scan(username);
+                //profileView.scan(username);
                 break;
 
             }

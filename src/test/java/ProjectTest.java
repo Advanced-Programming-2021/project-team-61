@@ -25,7 +25,7 @@ class ProjectTest {
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(command);
         if(m.find()){
-         menu.userCreateProcess(m);
+         menu.userCreateProcess(m.group(1),m.group(2),m.group(3));
          Assertions.assertEquals("user with nickname ali already exists\r\n",outContent.toString());
         }
     }
@@ -52,7 +52,7 @@ class ProjectTest {
         Pattern x = Pattern.compile(regex);
         Matcher m = x.matcher(command);
         if(m.find())
-        p.changeNickname(player,m);
+        p.changeNickname(player,m.group(1));
         Assertions.assertEquals("user with nickname ali already exists\r\n",outContent.toString());
     }
     @Test

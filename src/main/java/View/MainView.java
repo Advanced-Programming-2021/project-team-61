@@ -2,6 +2,7 @@ package View;
 
 import Controller.MainMenu;
 
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,7 +32,7 @@ public class MainView {
     public void scan(String username) {
         this.username = username;
         while (true) {
-            command = RegisterView.scanner.nextLine();
+            command = new Scanner(System.in).nextLine();
             if (command.equals("user logout")) {
                 printMessage(Commands.LOGOUT);
                 break;
