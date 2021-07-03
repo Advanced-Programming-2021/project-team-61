@@ -1,5 +1,6 @@
 package View;
 
+import Model.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -26,12 +27,12 @@ public class MainMenuPage {
     private Button logout;
 
 
-    public void newGame(){
-
+    public void newGame() throws IOException {
+        Logic.viewManager.changeScene("/sample/createNewGamePage.fxml");
     }
 
     public void profile() throws IOException {
-
+        Logic.viewManager.changeScene("/sample/profilePage.fxml");
     }
 
     public void deckMenu() throws IOException {
@@ -48,6 +49,6 @@ public class MainMenuPage {
 
     public void logout() throws IOException {
         Logic.viewManager.changeScene("/sample/startPage.fxml");
-        //set the current
+        Player.setLoggedPlayer(null);
     }
 }
