@@ -1,11 +1,5 @@
 package View;
 
-import Controller.DualMenu;
-
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class DualView {
     public enum Commands {
         playerTwoNotExist,
@@ -16,10 +10,6 @@ public class DualView {
     }
 
     private static DualView view = null;
-    private DualMenu dualMenu ;
-    private String command;
-    private String regex;
-    private Matcher matcher;
 
     private DualView() {
 
@@ -31,22 +21,6 @@ public class DualView {
         return view;
     }
 
-    public void scan(String username) {
-        dualMenu = DualMenu.getInstance();
-        while (true) {
-            command = new Scanner(System.in).nextLine();
-            if (command.startsWith("duel --new --second-player")) {
-                regex = "duel --new --second-player ([^\\s]+) --rounds ([\\d]+)";
-                matcher = getCommandMatcher(command, regex);
-                if (matcher.find()) {
-                    dualMenu.ProcessNewGame(matcher, username);
-                }
-            } else if (command.equals("menu exit"))
-                break;
-            else
-                printMessage(Commands.inValid, "");
-        }
-    }
 
     public void printMessage(Commands message, String s) {
         switch (message) {
@@ -70,14 +44,6 @@ public class DualView {
                 System.out.println(s+ " 's deck is invalid");
                 break;
             }
-
-
-
         }
-    }
-
-    private Matcher getCommandMatcher(String input, String regex) {
-        Pattern p = Pattern.compile(regex);
-        return p.matcher(input);
     }
 }
