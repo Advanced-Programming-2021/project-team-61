@@ -11,6 +11,8 @@ import Model.Board;
 import Model.Player;
 import Model.Select;
 
+import javax.swing.*;
+
 public class MainPhaseView {
 
     public enum Commands{
@@ -133,88 +135,109 @@ public class MainPhaseView {
     public void printMessage(Commands message){
         switch (message){
             case NoCardSelected:{
-                System.out.println("no card is selected yet");
+                JOptionPane.showConfirmDialog(null,"no card is selected yet","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("no card is selected yet");
                 break;
             }
             case CannotBeSummoned:{
-                System.out.println("you can't summon this card");
+                JOptionPane.showConfirmDialog(null,"you can't summon this card","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you can't summon this card");
                 break;
             }
             case MonsterZoneFull:{
-                System.out.println("monster card zone is full");
+                JOptionPane.showConfirmDialog(null,"monster card zone is full","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("monster card zone is full");
                 break;
             }
             case SummonIsDoneOnce:{
-                System.out.println("you already summoned/set on this turn");
+                JOptionPane.showConfirmDialog(null,"you already summoned/set on this turn","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you already summoned/set on this turn");
                 break;
             }
             case SummonSuccessful:{
-                System.out.println("summoned successfully");
+                JOptionPane.showConfirmDialog(null,"summoned successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("summoned successfully");
                 break;
             }
             case NotEnoughCardsForTribute:{
-                System.out.println("there are not enough cards for tribute");
+                JOptionPane.showConfirmDialog(null,"there are not enough cards for tribute","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("there are not enough cards for tribute");
                 break;
             }
             case NoMonsterInAddress:{
-                System.out.println("there no monster one this address");
+                JOptionPane.showConfirmDialog(null,"there no monster one this address","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("there no monster one this address");
                 break;
 
             }
             case CannotSetMonsterCard:{
-                System.out.println("you can't set this card");
+                JOptionPane.showConfirmDialog(null,"you can't set this card","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you can't set this card");
                 break;
             }
             case SetSuccessful:{
-                System.out.println("set successfully");
+                JOptionPane.showConfirmDialog(null,"set successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("set successfully");
                 break;
             }
             case CannotChangePosition:{
-                System.out.println("you can't change this card position");
+                JOptionPane.showConfirmDialog(null,"you can't change this card position","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you can't change this card position");
                 break;
             }
             case TheCardInWantedPosition:{
-                System.out.println("this card is already in the wanted position");
+                JOptionPane.showConfirmDialog(null,"this card is already in the wanted position","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("this card is already in the wanted position");
                 break;
             }
             case AlreadyChangedPositionInTurn:{
-                System.out.println("you already changed this card position in this turn");
+                JOptionPane.showConfirmDialog(null,"you already changed this card position in this turn","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you already changed this card position in this turn");
                 break;
             }
             case MonsterChangedPositionSuccessful:{
-                System.out.println("monster card position changed successfully");
+                JOptionPane.showConfirmDialog(null,"monster card position changed successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("monster card position changed successfully");
                 break;
             }
             case CannotFlip:{
-                System.out.println("you can't flip summon this card");
+                JOptionPane.showConfirmDialog(null,"you can't flip summon this card","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you can't flip summon this card");
                 break;
             }
             case FlipSuccessful:{
-                System.out.println("flip summoned successfully");
+                JOptionPane.showConfirmDialog(null,"flip summoned successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("flip summoned successfully");
                 break;
             }
             case Invalid:{
-                System.out.println("invalid command");
+                JOptionPane.showConfirmDialog(null,"invalid command","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("invalid command");
                 break;
             }
             case SpellZoneFull:{
-                System.out.println("spell card zone is full");
+                JOptionPane.showConfirmDialog(null,"spell card zone is full","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("spell card zone is full");
                 break;
             }
             case CardIsNotVisible:{
-                System.out.println("card is not visible");
+                JOptionPane.showConfirmDialog(null,"card is not visible","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("card is not visible");
                 break;
             }
             case NotSpellCard:{
-                System.out.println("activate effect is only for spell cards");
+                JOptionPane.showConfirmDialog(null,"activate effect is only for spell cards","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("activate effect is only for spell cards");
                 break;
             }
             case isActivated:{
-                System.out.println("you have already activated this card");
+                JOptionPane.showConfirmDialog(null,"you have already activated this card","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you have already activated this card");
                 break;
             }
             case noPreparatipn:{
-                System.out.println("preparations of this spell are not done yet");
+                JOptionPane.showConfirmDialog(null,"preparations of this spell are not done yet","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("preparations of this spell are not done yet");
                 break;
             }
 
