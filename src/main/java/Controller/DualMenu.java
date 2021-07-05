@@ -21,36 +21,36 @@ public class DualMenu {
         return d;
     }
 
-    public void ProcessNewGame(Matcher matcher,String username){
+    public void ProcessNewGame(String username,String rivalUsername,String numberOfRound){
         view = DualView.getInstance();
-        if(!isPlayer2Exist(matcher.group(1))){
+        if(!isPlayer2Exist(rivalUsername)){
             view.printMessage(DualView.Commands.playerTwoNotExist,"");
         }
         else if(!isPlayerHaveActivatedDeck(Player.getPlayerByUsername(username))){
             view.printMessage(DualView.Commands.hasNoActiveDeck,username);
         }
-        else if(!isPlayerHaveActivatedDeck(Player.getPlayerByUsername(matcher.group(1)))){
-            view.printMessage(DualView.Commands.hasNoActiveDeck,matcher.group(1));
+        else if(!isPlayerHaveActivatedDeck(Player.getPlayerByUsername(rivalUsername))){
+            view.printMessage(DualView.Commands.hasNoActiveDeck,rivalUsername);
         }
         else if(!isDeckValid(Player.getPlayerByUsername(username))){
             view.printMessage(DualView.Commands.deckInvalid,username);
 
         }
-        else if(!isDeckValid(Player.getPlayerByUsername(matcher.group(1)))){
-            view.printMessage(DualView.Commands.deckInvalid,matcher.group(1));
+        else if(!isDeckValid(Player.getPlayerByUsername(rivalUsername))){
+            view.printMessage(DualView.Commands.deckInvalid,rivalUsername);
 
         }
-        else if(!isRoundValid(Integer.parseInt(matcher.group(2)))){
+        else if(!isRoundValid(Integer.parseInt(numberOfRound))){
             view.printMessage(DualView.Commands.roundInvalid,"");
         }
         else{
-            for(int i = 1; i < Integer.parseInt(matcher.group(2)) ; i++){
-                createGame(Player.getPlayerByUsername(username), Player.getPlayerByUsername(matcher.group(1)));
+            for(int i = 1; i < Integer.parseInt(numberOfRound) ; i++){
+                createGame(Player.getPlayerByUsername(username), Player.getPlayerByUsername(rivalUsername));
                 GameController g = GameController.getInstance();
-                g.run(Player.getPlayerByUsername(username), Player.getPlayerByUsername(matcher.group(1)));
+                g.run(Player.getPlayerByUsername(username), Player.getPlayerByUsername(rivalUsername));
 
             }
-            printWinnerOfMatch(Player.getPlayerByUsername(username),Player.getPlayerByUsername(matcher.group(1)));
+            printWinnerOfMatch(Player.getPlayerByUsername(username),Player.getPlayerByUsername(rivalUsername));
 
         }
 

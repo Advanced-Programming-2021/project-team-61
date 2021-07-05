@@ -3,6 +3,7 @@ package View;
 import Controller.EffectController;
 import Model.*;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -78,181 +79,217 @@ public class GameView {
     public void printMessage(Command message){
         switch (message){
             case NOTCARDSELECTED:{
-                System.out.println("no card is selected yet");
+                JOptionPane.showConfirmDialog(null,"no card is selected yet","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("no card is selected yet");
                 break;
             }
             case NOTBESUMMONED: {
-                System.out.println("you can't summon this card");
+                JOptionPane.showConfirmDialog(null,"you can't summon this card","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you can't summon this card");
                 break;
             }
             case MONSTERZONEFULL:{
-                System.out.println("monster card zone is full");
+                JOptionPane.showConfirmDialog(null,"monster card zone is full","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("monster card zone is full");
                 break;
             }
             case ISSUMMONEDONCE: {
-                System.out.println("you already summoned/set on this turn");
+                JOptionPane.showConfirmDialog(null,"you already summoned/set on this turn","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you already summoned/set on this turn");
                 break;
             }
             case NOTENOUGHFORTRIBUTE:{
-                System.out.println("there are not enough cards for tribute");
+                JOptionPane.showConfirmDialog(null,"there are not enough cards for tribute","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("there are not enough cards for tribute");
                 break;
             }
             case NOTMONSTERINADDRESS:{
-                System.out.println("there no monster one this address");
+                JOptionPane.showConfirmDialog(null,"there no monster one this address","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("there no monster one this address");
                 break;
             }
             case SUMMONSUCCESSFUL:{
-                System.out.println("summoned successfully");
+                JOptionPane.showConfirmDialog(null,"summoned successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("summoned successfully");
                 break;
             }
             case ENTERTHECARDNAME:{
-                System.out.println("please enter the cardName which you guess your rival has:");
+                JOptionPane.showConfirmDialog(null,"please enter the cardName which you guess your rival has:","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("please enter the cardName which you guess your rival has:");
                 break;
             }
             case INVALIDSELECTION:{
-                System.out.println("invalid selection");
+                JOptionPane.showConfirmDialog(null,"invalid selection","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("invalid selection");
                 break;
             }
             case CARDSELECTED:{
-                System.out.println("card selected");
+                JOptionPane.showConfirmDialog(null,"card selected","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("card selected");
                 break;
             }
             case CARDDESELECTED:{
-                System.out.println("card deselected");
+                JOptionPane.showConfirmDialog(null,"card deselected","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("card deselected");
                 break;
             }
             case NOCARDFOUNDINGIVENPOSITION:{
-                System.out.println("no card found in the given position");
+                JOptionPane.showConfirmDialog(null,"no card found in the given position","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("no card found in the given position");
                 break;
             }
             case NOTBESET: {
-                System.out.println("you can't set this card");
+                JOptionPane.showConfirmDialog(null,"you can't set this card","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you can't set this card");
                 break;
             }
             case SETSUCCESSFUL:{
-                System.out.println("set successfully");
+                JOptionPane.showConfirmDialog(null,"set successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("set successfully");
                 break;
             }
             case NOTINMONSTERZONE:{
-                System.out.println("you can't change this card position");
+                JOptionPane.showConfirmDialog(null,"you can't change this card position","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you can't change this card position");
                 break;
             }
             case NOTFLIP:{
-                System.out.println("you can't flip summon this card");
+                JOptionPane.showConfirmDialog(null,"you can't flip summon this card","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you can't flip summon this card");
                 break;
             }
             case THISCARDALREADYINWANTEDPOSITION:{
-                System.out.println("this card is already in the wanted position");
+                JOptionPane.showConfirmDialog(null,"this card is already in the wanted position","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("this card is already in the wanted position");
                 break;
             }
             case THISCARDALREADYCHANGEDINTHISTURN:{
-                System.out.println("you already changed this card position in this turn");
+                JOptionPane.showConfirmDialog(null,"you already changed this card position in this turn","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you already changed this card position in this turn");
                 break;
             }
             case MONSTERCHANGEDPOSITIONSUCCES:{
-                System.out.println("monster card position changed successfully");
+                JOptionPane.showConfirmDialog(null,"monster card position changed successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("monster card position changed successfully");
                 break;
             }
             case NOTATTACK:{
-                System.out.println("you can't attack with this card");
+                JOptionPane.showConfirmDialog(null,"you can't attack with this card","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you can't attack with this card");
                 break;
             }
             case HASATTACKED:{
-                System.out.println("this card already attacked");
+                JOptionPane.showConfirmDialog(null,"this card already attacked","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("this card already attacked");
                 break;
             }
             case NOCARDTOATTACK:{
-                System.out.println("there is no card to attack here");
+                JOptionPane.showConfirmDialog(null,"there is no card to attack here","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("there is no card to attack here");
                 break;
             }
             case CANTDIRECTATTACK:{
-                System.out.println("you can’t attack the opponent directly");
+                JOptionPane.showConfirmDialog(null,"you can’t attack the opponent directly","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you can’t attack the opponent directly");
                 break;
             }
             case bothDamage:{
-                System.out.println("both you and your opponent monster cards are destroyed and no one receives damage");
+                JOptionPane.showConfirmDialog(null,"both you and your opponent monster cards are destroyed and no one receives damage","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("both you and your opponent monster cards are destroyed and no one receives damage");
                 break;
             }
             case damageRivalDOMonster:{
-                System.out.println("the defense position monster is destroyed");
+                JOptionPane.showConfirmDialog(null,"the defense position monster is destroyed","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("the defense position monster is destroyed");
                 break;
             }
             case noDamage:{
-                System.out.println("no card is destroyed");
+                JOptionPane.showConfirmDialog(null,"no card is destroyed","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("no card is destroyed");
                 break;
             }
             case SPELLZONEFULL:{
-                System.out.println("spell card zone is full\n");
+                JOptionPane.showConfirmDialog(null,"spell card zone is full","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("spell card zone is full");
                 break;
             }
             case cannotBeAttacked:{
-                System.out.println("you can't attack this monster");
+                JOptionPane.showConfirmDialog(null,"you can't attack this monster","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you can't attack this monster");
                 break;
             }
             case GRAVEYARDEMPTY:{
-                System.out.println("graveyard empty");
+                JOptionPane.showConfirmDialog(null,"graveyard empty","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("graveyard empty");
                 break;
             }
             case CARDISNOTVISIBLE:{
-                System.out.println("card is not visible");
+                JOptionPane.showConfirmDialog(null,"card is not visible","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("card is not visible");
                 break;
             }
             case notSpellCard:{
-                System.out.println("activate effect is only for spell cards");
+                JOptionPane.showConfirmDialog(null,"activate effect is only for spell cards","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("activate effect is only for spell cards");
                 break;
             }
             case isActivated:{
-                System.out.println("you have already activated this card");
+                JOptionPane.showConfirmDialog(null,"you have already activated this card","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you have already activated this card");
                 break;
             }
             case spellZoneFull:{
-                System.out.println("spell card zone is full");
+                JOptionPane.showConfirmDialog(null,"spell card zone is full","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("spell card zone is full");
                 break;
             }
             case pleaseEnterTheCardNumber:{
-                System.out.println("please enter the number which you want summon:");
+                JOptionPane.showConfirmDialog(null,"please enter the number which you want summon:","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("please enter the number which you want summon:");
                 break;
             }
             case cantGetCardFromDeck:{
-                System.out.println("you can't get a card from deck in this turn");
+                JOptionPane.showConfirmDialog(null,"you can't get a card from deck in this turn","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you can't get a card from deck in this turn");
                 break;
             }
             case cantAttackInThisTurn:{
-                System.out.println("you can't attack in this turn");
+                JOptionPane.showConfirmDialog(null,"you can't attack in this turn","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you can't attack in this turn");
                 break;
             }
             case askToChooseMonsterFromGraveYard:{
-                System.out.println("please choose a monster Card from the graveyard");
+                JOptionPane.showConfirmDialog(null,"please choose a monster Card from the graveyard","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("please choose a monster Card from the graveyard");
                 break;
             }
             case preprationNotPrepared:{
-                System.out.println("preparations of this spell card are not done yet");
+                JOptionPane.showConfirmDialog(null,"preparations of this spell card are not done yet","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("preparations of this spell card are not done yet");
                 break;
             }
-            case invalidCommand:{
-                System.out.println("invalid command!");
-                break;
-            }
-
         }
-
     }
     public void printMessageByAddingString(Command message, int s1){
         switch (message){
             case DIRECTATTACKSUCCESSFULLY:{
-                System.out.println("you opponent receives "+ s1 +" battale damage");
+                JOptionPane.showConfirmDialog(null,"you opponent receives "+ s1 +" battale damage","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("you opponent receives "+ s1 +" battale damage");
                 break;
             }
             case damageOpponent:{
-                System.out.println("your opponent's monster is destroyed and your opponent receives "+s1+" battle damage");
+                JOptionPane.showConfirmDialog(null,"your opponent's monster is destroyed and your opponent receives "+s1+" battle damage","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("your opponent's monster is destroyed and your opponent receives "+s1+" battle damage");
                 break;
             }
             case damageMe:{
-                System.out.println("your monster card is destroyed and you received "+s1+" battle damage");
+                JOptionPane.showConfirmDialog(null,"your monster card is destroyed and you received "+s1+" battle damage","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("your monster card is destroyed and you received "+s1+" battle damage");
                 break;
             }
             case justLifePointDecrease:{
-                System.out.print("no card is destroyed and you received "+s1+" battle damage");
+                JOptionPane.showConfirmDialog(null,"no card is destroyed and you received "+s1+" battle damage","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.print("no card is destroyed and you received "+s1+" battle damage");
                 break;
             }
         }
@@ -260,16 +297,20 @@ public class GameView {
     public void printMessageByString(Command message, String s1){
         switch (message){
             case damageRivalDOMonster:{
-                System.out.println("opponent's monster card was "+s1+" and the defense position monster is destroyed");
+                JOptionPane.showConfirmDialog(null,"opponent's monster card was "+s1+" and the defense position monster is destroyed","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("opponent's monster card was "+s1+" and the defense position monster is destroyed");
             }
             case cardName: {
-                System.out.print("opponent's monster card was "+s1+ " and ");
+                JOptionPane.showConfirmDialog(null,"opponent's monster card was "+s1+ " and ","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.print("opponent's monster card was "+s1+ " and ");
             }
             case playerWins:{
-                System.out.println(s1+" won the game and the score is 0-0");
+                JOptionPane.showConfirmDialog(null,s1+" won the game and the score is 0-0","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println(s1+" won the game and the score is 0-0");
             }
             case newCardAddedToHand:{
-                System.out.println("new card added to the hand :"+" "+ s1);
+                JOptionPane.showConfirmDialog(null,"new card added to the hand :"+" "+ s1,"Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("new card added to the hand :"+" "+ s1);
             }
         }
     }

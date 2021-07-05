@@ -1,21 +1,19 @@
 package View;
 
-import Controller.DeckMenu;
+
 import Model.Card;
 import Model.Deck;
 import Model.MonsterCard;
-import Model.Player;
-
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+
 
 public class DeckView {
 
     public enum Commands {
-        CURRENTMENU,
         CREATESUCCESSFULLY,
         EXISTDECKALREADY,
         DELETEDECKSUCCESSFULLY,
@@ -28,15 +26,12 @@ public class DeckView {
         LIMIT3ERROR,
         NOTEXISTTHISCARDINMAINDECK,
         NOTEXISTTHISCARDINSIDEDECK,
-        REMOVECARDSUCCESSFULLY,
-        INVALID
+        REMOVECARDSUCCESSFULLY
+
     }
 
     private static DeckView s = null;
-    private DeckMenu deckMenu;
     public static Scanner scanner = new Scanner(System.in);
-    private String command;
-    private Matcher matcher;
 
     private DeckView() {
     }
@@ -46,28 +41,14 @@ public class DeckView {
             s = new DeckView();
         return s;
     }
-
+/*
     public void  scan(String username) {
         Player player = Player.getPlayerByUsername(username);
         deckMenu = DeckMenu.getInstance();
         while (true){
             command = scanner.nextLine();
-            if ((getCommandMatcher(command, "menu exit")).find()) {
-                break;
-            }
-            else if ((getCommandMatcher(command, "msc")).find()) {
-                printMessage(Commands.CURRENTMENU, "", "");
-            }
-            else if ((matcher = getCommandMatcher(command, "^deck create ([a-zA-Z\\s]+)$")).find()) {
-                deckMenu.createDeck(matcher.group(1),player);
-            }
-            else if ((matcher = getCommandMatcher(command, "^deck delete ([a-zA-Z\\s]+)$")).find()) {
-                deckMenu.deleteDeck(matcher.group(1),player);
-            }
-            else if ((matcher = getCommandMatcher(command, "^deck set-activate ([a-zA-Z\\s]+)$")).find()) {
-                deckMenu.setActivateDeck(matcher.group(1),player);
-            }
-            else if ((matcher = getCommandMatcher(command, "^deck add-card --card ([a-zA-Z\\s]+) --deck ([a-zA-Z\\s]+)( --side)?$")).find()) {
+
+            if ((matcher = getCommandMatcher(command, "^deck add-card --card ([a-zA-Z\\s]+) --deck ([a-zA-Z\\s]+)( --side)?$")).find()) {
                 if(matcher.group(3)==null)
                     deckMenu.addCardToMainDeck(matcher.group(1),matcher.group(2),player);
                 else
@@ -96,67 +77,73 @@ public class DeckView {
             }
         }
     }
-
+*/
     public void printMessage(DeckView.Commands message, String st1, String st2) {
         switch (message) {
-            case CURRENTMENU: {
-                System.out.println("deck menu");
-                break;
-            }
+
             case CREATESUCCESSFULLY: {
-                System.out.println("deck created successfully!");
+                JOptionPane.showConfirmDialog(null,"deck created successfully!","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("deck created successfully!");
                 break;
             }
             case EXISTDECKALREADY: {
-                System.out.println("deck with name " + st1 + " already exists");
+                JOptionPane.showConfirmDialog(null,"deck with name " + st1 + " already exists","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("deck with name " + st1 + " already exists");
                 break;
             }
             case DELETEDECKSUCCESSFULLY: {
-                System.out.println("deck deleted successfully");
+                JOptionPane.showConfirmDialog(null,"deck deleted successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("deck deleted successfully");
                 break;
             }
             case DONTHAVETHISDECK: {
-                System.out.println("deck with name " + st1 + " does not exist");
+                JOptionPane.showConfirmDialog(null,"deck with name " + st1 + " does not exist","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("deck with name " + st1 + " does not exist");
                 break;
             }
             case ACTIVATESUCCESSFULLY: {
-                System.out.println("deck activated successfully");
+                JOptionPane.showConfirmDialog(null,"deck activated successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("deck activated successfully");
                 break;
             }
             case ADDCARDSUCCESSFULLY: {
-                System.out.println("card added to deck successfully");
+                JOptionPane.showConfirmDialog(null,"card added to deck successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("card added to deck successfully");
                 break;
             }
             case DONTHAVETHISCARD: {
-                System.out.println("card with name " + st1 + " does not exist");
+                JOptionPane.showConfirmDialog(null,"card with name " + st1 + " does not exist","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("card with name " + st1 + " does not exist");
                 break;
             }
             case FULLMAINDECK: {
-                System.out.println("main deck is full");
+                JOptionPane.showConfirmDialog(null,"main deck is full","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("main deck is full");
                 break;
             }
             case FULLSIDEDECK: {
-                System.out.println("side deck is full");
+                JOptionPane.showConfirmDialog(null,"side deck is full","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("side deck is full");
                 break;
             }
             case LIMIT3ERROR: {
-                System.out.println("there are already three cards with name " + st1 + " in deck " + st2);
+                JOptionPane.showConfirmDialog(null,"there are already three cards with name " + st1 + " in deck " + st2,"Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("there are already three cards with name " + st1 + " in deck " + st2);
                 break;
             }
             case NOTEXISTTHISCARDINMAINDECK: {
-                System.out.println("card with name " + st1 + " does not exist in main deck");
+                JOptionPane.showConfirmDialog(null,"card with name " + st1 + " does not exist in main deck","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("card with name " + st1 + " does not exist in main deck");
                 break;
             }
             case NOTEXISTTHISCARDINSIDEDECK: {
-                System.out.println("card with name " + st1 + " does not exist in side deck");
+                JOptionPane.showConfirmDialog(null,"card with name " + st1 + " does not exist in side deck","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("card with name " + st1 + " does not exist in side deck");
                 break;
             }
             case REMOVECARDSUCCESSFULLY: {
-                System.out.println("card removed form deck successfully");
-                break;
-            }
-            case INVALID: {
-                System.out.println("invalid command");
+                JOptionPane.showConfirmDialog(null,"card removed form deck successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("card removed form deck successfully");
                 break;
             }
             default:
@@ -242,9 +229,5 @@ public class DeckView {
             System.out.println(card.getCardName() + " : " + card.getDescription());
         }
 
-    }
-    private Matcher getCommandMatcher(String input, String regex) {
-        Pattern p = Pattern.compile(regex);
-        return p.matcher(input);
     }
 }

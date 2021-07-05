@@ -1,26 +1,17 @@
 package View;
 
-import Controller.ProfileMenu;
-import Model.Player;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import javax.swing.*;
 
 public class ProfileView {
    public enum Commands {
-        INVALID,
         NickNameSuccessful,
         NicknameExists,
         INVALIDPassword,
         EnterNewPassword,
-        PasswordSuccessful,
-        showMenu
+        PasswordSuccessful
     }
 
     private static ProfileView view = null;
-    private ProfileMenu profileMenu;
-    private String command;
-    private Matcher matcher;
 
     private ProfileView() {
 
@@ -36,31 +27,28 @@ public class ProfileView {
     public void printMessage(Commands message, String s) {
         switch (message) {
             case NicknameExists: {
-                System.out.println("user with nickname " + s + " already exists");
+                JOptionPane.showConfirmDialog(null,"user with nickname " + s + " already exists","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("user with nickname " + s + " already exists");
                 break;
             }
             case NickNameSuccessful: {
-                System.out.println("nickname changed successfully!");
+                JOptionPane.showConfirmDialog(null,"nickname changed successfully!","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("nickname changed successfully!");
                 break;
             }
             case INVALIDPassword: {
-                System.out.println("current password is invalid");
+                JOptionPane.showConfirmDialog(null,"current password is invalid","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("current password is invalid");
                 break;
             }
             case EnterNewPassword: {
-                System.out.println("please enter a new password");
+                JOptionPane.showConfirmDialog(null,"please enter a new password","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("please enter a new password");
                 break;
             }
             case PasswordSuccessful: {
-                System.out.println("password changed successfully!");
-                break;
-            }
-            case INVALID: {
-                System.out.println("invalid command");
-                break;
-            }
-            case showMenu: {
-                System.out.println("Profile Menu");
+                JOptionPane.showConfirmDialog(null,"password changed successfully!","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("password changed successfully!");
                 break;
             }
             default:
