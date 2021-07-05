@@ -1,14 +1,1104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="View.ShopPage"
-            prefHeight="850.0" prefWidth="1300.0">
-
-</AnchorPane>
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5000.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ShopPage">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="5000.0" prefWidth="1300.0">
+         <children>
+            <ImageView fitHeight="5000.0" fitWidth="1357.0" layoutY="-14.0">
+               <image>
+                  <Image url="@../shopMenuPage.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/CommandKnight+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="CommandKnightBuy" layoutX="125.0" layoutY="365.0" mnemonicParsing="false" onMouseClicked="#buyCommandKnightCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/AlexandriteDragon+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="alexandriteBuy" layoutX="425.0" layoutY="365.0" mnemonicParsing="false" onMouseClicked="#buyAlexCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/AxeRaider+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="axeRaiderBuy" layoutX="725.0" layoutY="365.0" mnemonicParsing="false" onMouseClicked="#buyAxeRaiderCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/BabyDragon+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="babyDragonBuy" layoutX="1025.0" layoutY="365.0" mnemonicParsing="false" onMouseClicked="#buyBabyDragonCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/BattleOx+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="battleOxBuy" layoutX="125.0" layoutY="770.0" mnemonicParsing="false" onMouseClicked="#buyBattleOxCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/BattleWarrior+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="battleWarriorBuy" layoutX="425.0" layoutY="770.0" mnemonicParsing="false" onMouseClicked="#buyBattleWarriorCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/Bitron+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="bitronBuy" layoutX="725.0" layoutY="770.0" mnemonicParsing="false" onMouseClicked="#buyBitronCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/BlueEyesWhiteDragon+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="blueEyesBuy" layoutX="1025.0" layoutY="770.0" mnemonicParsing="false" onMouseClicked="#buyBlueEyesCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="850.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/CrawlingDragon+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="crawlingDragonBuy" layoutX="125.0" layoutY="1170.0" mnemonicParsing="false" onMouseClicked="#buyCrawlingCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="850.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/CurtainOfTheDarkOnes+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="curtainBuy" layoutX="425.0" layoutY="1170.0" mnemonicParsing="false" onMouseClicked="#buyCurtainCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="850.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/DarkBlade+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="darkBladeBuy" layoutX="725.0" layoutY="1170.0" mnemonicParsing="false" onMouseClicked="#buyDarkBladeCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="850.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/DarkMagician+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="darkMagitionBuy" layoutX="1025.0" layoutY="1170.0" mnemonicParsing="false" onMouseClicked="#buyDarkMagitionCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="1250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/ExploderDragon+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="exploderDragonBuy" layoutX="125.0" layoutY="1570.0" mnemonicParsing="false" onMouseClicked="#buyExploderCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="1250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/FeralImp+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="feralBuy" layoutX="425.0" layoutY="1570.0" mnemonicParsing="false" onMouseClicked="#buyFeralCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="1250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/Fireyarou+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="fireYarouBuy" layoutX="725.0" layoutY="1570.0" mnemonicParsing="false" onMouseClicked="#buyFireYarouCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="1250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/FlameManipulator+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="flameBuy" layoutX="1025.0" layoutY="1570.0" mnemonicParsing="false" onMouseClicked="#buyFlameCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="1650.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/Haniwa+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="haniwaBuy" layoutX="125.0" layoutY="1970.0" mnemonicParsing="false" onMouseClicked="#buyHaniwaCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="1650.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/HeroOfTheEast+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="heroOfTheEastBuy" layoutX="425.0" layoutY="1970.0" mnemonicParsing="false" onMouseClicked="#buyHeroCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="1650.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/HornImp+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="hornImpBuy" layoutX="725.0" layoutY="1970.0" mnemonicParsing="false" onMouseClicked="#buyHornImpCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="1650.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/Leotron+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="leotronBuy" layoutX="1025.0" layoutY="1970.0" mnemonicParsing="false" onMouseClicked="#buyLeotronCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="2050.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/ManEaterBug+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="manEaterBugBuy" layoutX="125.0" layoutY="2370.0" mnemonicParsing="false" onMouseClicked="#buyManEaterBugCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="2050.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/Marshmallon+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="marshmallonBuy" layoutX="425.0" layoutY="2370.0" mnemonicParsing="false" onMouseClicked="#buyMarshmallonCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="2050.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/SilverFang+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="silverFangBuy" layoutX="725.0" layoutY="2370.0" mnemonicParsing="false" onMouseClicked="#buySilverCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="2050.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/SlotMachine+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="slotMachineBuy" layoutX="1025.0" layoutY="2370.0" mnemonicParsing="false" onMouseClicked="#buySlotCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="2450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/SpiralSerpent+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="spiralBuy" layoutX="125.0" layoutY="2770.0" mnemonicParsing="false" onMouseClicked="#buySpiralCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="2450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/TheCalculator+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="theCalculatorBuy" layoutX="425.0" layoutY="2770.0" mnemonicParsing="false" onMouseClicked="#buyCalculatorCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="2450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/WarriorDaiGrepher+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="warriorBuy" layoutX="725.0" layoutY="2770.0" mnemonicParsing="false" onMouseClicked="#buyWarrirorCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="2450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/Wattaildragon+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="wattailBuy" layoutX="1025.0" layoutY="2770.0" mnemonicParsing="false" onMouseClicked="#buyWattailCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="2850.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/Wattkid+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="wattkidBuy" layoutX="125.0" layoutY="3170.0" mnemonicParsing="false" onMouseClicked="#buyWattkidCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="2850.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../monsterCards/YomiShip+.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="yomiShipBuy" layoutX="425.0" layoutY="3170.0" mnemonicParsing="false" onMouseClicked="#buyYomiShipCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="2850.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/TimeSeal.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="timeSealBuy" layoutX="725.0" layoutY="3170.0" mnemonicParsing="false" onMouseClicked="#buyTimeSealCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="2850.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/MindCrush.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="mindCrushBuy" layoutX="1025.0" layoutY="3170.0" mnemonicParsing="false" onMouseClicked="#buyMindCrushCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="3250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/MirrorForce.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="mirrorForceBuy" layoutX="125.0" layoutY="3570.0" mnemonicParsing="false" onMouseClicked="#buyMirrorForceCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="3250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/Call of the Hunted.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="callOfTheHauntedBuy" layoutX="425.0" layoutY="3570.0" mnemonicParsing="false" onMouseClicked="#buyCallOfHauntedCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="3250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/TorrentialTribute.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="torrentialTributeBuy" layoutX="725.0" layoutY="3570.0" mnemonicParsing="false" onMouseClicked="#buyTorrentialCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="3250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/NegateAttack.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="negateAttackBuy" layoutX="1025.0" layoutY="3570.0" mnemonicParsing="false" onMouseClicked="#buyNegateAttackCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="3650.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/DarkHole.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="darkHoleBuy" layoutX="125.0" layoutY="3975.0" mnemonicParsing="false" onMouseClicked="#buyDarkHoleCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="3650.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/Forest.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="forestBuy" layoutX="425.0" layoutY="3975.0" mnemonicParsing="false" onMouseClicked="#buyForestCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="3650.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/MessengerOfPeace.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="messengerBuy" layoutX="725.0" layoutY="3975.0" mnemonicParsing="false" onMouseClicked="#buyMessengerCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="3650.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/MonsterReborn.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="monsterRebornBuy" layoutX="1025.0" layoutY="3975.0" mnemonicParsing="false" onMouseClicked="#buyMonsterRebornCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="4050.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/MysticalSpaceTyphoon.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="mysticalBuy" layoutX="125.0" layoutY="4380.0" mnemonicParsing="false" onMouseClicked="#buyMysticalCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="4050.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/Raigeki.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="raigekiBuy" layoutX="425.0" layoutY="4380.0" mnemonicParsing="false" onMouseClicked="#buyRaigekiCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="4050.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/SpellAbsorption.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="spellAbsorptionBuy" layoutX="725.0" layoutY="4380.0" mnemonicParsing="false" onMouseClicked="#buySpellAbsorptionCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="4050.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/Terraforming.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="terraformingBuy" layoutX="1025.0" layoutY="4380.0" mnemonicParsing="false" onMouseClicked="#buyTeraformingCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="4450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/TwinTwisters.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="twinBuy" layoutX="125.0" layoutY="4775.0" mnemonicParsing="false" onMouseClicked="#buyTwinTwistersCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="4450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/Umiiruka.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="umirukaBuy" layoutX="425.0" layoutY="4775.0" mnemonicParsing="false" onMouseClicked="#buyUmirukaCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="4450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../spellCards/Yami.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="yamiBuy" layoutX="725.0" layoutY="4775.0" mnemonicParsing="false" onMouseClicked="#buyYamiCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
+               <font>
+                  <Font name="Corbel Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="commandNumbers" layoutX="211.0" layoutY="401.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="alexNumbers" layoutX="507.0" layoutY="401.0" prefHeight="20.0" prefWidth="15.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="axeNumbers" layoutX="818.0" layoutY="401.0" prefHeight="20.0" prefWidth="23.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="babyNumbers" layoutX="1118.0" layoutY="401.0" prefHeight="20.0" prefWidth="16.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="battleOxNumbers" layoutX="211.0" layoutY="806.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="battleWarriorNumbers" layoutX="507.0" layoutY="806.0" prefHeight="20.0" prefWidth="11.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="bitronNumbers" layoutX="818.0" layoutY="806.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="blueEyesNumbers" layoutX="1118.0" layoutY="806.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="crawlingNumbers" layoutX="211.0" layoutY="1209.0" prefHeight="20.0" prefWidth="23.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="curtainNumbers" layoutX="511.0" layoutY="1209.0" prefHeight="20.0" prefWidth="23.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="darkBladeNumbers" layoutX="818.0" layoutY="1209.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="darkMagitionNumber" layoutX="1118.0" layoutY="1209.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="exploderNumbers" layoutX="218.0" layoutY="1608.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="feralNumbers" layoutX="518.0" layoutY="1608.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="fireYarouNumbers" layoutX="818.0" layoutY="1608.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="flameNUmbers" layoutX="1118.0" layoutY="1608.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="haniwaNumbers" layoutX="218.0" layoutY="2011.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="heroNumbers" layoutX="518.0" layoutY="2011.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="hornNumbers" layoutX="818.0" layoutY="2011.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="leotronNumbers" layoutX="1118.0" layoutY="2011.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="manEaterNumbers" layoutX="218.0" layoutY="2409.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="marshmallonNumbers" layoutX="518.0" layoutY="2409.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="silverNumbers" layoutX="818.0" layoutY="2409.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="slotNumbers" layoutX="1118.0" layoutY="2409.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="spiralNumbers" layoutX="218.0" layoutY="2809.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="calculatorNumbers" layoutX="518.0" layoutY="2809.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="warriorNumbers" layoutX="818.0" layoutY="2809.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="wattiNumbers" layoutX="1118.0" layoutY="2809.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="wattkidNumbers" layoutX="218.0" layoutY="3205.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="yomiNumbers" layoutX="518.0" layoutY="3205.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="timesealNumbers" layoutX="818.0" layoutY="3205.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="mindCrushNumbers" layoutX="1118.0" layoutY="3205.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="mirrorNumbers" layoutX="218.0" layoutY="3606.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="callOfNumbers" layoutX="518.0" layoutY="3606.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="torrentialNumbers" layoutX="818.0" layoutY="3606.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="negateNumbers" layoutX="1118.0" layoutY="3606.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="darkHoleNumbers" layoutX="218.0" layoutY="4010.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="forestNumbers" layoutX="518.0" layoutY="4010.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="messengerNumbers" layoutX="818.0" layoutY="4010.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="monsterRebornNumbers" layoutX="1118.0" layoutY="4010.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="mysticalNumbers" layoutX="218.0" layoutY="4415.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="raigekiNumbers" layoutX="518.0" layoutY="4415.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="spellNumbers" layoutX="818.0" layoutY="4415.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="terraNumbers" layoutX="1118.0" layoutY="4415.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="twinNumbers" layoutX="218.0" layoutY="4810.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="umirukaNumbers" layoutX="518.0" layoutY="4810.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="yamiNumbers" layoutX="818.0" layoutY="4810.0" prefHeight="20.0" prefWidth="0.0" text="0" textFill="#ebdede">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="400.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="390.0" layoutY="400.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="690.0" layoutY="400.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="990.0" layoutY="400.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="806.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="390.0" layoutY="806.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="690.0" layoutY="806.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="990.0" layoutY="806.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="1209.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="390.0" layoutY="1209.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="690.0" layoutY="1209.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="990.0" layoutY="1209.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="1608.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="390.0" layoutY="1608.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="690.0" layoutY="1608.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="990.0" layoutY="1608.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="2011.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="390.0" layoutY="2011.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="690.0" layoutY="2011.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="990.0" layoutY="2011.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="2409.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="390.0" layoutY="2409.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="690.0" layoutY="2409.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="990.0" layoutY="2409.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="2809.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="390.0" layoutY="2809.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="690.0" layoutY="2809.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="990.0" layoutY="2809.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="3205.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="390.0" layoutY="3205.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="690.0" layoutY="3205.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="990.0" layoutY="3205.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="3606.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="390.0" layoutY="3606.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="690.0" layoutY="3606.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="990.0" layoutY="3606.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="4010.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="390.0" layoutY="4010.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="690.0" layoutY="4010.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="990.0" layoutY="4010.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="4415.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="390.0" layoutY="4415.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="690.0" layoutY="4415.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="990.0" layoutY="4415.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="4810.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="390.0" layoutY="4810.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="690.0" layoutY="4810.0" prefHeight="7.0" prefWidth="115.0" text="Available in cards :" textFill="#f8f6f6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>
