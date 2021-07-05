@@ -22,17 +22,17 @@ public class MainMenu {
         switch (menuName) {
             case "Duel": {
                 DualView dualView = DualView.getInstance();
-                dualView.scan(username);
+                //dualView.scan(username);
                 break;
             }
             case "Deck": {
                 DeckView deckView = DeckView.getInstance();
-                deckView.scan(username);
+                //deckView.scan(username);
                 break;
             }
             case "Scoreboard": {
                 ScoreBoardView scoreBoardView = ScoreBoardView.getInstance();
-                scoreBoardView.scan();
+                //scoreBoardView.scan();
                 break;
 
             }
@@ -44,7 +44,7 @@ public class MainMenu {
             }
             case "Shop": {
                 ShopView shopView = ShopView.getInstance();
-                shopView.scan(username);
+                //shopView.scan(username);
                 break;
 
             }
