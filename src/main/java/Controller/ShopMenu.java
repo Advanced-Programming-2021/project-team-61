@@ -24,7 +24,7 @@ public class ShopMenu {
         return s;
     }
 
-    public void buyCard(Matcher matcher, Player player) {
+   /* public void buyCard(Matcher matcher, Player player) {
         view = ShopView.getInstance();
         if (!Card.isCardAvailable(matcher.group(1)))
             view.printMessage(ShopView.Commands.WrongName);
@@ -33,5 +33,13 @@ public class ShopMenu {
         else {
             player.buyCard(Card.getCardByName(matcher.group(1)));
         }
+    }*/
+    public boolean isMoneyEnough(String cardName,Player player){
+        return player.getCoin() >= Card.getCardByName(cardName).getPrice();
+
     }
+    public void buyCard(String cardName,Player player){
+        player.addCard(Card.getCardByName(cardName));
+    }
+
 }
