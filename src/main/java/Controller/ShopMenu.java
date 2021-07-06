@@ -2,9 +2,6 @@ package Controller;
 
 import Model.Card;
 import Model.Player;
-import View.ShopView;
-
-import java.util.regex.Matcher;
 
 //we should add a attribute in mainMenu that save username which login,
 //after that when we go to each menu,enter with this name...
@@ -12,7 +9,6 @@ import java.util.regex.Matcher;
 public class ShopMenu {
 
     private static ShopMenu s = null;
-    private ShopView view;
 
     private ShopMenu() {
 
