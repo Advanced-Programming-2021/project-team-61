@@ -33,6 +33,26 @@ public class ScoreBoardMenu {
             }
         }
     }
+
+    public String printScoreBoard(){
+        int rank = 0;
+        int currentScore = -1;
+        StringBuilder s = new StringBuilder();
+        if (allPlayerNickName.size()==0){
+            //System.out.println("we don't have any player...");
+            s.append("we don't have any player...");
+        }else {
+            for (String nickname:allPlayerNickName) {
+                if (currentScore != Player.getScoreByNickname(nickname)){
+                    rank++;
+                    currentScore = Player.getScoreByNickname(nickname);
+                }
+                s.append(rank).append(" - ").append(nickname).append(Player.getScoreByNickname(nickname)).append("\n");
+                //System.out.println(rank + " - " + nickname + Player.getScoreByNickname(nickname) );
+            }
+        }
+        return s.toString();
+    }
     public  ArrayList<String> getAllPlayerNickName() {
         return allPlayerNickName;
     }

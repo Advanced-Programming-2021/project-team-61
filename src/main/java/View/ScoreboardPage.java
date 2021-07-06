@@ -26,6 +26,6 @@ public class ScoreboardPage implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         ScoreBoardMenu.getInstance().sortByNickname();
         ScoreBoardMenu.getInstance().sortByScore();
-        list.setText(ScoreBoardView.getInstance().printScoreBoard(ScoreBoardMenu.getInstance().getAllPlayerNickName()));
+        list.setText(ScoreBoardMenu.getInstance().printScoreBoard());
     }
 }
