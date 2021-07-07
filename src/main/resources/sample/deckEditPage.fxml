@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="850.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.DeckEditPage">
    <children>
       <ImageView fx:id="AlexandriteDragon" fitHeight="200.0" fitWidth="137.0" layoutX="1363.0" onMouseClicked="#AlexandriteDragon">
@@ -161,7 +160,7 @@
       </ImageView>
       <ImageView fx:id="CallOfTheHaunted" fitHeight="200.0" fitWidth="137.0" layoutX="1228.0" layoutY="447.0" onMouseClicked="#CallOfTheHaunted">
          <image>
-            <Image url="@../spellCards/Call of the Hunted.jpg" />
+            <Image url="@../spellCards/Callof%20the%20Hunted.jpg" />
          </image>
       </ImageView>
       <ImageView fx:id="DarkHole" fitHeight="200.0" fitWidth="137.0" layoutX="1091.0" layoutY="447.0" onMouseClicked="#DarkHole">

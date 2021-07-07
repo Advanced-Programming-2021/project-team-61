@@ -29,6 +29,7 @@ class ProjectTest {
          Assertions.assertEquals("user with nickname ali already exists\r\n",outContent.toString());
         }
     }
+    /*
     @Test
     public void testMenuEnter(){
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -40,6 +41,8 @@ class ProjectTest {
 
 
     }
+    */
+
     @Test
     public void testProfileMenu(){
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -55,6 +58,7 @@ class ProjectTest {
         p.changeNickname(player,m.group(1));
         Assertions.assertEquals("user with nickname ali already exists\r\n",outContent.toString());
     }
+    /*
     @Test
     public void testDeckMenu(){
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -90,7 +94,7 @@ class ProjectTest {
     }
 
 
-
+*/
 
 
 
