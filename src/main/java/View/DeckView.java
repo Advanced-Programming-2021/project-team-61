@@ -42,24 +42,6 @@ public class DeckView {
         return s;
     }
 /*
-    public void  scan(String username) {
-        Player player = Player.getPlayerByUsername(username);
-        deckMenu = DeckMenu.getInstance();
-        while (true){
-            command = scanner.nextLine();
-
-            if ((matcher = getCommandMatcher(command, "^deck add-card --card ([a-zA-Z\\s]+) --deck ([a-zA-Z\\s]+)( --side)?$")).find()) {
-                if(matcher.group(3)==null)
-                    deckMenu.addCardToMainDeck(matcher.group(1),matcher.group(2),player);
-                else
-                    deckMenu.addCardToSideDeck(matcher.group(1),matcher.group(2),player);
-            }
-            else if ((matcher = getCommandMatcher(command, "^deck rm-card --card ([a-zA-Z\\s]+) --deck ([a-zA-Z\\s]+)( --side)?$")).find()) {
-                if (matcher.group(3) != null)
-                    deckMenu.removeCardFromSideDeck(matcher.group(1),matcher.group(2),player);
-                else
-                    deckMenu.removeCardFromMainDeck(matcher.group(1),matcher.group(2),player);
-            }
             else if ((getCommandMatcher(command, "deck show --all")).find()) {
                 printAllDecksOfPlayer(player.getAllDecks());
             }
