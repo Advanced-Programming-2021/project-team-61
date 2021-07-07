@@ -39,9 +39,9 @@ public class DeckMenuPage implements Initializable {
         DeckMenu.getInstance().deleteDeck(deckName.getText(), Player.getLoggedPlayer());
     }
 
-    public void edit(){
-        //go to a page that show deck information...
-        //that can add or remove a card to/from deck
+    public void edit() throws IOException {
+        DeckEditPage.getInstance().setDeckName(deckName.getText());
+        Logic.viewManager.changeScene("/sample/deckEditPage.fxml");
     }
 
     public void activate(){
