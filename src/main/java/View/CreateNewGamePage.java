@@ -128,21 +128,17 @@ public class CreateNewGamePage implements Initializable {
     public void showNextFieldGame() {
         i = i + 1;
         if(i > 14){
-            se(1);
+            i = 1;
         }
-        else{
-            se(i);
-        }
+        se(i);
     }
 
     public void showPreviousFieldGame() {
         i = i - 1;
         if(i < 1){
-            se(14);
+            i = 14;
         }
-        else{
-            se(i);
-        }
+        se(i);
     }
 
     public void se(int i){
