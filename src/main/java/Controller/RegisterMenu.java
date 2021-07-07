@@ -1,8 +1,11 @@
 package Controller;
 
 import Model.Player;
+import View.Logic;
 import View.LoginPage;
 import View.RegisterView;
+
+import java.io.IOException;
 
 public class RegisterMenu {
     private static RegisterMenu r = null;
@@ -29,7 +32,7 @@ public class RegisterMenu {
             CreatePlayer(username, nickname, password);
     }
 
-    public void loginProcess(String username,String password) {
+    public void loginProcess(String username,String password) throws IOException {
         view = RegisterView.getInstance();
         if (!Player.isUserNameExists(username)) {
             view.printMessage(RegisterView.Commands.noMatch, "");
@@ -38,8 +41,7 @@ public class RegisterMenu {
         }else{
             view.printMessage(RegisterView.Commands.LOGIN, "");
             Player.setLoggedPlayer(Player.getPlayerByUsername(username));
-            /*MainView m = MainView.getInstance();
-            m.scan(username);*/
+            Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
         }
     }
 

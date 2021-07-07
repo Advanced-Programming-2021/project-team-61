@@ -24,7 +24,7 @@ public class LoginPage {
     @FXML
     private Button login;
 
-    public void login(){
+    public void login() throws IOException {
         RegisterMenu.getInstance().loginProcess(username.getText(), password.getText());
     }
 
