@@ -44,7 +44,7 @@ public class ShopView {
                 Player.getPlayerByUsername(username).increaseCoin(Integer.parseInt(matcher.group(1)));
             }
             else if ((matcher = getCommandMatcher(command, "shop buy ([a-zA-Z]+[a-zA-Z ]*)")).find()){
-                shopMenu.buyCard(matcher, Player.getPlayerByUsername(username));
+              //  shopMenu.buyCard(matcher, Player.getPlayerByUsername(username));
             }
             else if ((matcher = getCommandMatcher(command, "shop show --all")).find())
                 printAllCards();
