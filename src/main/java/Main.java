@@ -1,3 +1,4 @@
+import Model.Card;
 import View.Logic;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -18,6 +19,7 @@ public class Main extends Application {
         String absolute2 = f2.getAbsolutePath();
         Database.readDataLineByLine(absolute, absolute2);
         Database.AISetup();
+
 
 
     }

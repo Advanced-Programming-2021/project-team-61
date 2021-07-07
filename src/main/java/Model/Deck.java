@@ -142,4 +142,24 @@ public class Deck {
     public boolean isActivated() {
         return isActivated;
     }
+
+    public int numberOfSpecialCardInMainDeck(String cardName){
+        int num = 0;
+        for (Card card:mainDeck) {
+            if (card.getCardName().equals(cardName))
+                num++;
+        }
+        return num;
+    }
+
+    public int numberOfSpecialCardInSideDeck(String cardName){
+        int num = 0;
+        for (Card card:sideDeck) {
+            if (card.getCardName().equals(cardName))
+                num++;
+        }
+        return num;
+    }
+
+
 }

@@ -150,4 +150,13 @@ public class Player {
     public static Player getLoggedPlayer(){
         return loggedPlayer;
     }
+
+    public int numberOfSpecialCard(String cardName){
+        int num = 0;
+        for (Card card:playerCards) {
+            if (card.getCardName().equals(cardName))
+                num++;
+        }
+        return num;
+    }
 }
