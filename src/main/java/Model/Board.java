@@ -86,8 +86,10 @@ public class Board {
 
     public void createHand() {
         Collections.shuffle(mainDeck);
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; i++){
             hand.add(mainDeck.get(i));
+            mainDeck.remove(i);
+        }
     }
     public SpellTrapField getSpellTrapByIndex(int index){
         return spellTrapsInField[index];

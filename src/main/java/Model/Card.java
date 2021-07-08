@@ -1,6 +1,8 @@
 package Model;
 
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 
 public class Card {
@@ -20,6 +22,14 @@ public class Card {
         this.cardType = cardType;
         this.description = description;
         this.price = price;
+    }
+    public static Image getImageByCardName(String cardName){
+        if(Card.getCardByName(cardName) instanceof MonsterCard){
+            return new Image("/monsterCards/"+cardName+"+.jpg");
+        }
+        else{
+            return new Image("/spellCards/"+cardName+".jpg");
+        }
     }
 
     public static boolean isCardAvailable(String cardName) {

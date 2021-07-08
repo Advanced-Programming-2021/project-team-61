@@ -12,6 +12,8 @@ import java.util.regex.Matcher;
 public class DualMenu {
     private static DualMenu d = null;
     private DualView view ;
+    private Player me;
+    private Player rival;
     private DualMenu(){
 
     }
@@ -21,37 +23,43 @@ public class DualMenu {
         return d;
     }
 
-    public void ProcessNewGame(String username,String rivalUsername,String numberOfRound){
+    public boolean ProcessNewGame(String username,String rivalUsername,String numberOfRound){
         view = DualView.getInstance();
         if(!isPlayer2Exist(rivalUsername)){
             view.printMessage(DualView.Commands.playerTwoNotExist,"");
+            return false;
         }
         else if(!isPlayerHaveActivatedDeck(Player.getPlayerByUsername(username))){
             view.printMessage(DualView.Commands.hasNoActiveDeck,username);
+            return false;
         }
         else if(!isPlayerHaveActivatedDeck(Player.getPlayerByUsername(rivalUsername))){
             view.printMessage(DualView.Commands.hasNoActiveDeck,rivalUsername);
+            return false;
         }
         else if(!isDeckValid(Player.getPlayerByUsername(username))){
             view.printMessage(DualView.Commands.deckInvalid,username);
+            return false;
 
         }
         else if(!isDeckValid(Player.getPlayerByUsername(rivalUsername))){
             view.printMessage(DualView.Commands.deckInvalid,rivalUsername);
-
+            return false;
         }
         else if(!isRoundValid(Integer.parseInt(numberOfRound))){
             view.printMessage(DualView.Commands.roundInvalid,"");
+            return false;
         }
         else{
-            for(int i = 1; i < Integer.parseInt(numberOfRound) ; i++){
+            createGame(Player.getPlayerByUsername(username), Player.getPlayerByUsername(rivalUsername));
+         /*   for(int i = 1; i < Integer.parseInt(numberOfRound) ; i++){
                 createGame(Player.getPlayerByUsername(username), Player.getPlayerByUsername(rivalUsername));
                 GameController g = GameController.getInstance();
                 g.run(Player.getPlayerByUsername(username), Player.getPlayerByUsername(rivalUsername));
 
             }
-            printWinnerOfMatch(Player.getPlayerByUsername(username),Player.getPlayerByUsername(rivalUsername));
-
+            printWinnerOfMatch(Player.getPlayerByUsername(username),Player.getPlayerByUsername(rivalUsername));*/
+        return true;
         }
 
 
@@ -84,8 +92,22 @@ public class DualMenu {
 
     }
     private void createGame(Player playerOne, Player playerTwo){
+        this.me = playerOne;
+        this.rival = playerTwo;
         new Board(playerOne);
         new Board(playerTwo);
+        setGame(playerOne,playerTwo);
+    }
+    public Player getMe(){
+        return me;
+    }
+    public Player getRival(){
+        return rival;
+    }
+
+    private void setGame(Player playerOne, Player playerTwo) {
+        Board.getBoardByPlayer(playerOne).createHand();
+        Board.getBoardByPlayer(playerTwo).createHand();
     }
 
 }

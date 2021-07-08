@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import Controller.DualMenu;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -100,8 +101,10 @@ public class CreateNewGamePage implements Initializable {
         numOfRound.setText(String.valueOf(num));
     }
 
-    public void start(){
-        DualMenu.getInstance().ProcessNewGame(Player.getLoggedPlayer().getUsername(),username.getText(),numOfRound.getText());
+    public void start() throws IOException {
+       if(DualMenu.getInstance().ProcessNewGame(Player.getLoggedPlayer().getUsername(),username.getText(),numOfRound.getText())){
+           Logic.viewManager.changeScene("/sample/gamePage.fxml");
+       }
     }
 
     @Override
