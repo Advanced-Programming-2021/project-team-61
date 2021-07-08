@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="850.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GamePage">
+   <children>
+      <ImageView fitHeight="850.0" fitWidth="1300.0" layoutX="100.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../im/1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="126.0" fitWidth="108.0" layoutX="808.0" layoutY="613.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../im/deck%20image.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="126.0" fitWidth="109.0" layoutX="139.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../im/deck%20image2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="120.0" layoutX="116.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../im/ItemA0122.dds.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="notShownImage" fitHeight="120.0" fitWidth="120.0" layoutX="801.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../im/ItemA0122.dds.png" />
+         </image>
+      </ImageView>
+      <HBox layoutX="240.0" layoutY="730.0" prefHeight="120.0" prefWidth="540.0">
+         <children>
+            <ImageView fx:id="firstInHand" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="secondInHand" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="thirdInHand" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="fourthInHand" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="fifthInHand" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="sixthInHand" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+      <HBox layoutX="250.0">
+         <children>
+            <ImageView fx:id="sixthRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
+            <ImageView fx:id="fifthRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
+            <ImageView fx:id="forthRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
+            <ImageView fx:id="thirdRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
+            <ImageView fx:id="secondRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
+            <ImageView fx:id="firstRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
+         </children>
+      </HBox>
+      <VBox layoutX="100.0" layoutY="161.0" prefHeight="452.0" prefWidth="32.0" spacing="20.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../im/drawPhaseImage.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../im/standByPhaseImage.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../im/mainPhase1Image.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../im/battlePhaseImage.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../im/mainPhase2Image.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="117.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../im/endPhaseImage.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
