@@ -1,11 +1,13 @@
 package View;
 
+import Model.Deck;
 import Model.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import Controller.DeckMenu;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,21 +33,31 @@ public class DeckMenuPage implements Initializable {
     @FXML
     private Button back;
 
+    @FXML
+    private Text decks;
+
     public void createDeck(){
         DeckMenu.getInstance().createDeck(deckName.getText(), Player.getLoggedPlayer());
+        deckName.clear();
+        setNames();
     }
 
     public void removeDeck(){
         DeckMenu.getInstance().deleteDeck(deckName.getText(), Player.getLoggedPlayer());
+        deckName.clear();
+        setNames();
     }
 
     public void edit() throws IOException {
-        DeckEditPage.getInstance().setDeckName(deckName.getText());
+        Deck.setDeckInEdit(deckName.getText());
         Logic.viewManager.changeScene("/sample/deckEditPage.fxml");
+        deckName.clear();
     }
 
     public void activate(){
         DeckMenu.getInstance().setActivateDeck(deckName.getText(), Player.getLoggedPlayer());
+        deckName.clear();
+        setNames();
     }
 
     public void back() throws IOException {
@@ -59,5 +71,10 @@ public class DeckMenuPage implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        decks.setText(DeckView.getInstance().printAllDecksOfPlayer(Player.getLoggedPlayer().getAllDecks()));
+    }
+
+    public void setNames(){
+        decks.setText(DeckView.getInstance().printAllDecksOfPlayer(Player.getLoggedPlayer().getAllDecks()));
     }
 }

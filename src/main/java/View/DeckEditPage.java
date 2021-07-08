@@ -4,27 +4,21 @@ import Model.Deck;
 import Model.Player;
 import Controller.DeckMenu;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
-public class DeckEditPage {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+public class DeckEditPage implements Initializable {
     private String deckName;
     private String currentCardName;
-    Player loggedPlayer = Player.getLoggedPlayer();
-    private static DeckEditPage d = null;
-
-    private DeckEditPage() {
-
-    }
-
-    public static DeckEditPage getInstance() {
-        if (d == null)
-            d = new DeckEditPage();
-        return d;
-    }
+    Player loggedPlayer;
 
     @FXML
     private ImageView AlexandriteDragon;
@@ -191,6 +185,12 @@ public class DeckEditPage {
     @FXML
     private Button removeSideDeck;
 
+    @FXML
+    private Button back;
+
+    @FXML
+    private TextField name;
+
     //setImage
     //setText available
     //setText mainDeck
@@ -312,8 +312,8 @@ public class DeckEditPage {
 
     public void Leotron() {
         card.setImage(Leotron.getImage());
-        setTexts("Leotron");
-        setCurrentCardName("Leotron");
+        setTexts("Leotron ");
+        setCurrentCardName("Leotron ");
     }
 
     public void ManEaterBug() {
@@ -488,28 +488,21 @@ public class DeckEditPage {
     }
 
     public void addMainDeck(){
-        DeckMenu.getInstance().addCardToMainDeck(getCurrentCardName(),getDeckName(),loggedPlayer);
+        DeckMenu.getInstance().addCardToMainDeck(getCurrentCardName(),deckName,loggedPlayer);
     }
 
     public void addSideDeck(){
-        DeckMenu.getInstance().addCardToSideDeck(getCurrentCardName(),getDeckName(),loggedPlayer);
+        DeckMenu.getInstance().addCardToSideDeck(getCurrentCardName(),deckName,loggedPlayer);
     }
 
     public void removeMainDeck(){
-        DeckMenu.getInstance().removeCardFromMainDeck(getCurrentCardName(),getDeckName(),loggedPlayer);
+        DeckMenu.getInstance().removeCardFromMainDeck(getCurrentCardName(),deckName,loggedPlayer);
     }
 
     public void removeSideDeck(){
-        DeckMenu.getInstance().removeCardFromSideDeck(getCurrentCardName(),getDeckName(),loggedPlayer);
+        DeckMenu.getInstance().removeCardFromSideDeck(getCurrentCardName(),deckName,loggedPlayer);
     }
 
-    public  void setDeckName(String deckname){
-        this.deckName = deckname;
-    }
-
-    public String getDeckName(){
-        return deckName;
-    }
 
     public void setCurrentCardName(String cardName){
         this.currentCardName = cardName;
@@ -519,4 +512,15 @@ public class DeckEditPage {
         return currentCardName;
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        deckName = Deck.getDeckInEdit();
+        loggedPlayer = Player.getLoggedPlayer();
+        name.setText("deckName => " + deckName);
+    }
+
+    public void back() throws IOException {
+        Logic.viewManager.changeScene("/sample/deckMenuPage.fxml");
+    }
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Deck {
 
+    private static String DeckInEdit;
     private int idCounter = 1;
     private static ArrayList<Deck> allDeck = new ArrayList<>();
     private String deckName;
@@ -11,6 +12,7 @@ public class Deck {
     private ArrayList<Card> mainDeck = new ArrayList<>();
     private ArrayList<Card> sideDeck = new ArrayList<>();
     private boolean isActivated = false;
+
 
     public Deck(String deckName, String playerName){
         this.deckName = deckName;
@@ -159,6 +161,14 @@ public class Deck {
                 num++;
         }
         return num;
+    }
+
+    public static void setDeckInEdit(String deckName){
+        DeckInEdit = deckName;
+    }
+
+    public static String getDeckInEdit(){
+        return DeckInEdit;
     }
 
 

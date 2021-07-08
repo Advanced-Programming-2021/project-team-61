@@ -133,10 +133,14 @@ public class DeckView {
         }
     }
 
-    public void printAllDecksOfPlayer(ArrayList<Deck> allDecks) {
+    public String printAllDecksOfPlayer(ArrayList<Deck> allDecks) {
+        StringBuilder s = new StringBuilder();
         String validCheck;
-        System.out.println("Decks:");
-        System.out.println("Active Model.Deck:");
+        int counter = 1;
+        //System.out.println("Decks:");
+        s.append("Decks:\n");
+        //System.out.println("Active Deck:");
+        s.append("Active Deck:\n");
         for (Deck deck : allDecks) {
             if (deck.isActivated()) {
                 if (deck.isDeckValid()) {
@@ -144,11 +148,13 @@ public class DeckView {
                 } else {
                     validCheck = "invalid";
                 }
-                System.out.println(deck.getDeckName() + " : main deck " + deck.getMainDeck().size() + " , side deck " + deck.getSideDeck().size() + validCheck);
+                //System.out.println(deck.getDeckName() + " : main deck " + deck.getMainDeck().size() + " , side deck " + deck.getSideDeck().size() + validCheck);
+                s.append(deck.getDeckName() + " : number of cards in main deck => " + deck.getMainDeck().size() + " * number of cards in side deck => " + deck.getSideDeck().size() + " * " + validCheck + "\n");
                 break;
             }
         }
-        System.out.println("Other Decks:");
+        //System.out.println("Other Decks:");
+        s.append("Other Decks:\n");
         sortDeck(allDecks);
         for (Deck deck : allDecks) {
             if (deck.isDeckValid()) {
@@ -157,8 +163,11 @@ public class DeckView {
                 validCheck = "invalid";
             }
             if (!deck.isActivated())
-                System.out.println(deck.getDeckName() + " : main deck " + deck.getMainDeck().size() + " , side deck " + deck.getSideDeck().size() + validCheck);
+                //System.out.println(deck.getDeckName() + " : main deck " + deck.getMainDeck().size() + " , side deck " + deck.getSideDeck().size() + validCheck);
+                s.append(counter + ". " + deck.getDeckName() + " : number of cards in main deck => " + deck.getMainDeck().size() + " * number of cards in side deck => " + deck.getSideDeck().size() + " * " + validCheck + "\n");
+            counter++;
         }
+        return s.toString();
     }
 
     public void printOneDeck(String deckName, ArrayList<Card> cards, String M_S) {
