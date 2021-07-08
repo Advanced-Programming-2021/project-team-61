@@ -6,16 +6,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import Controller.ShopMenu;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ShopPage implements Initializable {
-    private ShopMenu shopMenu;
-    private Player player;
+    private ShopMenu shopMenu = ShopMenu.getInstance();
+    private Player player = Player.getLoggedPlayer();
 
     @FXML
     private Button CommandKnightBuy;
@@ -300,19 +302,26 @@ public class ShopPage implements Initializable {
     private Label yamiNumbers;
 
     @FXML
+    private TextField availableCoin;
+
+    @FXML
+    private Button back;
+
+
+    @FXML
     void buyAlexCard(MouseEvent event) {
         if(!shopMenu.isMoneyEnough("Alexandrite Dragon",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Alexandrite Dragon"));
+            player.buyCard(Card.getCardByName("Alexandrite Dragon"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(alexNumbers);
+            alexNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Alexandrite Dragon")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
-
+        setButt();
     }
 
     @FXML
@@ -322,13 +331,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Axe Raider"));
+            player.buyCard(Card.getCardByName("Axe Raider"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(axeNumbers);
+            axeNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Axe Raider")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
-
+        setButt();
     }
 
     @FXML
@@ -338,12 +347,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Baby dragon"));
+            player.buyCard(Card.getCardByName("Baby dragon"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(babyNumbers);
+            babyNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Baby dragon")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -353,14 +363,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Battle OX"));
+            player.buyCard(Card.getCardByName("Battle OX"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(battleOxNumbers);
-
+            battleOxNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Battle OX")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
-
+        setButt();
     }
 
     @FXML
@@ -370,13 +379,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Battle warrior"));
+            player.buyCard(Card.getCardByName("Battle warrior"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(battleWarriorNumbers);
+            battleWarriorNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Battle warrior")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
-
+        setButt();
     }
 
     @FXML
@@ -386,12 +395,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Bitron"));
+            player.buyCard(Card.getCardByName("Bitron"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(bitronNumbers);
+            bitronNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Bitron")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -401,12 +411,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Blue-Eyes white dragon"));
+            player.buyCard(Card.getCardByName("Blue-Eyes white dragon"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(blueEyesNumbers);
+            blueEyesNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Blue-Eyes white dragon")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -416,12 +427,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("The Calculator"));
+            player.buyCard(Card.getCardByName("The Calculator"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(calculatorNumbers);
+            calculatorNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("The Calculator")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -431,27 +443,29 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Call of The Haunted"));
+            player.buyCard(Card.getCardByName("Call of The Haunted"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(callOfNumbers);
+            callOfNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Call of The Haunted")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
-    void buyCommandKnightCard(MouseEvent event) {
+    void buyCommandKnightCard(MouseEvent event){
         if(!shopMenu.isMoneyEnough("Command Knight",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Command Knight"));
+            player.buyCard(Card.getCardByName("Command Knight"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(commandNumbers);
+            commandNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Command Knight")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -461,12 +475,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Crawling dragon"));
+            player.buyCard(Card.getCardByName("Crawling dragon"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(crawlingNumbers);
+            crawlingNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Crawling dragon")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -476,12 +491,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Curtain of the dark ones"));
+            player.buyCard(Card.getCardByName("Curtain of the dark ones"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(curtainNumbers);
+            curtainNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Curtain of the dark ones")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -491,12 +507,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Dark Blade"));
+            player.buyCard(Card.getCardByName("Dark Blade"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(darkBladeNumbers);
+            darkBladeNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Dark Blade")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -506,12 +523,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Dark Hole"));
+            player.buyCard(Card.getCardByName("Dark Hole"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(darkHoleNumbers);
+            darkHoleNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Dark Hole")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -521,12 +539,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Dark magician"));
+            player.buyCard(Card.getCardByName("Dark magician"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(darkMagitionNumber);
+            darkMagitionNumber.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Dark magician")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -536,12 +555,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Exploder Dragon"));
+            player.buyCard(Card.getCardByName("Exploder Dragon"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(exploderNumbers);
+            exploderNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Exploder Dragon")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -551,12 +571,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Feral Imp"));
+            player.buyCard(Card.getCardByName("Feral Imp"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(feralNumbers);
+            feralNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Feral Imp")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -566,12 +587,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Fireyarou"));
+            player.buyCard(Card.getCardByName("Fireyarou"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(fireYarouNumbers);
+            fireYarouNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Fireyarou")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -581,12 +603,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Flame manipulator"));
+            player.buyCard(Card.getCardByName("Flame manipulator"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(flameNUmbers);
+            flameNUmbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Flame manipulator")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -596,12 +619,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Forest"));
+            player.buyCard(Card.getCardByName("Forest"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(forestNumbers);
+            forestNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Forest")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -611,12 +635,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Haniwa"));
+            player.buyCard(Card.getCardByName("Haniwa"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(haniwaNumbers);
+            haniwaNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Haniwa")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -626,12 +651,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Hero of the east"));
+            player.buyCard(Card.getCardByName("Hero of the east"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(heroNumbers);
+            heroNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Hero of the east")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -641,12 +667,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Horn Imp"));
+            player.buyCard(Card.getCardByName("Horn Imp"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(hornNumbers);
+            hornNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Horn Imp")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -656,12 +683,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Leotron "));
+            player.buyCard(Card.getCardByName("Leotron "));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(leotronNumbers);
+            leotronNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Leotron ")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -671,12 +699,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Man-Eater Bug"));
+            player.buyCard(Card.getCardByName("Man-Eater Bug"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(manEaterNumbers);
+            manEaterNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Man-Eater Bug")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -686,12 +715,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Marshmallon"));
+            player.buyCard(Card.getCardByName("Marshmallon"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(marshmallonNumbers);
+            marshmallonNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Marshmallon")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -701,12 +731,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Messenger of peace"));
+            player.buyCard(Card.getCardByName("Messenger of peace"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(messengerNumbers);
+            messengerNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Messenger of peace")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -716,12 +747,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Mind Crush"));
+            player.buyCard(Card.getCardByName("Mind Crush"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(mindCrushNumbers);
+            mindCrushNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Mind Crush")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -731,12 +763,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Mirror Force"));
+            player.buyCard(Card.getCardByName("Mirror Force"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(mirrorNumbers);
+            mirrorNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Mirror Force")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -746,12 +779,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Monster Reborn"));
+            player.buyCard(Card.getCardByName("Monster Reborn"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(monsterRebornNumbers);
+            monsterRebornNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Monster Reborn")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -761,12 +795,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Mystical space typhoon"));
+            player.buyCard(Card.getCardByName("Mystical space typhoon"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(mysticalNumbers);
+            mysticalNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Mystical space typhoon")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -776,12 +811,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Negate Attack"));
+            player.buyCard(Card.getCardByName("Negate Attack"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(negateNumbers);
+            negateNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Negate Attack")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -791,12 +827,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Raigeki"));
+            player.buyCard(Card.getCardByName("Raigeki"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(raigekiNumbers);
+            raigekiNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Raigeki")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -806,12 +843,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Silver Fang"));
+            player.buyCard(Card.getCardByName("Silver Fang"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(silverNumbers);
+            silverNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Silver Fang")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -821,12 +859,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Slot Machine"));
+            player.buyCard(Card.getCardByName("Slot Machine"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(slotNumbers);
+            slotNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Slot Machine")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -836,12 +875,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Spell Absorption"));
+            player.buyCard(Card.getCardByName("Spell Absorption"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(spellNumbers);
+            spellNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Spell Absorption")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -851,12 +891,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Spiral Serpent"));
+            player.buyCard(Card.getCardByName("Spiral Serpent"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(spiralNumbers);
+            spiralNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Spiral Serpent")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -866,12 +907,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Terraforming"));
+            player.buyCard(Card.getCardByName("Terraforming"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(terraNumbers);
+            terraNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Terraforming")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -881,12 +923,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Time Seal"));
+            player.buyCard(Card.getCardByName("Time Seal"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(timesealNumbers);
+            timesealNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Time Seal")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -896,12 +939,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Torrential Tribute"));
+            player.buyCard(Card.getCardByName("Torrential Tribute"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(torrentialNumbers);
+            torrentialNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Torrential Tribute")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -911,12 +955,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Twin Twisters"));
+            player.buyCard(Card.getCardByName("Twin Twisters"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(twinNumbers);
+            twinNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Twin Twisters")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -926,12 +971,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Umiiruka"));
+            player.buyCard(Card.getCardByName("Umiiruka"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(umirukaNumbers);
+            umirukaNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Umiiruka")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -941,12 +987,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Warrior Dai Grepher"));
+            player.buyCard(Card.getCardByName("Warrior Dai Grepher"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(warriorNumbers);
+            warriorNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Warrior Dai Grepher")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -956,12 +1003,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Wattaildragon"));
+            player.buyCard(Card.getCardByName("Wattaildragon"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(wattiNumbers);
+            wattiNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Wattaildragon")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -971,12 +1019,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Wattkid"));
+            player.buyCard(Card.getCardByName("Wattkid"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(wattkidNumbers);
+            wattkidNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Wattkid")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -986,12 +1035,13 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Yami"));
+            player.buyCard(Card.getCardByName("Yami"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(yamiNumbers);
+            yamiNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Yami")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
 
     @FXML
@@ -1001,22 +1051,173 @@ public class ShopPage implements Initializable {
             //System.out.println("no enough money");
         }
         else{
-            player.addCard(Card.getCardByName("Yomi Ship"));
+            player.buyCard(Card.getCardByName("Yomi Ship"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-            addToAvailableCards(yomiNumbers);
+            yomiNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Yomi Ship")));
+            availableCoin.setText(String.valueOf(player.getCoin()));
         }
-
+        setButt();
     }
     private void addToAvailableCards(Label label){
         int x = Integer.parseInt(label.getText());
         label.setText(String.valueOf(x + 1));
+        //label.setText(String.valueOf(player.numberOfCardsInAndOutDecks()));
     }
 
+    public void back() throws IOException {
+        Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        shopMenu = ShopMenu.getInstance();
-        player = Player.getLoggedPlayer();
+        //shopMenu = ShopMenu.getInstance();
+        //player = Player.getLoggedPlayer();
+        availableCoin.setText(String.valueOf(player.getCoin()));
+        alexNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Alexandrite Dragon")));
+        axeNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Axe Raider")));
+        battleOxNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Battle OX")));
+        babyNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Baby dragon")));
+        battleWarriorNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Battle warrior")));
+        bitronNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Bitron")));
+        blueEyesNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Blue-Eyes white dragon")));
+        calculatorNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("The Calculator")));
+        callOfNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Call of The Haunted")));
+        commandNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Command Knight")));
+        crawlingNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Crawling dragon")));
+        curtainNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Curtain of the dark ones")));
+        darkBladeNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Dark Blade")));
+        darkHoleNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Dark Hole")));
+        darkMagitionNumber.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Dark magician")));
+        exploderNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Exploder Dragon")));
+        feralNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Feral Imp")));
+        fireYarouNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Fireyarou")));
+        flameNUmbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Flame manipulator")));
+        forestNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Forest")));
+        haniwaNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Haniwa")));
+        heroNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Hero of the east")));
+        hornNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Horn Imp")));
+        leotronNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Leotron ")));
+        manEaterNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Man-Eater Bug")));
+        marshmallonNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Marshmallon")));
+        messengerNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Messenger of peace")));
+        mindCrushNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Mind Crush")));
+        mirrorNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Mirror Force")));
+        monsterRebornNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Monster Reborn")));
+        mysticalNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Mystical space typhoon")));
+        negateNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Negate Attack")));
+        raigekiNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Raigeki")));
+        silverNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Silver Fang")));
+        slotNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Slot Machine")));
+        spellNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Spell Absorption")));
+        spiralNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Spiral Serpent")));
+        terraNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Terraforming")));
+        timesealNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Time Seal")));
+        torrentialNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Torrential Tribute")));
+        twinNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Twin Twisters")));
+        umirukaNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Umiiruka")));
+        warriorNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Warrior Dai Grepher")));
+        wattiNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Wattaildragon")));
+        wattkidNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Wattkid")));
+        yamiNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Yami")));
+        yomiNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Yomi Ship")));
+        setButt();
+    }
 
+    public void setButt(){
+
+        if (player.getCoin()<Card.getCardByName("Command Knight").getPrice())
+            CommandKnightBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Alexandrite Dragon").getPrice())
+            alexandriteBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Axe Raider").getPrice())
+            axeRaiderBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Baby dragon").getPrice())
+            babyDragonBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Battle OX").getPrice())
+            battleOxBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Battle warrior").getPrice())
+            battleWarriorBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Bitron").getPrice())
+            bitronBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Blue-Eyes white dragon").getPrice())
+            blueEyesBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Crawling dragon").getPrice())
+            crawlingDragonBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Curtain of the dark ones").getPrice())
+            curtainBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Dark Blade").getPrice())
+            darkBladeBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Dark magician").getPrice())
+            darkMagitionBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Exploder Dragon").getPrice())
+            exploderDragonBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Feral Imp").getPrice())
+            feralBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Fireyarou").getPrice())
+            fireYarouBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Flame manipulator").getPrice())
+            flameBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Haniwa").getPrice())
+            haniwaBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Hero of the east").getPrice())
+            heroOfTheEastBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Horn Imp").getPrice())
+            hornImpBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Leotron ").getPrice())
+            leotronBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Man-Eater Bug").getPrice())
+            manEaterBugBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Marshmallon").getPrice())
+            marshmallonBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Silver Fang").getPrice())
+            silverFangBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Slot Machine").getPrice())
+            slotMachineBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Spiral Serpent").getPrice())
+            spiralBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("The Calculator").getPrice())
+            theCalculatorBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Warrior Dai Grepher").getPrice())
+            warriorBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Wattaildragon").getPrice())
+            wattailBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Wattkid").getPrice())
+            wattkidBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Yomi Ship").getPrice())
+            yomiShipBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Time Seal").getPrice())
+            timeSealBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Mind Crush").getPrice())
+            mindCrushBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Mirror Force").getPrice())
+            mirrorForceBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Call of The Haunted").getPrice())
+            callOfTheHauntedBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Torrential Tribute").getPrice())
+            torrentialTributeBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Negate Attack").getPrice())
+            negateAttackBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Dark Hole").getPrice())
+            darkHoleBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Forest").getPrice())
+            forestBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Messenger of peace").getPrice())
+            messengerBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Monster Reborn").getPrice())
+            monsterRebornBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Mystical space typhoon").getPrice())
+            mysticalBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Raigeki").getPrice())
+            raigekiBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Spell Absorption").getPrice())
+            spellAbsorptionBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Terraforming").getPrice())
+            terraformingBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Twin Twisters").getPrice())
+            twinBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Umiiruka").getPrice())
+            umirukaBuy.setDisable(true);
+        if (player.getCoin()<Card.getCardByName("Yami").getPrice())
+            yamiBuy.setDisable(true);
     }
 }

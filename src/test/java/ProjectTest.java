@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class ProjectTest {
-
+/*
     @Test
     public void testUserCreateProcess(){
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -29,6 +29,8 @@ class ProjectTest {
          Assertions.assertEquals("user with nickname ali already exists\r\n",outContent.toString());
         }
     }
+
+ */
     /*
     @Test
     public void testMenuEnter(){

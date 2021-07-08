@@ -22,12 +22,15 @@ public class RegisterMenu {
         return r;
     }
 
-    public void userCreateProcess(String username, String nickname, String password) {
+    public void userCreateProcess(String username, String nickname, String password) throws IOException {
         view = RegisterView.getInstance();
-        if (Player.isUserNameExists(username))
+        if (Player.isUserNameExists(username)) {
             view.printMessage(RegisterView.Commands.userExistsWithUsername, username);
-        else if (Player.isNickNameExists(nickname))
+            Logic.viewManager.changeScene("/sample/signupPage.fxml");
+        } else if (Player.isNickNameExists(nickname)){
             view.printMessage(RegisterView.Commands.userExistsWithNickname, nickname);
+            Logic.viewManager.changeScene("/sample/signupPage.fxml");
+        }
         else
             CreatePlayer(username, nickname, password);
     }
@@ -36,8 +39,10 @@ public class RegisterMenu {
         view = RegisterView.getInstance();
         if (!Player.isUserNameExists(username)) {
             view.printMessage(RegisterView.Commands.noMatch, "");
+            Logic.viewManager.changeScene("/sample/loginPage.fxml");
         } else if (!Player.getPlayerByUsername(username).getPassword().equals(password)){
             view.printMessage(RegisterView.Commands.noMatch, "");
+            Logic.viewManager.changeScene("/sample/loginPage.fxml");
         }else{
             view.printMessage(RegisterView.Commands.LOGIN, "");
             Player.setLoggedPlayer(Player.getPlayerByUsername(username));
@@ -45,8 +50,10 @@ public class RegisterMenu {
         }
     }
 
-    private void CreatePlayer(String username, String nickname, String password){
+    private void CreatePlayer(String username, String nickname, String password) throws IOException {
         new Player(username, nickname, password);
         view.printMessage(RegisterView.Commands.successful, "");
+        Player.setLoggedPlayer(Player.getPlayerByUsername(username));
+        Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
     }
 }

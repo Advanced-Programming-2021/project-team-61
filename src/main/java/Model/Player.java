@@ -107,11 +107,10 @@ public class Player {
     }
     public void addCard(Card card){
         playerCards.add(card);
-
     }
     public void buyCard(Card card){
         this.setCoin(card.getPrice());
-        this.addCard(card);
+        addCard(card);
     }
 
     public ArrayList<Card> getPlayerCards() {
@@ -156,6 +155,15 @@ public class Player {
         for (Card card:playerCards) {
             if (card.getCardName().equals(cardName))
                 num++;
+        }
+        return num;
+    }
+
+    public int numberOfCardsInAndOutDecks(String cardName){
+        int num = numberOfSpecialCard(cardName);
+        for (Deck deck:allDecks) {
+            num += deck.numberOfSpecialCardInMainDeck(cardName);
+            num += deck.numberOfSpecialCardInSideDeck(cardName);
         }
         return num;
     }

@@ -25,7 +25,7 @@ public class SignupPage {
     @FXML
     private Button back;
 
-    public void signup(){
+    public void signup() throws IOException {
         RegisterMenu.getInstance().userCreateProcess(username.getText(), nickname.getText(), password.getText());
     }
 

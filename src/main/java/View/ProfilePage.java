@@ -45,7 +45,9 @@ public class ProfilePage implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        username.setText(Player.getLoggedPlayer().getUsername());
-        nickname.setText(Player.getLoggedPlayer().getNickname());
+        username.setText("username : " + Player.getLoggedPlayer().getUsername());
+        nickname.setText("nickname : " + Player.getLoggedPlayer().getNickname());
     }
+
+
 }
