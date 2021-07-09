@@ -1,12 +1,11 @@
 package View;
 
+import Model.Card;
 import Model.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import Controller.DualMenu;
@@ -58,11 +57,4 @@ public class CreateNewGamePage{
     public void back() throws IOException {
         Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
     }
-
-
-
-
-
-
-
 }

@@ -678,12 +678,12 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyLeotronCard(MouseEvent event) {
-        if(!shopMenu.isMoneyEnough("Leotron ",player)){
+        if(!shopMenu.isMoneyEnough("Leotron",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
         }
         else{
-            player.buyCard(Card.getCardByName("Leotron "));
+            player.buyCard(Card.getCardByName("Leotron"));
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
             leotronNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Leotron ")));
@@ -1096,7 +1096,7 @@ public class ShopPage implements Initializable {
         haniwaNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Haniwa")));
         heroNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Hero of the east")));
         hornNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Horn Imp")));
-        leotronNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Leotron ")));
+        leotronNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Leotron")));
         manEaterNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Man-Eater Bug")));
         marshmallonNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Marshmallon")));
         messengerNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Messenger of peace")));
@@ -1163,7 +1163,7 @@ public class ShopPage implements Initializable {
             heroOfTheEastBuy.setDisable(true);
         if (player.getCoin()<Card.getCardByName("Horn Imp").getPrice())
             hornImpBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Leotron ").getPrice())
+        if (player.getCoin()<Card.getCardByName("Leotron").getPrice())
             leotronBuy.setDisable(true);
         if (player.getCoin()<Card.getCardByName("Man-Eater Bug").getPrice())
             manEaterBugBuy.setDisable(true);

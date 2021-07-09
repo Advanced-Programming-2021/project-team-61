@@ -24,11 +24,16 @@ public class Card {
         this.price = price;
     }
     public static Image getImageByCardName(String cardName){
+        String path = "file:" + System.getProperty("user.dir") + "/src/main/resources/";
         if(Card.getCardByName(cardName) instanceof MonsterCard){
-            return new Image("/monsterCards/"+cardName+"+.jpg");
+            //String m = "/monsterCards/"+cardName+".jpg";
+            path += "monsterCards/" + cardName + ".jpg";
+            return new Image(path);
         }
         else{
-            return new Image("/spellCards/"+cardName+".jpg");
+            //String s = "/spellCards/"+cardName+".jpg";
+            path += "spellCards/" + cardName + ".jpg";
+            return new Image(path);
         }
     }
 

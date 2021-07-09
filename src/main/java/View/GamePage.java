@@ -5,11 +5,13 @@ import Model.Card;
 import Model.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import Controller.DualMenu;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class GamePage implements Initializable {
@@ -97,7 +99,8 @@ public class GamePage implements Initializable {
 
 
     private void paintCardsInHand(Player me, Player rival) {
-        ArrayList<Card> myCards = Board.getBoardByPlayer(me).getHand();
+        ArrayList<Card> myCards = (Board.getBoardByPlayer(me)).getHand();
+        //firstInHand.setImage(Card.getImageByCardName("Alexandrite Dragon"));
         firstInHand.setImage(Card.getImageByCardName(myCards.get(0).getCardName()));
         secondInHand.setImage(Card.getImageByCardName(myCards.get(1).getCardName()));
         thirdInHand.setImage(Card.getImageByCardName(myCards.get(2).getCardName()));
@@ -110,6 +113,8 @@ public class GamePage implements Initializable {
         forthRival.setImage(notShownImage.getImage());
         fifthRival.setImage(notShownImage.getImage());
         sixthRival.setImage(notShownImage.getImage());
+
+
     }
 
 
@@ -119,7 +124,6 @@ public class GamePage implements Initializable {
         Player me = DualMenu.getInstance().getMe();
         Player rival = DualMenu.getInstance().getRival();
         paintCardsInHand(me,rival);
-
 
     }
 

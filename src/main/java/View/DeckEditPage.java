@@ -312,8 +312,8 @@ public class DeckEditPage implements Initializable {
 
     public void Leotron() {
         card.setImage(Leotron.getImage());
-        setTexts("Leotron ");
-        setCurrentCardName("Leotron ");
+        setTexts("Leotron");
+        setCurrentCardName("Leotron");
     }
 
     public void ManEaterBug() {
