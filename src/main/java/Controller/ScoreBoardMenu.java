@@ -20,6 +20,12 @@ public class ScoreBoardMenu {
     }
 
     public void sortByNickname(){
+        allPlayerNickName.remove("AI");
+        if (allPlayerNickName.size() > 20) {
+            for (int i = 20; i < allPlayerNickName.size(); i++) {
+                allPlayerNickName.remove(i);
+            }
+        }
         Collections.sort(allPlayerNickName);
     }
 
