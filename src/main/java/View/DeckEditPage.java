@@ -489,18 +489,22 @@ public class DeckEditPage implements Initializable {
 
     public void addMainDeck(){
         DeckMenu.getInstance().addCardToMainDeck(getCurrentCardName(),deckName,loggedPlayer);
+        setTexts(currentCardName);
     }
 
     public void addSideDeck(){
         DeckMenu.getInstance().addCardToSideDeck(getCurrentCardName(),deckName,loggedPlayer);
+        setTexts(currentCardName);
     }
 
     public void removeMainDeck(){
         DeckMenu.getInstance().removeCardFromMainDeck(getCurrentCardName(),deckName,loggedPlayer);
+        setTexts(currentCardName);
     }
 
     public void removeSideDeck(){
         DeckMenu.getInstance().removeCardFromSideDeck(getCurrentCardName(),deckName,loggedPlayer);
+        setTexts(currentCardName);
     }
 
 
@@ -514,7 +518,6 @@ public class DeckEditPage implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         deckName = Deck.getDeckInEdit();
         loggedPlayer = Player.getLoggedPlayer();
         name.setText("deckName => " + deckName);
