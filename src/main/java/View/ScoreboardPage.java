@@ -28,6 +28,7 @@ public class ScoreboardPage implements Initializable {
     private Text te;
 
     public void back() throws IOException {
+        StartPage.click.play();
         Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
     }
 

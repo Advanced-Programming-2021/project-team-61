@@ -488,21 +488,25 @@ public class DeckEditPage implements Initializable {
     }
 
     public void addMainDeck(){
+        StartPage.click.play();
         DeckMenu.getInstance().addCardToMainDeck(getCurrentCardName(),deckName,loggedPlayer);
         setTexts(currentCardName);
     }
 
     public void addSideDeck(){
+        StartPage.click.play();
         DeckMenu.getInstance().addCardToSideDeck(getCurrentCardName(),deckName,loggedPlayer);
         setTexts(currentCardName);
     }
 
     public void removeMainDeck(){
+        StartPage.click.play();
         DeckMenu.getInstance().removeCardFromMainDeck(getCurrentCardName(),deckName,loggedPlayer);
         setTexts(currentCardName);
     }
 
     public void removeSideDeck(){
+        StartPage.click.play();
         DeckMenu.getInstance().removeCardFromSideDeck(getCurrentCardName(),deckName,loggedPlayer);
         setTexts(currentCardName);
     }
@@ -524,6 +528,7 @@ public class DeckEditPage implements Initializable {
     }
 
     public void back() throws IOException {
+        StartPage.click.play();
         Logic.viewManager.changeScene("/sample/deckMenuPage.fxml");
     }
 }
