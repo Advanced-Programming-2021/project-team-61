@@ -11,110 +11,38 @@
 
 <AnchorPane prefHeight="850.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.CreateNewGamePage">
    <children>
-      <ImageView fx:id="im1" fitHeight="200.0" fitWidth="190.0" layoutX="12.0" layoutY="15.0">
-         <image>
-            <Image url="@../im/1.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="im2" fitHeight="200.0" fitWidth="190.0" layoutX="12.0" layoutY="61.0">
-         <image>
-            <Image url="@../im/2.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="im3" fitHeight="200.0" fitWidth="190.0" layoutX="12.0" layoutY="107.0">
-         <image>
-            <Image url="@../im/3.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="im4" fitHeight="200.0" fitWidth="190.0" layoutX="12.0" layoutY="151.0">
-         <image>
-            <Image url="@../im/4.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="im5" fitHeight="200.0" fitWidth="190.0" layoutX="12.0" layoutY="198.0">
-         <image>
-            <Image url="@../im/5.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="im6" fitHeight="200.0" fitWidth="190.0" layoutX="12.0" layoutY="251.0">
-         <image>
-            <Image url="@../im/6.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="im7" fitHeight="200.0" fitWidth="190.0" layoutX="12.0" layoutY="291.0">
-         <image>
-            <Image url="@../im/7.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="im8" fitHeight="200.0" fitWidth="190.0" layoutX="12.0" layoutY="325.0">
-         <image>
-            <Image url="@../im/8.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="im9" fitHeight="200.0" fitWidth="190.0" layoutX="12.0" layoutY="358.0">
-         <image>
-            <Image url="@../im/9.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="im10" fitHeight="200.0" fitWidth="190.0" layoutX="12.0" layoutY="391.0">
-         <image>
-            <Image url="@../im/10.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="im11" fitHeight="200.0" fitWidth="190.0" layoutX="12.0" layoutY="425.0">
-         <image>
-            <Image url="@../im/11.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="im12" fitHeight="200.0" fitWidth="190.0" layoutX="12.0" layoutY="458.0">
-         <image>
-            <Image url="@../im/12.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="im13" fitHeight="200.0" fitWidth="190.0" layoutX="12.0" layoutY="491.0">
-         <image>
-            <Image url="@../im/13.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="im14" fitHeight="200.0" fitWidth="190.0" layoutX="12.0" layoutY="533.0">
-         <image>
-            <Image url="@../im/14.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="850.0" fitWidth="1387.0">
          <image>
             <Image url="@../createNewGame.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="577.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true" />
-      <Sphere layoutX="420.0" layoutY="723.0" radius="50" />
-      <Text fx:id="round" fill="WHITE" layoutX="264.0" layoutY="735.0" strokeType="OUTSIDE" strokeWidth="0.0" text="round">
+      <Sphere layoutX="477.0" layoutY="723.0" radius="50" />
+      <Text fx:id="round" fill="WHITE" layoutX="321.0" layoutY="735.0" strokeType="OUTSIDE" strokeWidth="0.0" text="round">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <Text fx:id="numOfRound" layoutX="413.0" layoutY="733.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+      <Text fx:id="numOfRound" layoutX="470.0" layoutY="733.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
-      <Button fx:id="positive" layoutX="483.0" layoutY="691.0" mnemonicParsing="false" onAction="#positive" text="+" />
-      <Button fx:id="negative" layoutX="483.0" layoutY="724.0" mnemonicParsing="false" onAction="#negative" prefHeight="19.0" prefWidth="31.0" text="-">
+      <Button fx:id="positive" layoutX="540.0" layoutY="691.0" mnemonicParsing="false" onAction="#positive" text="+" />
+      <Button fx:id="negative" layoutX="540.0" layoutY="724.0" mnemonicParsing="false" onAction="#negative" prefHeight="19.0" prefWidth="31.0" text="-">
          <font>
             <Font size="17.0" />
          </font>
       </Button>
-      <TextField fx:id="username" layoutX="712.0" layoutY="697.0" promptText="rival username :">
+      <TextField fx:id="username" layoutX="796.0" layoutY="697.0" promptText="rival username :">
          <font>
             <Font size="25.0" />
          </font>
       </TextField>
-      <Button fx:id="start" layoutX="598.0" layoutY="591.0" mnemonicParsing="false" onAction="#start" text="START">
+      <Button fx:id="start" layoutX="642.0" layoutY="591.0" mnemonicParsing="false" onAction="#start" text="START">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
-      <Button fx:id="showNextFieldGame" layoutX="868.0" layoutY="383.0" mnemonicParsing="false" onAction="#showNextFieldGame" text="next" />
-      <Button fx:id="showPreviousFieldGame" layoutX="420.0" layoutY="383.0" mnemonicParsing="false" onAction="#showPreviousFieldGame" text="previous" />
+      <Button fx:id="back" layoutX="89.0" layoutY="773.0" mnemonicParsing="false" onAction="#back" text="back" />
    </children>
 </AnchorPane>
