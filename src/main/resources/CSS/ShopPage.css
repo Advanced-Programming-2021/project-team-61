@@ -7,9 +7,11 @@
     -fx-border-color:#D6EAF8;
 
 }
+
 .button:hover{
     -fx-background-color: green;
     -fx-border-color: cyan;
     -fx-text-fill: white;
 }
+
 
