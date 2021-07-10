@@ -69,7 +69,7 @@ public class BattlePhaseView {
 
             }
             else if (getCommandMatcher(command,"attack direct").find()){
-                battlePhase.ProcessDirectAttack(myBoard,rivalBoard);
+              //  battlePhase.ProcessDirectAttack(myBoard,rivalBoard);
                 if(isGameFinished)
                     break;
             }

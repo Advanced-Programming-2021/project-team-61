@@ -37,7 +37,6 @@ public class Board {
         boards.add(this);
     }
 
-
     public void increaseNumberOfWins() {
         this.numberOfWins+=1;
     }

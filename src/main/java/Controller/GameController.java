@@ -118,7 +118,7 @@ public class GameController {
         notMyTurn = temp;
     }
 
-    private void reset(MonsterField[] monsterFields) {
+    public void reset(MonsterField[] monsterFields) {
         for(int i = 0 ; i < 5; i++){
             if(monsterFields[i] != null){
                 monsterFields[i].setStatusChangedInTurn(false);
@@ -175,5 +175,11 @@ public class GameController {
             GameView.getInstance().printWinner(myTurn,notMyTurn);
             Board.getBoardByPlayer(myTurn).increaseNumberOfWins();
         }
+    }
+    public boolean isFirstTurn(){
+        return isFirstTurn;
+    }
+    public void setFirstTurn(boolean firstTurn){
+        this.isFirstTurn = firstTurn;
     }
 }
