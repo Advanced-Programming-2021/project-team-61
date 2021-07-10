@@ -23,10 +23,12 @@ public class ChangePassword {
     private Button back;
 
     public void check(){
+        StartPage.click.play();
         ProfileMenu.getInstance().changePassword(Player.getLoggedPlayer(), oldPass.getText(), newPass.getText());
     }
 
     public void back() throws IOException {
+        StartPage.click.play();
         Logic.viewManager.changeScene("/sample/profilePage.fxml");
     }
 }

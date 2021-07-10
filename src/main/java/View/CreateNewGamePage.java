@@ -1,12 +1,11 @@
 package View;
 
+import Model.Card;
 import Model.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import Controller.DualMenu;
@@ -38,31 +37,28 @@ public class CreateNewGamePage{
 
 
     public void positive(){
+        StartPage.click.play();
         int num = Integer.parseInt(numOfRound.getText());
         num++;
         numOfRound.setText(String.valueOf(num));
     }
 
     public void negative(){
+        StartPage.click.play();
         int num = Integer.parseInt(numOfRound.getText());
         num--;
         numOfRound.setText(String.valueOf(num));
     }
 
     public void start() throws IOException {
-       if(DualMenu.getInstance().ProcessNewGame(Player.getLoggedPlayer().getUsername(),username.getText(),numOfRound.getText())){
+        StartPage.click.play();
+        if(DualMenu.getInstance().ProcessNewGame(Player.getLoggedPlayer().getUsername(),username.getText(),numOfRound.getText())){
            Logic.viewManager.changeScene("/sample/gamePage.fxml");
        }
     }
 
     public void back() throws IOException {
+        StartPage.click.play();
         Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
     }
-
-
-
-
-
-
-
 }

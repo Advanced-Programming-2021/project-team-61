@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import Controller.DualMenu;
 import javafx.scene.input.MouseButton;
@@ -14,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import Controller.MainPhase1;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class GamePage implements Initializable {
@@ -316,6 +318,8 @@ public class GamePage implements Initializable {
         forthRival.setImage(notShownImage.getImage());
         fifthRival.setImage(notShownImage.getImage());
         sixthRival.setImage(notShownImage.getImage());
+
+
     }
 
 

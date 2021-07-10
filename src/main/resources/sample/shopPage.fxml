@@ -21,7 +21,7 @@
             </ImageView>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/CommandKnight+.jpg" />
+                  <Image url="@../monsterCards/Command Knight.jpg" />
                </image>
             </ImageView>
             <Button fx:id="CommandKnightBuy" layoutX="125.0" layoutY="365.0" mnemonicParsing="false" onMouseClicked="#buyCommandKnightCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -34,7 +34,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/AlexandriteDragon+.jpg" />
+                  <Image url="@../monsterCards/Alexandrite Dragon.jpg" />
                </image>
             </ImageView>
             <Button fx:id="alexandriteBuy" layoutX="425.0" layoutY="365.0" mnemonicParsing="false" onMouseClicked="#buyAlexCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -47,7 +47,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/AxeRaider+.jpg" />
+                  <Image url="@../monsterCards/Axe Raider.jpg" />
                </image>
             </ImageView>
             <Button fx:id="axeRaiderBuy" layoutX="725.0" layoutY="365.0" mnemonicParsing="false" onMouseClicked="#buyAxeRaiderCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -60,7 +60,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/BabyDragon+.jpg" />
+                  <Image url="@../monsterCards/Baby dragon.jpg" />
                </image>
             </ImageView>
             <Button fx:id="babyDragonBuy" layoutX="1025.0" layoutY="765.0" mnemonicParsing="false" onMouseClicked="#buyBabyDragonCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -73,7 +73,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/BattleOx+.jpg" />
+                  <Image url="@../monsterCards/Battle OX.jpg" />
                </image>
             </ImageView>
             <Button fx:id="battleOxBuy" layoutX="125.0" layoutY="770.0" mnemonicParsing="false" onMouseClicked="#buyBattleOxCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -86,7 +86,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/BattleWarrior+.jpg" />
+                  <Image url="@../monsterCards/Battle warrior.jpg" />
                </image>
             </ImageView>
             <Button fx:id="battleWarriorBuy" layoutX="425.0" layoutY="770.0" mnemonicParsing="false" onMouseClicked="#buyBattleWarriorCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -99,7 +99,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/Bitron+.jpg" />
+                  <Image url="@../monsterCards/Bitron.jpg" />
                </image>
             </ImageView>
             <Button fx:id="bitronBuy" layoutX="725.0" layoutY="770.0" mnemonicParsing="false" onMouseClicked="#buyBitronCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -112,7 +112,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="850.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/BlueEyesWhiteDragon+.jpg" />
+                  <Image url="@../monsterCards/Blue-Eyes white dragon.jpg" />
                </image>
             </ImageView>
             <Button fx:id="blueEyesBuy" layoutX="1025.0" layoutY="1170.0" mnemonicParsing="false" onMouseClicked="#buyBlueEyesCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -125,7 +125,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="850.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/CrawlingDragon+.jpg" />
+                  <Image url="@../monsterCards/Crawling dragon.jpg" />
                </image>
             </ImageView>
             <Button fx:id="crawlingDragonBuy" layoutX="125.0" layoutY="1170.0" mnemonicParsing="false" onMouseClicked="#buyCrawlingCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -138,7 +138,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="850.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/CurtainOfTheDarkOnes+.jpg" />
+                  <Image url="@../monsterCards/Curtain of the dark ones.jpg" />
                </image>
             </ImageView>
             <Button fx:id="curtainBuy" layoutX="425.0" layoutY="1170.0" mnemonicParsing="false" onMouseClicked="#buyCurtainCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -151,7 +151,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="850.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/DarkBlade+.jpg" />
+                  <Image url="@../monsterCards/Dark Blade.jpg" />
                </image>
             </ImageView>
             <Button fx:id="darkBladeBuy" layoutX="725.0" layoutY="1170.0" mnemonicParsing="false" onMouseClicked="#buyDarkBladeCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -164,7 +164,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="1250.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/DarkMagician+.jpg" />
+                  <Image url="@../monsterCards/Dark magician.jpg" />
                </image>
             </ImageView>
             <Button fx:id="darkMagitionBuy" layoutX="1025.0" layoutY="1570.0" mnemonicParsing="false" onMouseClicked="#buyDarkMagitionCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -177,7 +177,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="1250.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/ExploderDragon+.jpg" />
+                  <Image url="@../monsterCards/Exploder Dragon.jpg" />
                </image>
             </ImageView>
             <Button fx:id="exploderDragonBuy" layoutX="125.0" layoutY="1570.0" mnemonicParsing="false" onMouseClicked="#buyExploderCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -190,7 +190,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="1250.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/FeralImp+.jpg" />
+                  <Image url="@../monsterCards/Feral Imp.jpg" />
                </image>
             </ImageView>
             <Button fx:id="feralBuy" layoutX="425.0" layoutY="1570.0" mnemonicParsing="false" onMouseClicked="#buyFeralCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -203,7 +203,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="1250.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/Fireyarou+.jpg" />
+                  <Image url="@../monsterCards/Fireyarou.jpg" />
                </image>
             </ImageView>
             <Button fx:id="fireYarouBuy" layoutX="725.0" layoutY="1570.0" mnemonicParsing="false" onMouseClicked="#buyFireYarouCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -216,7 +216,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="1650.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/FlameManipulator+.jpg" />
+                  <Image url="@../monsterCards/Flame manipulator.jpg" />
                </image>
             </ImageView>
             <Button fx:id="flameBuy" layoutX="1025.0" layoutY="1970.0" mnemonicParsing="false" onMouseClicked="#buyFlameCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -229,7 +229,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="1650.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/Haniwa+.jpg" />
+                  <Image url="@../monsterCards/Haniwa.jpg" />
                </image>
             </ImageView>
             <Button fx:id="haniwaBuy" layoutX="125.0" layoutY="1970.0" mnemonicParsing="false" onMouseClicked="#buyHaniwaCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -242,7 +242,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="1650.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/HeroOfTheEast+.jpg" />
+                  <Image url="@../monsterCards/Hero of the east.jpg" />
                </image>
             </ImageView>
             <Button fx:id="heroOfTheEastBuy" layoutX="425.0" layoutY="1970.0" mnemonicParsing="false" onMouseClicked="#buyHeroCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -255,7 +255,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="1650.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/HornImp+.jpg" />
+                  <Image url="@../monsterCards/Horn Imp.jpg" />
                </image>
             </ImageView>
             <Button fx:id="hornImpBuy" layoutX="725.0" layoutY="1970.0" mnemonicParsing="false" onMouseClicked="#buyHornImpCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -268,7 +268,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="2050.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/Leotron+.jpg" />
+                  <Image url="@../monsterCards/Leotron.jpg" />
                </image>
             </ImageView>
             <Button fx:id="leotronBuy" layoutX="1025.0" layoutY="2370.0" mnemonicParsing="false" onMouseClicked="#buyLeotronCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -281,7 +281,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="2050.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/ManEaterBug+.jpg" />
+                  <Image url="@../monsterCards/Man-Eater Bug.jpg" />
                </image>
             </ImageView>
             <Button fx:id="manEaterBugBuy" layoutX="125.0" layoutY="2370.0" mnemonicParsing="false" onMouseClicked="#buyManEaterBugCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -294,7 +294,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="2050.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/Marshmallon+.jpg" />
+                  <Image url="@../monsterCards/Marshmallon.jpg" />
                </image>
             </ImageView>
             <Button fx:id="marshmallonBuy" layoutX="425.0" layoutY="2370.0" mnemonicParsing="false" onMouseClicked="#buyMarshmallonCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -307,7 +307,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="2050.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/SilverFang+.jpg" />
+                  <Image url="@../monsterCards/Silver Fang.jpg" />
                </image>
             </ImageView>
             <Button fx:id="silverFangBuy" layoutX="725.0" layoutY="2370.0" mnemonicParsing="false" onMouseClicked="#buySilverCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -320,7 +320,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="2450.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/SlotMachine+.jpg" />
+                  <Image url="@../monsterCards/Slot Machine.jpg" />
                </image>
             </ImageView>
             <Button fx:id="slotMachineBuy" layoutX="1025.0" layoutY="2770.0" mnemonicParsing="false" onMouseClicked="#buySlotCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -333,7 +333,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="2450.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/SpiralSerpent+.jpg" />
+                  <Image url="@../monsterCards/Spiral Serpent.jpg" />
                </image>
             </ImageView>
             <Button fx:id="spiralBuy" layoutX="125.0" layoutY="2770.0" mnemonicParsing="false" onMouseClicked="#buySpiralCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -346,7 +346,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="2450.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/TheCalculator+.jpg" />
+                  <Image url="@../monsterCards/The Calculator.jpg" />
                </image>
             </ImageView>
             <Button fx:id="theCalculatorBuy" layoutX="425.0" layoutY="2770.0" mnemonicParsing="false" onMouseClicked="#buyCalculatorCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -359,7 +359,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="2450.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/WarriorDaiGrepher+.jpg" />
+                  <Image url="@../monsterCards/Warrior Dai Grepher.jpg" />
                </image>
             </ImageView>
             <Button fx:id="warriorBuy" layoutX="725.0" layoutY="2770.0" mnemonicParsing="false" onMouseClicked="#buyWarrirorCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -372,7 +372,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="2850.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/Wattaildragon+.jpg" />
+                  <Image url="@../monsterCards/Wattaildragon.jpg" />
                </image>
             </ImageView>
             <Button fx:id="wattailBuy" layoutX="725.0" layoutY="3170.0" mnemonicParsing="false" onMouseClicked="#buyWattailCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -385,7 +385,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="2850.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/Wattkid+.jpg" />
+                  <Image url="@../monsterCards/Wattkid.jpg" />
                </image>
             </ImageView>
             <Button fx:id="wattkidBuy" layoutX="125.0" layoutY="3170.0" mnemonicParsing="false" onMouseClicked="#buyWattkidCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -398,7 +398,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="2850.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../monsterCards/YomiShip+.jpg" />
+                  <Image url="@../monsterCards/Yomi Ship.jpg" />
                </image>
             </ImageView>
             <Button fx:id="yomiShipBuy" layoutX="425.0" layoutY="3170.0" mnemonicParsing="false" onMouseClicked="#buyYomiShipCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -411,7 +411,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="2850.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../spellCards/TimeSeal.jpg" />
+                  <Image url="@../spellCards/Time Seal.jpg" />
                </image>
             </ImageView>
             <Button fx:id="timeSealBuy" layoutX="1025.0" layoutY="3170.0" mnemonicParsing="false" onMouseClicked="#buyTimeSealCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -424,7 +424,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="3250.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../spellCards/MindCrush.jpg" />
+                  <Image url="@../spellCards/Mind Crush.jpg" />
                </image>
             </ImageView>
             <Button fx:id="mindCrushBuy" layoutX="1025.0" layoutY="3570.0" mnemonicParsing="false" onMouseClicked="#buyMindCrushCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -437,7 +437,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="3250.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../spellCards/MirrorForce.jpg" />
+                  <Image url="@../spellCards/Mirror Force.jpg" />
                </image>
             </ImageView>
             <Button fx:id="mirrorForceBuy" layoutX="125.0" layoutY="3570.0" mnemonicParsing="false" onMouseClicked="#buyMirrorForceCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -450,7 +450,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="3250.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../spellCards/Call of the Hunted.jpg" />
+                  <Image url="@../spellCards/Call of The Haunted.jpg" />
                </image>
             </ImageView>
             <Button fx:id="callOfTheHauntedBuy" layoutX="425.0" layoutY="3570.0" mnemonicParsing="false" onMouseClicked="#buyCallOfHauntedCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -463,7 +463,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="3250.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../spellCards/TorrentialTribute.jpg" />
+                  <Image url="@../spellCards/Torrential Tribute.jpg" />
                </image>
             </ImageView>
             <Button fx:id="torrentialTributeBuy" layoutX="725.0" layoutY="3570.0" mnemonicParsing="false" onMouseClicked="#buyTorrentialCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -476,7 +476,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="3650.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../spellCards/NegateAttack.jpg" />
+                  <Image url="@../spellCards/Negate Attack.jpg" />
                </image>
             </ImageView>
             <Button fx:id="negateAttackBuy" layoutX="1025.0" layoutY="3970.0" mnemonicParsing="false" onMouseClicked="#buyNegateAttackCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -489,7 +489,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="3650.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../spellCards/DarkHole.jpg" />
+                  <Image url="@../spellCards/Dark Hole.jpg" />
                </image>
             </ImageView>
             <Button fx:id="darkHoleBuy" layoutX="125.0" layoutY="3975.0" mnemonicParsing="false" onMouseClicked="#buyDarkHoleCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -515,7 +515,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="3650.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../spellCards/MessengerOfPeace.jpg" />
+                  <Image url="@../spellCards/Messenger of peace.jpg" />
                </image>
             </ImageView>
             <Button fx:id="messengerBuy" layoutX="725.0" layoutY="3975.0" mnemonicParsing="false" onMouseClicked="#buyMessengerCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -528,7 +528,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="4050.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../spellCards/MonsterReborn.jpg" />
+                  <Image url="@../spellCards/Monster Reborn.jpg" />
                </image>
             </ImageView>
             <Button fx:id="monsterRebornBuy" layoutX="1025.0" layoutY="4375.0" mnemonicParsing="false" onMouseClicked="#buyMonsterRebornCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -541,7 +541,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="4050.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../spellCards/MysticalSpaceTyphoon.jpg" />
+                  <Image url="@../spellCards/Mystical space typhoon.jpg" />
                </image>
             </ImageView>
             <Button fx:id="mysticalBuy" layoutX="125.0" layoutY="4380.0" mnemonicParsing="false" onMouseClicked="#buyMysticalCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -567,7 +567,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="4050.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../spellCards/SpellAbsorption.jpg" />
+                  <Image url="@../spellCards/Spell Absorption.jpg" />
                </image>
             </ImageView>
             <Button fx:id="spellAbsorptionBuy" layoutX="725.0" layoutY="4380.0" mnemonicParsing="false" onMouseClicked="#buySpellAbsorptionCard" stylesheets="@../CSS/ShopPage.css" text="Buy">
@@ -593,7 +593,7 @@
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="4450.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../spellCards/TwinTwisters.jpg" />
+                  <Image url="@../spellCards/Twin Twisters.jpg" />
                </image>
             </ImageView>
             <Button fx:id="twinBuy" layoutX="125.0" layoutY="4775.0" mnemonicParsing="false" onMouseClicked="#buyTwinTwistersCard" stylesheets="@../CSS/ShopPage.css" text="Buy">

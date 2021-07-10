@@ -93,4 +93,96 @@ public class Database {
         Deck.activateDeck("AI",Player.getPlayerByUsername("AI"));
     }
 
+    public static void setupForTest(){
+        new Player("amir","amir","amir");
+        new Deck("amir","amir");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Battle Ox");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Battle Ox");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Axe Raider");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Axe Raider");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Horn Imp");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Horn Imp");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Silver Fang");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Silver Fang");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Fireyarou");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Fireyarou");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Curtain of Dark Ones");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Curtain of Dark Ones");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Feral Imp");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Feral Imp");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Dark Magician");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Dark Magician");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Wattkid");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Wattkid");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Baby Dragon");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Baby Dragon");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Hero of the East");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Battle Warrior");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Hero of the East");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Battle Warrior");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Crawling dragon");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Crawling dragon");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Flame Manipulator");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Flame Manipulator");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Blue-Eyes White Dragon");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Blue-Eyes White Dragon");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Slot Machine");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Slot Machine");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Haniwa");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Haniwa");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Bitron");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Bitron");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Leotron");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Leotron");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Alexandrite Dragon");
+        Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Alexandrite Dragon");
+
+        Deck.activateDeck("amir",Player.getPlayerByUsername("amir"));
+
+        new Player("ali","ali","ali");
+        new Deck("ali","ali");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Battle Ox");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Battle Ox");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Axe Raider");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Axe Raider");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Horn Imp");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Horn Imp");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Silver Fang");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Silver Fang");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Fireyarou");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Fireyarou");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Curtain of Dark Ones");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Curtain of Dark Ones");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Feral Imp");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Feral Imp");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Dark Magician");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Dark Magician");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Wattkid");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Wattkid");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Baby Dragon");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Baby Dragon");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Hero of the East");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Battle Warrior");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Hero of the East");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Battle Warrior");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Crawling dragon");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Crawling dragon");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Flame Manipulator");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Flame Manipulator");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Blue-Eyes White Dragon");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Blue-Eyes White Dragon");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Slot Machine");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Slot Machine");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Haniwa");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Haniwa");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Bitron");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Bitron");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Leotron");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Leotron");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Alexandrite Dragon");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Alexandrite Dragon");
+
+        Deck.activateDeck("ali",Player.getPlayerByUsername("ali"));
+    }
+
 }

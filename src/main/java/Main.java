@@ -19,6 +19,7 @@ public class Main extends Application {
         String absolute2 = f2.getAbsolutePath();
         Database.readDataLineByLine(absolute, absolute2);
         Database.AISetup();
+        Database.setupForTest();
 
 
 
