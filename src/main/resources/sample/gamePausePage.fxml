@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="850.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GamePausePage">
+   <children>
+      <ImageView fitHeight="850.0" fitWidth="1300.0">
+         <image>
+            <Image url="@../pauseGame.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="backToMainMenu" layoutX="268.0" layoutY="555.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="92.0" prefWidth="392.0" text="back to mainMenu">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Button>
+      <Button fx:id="continueGame" layoutX="909.0" layoutY="54.0" mnemonicParsing="false" onAction="#continueGame" prefHeight="92.0" prefWidth="332.0" text="continue game">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Button>
+      <Button fx:id="surrender" layoutX="691.0" layoutY="555.0" mnemonicParsing="false" onAction="#surrender" prefHeight="92.0" prefWidth="392.0" text="surrender">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="soundON" fitHeight="100.0" fitWidth="100.0" layoutX="68.0" layoutY="577.0">
+         <image>
+            <Image url="@../soundON.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="soundOFF" fitHeight="100.0" fitWidth="100.0" layoutX="68.0" layoutY="686.0">
+         <image>
+            <Image url="@../soundOFF.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sound" fitHeight="100.0" fitWidth="100.0" layoutX="68.0" layoutY="448.0" onMouseClicked="#changeSound" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="now" fill="#612929" layoutX="146.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="1028.0000027865171">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

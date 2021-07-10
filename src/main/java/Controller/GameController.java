@@ -39,7 +39,7 @@ public class GameController {
 
 
     }
-    private void playGame(){
+    public void playGame(){
         while(true) {
             if (isFirstTurn) {
                 enterMainPhase();
@@ -51,22 +51,21 @@ public class GameController {
                     AIFunction.getInstance().run(Board.getBoardByPlayer(myTurn), Board.getBoardByPlayer(notMyTurn));
                     changeTurn();
                 } else {
+                    if (isSurrendered) {
+                        GameView.getInstance().printWinner(notMyTurn, myTurn);
+                        giveScores();
+                        break;
+                    }
                     enterDrawPhase();
                     if (isGameFinished(Board.getBoardByPlayer(myTurn), Board.getBoardByPlayer(notMyTurn))) {
                         findWinner();
                         giveScores();
                         break;
                     }
-
                     enterMainPhase();
                     enterStandByPhase();
                     if (isGameFinished(Board.getBoardByPlayer(myTurn), Board.getBoardByPlayer(notMyTurn))) {
                         findWinner();
-                        giveScores();
-                        break;
-                    }
-                    if (isSurrendered) {
-                        GameView.getInstance().printWinner(notMyTurn, myTurn);
                         giveScores();
                         break;
                     }
