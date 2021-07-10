@@ -485,7 +485,7 @@ public class GamePage implements Initializable {
     @FXML
     void handleBattlePhase(MouseEvent event) {
         if(GameController.getInstance().isFirstTurn()){
-            GameController.getInstance().setFirstTurn(false);
+          //  GameController.getInstance().setFirstTurn(false);
             battlePhaseLabel.setText("is not allowed");
         }
         else{
@@ -927,6 +927,7 @@ public class GamePage implements Initializable {
 
     public void runEndPhase(MouseEvent event) {
         GameController.getInstance().reset(Board.getBoardByPlayer(myTurn).getMonstersInField());
+        GameController.getInstance().setFirstTurn(false);
         changeTurn();
     }
 
