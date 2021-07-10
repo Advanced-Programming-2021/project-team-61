@@ -91,40 +91,37 @@ public class MainPhase1 {
 
     }
 
-    public void ProcessFlipSummon(Board board, Board rivalBoard) {
-        if (!isACardSelected())
-            view.printMessage(MainPhaseView.Commands.NoCardSelected);
-        else if (!isSelectedCardInMonsterZone())
-            view.printMessage(MainPhaseView.Commands.CannotChangePosition);
-        else if (!isMonsterCardDefenseHidden(board) ) {//needs one more if
-            view.printMessage(MainPhaseView.Commands.CannotFlip);
-        } else {
-            flipSummonMonster(board);
-            Select.getInstance().deSelect();
-            checkToActivateEffect(board.getMonsterByIndex(Select.getInstance().getPosition()), rivalBoard);
-        }
+    public boolean ProcessFlipSummon(Board board, Board rivalBoard,int index) {
+     //  if (!isACardSelected())
+           // view.printMessage(MainPhaseView.Commands.NoCardSelected);
+       // else if (!isSelectedCardInMonsterZone())
+           // view.printMessage(MainPhaseView.Commands.CannotChangePosition);
+        /*else*/ // view.printMessage(MainPhaseView.Commands.CannotFlip);
+        //   flipSummonMonster(board);
+        //   Select.getInstance().deSelect();
+        // checkToActivateEffect(board.getMonsterByIndex(Select.getInstance().getPosition()), rivalBoard);
+        return isMonsterCardDefenseHidden(board) || !board.getMonsterByIndex(index).isPutInThisTurn();
     }
 
-    public void ProcessSetPosition(Board board, Matcher matcher) {
-        String newPosition = matcher.group(1);
-        if (!isACardSelected())
-            view.printMessage(MainPhaseView.Commands.NoCardSelected);
-        else if (!isSelectedCardInMonsterZone())
-            view.printMessage(MainPhaseView.Commands.CannotChangePosition);
-        else if (isPositionChangedInTurn(board))
-            view.printMessage(MainPhaseView.Commands.AlreadyChangedPositionInTurn);
+    public boolean ProcessSetPosition(Board board, String newPosition,int index) {
+        //String newPosition = matcher.group(1);
+     //   if (!isACardSelected())
+        //    view.printMessage(MainPhaseView.Commands.NoCardSelected);
+       // else if (!isSelectedCardInMonsterZone())
+       //     view.printMessage(MainPhaseView.Commands.CannotChangePosition);
+       /* else*/ if (isPositionChangedInTurn(board,index))
+           // view.printMessage(MainPhaseView.Commands.AlreadyChangedPositionInTurn);
+           return false;
         else {
             if (newPosition.equals("attack")) {
-                if (isMonsterCardInTheWantedPosition(board, "OO"))
-                    view.printMessage(MainPhaseView.Commands.TheCardInWantedPosition);
-                else
-                    setAttackMonsterCard(board);
+                //  view.printMessage(MainPhaseView.Commands.TheCardInWantedPosition);
+                return !isMonsterCardInTheWantedPosition(board, "OO") && !board.getMonsterByIndex(index).getStatus().equals("DH");
+                   // setAttackMonsterCard(board);
 
             } else {
-                if (isMonsterCardInTheWantedPosition(board, "DO"))
-                    view.printMessage(MainPhaseView.Commands.TheCardInWantedPosition);
-                else
-                    setDefenseMonsterCard(board);
+                //view.printMessage(MainPhaseView.Commands.TheCardInWantedPosition);
+                return !isMonsterCardInTheWantedPosition(board, "DO") && !board.getMonsterByIndex(index).getStatus().equals("DH");
+                //    setDefenseMonsterCard(board);
             }
         }
     }
@@ -176,7 +173,7 @@ public class MainPhase1 {
         setEffectController(board,rival);
        // if (!isACardSelected())
          //   view.printMessage(MainPhaseView.Commands.NoCardSelected);
-       /* else*/ if (!isSelectedCardSpell())
+       /* else*/ if (!isSelectedCardSpellTrap(board,index))
            return false;
            // view.printMessage(MainPhaseView.Commands.NotSpellCard);
         else if (isSpellActivated(board))
@@ -408,28 +405,28 @@ public class MainPhase1 {
         return board.getMonsterByIndex(Select.getInstance().getPosition() - 1).getStatus().equals("DH");
     }
 
-    private void flipSummonMonster(Board board) {
-        board.getMonsterByIndex(Select.getInstance().getPosition() - 1).setStatus("OO");
+    public void flipSummonMonster(Board board,int index) {
+        board.getMonsterByIndex(index).setStatus("OO");
     }
 
-    private boolean isPositionChangedInTurn(Board board) {
-        return board.getMonsterByIndex(Select.getInstance().getPosition() - 1).isStatusChangedInTurn();
+    private boolean isPositionChangedInTurn(Board board,int index) {
+        return board.getMonsterByIndex(index).isStatusChangedInTurn();
     }
 
     private boolean isMonsterCardInTheWantedPosition(Board board, String position) {
         return board.getMonsterByIndex(Select.getInstance().getPosition() - 1).getStatus().equals(position);
     }
 
-    private void setAttackMonsterCard(Board board) {
-        view.printMessage(MainPhaseView.Commands.MonsterChangedPositionSuccessful);
-        board.getMonsterByIndex(Select.getInstance().getPosition() - 1).setStatus("OO");
-        board.getMonsterByIndex(Select.getInstance().getPosition() - 1).setStatusChangedInTurn(true);
+    public void setAttackMonsterCard(Board board,int index) {
+       // view.printMessage(MainPhaseView.Commands.MonsterChangedPositionSuccessful);
+        board.getMonsterByIndex(index).setStatus("OO");
+        board.getMonsterByIndex(index).setStatusChangedInTurn(true);
     }
 
-    private void setDefenseMonsterCard(Board board) {
-        view.printMessage(MainPhaseView.Commands.MonsterChangedPositionSuccessful);
-        board.getMonsterByIndex(Select.getInstance().getPosition() - 1).setStatus("DO");
-        board.getMonsterByIndex(Select.getInstance().getPosition() - 1).setStatusChangedInTurn(true);
+    public void setDefenseMonsterCard(Board board,int index) {
+       // view.printMessage(MainPhaseView.Commands.MonsterChangedPositionSuccessful);
+        board.getMonsterByIndex(index).setStatus("DO");
+        board.getMonsterByIndex(index).setStatusChangedInTurn(true);
     }
 
     private boolean isSelectedCardInSpellZone() {
@@ -444,8 +441,8 @@ public class MainPhase1 {
         return Select.getInstance().getLocation() == Select.Location.SPELLOPPONENT;
     }
 
-    private boolean isSelectedCardSpell() {
-        return Select.getInstance().getCard() instanceof SpellCard;
+    private boolean isSelectedCardSpellTrap(Board board,int index) {
+        return board.getCardFromHand(index) instanceof SpellCard || board.getCardFromHand(index) instanceof TrapCard;
     }
 
     private boolean isSpellActivated(Board board) {

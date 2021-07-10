@@ -16,7 +16,7 @@ public class GameController {
     private boolean hasAttackedInBattlePhase = false;
     private boolean isFirstTurn = true;
     private boolean isSurrendered = false;
-    private boolean isSummonedInThisTurn = false;
+    private boolean isNormalSummonedInThisTurn = false;
     private boolean cheat = true;
 
     private GameController(){
@@ -99,11 +99,11 @@ public class GameController {
         this.cheat = cheat;
     }
     public boolean isSummonedInTurn() {
-        return isSummonedInThisTurn;
+        return isNormalSummonedInThisTurn;
     }
 
     public void setSummonedInTurn(boolean summonedInTurn) {
-        isSummonedInThisTurn = summonedInTurn;
+        isNormalSummonedInThisTurn = summonedInTurn;
     }
 
     private void enterStandByPhase() {
@@ -127,7 +127,7 @@ public class GameController {
                 monsterFields[i].setHasAttackedInTurn(false);
             }
         }
-        isSummonedInThisTurn = false;
+        isNormalSummonedInThisTurn = false;
     }
     private void enterDrawPhase(){
         DrawPhase drawPhase = DrawPhase.getInstance();

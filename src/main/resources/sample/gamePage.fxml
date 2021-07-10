@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,138 +10,151 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="850.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GamePage">
-   <children>
-      <ImageView fitHeight="850.0" fitWidth="1300.0" layoutX="100.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../im/7.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="126.0" fitWidth="108.0" layoutX="808.0" layoutY="613.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../im/deckImage.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="126.0" fitWidth="109.0" layoutX="139.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../im/deckImage2.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="120.0" layoutX="116.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../im/ItemA0122.dds.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="notShownImage" fitHeight="120.0" fitWidth="120.0" layoutX="801.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../im/ItemA0122.dds.png" />
-         </image>
-      </ImageView>
-      <HBox layoutX="240.0" layoutY="730.0" prefHeight="120.0" prefWidth="540.0">
+<ScrollPane pannable="true" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GamePage">
+   <content>
+      <AnchorPane prefHeight="850.0" prefWidth="1300.0">
          <children>
-            <ImageView fx:id="firstInHand" fitHeight="120.0" fitWidth="90.0" onMouseEntered="#handleFirst" onMouseExited="#disappearFirst" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="secondInHand" fitHeight="120.0" fitWidth="90.0" onMouseEntered="#handleSecond" onMouseExited="#disappearSecond" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="thirdInHand" fitHeight="120.0" fitWidth="90.0" onMouseEntered="#handleThird" onMouseExited="#disappearThird" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="fourthInHand" fitHeight="120.0" fitWidth="90.0" onMouseEntered="#handleFourth" onMouseExited="#disappearFourth" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="fifthInHand" fitHeight="120.0" fitWidth="90.0" onMouseEntered="#handleFifth" onMouseExited="#disappearFifth" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="sixthInHand" fitHeight="120.0" fitWidth="90.0" onMouseEntered="#handleSixth" onMouseExited="#disappearSixth" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </HBox>
-      <HBox layoutX="250.0">
-         <children>
-            <ImageView fx:id="sixthRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
-            <ImageView fx:id="fifthRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
-            <ImageView fx:id="forthRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
-            <ImageView fx:id="thirdRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
-            <ImageView fx:id="secondRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
-            <ImageView fx:id="firstRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
-         </children>
-      </HBox>
-      <VBox layoutX="100.0" layoutY="161.0" prefHeight="452.0" prefWidth="32.0" spacing="20.0">
-         <children>
-            <ImageView fitHeight="60.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="850.0" fitWidth="1300.0" layoutX="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../im/drawPhaseImage.png" />
+                  <Image url="@../im/7.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="126.0" fitWidth="108.0" layoutX="808.0" layoutY="613.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../im/standByPhaseImage.png" />
+                  <Image url="@../im/deckImage.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="mainPhase1" fitHeight="60.0" fitWidth="32.0" onMouseClicked="#runMainPhase1" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="126.0" fitWidth="109.0" layoutX="139.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../im/mainPhase1Image.png" />
+                  <Image url="@../im/deckImage2.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="120.0" layoutX="116.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../im/battlePhaseImage.png" />
+                  <Image url="@../im/ItemA0122.dds.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="notShownImage" fitHeight="120.0" fitWidth="120.0" layoutX="801.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../im/mainPhase2Image.png" />
+                  <Image url="@../im/ItemA0122.dds.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="117.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../im/endPhaseImage.png" />
-               </image>
-            </ImageView>
+            <HBox layoutX="240.0" layoutY="730.0" prefHeight="120.0" prefWidth="540.0" spacing="20.0">
+               <children>
+                  <ImageView fx:id="firstInHand" fitHeight="120.0" fitWidth="90.0" onMouseEntered="#handleFirst" onMouseExited="#disappearFirst" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="secondInHand" fitHeight="120.0" fitWidth="90.0" onMouseEntered="#handleSecond" onMouseExited="#disappearSecond" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="thirdInHand" fitHeight="120.0" fitWidth="90.0" onMouseEntered="#handleThird" onMouseExited="#disappearThird" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="fourthInHand" fitHeight="120.0" fitWidth="90.0" onMouseEntered="#handleFourth" onMouseExited="#disappearFourth" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="fifthInHand" fitHeight="120.0" fitWidth="90.0" onMouseEntered="#handleFifth" onMouseExited="#disappearFifth" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="sixthInHand" fitHeight="120.0" fitWidth="90.0" onMouseEntered="#handleSixth" onMouseExited="#disappearSixth" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+            <HBox layoutX="250.0">
+               <children>
+                  <ImageView fx:id="sixthRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
+                  <ImageView fx:id="fifthRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
+                  <ImageView fx:id="forthRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
+                  <ImageView fx:id="thirdRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
+                  <ImageView fx:id="secondRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
+                  <ImageView fx:id="firstRival" fitHeight="120.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" />
+               </children>
+            </HBox>
+            <VBox layoutX="100.0" layoutY="161.0" prefHeight="452.0" prefWidth="32.0" spacing="20.0">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../im/drawPhaseImage.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="60.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../im/standByPhaseImage.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="mainPhase1" fitHeight="60.0" fitWidth="32.0" onMouseClicked="#runMainPhase1" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../im/mainPhase1Image.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="60.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../im/battlePhaseImage.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="60.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../im/mainPhase2Image.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="117.0" fitWidth="30.0" layoutX="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../im/endPhaseImage.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <HBox layoutX="257.0" layoutY="696.0" spacing="20.0">
+               <children>
+                  <Label fx:id="firstLabel" prefHeight="27.0" prefWidth="70.0" textFill="#eb0e0e">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="secondLabel" prefHeight="27.0" prefWidth="70.0" textFill="#eb0e0e">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="thirdLabel" prefHeight="27.0" prefWidth="70.0" textFill="#eb0e0e">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="forthLabel" prefHeight="27.0" prefWidth="70.0" textFill="#eb0e0e">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="fifthLabel" prefHeight="27.0" prefWidth="70.0" textFill="#eb0e0e">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="sixthLabel" prefHeight="27.0" prefWidth="70.0" textFill="#eb0e0e">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="248.0" layoutY="432.0" prefHeight="146.0" prefWidth="520.0">
+               <children>
+                  <ImageView fx:id="firstMonsterZone" fitHeight="135.0" fitWidth="104.0" onMouseEntered="#handleFirstInMonsterZone" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="secondMonsterZone" fitHeight="135.0" fitWidth="104.0" onMouseEntered="#handleSecondInMonsterZone" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="thirdMonsterZone" fitHeight="135.0" fitWidth="104.0" onMouseEntered="#handleThirdInMonsterZone" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="forthMonsterZone" fitHeight="135.0" fitWidth="104.0" onMouseEntered="#handleForthInMonsterZone" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="fifthMonsterZone" fitHeight="135.0" fitWidth="104.0" onMouseEntered="#handleFifthInMonsterZone" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+            <HBox layoutX="248.0" layoutY="589.0" prefHeight="135.0" prefWidth="540.0">
+               <children>
+                  <ImageView fx:id="firstSpellTrapZone" fitHeight="135.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="secondSpellTrapZone" fitHeight="135.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="thirdSpellTrapZone" fitHeight="135.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="forthSpellTrapZone" fitHeight="135.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="fifthSpellTrapZone" fitHeight="135.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+            <ImageView fx:id="bigShowCard" fitHeight="459.0" fitWidth="250.0" layoutX="947.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="firstLabelInMonsterZone" layoutX="257.0" layoutY="408.0" textFill="#dd0a0a" />
+            <Label fx:id="secondLabelInMonsterZone" layoutX="368.0" layoutY="408.0" lineSpacing="10.0" textFill="#dd0a0a" />
+            <Label fx:id="thirdLabelInMonsterZone" layoutX="476.0" layoutY="408.0" textFill="#dd0a0a" />
+            <Label fx:id="forthLabelInMonsterZone" layoutX="588.0" layoutY="408.0" textFill="#dd0a0a" />
+            <Label fx:id="fifthLabelInMonsterZone" layoutX="704.0" layoutY="408.0" textFill="#dd0a0a" />
          </children>
-      </VBox>
-      <HBox layoutX="257.0" layoutY="696.0" spacing="20.0">
-         <children>
-            <Label fx:id="firstLabel" prefHeight="27.0" prefWidth="70.0" textFill="#eb0e0e">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="secondLabel" prefHeight="27.0" prefWidth="70.0" textFill="#eb0e0e">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="thirdLabel" prefHeight="27.0" prefWidth="70.0" textFill="#eb0e0e">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="forthLabel" prefHeight="27.0" prefWidth="70.0" textFill="#eb0e0e">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="fifthLabel" prefHeight="27.0" prefWidth="70.0" textFill="#eb0e0e">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="sixthLabel" prefHeight="27.0" prefWidth="70.0" textFill="#eb0e0e">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-      <HBox layoutX="248.0" layoutY="432.0" prefHeight="146.0" prefWidth="520.0">
-         <children>
-            <ImageView fx:id="firstMonsterZone" fitHeight="135.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="secondMonsterZone" fitHeight="135.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="thirdMonsterZone" fitHeight="135.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="forthMonsterZone" fitHeight="135.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="fifthMonsterZone" fitHeight="135.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </HBox>
-      <HBox layoutX="248.0" layoutY="589.0" prefHeight="135.0" prefWidth="540.0">
-         <children>
-            <ImageView fx:id="firstSpellTrapZone" fitHeight="135.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="secondSpellTrapZone" fitHeight="135.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="thirdSpellTrapZone" fitHeight="135.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="forthSpellTrapZone" fitHeight="135.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="fifthSpellTrapZone" fitHeight="135.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </HBox>
-   </children>
-</AnchorPane>
+      </AnchorPane>
+   </content>
+</ScrollPane>
