@@ -7,22 +7,27 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import Controller.DualMenu;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import Controller.MainPhase1;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Objects;
 import java.util.ResourceBundle;
+import Controller.DrawPhase;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import Controller.GameController;
+import Controller.BattlePhase;
 
 public class GamePage implements Initializable {
     private String currentPhase;
     private Player myTurn;
     private Player notMyTurn;
+    private Player temp;
+
+    @FXML
+    private ImageView endPhase;
     @FXML
     private ImageView firstInHand;
 
@@ -91,6 +96,24 @@ public class GamePage implements Initializable {
     private ImageView notShownImage;
     @FXML
     private ImageView bigShowCard;
+
+    @FXML
+    private ImageView battlePhase;
+    @FXML
+    private ImageView fifthRivalMonsterZone;
+
+    @FXML
+    private ImageView forthRivalMonsterZone;
+
+    @FXML
+    private ImageView thirdRivalMonsterZone;
+
+    @FXML
+    private ImageView secondRivalMonsterZone;
+
+    @FXML
+    private ImageView firstRivalMonsterZone;
+
     @FXML
     private Label firstLabel;
 
@@ -123,6 +146,16 @@ public class GamePage implements Initializable {
 
     @FXML
     private Label fifthLabelInMonsterZone;
+
+    @FXML
+    private Label battlePhaseLabel;
+
+    @FXML
+    private Label rivalLifePoint;
+
+    @FXML
+    private Label myLifePoint;
+
 
 
 
@@ -239,7 +272,7 @@ public class GamePage implements Initializable {
                     String s = getLabelByIndex(index).getText();
                     if(s.equals("activate")){
                         int x =  Board.getBoardByPlayer(myTurn).activateSpellCardFromHand(0);
-                        putSpellTrapInField(x,firstInHand.getImage());
+                        putSpellTrapInField(x,getImageViewInHandByIndex(index).getImage());
                     }
                     else if(s.equals("set")){
                         int x = MainPhase1.getInstance().setSpellTrap(Board.getBoardByPlayer(myTurn),0);
@@ -270,7 +303,7 @@ public class GamePage implements Initializable {
                     if(s.equals("summon")){
                         int x = MainPhase1.getInstance().summonMonster(Board.getBoardByPlayer(myTurn),0);
                         GameController.getInstance().setSummonedInTurn(true);
-                        putMonsterInMonsterZone(x,firstInHand.getImage(),index);
+                        putMonsterInMonsterZone(x,getImageViewInHandByIndex(index).getImage(),index);
                     }
                     else if(s.equals("set")){
                         int x = MainPhase1.getInstance().setMonster(Board.getBoardByPlayer(myTurn),0);
@@ -449,53 +482,366 @@ public class GamePage implements Initializable {
         currentPhase = "mainPhase1";
 
     }
-
     @FXML
-    void handleFirstInMonsterZone(MouseEvent event) {
-        if(currentPhase.equals("mainPhase1")){
-           if(MainPhase1.getInstance().ProcessSetPosition(Board.getBoardByPlayer(myTurn),"attack",0)){
+    void handleBattlePhase(MouseEvent event) {
+        if(GameController.getInstance().isFirstTurn()){
+            GameController.getInstance().setFirstTurn(false);
+            battlePhaseLabel.setText("is not allowed");
+        }
+        else{
+            battlePhase.setOnMouseClicked(event1 -> {
+                currentPhase = "BattlePhase";
+            });
 
-               firstLabelInMonsterZone.setText("Attack Change");
-               firstMonsterZone.setOnMouseClicked(event1 -> {
-                   MainPhase1.getInstance().setAttackMonsterCard(Board.getBoardByPlayer(myTurn),0);
-                   firstMonsterZone.setRotate(90);
-               });
-           }
-           else if(MainPhase1.getInstance().ProcessSetPosition(Board.getBoardByPlayer(myTurn),"Defense",0)){
 
-               firstLabelInMonsterZone.setText("Defense Change");
-               firstMonsterZone.setOnMouseClicked(event1 -> {
-                   MainPhase1.getInstance().setDefenseMonsterCard(Board.getBoardByPlayer(myTurn),0);
-                   firstMonsterZone.setRotate(90);
-               });
-
-           }
-           else if(MainPhase1.getInstance().ProcessFlipSummon(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn),0)){
-               firstLabelInMonsterZone.setText("Flip Summon");
-               firstMonsterZone.setOnMouseClicked(event1 -> {
-                   MainPhase1.getInstance().flipSummonMonster(Board.getBoardByPlayer(myTurn),0);
-                   firstMonsterZone.setImage(Card.getImageByCardName(Board.getBoardByPlayer(myTurn).getMonsterByIndex(0).getMonsterCard().getCardName()));
-               });
-           }
         }
 
     }
 
     @FXML
+    void handleFirstInMonsterZone(MouseEvent event) {
+        if(currentPhase.equals("mainPhase1")){
+            if(handleSetPosition(0)){
+
+            }
+            else if(handleFlipSummon(0)){
+
+            }
+
+
+        }
+        else if(currentPhase.equals("BattlePhase")){
+            if(handleDirectAttack(0)){
+
+            }
+            else if(handleAttackToAMonster(0)){
+
+            }
+
+
+
+    }}
+
+    private boolean handleAttackToAMonster(int index) {
+        if(BattlePhase.getInstance().ProcessAttack(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn),index)){
+            getImageViewInMonsterZoneByIndex(index).setOnMouseClicked(event1 -> {
+                handleAttack(getImageViewInMonsterZoneByIndex(index));
+
+
+            });
+            return true;
+
+    }
+        return false;
+    }
+
+    private boolean handleDirectAttack(int index) {
+        if(BattlePhase.getInstance().ProcessDirectAttack(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn),index)){
+            getLabelInMonsterZoneByIndex(index).setText("attack");
+            getImageViewInMonsterZoneByIndex(index).setOnMouseClicked(event1 -> {
+                int x = BattlePhase.getInstance().directAttack(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn),index);
+                int y = Integer.parseInt(rivalLifePoint.getText());
+                rivalLifePoint.setText(String.valueOf(y - x));
+
+            });
+            return true;
+        }
+        return false;
+
+    }
+
+    private void handleAttack(ImageView myMonster) {
+        String x = Board.getBoardByPlayer(myTurn).getMonsterByIndex(0).getStatus();
+        firstRivalMonsterZone.setOnMouseClicked(event -> {
+            switch (x){
+                case "OO" : {
+                   int y = BattlePhase.getInstance().attackOO(0,0,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
+                   setGamePage(y,myMonster,firstRivalMonsterZone);
+                }
+                case "DO" : {
+                    int y = BattlePhase.getInstance().attackDO(0,0,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
+                    setGamePage(y,myMonster,firstRivalMonsterZone);
+                }
+                case "DH" : {
+                    int y = BattlePhase.getInstance().attackDH(0,0,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
+                    setGamePage(y,myMonster,firstRivalMonsterZone);
+                }
+            }
+            return;
+        });
+        secondRivalMonsterZone.setOnMouseClicked(event -> {
+            switch (x){
+                case "OO" : {
+                    int y = BattlePhase.getInstance().attackOO(0,1,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
+                    setGamePage(y,myMonster,secondRivalMonsterZone);
+                }
+                case "DO" : {
+                    int y = BattlePhase.getInstance().attackDO(0,1,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
+                    setGamePage(y,myMonster,secondRivalMonsterZone);
+                }
+                case "DH" : {
+                    int y = BattlePhase.getInstance().attackDH(0,1,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
+                    setGamePage(y,myMonster,secondRivalMonsterZone);
+                }
+            }
+        });
+        thirdRivalMonsterZone.setOnMouseClicked(event -> {
+            switch (x){
+                case "OO" : {
+                    int y = BattlePhase.getInstance().attackOO(0,2,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
+                    setGamePage(y,myMonster,thirdRivalMonsterZone);
+                }
+                case "DO" : {
+                    int y = BattlePhase.getInstance().attackDO(0,2,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
+                    setGamePage(y,myMonster,thirdRivalMonsterZone);
+                }
+                case "DH" : {
+                    int y = BattlePhase.getInstance().attackDH(0,2,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
+                    setGamePage(y,myMonster,thirdRivalMonsterZone);
+                }
+            }
+        });
+        forthRivalMonsterZone.setOnMouseClicked(event -> {
+            switch (x){
+                case "OO" : {
+                    int y = BattlePhase.getInstance().attackOO(0,3,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
+                    setGamePage(y,myMonster,forthRivalMonsterZone);
+                }
+                case "DO" : {
+                    int y = BattlePhase.getInstance().attackDO(0,3,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
+                    setGamePage(y,myMonster,forthRivalMonsterZone);
+                }
+                case "DH" : {
+                    int y = BattlePhase.getInstance().attackDH(0,3,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
+                    setGamePage(y,myMonster,forthRivalMonsterZone);
+                }
+            }
+        });
+        fifthRivalMonsterZone.setOnMouseClicked(event -> {
+            switch (x){
+                case "OO" : {
+                    int y = BattlePhase.getInstance().attackOO(0,4,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
+                    setGamePage(y,myMonster,fifthRivalMonsterZone);
+                }
+                case "DO" : {
+                    int y = BattlePhase.getInstance().attackDO(0,4,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
+                    setGamePage(y,myMonster,fifthRivalMonsterZone);
+                }
+                case "DH" : {
+                    int y = BattlePhase.getInstance().attackDH(0,4,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
+                    setGamePage(y,myMonster,fifthRivalMonsterZone);
+                }
+            }
+        });
+
+    }
+
+    private void setGamePage(int y, ImageView myMonster, ImageView rivalMonster) {
+        if( y == 0 ){
+            if( BattlePhase.getInstance().getDamageToShow() != -1){
+             int x = Integer.parseInt(rivalLifePoint.getText());
+             rivalLifePoint.setText(String.valueOf(x - BattlePhase.getInstance().getDamageToShow()));
+            }
+            rivalMonster.setImage(null);
+
+        }
+        if(y == 1){
+            if(BattlePhase.getInstance().isDestroyed())
+                rivalMonster.setImage(null);
+        }
+        else if( y == 2){
+            int x = Integer.parseInt(myLifePoint.getText());
+            myLifePoint.setText(String.valueOf(x - BattlePhase.getInstance().getDamageToShow()));
+            if(BattlePhase.getInstance().isDestroyed())
+                myMonster.setImage(null);
+
+        }
+
+
+    }
+
+
+    private boolean handleFlipSummon(int index) {
+        if(MainPhase1.getInstance().ProcessFlipSummon(Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn),0)){
+
+            getLabelInMonsterZoneByIndex(index).setText("Flip Summon");
+            getImageViewInMonsterZoneByIndex(index).setOnMouseClicked(event1 -> {
+                MainPhase1.getInstance().flipSummonMonster(Board.getBoardByPlayer(myTurn),0);
+                getImageViewInMonsterZoneByIndex(index).setImage(Card.getImageByCardName(Board.getBoardByPlayer(myTurn).getMonsterByIndex(0).getMonsterCard().getCardName()));
+            });
+            return true;
+        }
+        return false;
+    }
+
+    private boolean handleSetPosition(int index) {
+        if(MainPhase1.getInstance().ProcessSetPosition(Board.getBoardByPlayer(myTurn),"attack",index)){
+            getLabelInMonsterZoneByIndex(index).setText("Attack Change");
+
+            getImageViewInMonsterZoneByIndex(index).setOnMouseClicked(event1 -> {
+                MainPhase1.getInstance().setAttackMonsterCard(Board.getBoardByPlayer(myTurn),0);
+                getImageViewInMonsterZoneByIndex(index).setRotate(90);
+            });
+        }
+        else if(MainPhase1.getInstance().ProcessSetPosition(Board.getBoardByPlayer(myTurn),"Defense",0)){
+
+            getLabelInMonsterZoneByIndex(index).setText("Defense Change");
+            getImageViewInMonsterZoneByIndex(index).setOnMouseClicked(event1 -> {
+                MainPhase1.getInstance().setDefenseMonsterCard(Board.getBoardByPlayer(myTurn),0);
+                getImageViewInMonsterZoneByIndex(index).setRotate(90);
+            });
+           return true;
+        }
+        return false;
+
+    }
+
+    private ImageView getImageViewInMonsterZoneByIndex(int index) {
+        switch (index){
+            case 0 :{
+                return firstMonsterZone;
+            }
+            case 1 :{
+                return secondMonsterZone;
+            }
+            case 2 :{
+                return thirdMonsterZone;
+            }
+            case 3 :{
+                return forthMonsterZone;
+            }
+            case 4 :{
+                return fifthMonsterZone;
+            }
+
+        }
+        return null;
+    }
+
+    private Label getLabelInMonsterZoneByIndex(int index) {
+        switch (index){
+            case 0 :{
+                return firstLabelInMonsterZone;
+            }
+            case 1 :{
+                return secondLabelInMonsterZone;
+            }
+            case 2 :{
+                return thirdLabelInMonsterZone;
+            }
+            case 3 :{
+                return forthLabelInMonsterZone;
+            }
+            case 4 :{
+                return fifthLabelInMonsterZone;
+            }
+        }
+        return null;
+    }
+
+    @FXML
     void handleSecondInMonsterZone(MouseEvent event) {
+        if(currentPhase.equals("mainPhase1")){
+            if(handleSetPosition(1)){
+
+            }
+            else if(handleFlipSummon(1)){
+
+            }
+
+
+        }
+        else if(currentPhase.equals("BattlePhase")){
+            if(handleDirectAttack(1)){
+
+            }
+            else if(handleAttackToAMonster(1)){
+
+            }
+
+
+
+        }
+
 
     }
 
     @FXML
     void handleThirdInMonsterZone(MouseEvent event) {
+        if(currentPhase.equals("mainPhase1")){
+            if(handleSetPosition(2)){
+
+            }
+            else if(handleFlipSummon(2)){
+
+            }
+
+
+        }
+        else if(currentPhase.equals("BattlePhase")){
+            if(handleDirectAttack(2)){
+
+            }
+            else if(handleAttackToAMonster(2)){
+
+            }
+
+
+
+        }
+
 
     }
     @FXML
     void handleForthInMonsterZone(MouseEvent event) {
+        if(currentPhase.equals("mainPhase1")){
+            if(handleSetPosition(3)){
+
+            }
+            else if(handleFlipSummon(3)){
+
+            }
+
+
+        }
+        else if(currentPhase.equals("BattlePhase")){
+            if(handleDirectAttack(3)){
+
+            }
+            else if(handleAttackToAMonster(3)){
+
+            }
+
+
+
+        }
+
 
     }
     @FXML
     void handleFifthInMonsterZone(MouseEvent event) {
+        if(currentPhase.equals("mainPhase1")){
+            if(handleSetPosition(4)){
+
+            }
+            else if(handleFlipSummon(4)){
+
+            }
+
+
+        }
+        else if(currentPhase.equals("BattlePhase")){
+            if(handleDirectAttack(4)){
+
+            }
+            else if(handleAttackToAMonster(4)){
+
+            }
+
+
+
+        }
+
 
     }
 
@@ -579,4 +925,119 @@ public class GamePage implements Initializable {
     }
 
 
+    public void runEndPhase(MouseEvent event) {
+        GameController.getInstance().reset(Board.getBoardByPlayer(myTurn).getMonstersInField());
+        changeTurn();
+    }
+
+    private void changeTurn() {
+        temp = myTurn;
+        myTurn = notMyTurn;
+        notMyTurn = temp;
+        changeBoard();
+        runDrawPhase();
+    }
+
+    private void runDrawPhase() {
+        int x = DrawPhase.getInstance().run(Board.getBoardByPlayer(myTurn));
+        if(x != -1)
+            putCardInHand(x);
+    }
+
+    private void putCardInHand(int x) {
+        switch (x){
+            case 0 : {
+                firstInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(myTurn).getCardFromHand(x).getCardName()));
+            }
+            case 1 : {
+                secondInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(myTurn).getCardFromHand(x).getCardName()));
+            }
+            case 2 : {
+                thirdInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(myTurn).getCardFromHand(x).getCardName()));
+            }
+            case 3 : {
+                fourthInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(myTurn).getCardFromHand(x).getCardName()));
+            }
+            case 4 : {
+                fifthInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(myTurn).getCardFromHand(x).getCardName()));
+            }
+            case 5 : {
+                sixthInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(myTurn).getCardFromHand(x).getCardName()));
+            }
+
+        }
+    }
+
+    private void changeBoard() {
+        if(firstRival == null){
+            firstInHand.setImage(null);
+        }
+        if(firstRival != null){
+            firstInHand.setImage(firstRival.getImage());
+        }
+        if(secondRival == null){
+            secondInHand.setImage(null);
+        }
+        if(secondRival != null){
+            secondInHand.setImage(secondRival.getImage());
+        }
+        if(thirdRival == null){
+            thirdInHand.setImage(null);
+        }
+        if(thirdRival != null){
+            thirdInHand.setImage(firstRival.getImage());
+        }
+        if(forthRival == null){
+            fourthInHand.setImage(null);
+        }
+        if(forthRival != null){
+            fourthInHand.setImage(firstRival.getImage());
+        }
+        if(fifthRival == null){
+            fifthInHand.setImage(null);
+        }
+        if(fifthRival != null){
+            fifthInHand.setImage(firstRival.getImage());
+        }
+        if(sixthRival == null){
+            sixthInHand.setImage(null);
+        }
+        if(sixthRival != null){
+            sixthInHand.setImage(firstRival.getImage());
+        }
+        if(firstRivalMonsterZone == null){
+            firstMonsterZone.setImage(null);
+        }
+        if(firstRivalMonsterZone != null){
+            firstMonsterZone.setImage(firstRivalMonsterZone.getImage());
+        }
+        if(secondRivalMonsterZone == null){
+            secondMonsterZone.setImage(null);
+        }
+        if(secondRivalMonsterZone != null){
+            secondMonsterZone.setImage(firstRivalMonsterZone.getImage());
+        }
+        if(thirdRivalMonsterZone == null){
+            thirdMonsterZone.setImage(null);
+        }
+        if(thirdRivalMonsterZone != null){
+            thirdMonsterZone.setImage(firstRivalMonsterZone.getImage());
+        }
+        if(forthRivalMonsterZone == null){
+            forthMonsterZone.setImage(null);
+        }
+        if(forthRivalMonsterZone != null){
+            forthMonsterZone.setImage(firstRivalMonsterZone.getImage());
+        }
+        if(fifthRivalMonsterZone == null){
+            fifthMonsterZone.setImage(null);
+        }
+        if(fifthRivalMonsterZone != null){
+            fifthMonsterZone.setImage(firstRivalMonsterZone.getImage());
+        }
+    }
+
+    public void disappearBattlePhaseLabel(MouseEvent event) {
+        battlePhaseLabel.setText(null);
+    }
 }

@@ -69,13 +69,13 @@ public class MainPhaseView {
              //   mainPhase1.ProcessSummon(Board.getBoardByPlayer(me));
             }
             else if ((matcher = getCommandMatcher(command,"set -- position (attack|defense)")).find()) {
-                mainPhase1.ProcessSetPosition(Board.getBoardByPlayer(me),matcher);
+               // mainPhase1.ProcessSetPosition(Board.getBoardByPlayer(me),matcher);
             }
             else if(command.equals("set")){
                // mainPhase1.ProcessSet(Board.getBoardByPlayer(me));
             }
             else if(command.equals("flip-summon")){
-                mainPhase1.ProcessFlipSummon(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
+              //  mainPhase1.ProcessFlipSummon(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
             }
             else if (command.equals("card show --selected")){
                 mainPhase1.ProcessShowCard(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));

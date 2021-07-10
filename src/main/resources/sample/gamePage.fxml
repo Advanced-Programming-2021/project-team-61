@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <ScrollPane pannable="true" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GamePage">
    <content>
@@ -79,7 +80,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fitHeight="60.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="battlePhase" fitHeight="60.0" fitWidth="32.0" onMouseEntered="#handleBattlePhase" onMouseExited="#disappearBattlePhaseLabel" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../im/battlePhaseImage.png" />
                      </image>
@@ -89,7 +90,7 @@
                         <Image url="@../im/mainPhase2Image.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="117.0" fitWidth="30.0" layoutX="200.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="endPhase" fitHeight="117.0" fitWidth="30.0" layoutX="200.0" onMouseClicked="#runEndPhase" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../im/endPhaseImage.png" />
                      </image>
@@ -154,6 +155,16 @@
             <Label fx:id="thirdLabelInMonsterZone" layoutX="476.0" layoutY="408.0" textFill="#dd0a0a" />
             <Label fx:id="forthLabelInMonsterZone" layoutX="588.0" layoutY="408.0" textFill="#dd0a0a" />
             <Label fx:id="fifthLabelInMonsterZone" layoutX="704.0" layoutY="408.0" textFill="#dd0a0a" />
+            <Label fx:id="battlePhaseLabel" layoutX="139.0" layoutY="400.0" prefHeight="17.0" prefWidth="124.0" textFill="#d30808" />
+            <Label fx:id="rivalLifePoint" layoutX="1041.0" layoutY="69.0" prefHeight="36.0" prefWidth="167.0" text="8000" />
+            <Label fx:id="myLifePoint" layoutX="1079.0" layoutY="773.0" prefHeight="36.0" prefWidth="167.0" text="8000" />
+            <Text layoutX="992.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LP  :" />
+            <Text layoutX="1030.0" layoutY="796.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LP  :" />
+            <ImageView fx:id="fifthRivalMonsterZone" fitHeight="128.0" fitWidth="77.0" layoutX="263.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="forthRivalMonsterZone" fitHeight="124.0" fitWidth="91.0" layoutX="359.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="thirdRivalMonsterZone" fitHeight="121.0" fitWidth="92.0" layoutX="469.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="secondRivalMonsterZone" fitHeight="126.0" fitWidth="100.0" layoutX="577.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="firstRivalMonsterZone" fitHeight="130.0" fitWidth="96.0" layoutX="690.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </content>
