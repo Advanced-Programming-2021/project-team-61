@@ -850,7 +850,26 @@ public class GamePage implements Initializable {
 
     }
 
-
+    @FXML
+    void handleFirstRivalMonsterZone(MouseEvent event) {
+        bigShowCard.setImage(firstRivalMonsterZone.getImage());
+    }
+    @FXML
+    void handleSecondRivalMonsterZone(MouseEvent event) {
+        bigShowCard.setImage(secondRivalMonsterZone.getImage());
+    }
+    @FXML
+    void handleThirdRivalMonsterZone(MouseEvent event) {
+        bigShowCard.setImage(thirdRivalMonsterZone.getImage());
+    }
+    @FXML
+    void handleForthRivalMonsterZone(MouseEvent event) {
+        bigShowCard.setImage(forthRivalMonsterZone.getImage());
+    }
+    @FXML
+    void handleFifthRivalMonsterZone(MouseEvent event) {
+        bigShowCard.setImage(fifthRivalMonsterZone.getImage());
+    }
 
 
 
