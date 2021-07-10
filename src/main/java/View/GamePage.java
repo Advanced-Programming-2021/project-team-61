@@ -500,6 +500,7 @@ public class GamePage implements Initializable {
 
     @FXML
     void handleFirstInMonsterZone(MouseEvent event) {
+        bigShowCard.setImage(firstMonsterZone.getImage());
         if(currentPhase.equals("mainPhase1")){
             if(handleSetPosition(0)){
 
@@ -741,6 +742,7 @@ public class GamePage implements Initializable {
 
     @FXML
     void handleSecondInMonsterZone(MouseEvent event) {
+        bigShowCard.setImage(secondMonsterZone.getImage());
         if(currentPhase.equals("mainPhase1")){
             if(handleSetPosition(1)){
 
@@ -768,6 +770,7 @@ public class GamePage implements Initializable {
 
     @FXML
     void handleThirdInMonsterZone(MouseEvent event) {
+        bigShowCard.setImage(thirdMonsterZone.getImage());
         if(currentPhase.equals("mainPhase1")){
             if(handleSetPosition(2)){
 
@@ -794,6 +797,7 @@ public class GamePage implements Initializable {
     }
     @FXML
     void handleForthInMonsterZone(MouseEvent event) {
+        bigShowCard.setImage(forthMonsterZone.getImage());
         if(currentPhase.equals("mainPhase1")){
             if(handleSetPosition(3)){
 
@@ -820,6 +824,7 @@ public class GamePage implements Initializable {
     }
     @FXML
     void handleFifthInMonsterZone(MouseEvent event) {
+        bigShowCard.setImage(fifthMonsterZone.getImage());
         if(currentPhase.equals("mainPhase1")){
             if(handleSetPosition(4)){
 
