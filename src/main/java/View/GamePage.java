@@ -2,6 +2,7 @@ package View;
 
 import Model.Board;
 import Model.Card;
+import Model.MonsterField;
 import Model.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -995,73 +996,95 @@ public class GamePage implements Initializable {
     }
 
     private void changeBoard() {
-        if(firstRival == null){
+        Card[] hand = Board.getBoardByPlayer(notMyTurn).getHand();
+        if(hand[0] == null)
             firstInHand.setImage(null);
-        }
-        if(firstRival != null){
-            firstInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(notMyTurn).getCardFromHand(0).getCardName()));
-        }
-
-        if(secondRival == null){
+        if(hand[0] != null)
+            firstInHand.setImage(Card.getImageByCardName(hand[0].getCardName()));
+        if(hand[1] == null)
             secondInHand.setImage(null);
-        }
-        if(secondRival != null){
-            secondInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(notMyTurn).getCardFromHand(1).getCardName()));
-        }
-        if(thirdRival == null){
+        if(hand[1] != null)
+            secondInHand.setImage(Card.getImageByCardName(hand[1].getCardName()));
+        if(hand[2] == null)
             thirdInHand.setImage(null);
-        }
-        if(thirdRival != null){
-            thirdInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(notMyTurn).getCardFromHand(2).getCardName()));
-        }
-        if(forthRival == null){
+        if(hand[2] != null)
+            thirdInHand.setImage(Card.getImageByCardName(hand[2].getCardName()));
+        if(hand[3] == null)
             fourthInHand.setImage(null);
-        }
-        if(forthRival != null){
-            fourthInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(notMyTurn).getCardFromHand(3).getCardName()));
-        }
-        if(fifthRival == null){
+        if(hand[3] != null)
+            fourthInHand.setImage(Card.getImageByCardName(hand[3].getCardName()));
+        if(hand[4] == null)
             fifthInHand.setImage(null);
-        }
-        if(fifthRival != null){
-            fifthInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(notMyTurn).getCardFromHand(4).getCardName()));
-        }
-        if(sixthRival == null){
+        if(hand[4] != null)
+            fifthInHand.setImage(Card.getImageByCardName(hand[4].getCardName()));
+        if(hand[5] == null)
             sixthInHand.setImage(null);
+        if(hand[5] != null)
+            sixthInHand.setImage(Card.getImageByCardName(hand[5].getCardName()));
+        hand = Board.getBoardByPlayer(myTurn).getHand();
+        if(hand[0] == null){
+            firstRival.setImage(null);
         }
-        if(sixthRival != null){
-            sixthInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(notMyTurn).getCardFromHand(5).getCardName()));
+        if(hand[1] == null){
+            secondRival.setImage(null);
         }
-        if(firstRivalMonsterZone == null){
+        if(hand[2] == null){
+            thirdRival.setImage(null);
+        }
+        if(hand[3] == null){
+            forthRival.setImage(null);
+        }
+        if(hand[4] == null){
+            fifthRival.setImage(null);
+        }
+        if(hand[5] == null){
+            sixthRival.setImage(null);
+        }
+        MonsterField[] monsterFields = Board.getBoardByPlayer(myTurn).getMonstersInField();
+        if(monsterFields[0] == null)
+            firstRivalMonsterZone.setImage(null);
+        if(monsterFields[0] != null)
+            firstRivalMonsterZone.setImage(Card.getImageByCardName(monsterFields[0].getMonsterCard().getCardName()));
+        if(monsterFields[1] == null)
+            secondRivalMonsterZone.setImage(null);
+        if(monsterFields[1] != null)
+            secondRivalMonsterZone.setImage(Card.getImageByCardName(monsterFields[0].getMonsterCard().getCardName()));
+        if(monsterFields[2] == null)
+            thirdRivalMonsterZone.setImage(null);
+        if(monsterFields[2] != null)
+            thirdRivalMonsterZone.setImage(Card.getImageByCardName(monsterFields[0].getMonsterCard().getCardName()));
+        if(monsterFields[3] == null)
+            forthRivalMonsterZone.setImage(null);
+        if(monsterFields[3] != null)
+            forthRivalMonsterZone.setImage(Card.getImageByCardName(monsterFields[0].getMonsterCard().getCardName()));
+        if(monsterFields[4] == null)
+            fifthRivalMonsterZone.setImage(null);
+        if(monsterFields[4] != null)
+            fifthRivalMonsterZone.setImage(Card.getImageByCardName(monsterFields[0].getMonsterCard().getCardName()));
+        monsterFields = Board.getBoardByPlayer(notMyTurn).getMonstersInField();
+        if(monsterFields[0] == null)
             firstMonsterZone.setImage(null);
-        }
-        if(firstRivalMonsterZone != null){
-            firstMonsterZone.setImage(firstRivalMonsterZone.getImage());
-        }
-        if(secondRivalMonsterZone == null){
+        if(monsterFields[0] != null)
+            firstMonsterZone.setImage(Card.getImageByCardName(monsterFields[0].getMonsterCard().getCardName()));
+        if(monsterFields[1] == null)
             secondMonsterZone.setImage(null);
-        }
-        if(secondRivalMonsterZone != null){
-            secondMonsterZone.setImage(firstRivalMonsterZone.getImage());
-        }
-        if(thirdRivalMonsterZone == null){
+        if(monsterFields[1] != null)
+            secondMonsterZone.setImage(Card.getImageByCardName(monsterFields[0].getMonsterCard().getCardName()));
+        if(monsterFields[2] == null)
             thirdMonsterZone.setImage(null);
-        }
-        if(thirdRivalMonsterZone != null){
-            thirdMonsterZone.setImage(firstRivalMonsterZone.getImage());
-        }
-        if(forthRivalMonsterZone == null){
+        if(monsterFields[2] != null)
+            thirdMonsterZone.setImage(Card.getImageByCardName(monsterFields[0].getMonsterCard().getCardName()));
+        if(monsterFields[3] == null)
             forthMonsterZone.setImage(null);
-        }
-        if(forthRivalMonsterZone != null){
-            forthMonsterZone.setImage(firstRivalMonsterZone.getImage());
-        }
-        if(fifthRivalMonsterZone == null){
+        if(monsterFields[3] != null)
+            forthMonsterZone.setImage(Card.getImageByCardName(monsterFields[0].getMonsterCard().getCardName()));
+        if(monsterFields[4] == null)
             fifthMonsterZone.setImage(null);
-        }
-        if(fifthRivalMonsterZone != null){
-            fifthMonsterZone.setImage(firstRivalMonsterZone.getImage());
-        }
+        if(monsterFields[4] != null)
+            fifthMonsterZone.setImage(Card.getImageByCardName(monsterFields[0].getMonsterCard().getCardName()));
+
+
+
     }
 
     public void disappearBattlePhaseLabel(MouseEvent event) {
