@@ -32,17 +32,17 @@ public class ProfilePage implements Initializable {
     private Text nickname;
 
     public void changeNickName() throws IOException {
-        StartPage.click.play();
+      //  StartPage.click.play();
         Logic.viewManager.changeScene("/sample/changeNickName.fxml");
     }
 
     public void changePassword() throws IOException {
-        StartPage.click.play();
+       // StartPage.click.play();
         Logic.viewManager.changeScene("/sample/changePassword.fxml");
     }
 
     public void back() throws IOException {
-        StartPage.click.play();
+      //  StartPage.click.play();
         Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
     }
 

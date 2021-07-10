@@ -7,7 +7,7 @@ import javafx.scene.media.AudioClip;
 import java.io.IOException;
 
 public class StartPage {
-    public static AudioClip click = new AudioClip(StartPage.class.getResource("/sounds/click.mp3").toString());
+   // public static AudioClip click = new AudioClip(StartPage.class.getResource("/sounds/click.mp3").toString());
 
     @FXML
     private Button signup;
@@ -20,12 +20,12 @@ public class StartPage {
 
 
     public void signup() throws IOException {
-        click.play();
+      //  click.play();
         Logic.viewManager.changeScene("/sample/signupPage.fxml");
     }
 
     public void login() throws IOException {
-        click.play();
+      //  click.play();
         Logic.viewManager.changeScene("/sample/loginPage.fxml");
     }
 

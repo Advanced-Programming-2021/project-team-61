@@ -312,7 +312,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyAlexCard(MouseEvent event) {
-        StartPage.click.play();
+     //   StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Alexandrite Dragon",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -329,7 +329,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyAxeRaiderCard(MouseEvent event) {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Axe Raider",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -346,7 +346,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyBabyDragonCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Baby dragon",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -363,7 +363,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyBattleOxCard(MouseEvent event) {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Battle OX",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -380,7 +380,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyBattleWarriorCard(MouseEvent event) {
-        StartPage.click.play();
+     //   StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Battle warrior",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -397,7 +397,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyBitronCard(MouseEvent event) {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Bitron",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -414,7 +414,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyBlueEyesCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Blue-Eyes white dragon",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -431,7 +431,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyCalculatorCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("The Calculator",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -448,7 +448,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyCallOfHauntedCard(MouseEvent event) {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Call of The Haunted",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -465,7 +465,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyCommandKnightCard(MouseEvent event){
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Command Knight",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -482,7 +482,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyCrawlingCard(MouseEvent event) {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Crawling dragon",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -499,7 +499,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyCurtainCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Curtain of the dark ones",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -516,7 +516,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyDarkBladeCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Dark Blade",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -533,7 +533,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyDarkHoleCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Dark Hole",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -550,7 +550,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyDarkMagitionCard(MouseEvent event) {
-        StartPage.click.play();
+        //StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Dark magician",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -567,7 +567,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyExploderCard(MouseEvent event) {
-        StartPage.click.play();
+        //StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Exploder Dragon",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -584,7 +584,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyFeralCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Feral Imp",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -601,7 +601,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyFireYarouCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Fireyarou",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -618,7 +618,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyFlameCard(MouseEvent event) {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Flame manipulator",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -635,7 +635,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyForestCard(MouseEvent event) {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Forest",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -652,7 +652,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyHaniwaCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Haniwa",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -669,7 +669,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyHeroCard(MouseEvent event) {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Hero of the east",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -686,7 +686,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyHornImpCard(MouseEvent event) {
-        StartPage.click.play();
+        //StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Horn Imp",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -703,7 +703,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyLeotronCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Leotron",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -720,7 +720,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyManEaterBugCard(MouseEvent event) {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Man-Eater Bug",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -737,7 +737,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyMarshmallonCard(MouseEvent event) {
-        StartPage.click.play();
+     //   StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Marshmallon",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -754,7 +754,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyMessengerCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Messenger of peace",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -771,7 +771,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyMindCrushCard(MouseEvent event) {
-        StartPage.click.play();
+        //StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Mind Crush",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -788,7 +788,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyMirrorForceCard(MouseEvent event) {
-        StartPage.click.play();
+        //StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Mirror Force",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -805,7 +805,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyMonsterRebornCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Monster Reborn",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -822,7 +822,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyMysticalCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Mystical space typhoon",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -839,7 +839,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyNegateAttackCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Negate Attack",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -856,7 +856,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyRaigekiCard(MouseEvent event) {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Raigeki",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -873,7 +873,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buySilverCard(MouseEvent event) {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Silver Fang",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -890,7 +890,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buySlotCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Slot Machine",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -907,7 +907,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buySpellAbsorptionCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Spell Absorption",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -924,7 +924,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buySpiralCard(MouseEvent event) {
-        StartPage.click.play();
+        //StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Spiral Serpent",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -941,7 +941,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyTeraformingCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Terraforming",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -958,7 +958,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyTimeSealCard(MouseEvent event) {
-        StartPage.click.play();
+        //StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Time Seal",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -975,7 +975,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyTorrentialCard(MouseEvent event) {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Torrential Tribute",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -992,7 +992,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyTwinTwistersCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Twin Twisters",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -1009,7 +1009,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyUmirukaCard(MouseEvent event) {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Umiiruka",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -1026,7 +1026,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyWarrirorCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Warrior Dai Grepher",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -1043,7 +1043,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyWattailCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Wattaildragon",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -1060,7 +1060,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyWattkidCard(MouseEvent event) {
-        StartPage.click.play();
+       // StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Wattkid",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -1077,7 +1077,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyYamiCard(MouseEvent event) {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Yami",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -1094,7 +1094,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyYomiShipCard(MouseEvent event) {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Yomi Ship",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("no enough money");
@@ -1115,7 +1115,7 @@ public class ShopPage implements Initializable {
     }
 
     public void back() throws IOException {
-        StartPage.click.play();
+       // StartPage.click.play();
         Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
     }
     @Override

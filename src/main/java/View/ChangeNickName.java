@@ -19,12 +19,12 @@ public class ChangeNickName {
     private Button back;
 
     public void set(){
-        StartPage.click.play();
+      //  StartPage.click.play();
         ProfileMenu.getInstance().changeNickname(Player.getLoggedPlayer(),nickName.getText());
     }
 
     public void back() throws IOException {
-        StartPage.click.play();
+      //  StartPage.click.play();
         Logic.viewManager.changeScene("/sample/profilePage.fxml");
     }
 }

@@ -25,12 +25,12 @@ public class LoginPage {
     private Button login;
 
     public void login() throws IOException {
-        StartPage.click.play();
+      //  StartPage.click.play();
         RegisterMenu.getInstance().loginProcess(username.getText(), password.getText());
     }
 
     public void back() throws IOException {
-        StartPage.click.play();
+      //  StartPage.click.play();
         Logic.viewManager.changeScene("/sample/startPage.fxml");
     }
 }

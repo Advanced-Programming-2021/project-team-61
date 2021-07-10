@@ -37,35 +37,35 @@ public class DeckMenuPage implements Initializable {
     private Text decks;
 
     public void createDeck(){
-        StartPage.click.play();
+      //  StartPage.click.play();
         DeckMenu.getInstance().createDeck(deckName.getText(), Player.getLoggedPlayer());
         deckName.clear();
         setNames();
     }
 
     public void removeDeck(){
-        StartPage.click.play();
+      //  StartPage.click.play();
         DeckMenu.getInstance().deleteDeck(deckName.getText(), Player.getLoggedPlayer());
         deckName.clear();
         setNames();
     }
 
     public void edit() throws IOException {
-        StartPage.click.play();
+      //  StartPage.click.play();
         Deck.setDeckInEdit(deckName.getText());
         Logic.viewManager.changeScene("/sample/deckEditPage.fxml");
         deckName.clear();
     }
 
     public void activate(){
-        StartPage.click.play();
+      //  StartPage.click.play();
         DeckMenu.getInstance().setActivateDeck(deckName.getText(), Player.getLoggedPlayer());
         deckName.clear();
         setNames();
     }
 
     public void back() throws IOException {
-        StartPage.click.play();
+      //  StartPage.click.play();
         Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
     }
 

@@ -27,12 +27,12 @@ public class SignupPage {
     private Button back;
 
     public void signup() throws IOException {
-        StartPage.click.play();
+      //  StartPage.click.play();
         RegisterMenu.getInstance().userCreateProcess(username.getText(), nickname.getText(), password.getText());
     }
 
     public void back() throws IOException {
-        StartPage.click.play();
+       // StartPage.click.play();
         Logic.viewManager.changeScene("/sample/startPage.fxml");
     }
 
