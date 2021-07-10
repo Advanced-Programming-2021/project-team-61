@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import Controller.ShopMenu;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 import javax.swing.*;
 import java.io.IOException;
