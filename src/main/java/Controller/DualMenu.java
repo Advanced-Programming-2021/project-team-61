@@ -96,7 +96,7 @@ public class DualMenu {
         this.rival = playerTwo;
         new Board(playerOne);
         new Board(playerTwo);
-        setGame(playerOne,playerTwo);
+        setGame(me,rival);
     }
     public Player getMe(){
         return me;
@@ -106,8 +106,10 @@ public class DualMenu {
     }
 
     private void setGame(Player playerOne, Player playerTwo) {
+        System.out.println("enter this function");
         Board.getBoardByPlayer(playerOne).createHand();
         Board.getBoardByPlayer(playerTwo).createHand();
+        System.out.println("exit this function");
     }
 
 }

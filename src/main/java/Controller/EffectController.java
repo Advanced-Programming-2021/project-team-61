@@ -41,7 +41,7 @@ public class EffectController {
             else
                 break;
         }
-        Controller.MainPhase1.getInstance().summonMonster(myBoard,(MonsterCard) myBoard.getGraveYard().get(cardNumber - 1));
+       // Controller.MainPhase1.getInstance().summonMonster(myBoard,(MonsterCard) myBoard.getGraveYard().get(cardNumber - 1));
         GameView.getInstance().printMessage(GameView.Command.SUMMONSUCCESSFUL);
         myBoard.destroySpellTrapCardByIndex(myBoard.getTrapIndexByName("Call of the Haunted"));
     }
@@ -58,8 +58,8 @@ public class EffectController {
         if (rivalBoard.isThisCardInHand_ByName(cardNameToDestroy)) {
             rivalBoard.destroyAllSpecialCardForPlayer(cardNameToDestroy);
         } else {
-            int a = (int) (Math.random() * (myBoard.getHand().size() + 1));//create random number to remove card from hand
-            myBoard.destroyCard(myBoard.getHand().get(a));
+            int a = (int) (Math.random() * (myBoard.getHand().length + 1));//create random number to remove card from hand
+            myBoard.destroyCard(myBoard.getHand()[a]);
         }
         myBoard.destroySpellTrapCardByIndex(myBoard.getTrapIndexByName("Mind Crush"));
     }
@@ -106,7 +106,7 @@ public class EffectController {
         String cardName = scanner.nextLine();
         for(int i = 0 ;i < myBoard.getMainDeck().size();i++){
             if(myBoard.getMainDeck().get(i).getCardName().equals(cardName)){
-                myBoard.getHand().add(myBoard.getMainDeck().get(i));
+               // myBoard.getHand().add(myBoard.getMainDeck().get(i));
                 myBoard.getMainDeck().remove(i);
                 break;
             }
@@ -132,7 +132,7 @@ public class EffectController {
     public void activateTwinTwisters(){
         System.out.println("choose a number in hand card to remove it");
         int x = scanner.nextInt();
-        myBoard.getHand().remove(x - 1);
+       // myBoard.getHand().remove(x - 1);
         System.out.println("choose a card to destroy");
         x = scanner.nextInt();
         rivalBoard.destroySpellTrapCardByIndex(x - 1);
