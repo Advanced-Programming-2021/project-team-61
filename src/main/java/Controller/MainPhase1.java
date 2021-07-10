@@ -115,12 +115,12 @@ public class MainPhase1 {
         else {
             if (newPosition.equals("attack")) {
                 //  view.printMessage(MainPhaseView.Commands.TheCardInWantedPosition);
-                return !isMonsterCardInTheWantedPosition(board, "OO") && !board.getMonsterByIndex(index).getStatus().equals("DH");
+                return !isMonsterCardInTheWantedPosition(board, "OO",index) && !board.getMonsterByIndex(index).getStatus().equals("DH");
                    // setAttackMonsterCard(board);
 
             } else {
                 //view.printMessage(MainPhaseView.Commands.TheCardInWantedPosition);
-                return !isMonsterCardInTheWantedPosition(board, "DO") && !board.getMonsterByIndex(index).getStatus().equals("DH");
+                return !isMonsterCardInTheWantedPosition(board, "DO",index) && !board.getMonsterByIndex(index).getStatus().equals("DH");
                 //    setDefenseMonsterCard(board);
             }
         }
@@ -413,8 +413,8 @@ public class MainPhase1 {
         return board.getMonsterByIndex(index).isStatusChangedInTurn();
     }
 
-    private boolean isMonsterCardInTheWantedPosition(Board board, String position) {
-        return board.getMonsterByIndex(Select.getInstance().getPosition() - 1).getStatus().equals(position);
+    private boolean isMonsterCardInTheWantedPosition(Board board, String position,int index) {
+        return board.getMonsterByIndex(index).getStatus().equals(position);
     }
 
     public void setAttackMonsterCard(Board board,int index) {
