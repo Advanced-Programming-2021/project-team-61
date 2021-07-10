@@ -301,12 +301,12 @@ public class GamePage implements Initializable {
                 else{
                     String s = getLabelByIndex(index).getText();
                     if(s.equals("summon")){
-                        int x = MainPhase1.getInstance().summonMonster(Board.getBoardByPlayer(myTurn),0);
+                        int x = MainPhase1.getInstance().summonMonster(Board.getBoardByPlayer(myTurn),index);
                         GameController.getInstance().setSummonedInTurn(true);
                         putMonsterInMonsterZone(x,getImageViewInHandByIndex(index).getImage(),index);
                     }
                     else if(s.equals("set")){
-                        int x = MainPhase1.getInstance().setMonster(Board.getBoardByPlayer(myTurn),0);
+                        int x = MainPhase1.getInstance().setMonster(Board.getBoardByPlayer(myTurn),index);
                         GameController.getInstance().setSummonedInTurn(true);
                        // notShownImage.setRotate(90);
                         putMonsterInMonsterZone(x,notShownImage.getImage(),index);
@@ -352,7 +352,7 @@ public class GamePage implements Initializable {
 
     private void putMonsterInMonsterZone(int x, Image image,int index) {
         put(x, image, firstMonsterZone, secondMonsterZone, thirdMonsterZone, forthMonsterZone, fifthMonsterZone);
-        if(getLabelByIndex(index).equals("set")){
+        if(getLabelByIndex(index).getText().equals("set")){
             rotate90Degrees(x);
         }
 
@@ -937,10 +937,11 @@ public class GamePage implements Initializable {
     }
 
     private void changeTurn() {
+        changeBoard();
         temp = myTurn;
         myTurn = notMyTurn;
         notMyTurn = temp;
-        changeBoard();
+
         runDrawPhase();
     }
 
@@ -979,37 +980,38 @@ public class GamePage implements Initializable {
             firstInHand.setImage(null);
         }
         if(firstRival != null){
-            firstInHand.setImage(firstRival.getImage());
+            firstInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(notMyTurn).getCardFromHand(0).getCardName()));
         }
+
         if(secondRival == null){
             secondInHand.setImage(null);
         }
         if(secondRival != null){
-            secondInHand.setImage(secondRival.getImage());
+            secondInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(notMyTurn).getCardFromHand(1).getCardName()));
         }
         if(thirdRival == null){
             thirdInHand.setImage(null);
         }
         if(thirdRival != null){
-            thirdInHand.setImage(firstRival.getImage());
+            thirdInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(notMyTurn).getCardFromHand(2).getCardName()));
         }
         if(forthRival == null){
             fourthInHand.setImage(null);
         }
         if(forthRival != null){
-            fourthInHand.setImage(firstRival.getImage());
+            fourthInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(notMyTurn).getCardFromHand(3).getCardName()));
         }
         if(fifthRival == null){
             fifthInHand.setImage(null);
         }
         if(fifthRival != null){
-            fifthInHand.setImage(firstRival.getImage());
+            fifthInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(notMyTurn).getCardFromHand(4).getCardName()));
         }
         if(sixthRival == null){
             sixthInHand.setImage(null);
         }
         if(sixthRival != null){
-            sixthInHand.setImage(firstRival.getImage());
+            sixthInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(notMyTurn).getCardFromHand(5).getCardName()));
         }
         if(firstRivalMonsterZone == null){
             firstMonsterZone.setImage(null);
