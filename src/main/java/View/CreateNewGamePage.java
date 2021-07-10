@@ -37,28 +37,28 @@ public class CreateNewGamePage{
 
 
     public void positive(){
-        StartPage.click.play();
+       // StartPage.click.play();
         int num = Integer.parseInt(numOfRound.getText());
         num++;
         numOfRound.setText(String.valueOf(num));
     }
 
     public void negative(){
-        StartPage.click.play();
+      //  StartPage.click.play();
         int num = Integer.parseInt(numOfRound.getText());
         num--;
         numOfRound.setText(String.valueOf(num));
     }
 
     public void start() throws IOException {
-        StartPage.click.play();
+      //  StartPage.click.play();
         if(DualMenu.getInstance().ProcessNewGame(Player.getLoggedPlayer().getUsername(),username.getText(),numOfRound.getText())){
            Logic.viewManager.changeScene("/sample/gamePage.fxml");
        }
     }
 
     public void back() throws IOException {
-        StartPage.click.play();
+       // StartPage.click.play();
         Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
     }
 }

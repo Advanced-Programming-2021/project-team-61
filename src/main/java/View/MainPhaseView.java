@@ -66,13 +66,13 @@ public class MainPhaseView {
             GameView.getInstance().showBoard(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
             command = scanner.nextLine();
             if ((command.equals("summon"))) {
-                mainPhase1.ProcessSummon(Board.getBoardByPlayer(me));
+             //   mainPhase1.ProcessSummon(Board.getBoardByPlayer(me));
             }
             else if ((matcher = getCommandMatcher(command,"set -- position (attack|defense)")).find()) {
                 mainPhase1.ProcessSetPosition(Board.getBoardByPlayer(me),matcher);
             }
             else if(command.equals("set")){
-                mainPhase1.ProcessSet(Board.getBoardByPlayer(me));
+               // mainPhase1.ProcessSet(Board.getBoardByPlayer(me));
             }
             else if(command.equals("flip-summon")){
                 mainPhase1.ProcessFlipSummon(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
@@ -81,7 +81,7 @@ public class MainPhaseView {
                 mainPhase1.ProcessShowCard(Board.getBoardByPlayer(me),Board.getBoardByPlayer(rival));
             }
             else if(command.equals("activate effect")){
-                mainPhase1.ProcessActivation(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
+              //  mainPhase1.ProcessActivation(Board.getBoardByPlayer(me), Board.getBoardByPlayer(rival));
             }
             else if(command.startsWith("select")){
                 Select.getInstance().run(me,rival,command);

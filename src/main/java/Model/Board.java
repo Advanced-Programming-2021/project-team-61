@@ -15,7 +15,7 @@ public class Board {
     private String fieldZoneCondition;
     private Card fieldZoneCard;
     private ArrayList<Card> graveYard = new ArrayList<>();
-    private ArrayList<Card> hand = new ArrayList<>();
+    private Card[] hand = new Card[6];
 
     private int[] extraDefence = new int[5];
     private boolean canGetCardFromDeck = true;
@@ -87,7 +87,7 @@ public class Board {
     public void createHand() {
         Collections.shuffle(mainDeck);
         for (int i = 0; i < 6; i++){
-            hand.add(mainDeck.get(i));
+            hand[i] = mainDeck.get(i);
             mainDeck.remove(i);
         }
     }
@@ -95,16 +95,24 @@ public class Board {
         return spellTrapsInField[index];
     }
 
-    public String addCardToHand() {
+    public String addCardToHand(int index) {
         if (isCanGetCardFromDeck()) {
             String cardName = mainDeck.get(0).getCardName();
-            hand.add(mainDeck.get(0));
+            hand[index] = mainDeck.get(0);
             return cardName;
         }else {
             GameView.getInstance().printMessage(GameView.Command.cantGetCardFromDeck);
             setCanGetCardFromDeck(true);
             return null;
         }
+    }
+    public int getEmptyPlaceInHand(){
+        for(int i = 0; i < 6; i++){
+            if(hand[i] == null){
+                return i;
+            }
+        }
+        return -1;
     }
     public int getNumberOfSpellTrapsInField(){
         int counter = 0;
@@ -143,21 +151,25 @@ public class Board {
     }
 
 
-    public void activateEffect(){
-        if(Select.getInstance().getLocation()== Select.Location.HAND){
+    public int activateSpellCardFromHand(int index){
+      //  if(Select.getInstance().getLocation()== Select.Location.HAND){
             int emptyPlace = getEmptyPlaceInSpellTrapZone();
-            addSpellTrapCardToField(emptyPlace,getCardFromHand(Select.getInstance().getPosition() - 1),"O");
+            addSpellTrapCardToField(emptyPlace,getCardFromHand(index),"O");
+            hand[index] = null;
             MainPhase1.getInstance(). activateEffectOfCard(Select.getInstance().getCard());
-            hand.remove(Select.getInstance().getPosition()-1);
-            Select.getInstance().deSelect();
-        }
-        else if(Select.getInstance().getLocation() == Select.Location.SPELL){
-            getSpellTrapByIndex(Select.getInstance().getPosition() -1) .setStatus("O");
-            MainPhase1.getInstance().activateEffectOfCard(Select.getInstance().getCard());
-            Select.getInstance().deSelect();
-        }
+            return emptyPlace;
 
-    }
+          //  Select.getInstance().deSelect();
+        }
+    //  else if(Select.getInstance().getLocation() == Select.Location.SPELL){
+    //   getSpellTrapByIndex(Select.getInstance().getPosition() -1) .setStatus("O");
+    //   MainPhase1.getInstance().activateEffectOfCard(Select.getInstance().getCard());
+    //    Select.getInstance().deSelect();
+    //  }
+
+
+
+
 
 
 
@@ -269,18 +281,32 @@ public class Board {
         return sideDeck;
     }
 
-    public ArrayList<Card> getHand() {
+    public Card[] getHand() {
         return hand;
     }
 
     public Card getCardFromHand(int index){
-        return hand.get(index);
+        return hand[index];
     }
 
     ////////////////
 
 
-
+   public boolean isGraveYardHaveMonsterCard(){
+        for (Card card : graveYard){
+            if(card instanceof MonsterCard){
+                return true;
+            }
+        }
+        return false;
+   }
+   public boolean isMainDeckHaveFieldSpellCard(){
+        for(Card card : mainDeck){
+            if(card.getCardType().equals("Field"))
+                return true;
+        }
+        return false;
+   }
     public MonsterField getMonsterByIndex(int index){
         return monstersInField[index];
     }

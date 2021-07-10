@@ -18,7 +18,8 @@ public class DrawPhase {
     public void run(Board board){
         printPhaseName();
         if(board.isCanGetCardFromDeck()){
-            String cardName =  board.addCardToHand();
+            int index = board.getEmptyPlaceInHand();
+            String cardName =  board.addCardToHand(index);
             GameView.getInstance().printMessageByString(GameView.Command.newCardAddedToHand,cardName);
         }
         else{

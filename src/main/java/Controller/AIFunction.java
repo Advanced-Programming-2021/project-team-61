@@ -19,7 +19,7 @@ public class AIFunction {
     public void run(Board me, Board rival){
         myBoard = me;
         rivalBoard = rival;
-        summonMonster((MonsterCard) myBoard.getHand().get(0));
+       // summonMonster((MonsterCard) myBoard.getHand().get(0));
         processAttack();
     }
 

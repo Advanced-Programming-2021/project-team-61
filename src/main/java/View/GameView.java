@@ -340,7 +340,7 @@ public class GameView {
     }
     public void showBoard(Board myBoard, Board rivalBoard){
         System.out.println(rivalBoard.getPlayer().getNickname() + ":" +rivalBoard.getLifePoint());
-        int numberOfCard = rivalBoard.getHand().size();
+        int numberOfCard = rivalBoard.getHand().length;
         int numberOfTab = 6;
         System.out.print("\t");
         for (int i = 0; i < numberOfCard; i++) {
@@ -362,7 +362,7 @@ public class GameView {
         System.out.println("\t" + myBoard.getMonsterByIndex(4).getStatus() + "\t" + myBoard.getMonsterByIndex(2).getStatus() + "\t" + myBoard.getMonsterByIndex(0).getStatus() + "\t" + myBoard.getMonsterByIndex(1).getStatus() + "\t" + myBoard.getMonsterByIndex(3).getStatus() );
         System.out.println("\t" + myBoard.getSpellTrapByIndex(4).getStatus() + "\t" + myBoard.getSpellTrapByIndex(2).getStatus() + "\t" + myBoard.getSpellTrapByIndex(0).getStatus() + "\t" + myBoard.getSpellTrapByIndex(1).getStatus() + "\t" + myBoard.getSpellTrapByIndex(3).getStatus());
         System.out.println(" \t \t \t \t \t \t" + myBoard.getMainDeck().size());
-        for (int i = 0; i < myBoard.getHand().size(); i++) {
+        for (int i = 0; i < myBoard.getHand().length; i++) {
             System.out.print("C\t");
         }
         System.out.println();

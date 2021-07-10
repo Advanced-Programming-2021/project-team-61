@@ -119,10 +119,10 @@ public class Select {
         int loc = Integer.parseInt(matcher.group(1));
         if (loc>6){
             GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
-        }else if (Board.getBoardByPlayer(player).getHand().size()<loc){
+        }else if (Board.getBoardByPlayer(player).getHand().length<loc){
             GameView.getInstance().printMessage(GameView.Command.INVALIDSELECTION);
         }
-        else if(Board.getBoardByPlayer(player).getHand().get(loc - 1) == null){
+        else if(/*Board.getBoardByPlayer(player).getHand().get(loc - 1) == null*/true){
             GameView.getInstance().printMessage(GameView.Command.NOCARDFOUNDINGIVENPOSITION);
         }
         else {

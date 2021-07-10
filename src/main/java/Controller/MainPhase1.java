@@ -4,6 +4,7 @@ import Model.*;
 import View.GameView;
 import View.MainPhaseView;
 import View.RegisterView;
+import com.sun.deploy.security.SelectableSecurityManager;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -24,23 +25,30 @@ public class MainPhase1 {
         return m;
     }
 
-    public void ProcessSummon(Board board) {
+    public boolean ProcessSummon(Board board,int index) {
         view = MainPhaseView.getInstance();
         gameView = GameView.getInstance();
-        if (!isACardSelected()) {
-            view.printMessage(MainPhaseView.Commands.NoCardSelected);
-        } else if (!isSelectedCardInHand() || !isCardInHandMonsterCard(board)) {
-            view.printMessage(MainPhaseView.Commands.CannotBeSummoned);
+      //  if (!isACardSelected()) {
+          //  view.printMessage(MainPhaseView.Commands.NoCardSelected);
+       /* } else*/ if (!isCardInHandMonsterCard(board,index)) {
+          //  view.printMessage(MainPhaseView.Commands.CannotBeSummoned);
+            return false;
         } else if (isMonsterZoneFull(board)) {
-            view.printMessage(MainPhaseView.Commands.MonsterZoneFull);
+           // view.printMessage(MainPhaseView.Commands.MonsterZoneFull);
+            return false;
         } else if (GameController.getInstance().isSummonedInTurn()) {
-            view.printMessage(MainPhaseView.Commands.SummonIsDoneOnce);
+            //view.printMessage(MainPhaseView.Commands.SummonIsDoneOnce);
+            return false;
         } else {
-            ProcessTribute(board);
+            MonsterCard monsterCard = (MonsterCard) board.getCardFromHand(index);
+            if(monsterCard.getLevel() <= 4){
+                return true;
+            }
+            else return IsMonsterEnoughForTribute(board, monsterCard);
         }
     }
 
-    private void ProcessTribute(Board board) {
+   /* private void ProcessTribute(Board board) {
         MonsterCard monsterCard = (MonsterCard) board.getCardFromHand(Select.getInstance().getPosition() - 1);
         if (monsterCard.getLevel() <= 4) {
             summonMonster(board, monsterCard);
@@ -57,32 +65,30 @@ public class MainPhase1 {
                 }
             }
         }
-    }
+    }*/
 
-    public void ProcessSet(Board board) {
-        if (!isACardSelected())
-            view.printMessage(MainPhaseView.Commands.NoCardSelected);
-        else if (!isSelectedCardInHand())
-            view.printMessage(MainPhaseView.Commands.CannotSetMonsterCard);
-        else if (isCardInHandMonsterCard(board)) {
-            if (isMonsterZoneFull(board))
-                view.printMessage(MainPhaseView.Commands.MonsterZoneFull);
-            else if (GameController.getInstance().isSummonedInTurn())
-                view.printMessage(MainPhaseView.Commands.SummonIsDoneOnce);
-            else {
-                MonsterCard monsterCard = (MonsterCard) board.getCardFromHand(Select.getInstance().getPosition() - 1);
-                setMonster(board, monsterCard);
-                Select.getInstance().deSelect();
-                view.printMessage(MainPhaseView.Commands.SetSuccessful);
-                GameController.getInstance().setSummonedInTurn(true);
-            }
-        } else if (isCardInHandSpellTrap(board)) {
-            if (isSpellTrapZoneFull(board))
-                view.printMessage(MainPhaseView.Commands.SpellZoneFull);
-            else{
-                setSpellTrap(board);
-            }
-        }
+
+    public boolean ProcessSet(Board board,int index) {
+      //  if (!isACardSelected())
+          //  view.printMessage(MainPhaseView.Commands.NoCardSelected);
+       // else if (!isSelectedCardInHand())
+        //    view.printMessage(MainPhaseView.Commands.CannotSetMonsterCard);
+       // else if (isCardInHandMonsterCard(board)) {
+          //  if (isMonsterZoneFull(board))
+           //     view.printMessage(MainPhaseView.Commands.MonsterZoneFull);
+          //  else if (GameController.getInstance().isSummonedInTurn())
+          //      view.printMessage(MainPhaseView.Commands.SummonIsDoneOnce);
+          //  else {
+              //  MonsterCard monsterCard = (MonsterCard) board.getCardFromHand(Select.getInstance().getPosition() - 1);
+             //   setMonster(board, monsterCard);
+             //   Select.getInstance().deSelect();
+             //   view.printMessage(MainPhaseView.Commands.SetSuccessful);
+             //   GameController.getInstance().setSummonedInTurn(true);
+           // }
+       /* } else*/
+        return isCardInHandSpellTrap(board, index) && !isSpellTrapZoneFull(board);
+              //  view.printMessage(MainPhaseView.Commands.SpellZoneFull);
+
     }
 
     public void ProcessFlipSummon(Board board, Board rivalBoard) {
@@ -166,20 +172,22 @@ public class MainPhase1 {
         else return Select.getInstance().getLocation() != Select.Location.FIELDOPPONENT;
     }
 
-    public void ProcessActivation(Board board,Board rival) {
+    public boolean ProcessActivation(Board board,Board rival,int index) {
         setEffectController(board,rival);
-        if (!isACardSelected())
-            view.printMessage(MainPhaseView.Commands.NoCardSelected);
-        else if (!isSelectedCardSpell())
-            view.printMessage(MainPhaseView.Commands.NotSpellCard);
+       // if (!isACardSelected())
+         //   view.printMessage(MainPhaseView.Commands.NoCardSelected);
+       /* else*/ if (!isSelectedCardSpell())
+           return false;
+           // view.printMessage(MainPhaseView.Commands.NotSpellCard);
         else if (isSpellActivated(board))
-            view.printMessage(MainPhaseView.Commands.isActivated);
-        else if (isSelectedCardInHand() && isSpellTrapZoneFull(board)) {//needs one more if
-            view.printMessage(MainPhaseView.Commands.SpellZoneFull);
-        } else if (!isPreprationPreparedForSpecialCards(rival,board)) {
-            view.printMessage(MainPhaseView.Commands.noPreparatipn);
-        } else
-            board.activateEffect();
+            return false;
+          //  view.printMessage(MainPhaseView.Commands.isActivated);
+        else //   view.printMessage(MainPhaseView.Commands.noPreparatipn);
+            if (isSelectedCardInHand() && isSpellTrapZoneFull(board)) {
+            return false;
+          //  view.printMessage(MainPhaseView.Commands.SpellZoneFull);
+        } else return isPreprationPreparedForSpecialCards(rival, board);
+        //    board.activateEffect();
     }
 
     private void setEffectController(Board me,Board rival) {
@@ -246,7 +254,17 @@ public class MainPhase1 {
             return !rival.isSpellTrapFieldEmpty();
         }
         if(Select.getInstance().getCard().getCardName().equals("Monster Reborn")){
-            return !my.isGraveYardEmpty() && !my.isMonsterZoneEmpty() && !rival.isGraveYardEmpty();
+            return my.isGraveYardHaveMonsterCard()  && !my.isMonsterZoneEmpty() && rival.isGraveYardHaveMonsterCard();
+        }
+        if(Select.getInstance().getCard().getCardName().equals("Terraforming")){
+            return my.isMainDeckHaveFieldSpellCard();
+        }
+        if(Select.getInstance().getCard().getCardName().equals("Raigeki")){
+            return !rival.isMonsterZoneEmpty();
+        }
+        if(Select.getInstance().getCard().getCardName().equals("Dark Hole")){
+           return  !rival.isMonsterZoneEmpty() || !my.isMonsterZoneEmpty();
+
         }
         return true;
     }
@@ -266,7 +284,10 @@ public class MainPhase1 {
                     if(monsterCard1.getLevel()>4)
                         System.out.println("cannot summon this");
                     else
-                        summonMonster(board,(MonsterCard) board.getCardFromHand(x-1));}
+                        //alaki
+                        x = 1;
+                      //  summonMonster(board,(MonsterCard) board.getCardFromHand(x-1));
+                }
             }
 
 
@@ -282,8 +303,8 @@ public class MainPhase1 {
         return Select.getInstance().getLocation() == Select.Location.HAND;
     }
 
-    private boolean isCardInHandMonsterCard(Board board) {
-        return board.getCardFromHand(Select.getInstance().getPosition() - 1) instanceof MonsterCard;
+    private boolean isCardInHandMonsterCard(Board board,int index) {
+        return board.getCardFromHand(index) instanceof MonsterCard;
 
     }
 
@@ -296,15 +317,18 @@ public class MainPhase1 {
         return true;
     }
 
-    public void summonMonster(Board board, MonsterCard monsterCard) {
+     public int summonMonster(Board board,int index) {
+        MonsterCard monsterCard = (MonsterCard) board.getCardFromHand(index);
         int emptyPlace = board.getEmptyPlaceInMonsterZone();
         board.addMonsterCardToField(emptyPlace, monsterCard,"OO");
         if(monsterCard.getCardName().equals("Command Knight")){
             board.getMonsterByIndex(emptyPlace).setEffectActivated(true);
             Card.activateCommandKnightEffect(board);
         }
+        board.getHand()[index] = null;
+        return emptyPlace;
 
-        view.printMessage(MainPhaseView.Commands.SummonSuccessful);
+     //   view.printMessage(MainPhaseView.Commands.SummonSuccessful);
     }
 
     private boolean IsMonsterEnoughForTribute(Board board, MonsterCard monsterCard) {
@@ -346,10 +370,12 @@ public class MainPhase1 {
         }
     }
 
-    private void setMonster(Board board, MonsterCard monsterCard) {
+    public int setMonster(Board board, int index) {
+        MonsterCard monsterCard =(MonsterCard) board.getCardFromHand(index);
         int emptyPlace = board.getEmptyPlaceInMonsterZone();
         board.addMonsterCardToField(emptyPlace, monsterCard,"DH");
-        view.printMessage(MainPhaseView.Commands.SetSuccessful);
+       // view.printMessage(MainPhaseView.Commands.SetSuccessful);
+        return emptyPlace;
     }
 
     private boolean isSpellTrapZoneFull(Board board) {
@@ -361,16 +387,17 @@ public class MainPhase1 {
         return true;
     }
 
-    private boolean isCardInHandSpellTrap(Board board) {
-        return board.getCardFromHand(Select.getInstance().getPosition() - 1) instanceof SpellCard
-                || board.getCardFromHand(Select.getInstance().getPosition() - 1) instanceof TrapCard;
+    private boolean isCardInHandSpellTrap(Board board,int index) {
+        return board.getCardFromHand(index) instanceof SpellCard
+                || board.getCardFromHand(index) instanceof TrapCard;
     }
 
-    private void setSpellTrap(Board board) {
+    public int setSpellTrap(Board board,int index) {
         int emptyPlace = board.getEmptyPlaceInSpellTrapZone();
-        board.addSpellTrapCardToField(emptyPlace, board.getCardFromHand(Select.getInstance().getPosition() - 1),"H");
-        view.printMessage(MainPhaseView.Commands.SetSuccessful);
-        Select.getInstance().deSelect();
+        board.addSpellTrapCardToField(emptyPlace, board.getCardFromHand(index),"H");
+        return emptyPlace;
+     //   view.printMessage(MainPhaseView.Commands.SetSuccessful);
+     //   Select.getInstance().deSelect();
     }
 
     private boolean isSelectedCardInMonsterZone() {
