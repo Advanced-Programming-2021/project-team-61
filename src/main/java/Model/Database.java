@@ -159,8 +159,8 @@ public class Database {
         Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Dark magician");
         Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Wattkid");
         Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Wattkid");
-        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Baby Dragon");
-        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Baby Dragon");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Baby dragon");
+        Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Baby dragon");
         Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Hero of the east");
         Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Battle warrior");
         Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Hero of the east");
