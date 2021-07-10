@@ -8,12 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<ScrollPane pannable="true" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.StartPage">
+<ScrollPane pannable="true" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.StartPage">
    <content>
       <AnchorPane prefHeight="850.0" prefWidth="1300.0">
          <children>
-            <ImageView fitHeight="850.0" fitWidth="1300.0">
+            <ImageView fitHeight="850.0" fitWidth="1300.0" layoutX="-7.0" layoutY="-3.0">
                <image>
                   <Image url="@../startPage.png" />
                </image>
@@ -23,7 +22,7 @@
                   <SepiaTone />
                </effect>
                <font>
-                  <Font size="25.0" />
+                  <Font name="Eras Light ITC" size="25.0" />
                </font>
             </Button>
             <Button fx:id="login" layoutX="562.0" layoutY="613.0" mnemonicParsing="false" onAction="#login" prefHeight="74.0" prefWidth="168.0" text="LOGIN">
@@ -31,7 +30,7 @@
                   <SepiaTone />
                </effect>
                <font>
-                  <Font size="25.0" />
+                  <Font name="Eras Light ITC" size="25.0" />
                </font>
             </Button>
             <Button fx:id="exit" layoutX="563.0" layoutY="694.0" mnemonicParsing="false" onAction="#exit" prefHeight="74.0" prefWidth="168.0" text="EXIT" AnchorPane.rightAnchor="569.0" AnchorPane.topAnchor="694.0">
@@ -39,7 +38,7 @@
                   <SepiaTone />
                </effect>
                <font>
-                  <Font size="25.0" />
+                  <Font name="Eras Light ITC" size="25.0" />
                </font>
             </Button>
          </children>

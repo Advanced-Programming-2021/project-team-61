@@ -37,12 +37,12 @@ public class GamePausePage implements Initializable {
 
 
     public void backToMainMenu() throws IOException {
-        StartPage.click.play();
+       // StartPage.click.play();
         Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
     }
 
     public void changeSound(){
-        StartPage.click.play();
+       // StartPage.click.play();
 
         //need some change after add background music
         if (sound.equals(soundON))
@@ -52,12 +52,12 @@ public class GamePausePage implements Initializable {
     }
 
     public void continueGame(){
-        StartPage.click.play();
+       // StartPage.click.play();
         //back to gamePage
     }
 
     public void surrender(){
-        StartPage.click.play();
+        //StartPage.click.play();
         GameController.getInstance().setSurrendered(true);
         //GameController.getInstance().playGame();
     }

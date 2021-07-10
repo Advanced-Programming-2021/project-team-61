@@ -3,13 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.SepiaTone?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<ScrollPane pannable="true" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.SignupPage">
+<ScrollPane pannable="true" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.SignupPage">
    <content>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1300.0">
          <children>
@@ -22,26 +22,41 @@
                <font>
                   <Font size="20.0" />
                </font>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </TextField>
             <TextField fx:id="password" layoutX="521.0" layoutY="695.0" promptText="password :">
                <font>
                   <Font size="20.0" />
                </font>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </TextField>
             <Button fx:id="sign" layoutX="705.0" layoutY="761.0" mnemonicParsing="false" onAction="#signup" text="sign">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Eras Light ITC" size="20.0" />
                </font>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <Button fx:id="back" layoutX="521.0" layoutY="761.0" mnemonicParsing="false" onAction="#back" text="back">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Eras Light ITC" size="20.0" />
                </font>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <TextField fx:id="nickname" layoutX="521.0" layoutY="639.0" promptText="nickname :">
                <font>
                   <Font size="20.0" />
                </font>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </TextField>
          </children>
       </AnchorPane>

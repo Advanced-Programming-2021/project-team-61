@@ -1,6 +1,9 @@
 package Model;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Player {
 
@@ -10,31 +13,37 @@ public class Player {
     private String password;
     private int score;
     private int coin = 100000;
+    private Image image;
     private ArrayList<Deck> allDecks = new ArrayList<>();
     private static ArrayList<Card> playerCards = new ArrayList<>();
     private static Player loggedPlayer;
 
-    public Player(String username, String nickname, String password){
+
+    public Player(String username, String nickname, String password) {
         this.username = username;
         this.nickname = nickname;
         this.password = password;
+        this.image = proImage();
         allPlayers.add(this);
     }
-    public static Player getPlayerByUsername(String username){
+
+    public static Player getPlayerByUsername(String username) {
         for (Player allPlayer : allPlayers) {
             if (allPlayer.username.equals(username))
                 return allPlayer;
         }
         return null;
     }
-    public static boolean isUserNameExists(String username){
+
+    public static boolean isUserNameExists(String username) {
 
         return Player.getPlayerByUsername(username) != null;
     }
-    public static boolean isNickNameExists(String nickname){
+
+    public static boolean isNickNameExists(String nickname) {
         for (Player allPlayer : allPlayers) {
             if (allPlayer.nickname.equals(nickname))
-            return true;
+                return true;
 
         }
         return false;
@@ -48,7 +57,7 @@ public class Player {
         this.score = score;
     }
 
-    public static ArrayList<Player> getAllPlayers(){
+    public static ArrayList<Player> getAllPlayers() {
         return allPlayers;
     }
 
@@ -71,44 +80,48 @@ public class Player {
     public void setPassword(String password) {
         this.password = password;
     }
-    public void setCoin(int coin){
-        this.coin -=coin;
+
+    public void setCoin(int coin) {
+        this.coin -= coin;
     }
-    public void increaseCoin(int coin){
+
+    public void increaseCoin(int coin) {
         this.coin += coin;
     }
 
-    public static int getScoreByNickname(String nickname){
-        for (Player player:allPlayers) {
+    public static int getScoreByNickname(String nickname) {
+        for (Player player : allPlayers) {
             if (player.nickname.equals(nickname))
                 return player.score;
         }
         return 0;
     }
 
-    public static ArrayList<String> getAllNickNames(){
+    public static ArrayList<String> getAllNickNames() {
         ArrayList<String> allNickName = new ArrayList<>();
-        for (Player player:allPlayers) {
+        for (Player player : allPlayers) {
             allNickName.add(player.nickname);
         }
         return allNickName;
     }
 
-    public void addDeck(Deck deck){
+    public void addDeck(Deck deck) {
         allDecks.add(deck);
     }
 
-    public void removeDeck(Deck deck){
+    public void removeDeck(Deck deck) {
         allDecks.remove(deck);
     }
 
-    public ArrayList<Deck> getAllDecks(){
+    public ArrayList<Deck> getAllDecks() {
         return allDecks;
     }
-    public void addCard(Card card){
+
+    public void addCard(Card card) {
         playerCards.add(card);
     }
-    public void buyCard(Card card){
+
+    public void buyCard(Card card) {
         this.setCoin(card.getPrice());
         addCard(card);
     }
@@ -117,24 +130,24 @@ public class Player {
         return playerCards;
     }
 
-    public boolean doesPlayerHaveSpecialCard(String cardName){
-        for (Card card:playerCards) {
+    public boolean doesPlayerHaveSpecialCard(String cardName) {
+        for (Card card : playerCards) {
             if (card.cardName.equals(cardName))
                 return true;
         }
         return false;
     }
 
-    public void addCardsAfterRemoveDeck(Deck deck){
+    public void addCardsAfterRemoveDeck(Deck deck) {
         playerCards.addAll(deck.getSideDeck());
         playerCards.addAll(deck.getSideDeck());
     }
 
-    public void removeCardFromPlayerAfterAddToDeck(String cardName){
+    public void removeCardFromPlayerAfterAddToDeck(String cardName) {
         playerCards.remove(Card.getCardByName(cardName));
     }
 
-    public void addCardToPlayerCardsAfterRemoveFromDeck(String cardName){
+    public void addCardToPlayerCardsAfterRemoveFromDeck(String cardName) {
         playerCards.add(Card.getCardByName(cardName));
     }
 
@@ -142,29 +155,60 @@ public class Player {
         return nickname;
     }
 
-    public static void setLoggedPlayer(Player player){
+    public static void setLoggedPlayer(Player player) {
         loggedPlayer = player;
     }
 
-    public static Player getLoggedPlayer(){
+    public static Player getLoggedPlayer() {
         return loggedPlayer;
     }
 
-    public int numberOfSpecialCard(String cardName){
+    public int numberOfSpecialCard(String cardName) {
         int num = 0;
-        for (Card card:playerCards) {
+        for (Card card : playerCards) {
             if (card.getCardName().equals(cardName))
                 num++;
         }
         return num;
     }
 
-    public int numberOfCardsInAndOutDecks(String cardName){
+    public int numberOfCardsInAndOutDecks(String cardName) {
         int num = numberOfSpecialCard(cardName);
-        for (Deck deck:allDecks) {
+        for (Deck deck : allDecks) {
             num += deck.numberOfSpecialCardInMainDeck(cardName);
             num += deck.numberOfSpecialCardInSideDeck(cardName);
         }
         return num;
     }
+
+    public Image proImage() {
+        Random random = new Random();
+        int randomNum = random.nextInt(7);
+        switch (randomNum) {
+            case 1: {
+                return new Image("/profileImage/1.png");
+            }
+            case 2: {
+                return new Image("/profileImage/2.png");
+            }
+            case 3: {
+                return new Image("/profileImage/3.png");
+            }
+            case 4: {
+                return new Image("/profileImage/4.png");
+            }
+            case 5: {
+                return new Image("/profileImage/5.png");
+            }
+            case 6: {
+                return new Image("/profileImage/6.png");
+            }
+        }
+        return new Image("/profileImage/6.png");
+    }
+
+    public Image getImage(){
+        return this.image;
+    }
 }
+

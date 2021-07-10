@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.SepiaTone?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -31,6 +32,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -44,6 +48,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -57,6 +64,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -70,6 +80,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -83,6 +96,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -96,6 +112,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -109,6 +128,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="850.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -122,6 +144,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="850.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -135,6 +160,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="850.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -148,6 +176,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="850.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -161,6 +192,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="1250.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -174,6 +208,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="1250.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -187,6 +224,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="1250.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -200,6 +240,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="1250.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -213,6 +256,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="1650.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -226,6 +272,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="1650.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -239,6 +288,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="1650.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -252,6 +304,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="1650.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -265,6 +320,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="2050.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -278,6 +336,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="2050.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -291,6 +352,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="2050.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -304,6 +368,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="2050.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -317,6 +384,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="2450.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -330,6 +400,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="2450.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -343,6 +416,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="2450.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -356,6 +432,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="2450.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -369,6 +448,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="2850.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -382,6 +464,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="2850.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -395,6 +480,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="2850.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -408,6 +496,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="2850.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -421,6 +512,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="3250.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -434,6 +528,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="3250.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -447,6 +544,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="3250.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -460,6 +560,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="3250.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -473,6 +576,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="3650.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -486,6 +592,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="3650.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -499,6 +608,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="3650.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -512,6 +624,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="3650.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -525,6 +640,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="4050.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -538,6 +656,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="4050.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -551,6 +672,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="4050.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -564,6 +688,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="4050.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -577,6 +704,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="950.0" layoutY="4450.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -590,6 +720,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="50.0" layoutY="4450.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -603,6 +736,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="350.0" layoutY="4450.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -616,6 +752,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="4450.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -629,6 +768,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
             </Button>
             <Label fx:id="commandNumbers" layoutX="211.0" layoutY="401.0" prefHeight="20.0" prefWidth="0.0" textFill="#ebdede">
                <font>
@@ -1100,8 +1242,17 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="availableCoin" layoutX="959.0" layoutY="169.0" />
-            <Button fx:id="back" layoutX="981.0" layoutY="251.0" mnemonicParsing="false" onAction="#back" text="back to mainMenu" />
+            <TextField fx:id="availableCoin" layoutX="979.0" layoutY="170.0" prefHeight="38.0" prefWidth="185.0">
+               <font>
+                  <Font name="Eras Light ITC" size="20.0" />
+               </font></TextField>
+            <Button fx:id="back" layoutX="980.0" layoutY="231.0" mnemonicParsing="false" onAction="#back" text="back to mainMenu">
+               <effect>
+                  <SepiaTone />
+               </effect>
+               <font>
+                  <Font name="Eras Light ITC" size="20.0" />
+               </font></Button>
          </children></AnchorPane>
   </content>
 </ScrollPane>

@@ -5,6 +5,8 @@ import Model.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import sun.rmi.runtime.Log;
 
@@ -15,6 +17,8 @@ import java.util.ResourceBundle;
 
 public class ProfilePage implements Initializable {
 
+    @FXML
+    private ImageView prof;
 
     @FXML
     private Button changeNickName;
@@ -50,6 +54,7 @@ public class ProfilePage implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         username.setText("username : " + Player.getLoggedPlayer().getUsername());
         nickname.setText("nickname : " + Player.getLoggedPlayer().getNickname());
+        prof.setImage(Player.getLoggedPlayer().getImage());
     }
 
 

@@ -28,13 +28,13 @@ public class Card {
         if(Card.getCardByName(cardName) instanceof MonsterCard){
             //String m = "/monsterCards/"+cardName+".jpg";
             path += "monsterCards/" + cardName + ".jpg";
-            return new Image(path);
         }
         else{
             //String s = "/spellCards/"+cardName+".jpg";
             path += "spellCards/" + cardName + ".jpg";
-            return new Image(path);
         }
+        System.out.println(cardName);
+        return new Image(path);
     }
 
     public static boolean isCardAvailable(String cardName) {
