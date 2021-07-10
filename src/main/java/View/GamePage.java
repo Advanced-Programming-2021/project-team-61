@@ -6,6 +6,7 @@ import Model.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import Controller.DualMenu;
@@ -19,6 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import Controller.GameController;
 import Controller.BattlePhase;
+import javafx.scene.text.Text;
 
 public class GamePage implements Initializable {
     private String currentPhase;
@@ -151,12 +153,22 @@ public class GamePage implements Initializable {
     private Label battlePhaseLabel;
 
     @FXML
-    private Label rivalLifePoint;
+    private TextField rivalLifePoint;
 
     @FXML
-    private Label myLifePoint;
+    private TextField myLifePoint;
 
+    @FXML
+    private ImageView rivalProf;
 
+    @FXML
+    private ImageView myProf;
+
+    @FXML
+    private Text rivalNames;
+
+    @FXML
+    private Text myNames;
 
 
 
@@ -944,8 +956,12 @@ public class GamePage implements Initializable {
         Player me = DualMenu.getInstance().getMe();
         Player rival = DualMenu.getInstance().getRival();
         paintCardsInHand(me,rival);
-
-
+        rivalNames.setText("username : " + rival.getUsername() + "\n" + "nickname : " + rival.getNickname());
+        myNames.setText( "username : " + me.getUsername() + "\n" + "nickname : " + me.getNickname());
+        myProf.setImage(me.getImage());
+        rivalProf.setImage(rival.getImage());
+        myLifePoint.setText(String.valueOf(Board.getBoardByPlayer(me).getLifePoint()));
+        rivalLifePoint.setText(String.valueOf(Board.getBoardByPlayer(rival).getLifePoint()));
     }
 
 
