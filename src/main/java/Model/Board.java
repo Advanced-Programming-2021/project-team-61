@@ -311,10 +311,10 @@ public class Board {
     }
     public boolean isMonsterZoneEmpty(){
         for(int i = 0; i < 5; i++){
-            if(monstersInField[i] == null)
-                return true;
+            if(monstersInField[i] != null)
+                return false;
         }
-        return false;
+        return true;
 
     }
     public MonsterField[] getMonstersInField(){

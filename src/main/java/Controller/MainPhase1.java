@@ -100,7 +100,7 @@ public class MainPhase1 {
         //   flipSummonMonster(board);
         //   Select.getInstance().deSelect();
         // checkToActivateEffect(board.getMonsterByIndex(Select.getInstance().getPosition()), rivalBoard);
-        return isMonsterCardDefenseHidden(board) || !board.getMonsterByIndex(index).isPutInThisTurn();
+        return isMonsterCardDefenseHidden(board,index) && !board.getMonsterByIndex(index).isPutInThisTurn();
     }
 
     public boolean ProcessSetPosition(Board board, String newPosition,int index) {
@@ -162,7 +162,7 @@ public class MainPhase1 {
 
 
     private boolean canISeeSelectedCard(Board rivalBoard) {
-        if (isSelectedCardInMonsterOpponent() && isMonsterCardDefenseHidden(rivalBoard))
+        if (isSelectedCardInMonsterOpponent() && isMonsterCardDefenseHidden(rivalBoard,0))
             return false;
         else if (isSelectedCardInSpellOpponent() && isSpellTrapHidden(rivalBoard))
             return false;
@@ -401,8 +401,8 @@ public class MainPhase1 {
         return Select.getInstance().getLocation() == Select.Location.MONSTER;
     }
 
-    private boolean isMonsterCardDefenseHidden(Board board) {
-        return board.getMonsterByIndex(Select.getInstance().getPosition() - 1).getStatus().equals("DH");
+    private boolean isMonsterCardDefenseHidden(Board board,int index) {
+        return board.getMonsterByIndex(index).getStatus().equals("DH");
     }
 
     public void flipSummonMonster(Board board,int index) {

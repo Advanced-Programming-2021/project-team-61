@@ -26,6 +26,11 @@ public class GameController {
             g = new GameController();
         return g;
     }
+
+    public boolean isHasAttackedInBattlePhase() {
+        return hasAttackedInBattlePhase;
+    }
+
     public void run(Player player1, Player player2){
         myTurn = player1;
         notMyTurn = player2;
