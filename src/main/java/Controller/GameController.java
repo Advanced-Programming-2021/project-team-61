@@ -58,36 +58,36 @@ public class GameController {
                 } else {
                     if (isSurrendered) {
                         GameView.getInstance().printWinner(notMyTurn, myTurn);
-                        giveScores();
+                   //     giveScores();
                         break;
                     }
                     enterDrawPhase();
                     if (isGameFinished(Board.getBoardByPlayer(myTurn), Board.getBoardByPlayer(notMyTurn))) {
                         findWinner();
-                        giveScores();
+                   //     giveScores();
                         break;
                     }
                     enterMainPhase();
                     enterStandByPhase();
                     if (isGameFinished(Board.getBoardByPlayer(myTurn), Board.getBoardByPlayer(notMyTurn))) {
                         findWinner();
-                        giveScores();
+                   //     giveScores();
                         break;
                     }
                     if (cheat) {
-                        giveScores();
+                    //    giveScores();
                         break;
                     }
                     enterBattlePhase();
                     if (isGameFinished(Board.getBoardByPlayer(myTurn), Board.getBoardByPlayer(notMyTurn))) {
                         findWinner();
-                        giveScores();
+                    //    giveScores();
                         break;
                     }
                     if (hasAttackedInBattlePhase) {
                         enterMainPhase();
                         findWinner();
-                        giveScores();
+                   //     giveScores();
 
                     }
 
@@ -132,6 +132,7 @@ public class GameController {
             }
         }
         isNormalSummonedInThisTurn = false;
+        hasAttackedInBattlePhase = false;
     }
     private void enterDrawPhase(){
         DrawPhase drawPhase = DrawPhase.getInstance();
@@ -165,11 +166,11 @@ public class GameController {
     private boolean isGameFinished(Board myBoard, Board rivalBoard){
         return (myBoard.getLifePoint()<=0 || rivalBoard.getLifePoint()<=0);
     }
-    private void giveScores(){
-        myTurn.setCoin(1000 + Board.getBoardByPlayer(myTurn).getLifePoint());
-        myTurn.setScore(Board.getBoardByPlayer(myTurn).getLifePoint());
-        notMyTurn.setCoin(1000 + Board.getBoardByPlayer(notMyTurn).getLifePoint());
-        notMyTurn.setScore(Board.getBoardByPlayer(notMyTurn).getLifePoint());
+    public void giveScores(Player me, Player rival){
+        me.setCoin(1000 + Board.getBoardByPlayer(me).getLifePoint());
+        me.setScore(Board.getBoardByPlayer(me).getLifePoint());
+        rival.setCoin(1000 + Board.getBoardByPlayer(rival).getLifePoint());
+        rival.setScore(Board.getBoardByPlayer(rival).getLifePoint());
     }
     private void findWinner(){
         if(Board.getBoardByPlayer(myTurn).getLifePoint()<=0){

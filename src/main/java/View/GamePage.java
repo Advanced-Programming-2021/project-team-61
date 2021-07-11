@@ -687,6 +687,10 @@ public class GamePage implements Initializable {
             if( BattlePhase.getInstance().getDamageToShow() != -1){
              int x = Integer.parseInt(rivalLifePoint.getText());
              rivalLifePoint.setText(String.valueOf(x - BattlePhase.getInstance().getDamageToShow()));
+             if(isGameFinished()){
+                 System.out.println("game finished");
+                 GameController.getInstance().giveScores(myTurn,notMyTurn);
+             }
             }
             rivalMonster.setImage(null);
             if(rivalMonster.getRotate() == 270)
@@ -699,15 +703,22 @@ public class GamePage implements Initializable {
                 myMonster.setImage(null);
         }
         else if( y == 2){
-            System.out.println("enter set game");
             int x = Integer.parseInt(myLifePoint.getText());
             myLifePoint.setText(String.valueOf(x - BattlePhase.getInstance().getDamageToShow()));
             if(BattlePhase.getInstance().isDestroyed())
                 myMonster.setImage(null);
+            if(isGameFinished()){
+                System.out.println("game finished");
+            GameController.getInstance().giveScores(myTurn,notMyTurn);
+            }
 
         }
 
 
+    }
+
+    private boolean isGameFinished() {
+        return Integer.parseInt(myLifePoint.getText()) < 0 || Integer.parseInt(rivalLifePoint.getText()) < 0;
     }
 
 
