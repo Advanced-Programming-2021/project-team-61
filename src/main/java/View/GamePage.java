@@ -14,6 +14,8 @@ import Controller.DualMenu;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import Controller.MainPhase1;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import Controller.DrawPhase;
@@ -22,6 +24,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import Controller.GameController;
 import Controller.BattlePhase;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+import javax.swing.*;
+import javax.swing.text.View;
 
 public class GamePage implements Initializable {
     public Label mainPhase2Label;
@@ -470,7 +476,6 @@ public class GamePage implements Initializable {
 
     @FXML
     void disappearFirst(MouseEvent event) {
-        System.out.println("entered");
        firstLabel.setText(null);
        firstLabelInMonsterZone.setText(null);
     }
@@ -582,7 +587,7 @@ public class GamePage implements Initializable {
                 case "OO" : {
 
                    int y = BattlePhase.getInstance().attackOO(index,0,Board.getBoardByPlayer(myTurn),Board.getBoardByPlayer(notMyTurn));
-                    System.out.println(y);
+                  //  System.out.println(y);
                    setGamePage(y,myMonster,firstRivalMonsterZone);
                    break;
                 }
@@ -682,7 +687,7 @@ public class GamePage implements Initializable {
 
     }
 
-    private void setGamePage(int y, ImageView myMonster, ImageView rivalMonster) {
+    private void setGamePage(int y, ImageView myMonster, ImageView rivalMonster){
         if( y == 0 ){
             if( BattlePhase.getInstance().getDamageToShow() != -1){
              int x = Integer.parseInt(rivalLifePoint.getText());
@@ -690,6 +695,7 @@ public class GamePage implements Initializable {
              if(isGameFinished()){
                  System.out.println("game finished");
                  GameController.getInstance().giveScores(myTurn,notMyTurn);
+                 JOptionPane.showConfirmDialog(null,"the game is finished","Game Finish",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
              }
             }
             rivalMonster.setImage(null);
@@ -708,8 +714,9 @@ public class GamePage implements Initializable {
             if(BattlePhase.getInstance().isDestroyed())
                 myMonster.setImage(null);
             if(isGameFinished()){
-                System.out.println("game finished");
+              //  System.out.println("game finished");
             GameController.getInstance().giveScores(myTurn,notMyTurn);
+                JOptionPane.showConfirmDialog(null,"the game is finished","Game Finish",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             }
 
         }
@@ -1015,6 +1022,7 @@ public class GamePage implements Initializable {
 
 
     public void runEndPhase(MouseEvent event) {
+        //System.out.println("startRunnung end phase");
         currentPhase = null;
         GameController.getInstance().reset(Board.getBoardByPlayer(myTurn).getMonstersInField());
         GameController.getInstance().setFirstTurn(false);
@@ -1068,28 +1076,39 @@ public class GamePage implements Initializable {
         switch (x){
             case 0 : {
                 firstInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(myTurn).getCardFromHand(x).getCardName()));
+                break;
             }
             case 1 : {
                 secondInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(myTurn).getCardFromHand(x).getCardName()));
+                break;
             }
             case 2 : {
                 thirdInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(myTurn).getCardFromHand(x).getCardName()));
+                break;
             }
             case 3 : {
                 fourthInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(myTurn).getCardFromHand(x).getCardName()));
+                break;
             }
             case 4 : {
                 fifthInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(myTurn).getCardFromHand(x).getCardName()));
+                break;
             }
             case 5 : {
                 sixthInHand.setImage(Card.getImageByCardName(Board.getBoardByPlayer(myTurn).getCardFromHand(x).getCardName()));
+                break;
             }
+            default:break;
 
         }
     }
-
+private int counter = 0;
     private void changeBoard() {
+      //  System.out.println("number :"+counter+" of test");
         Card[] hand = Board.getBoardByPlayer(notMyTurn).getHand();
+        System.out.println("player tp play:"+notMyTurn.getUsername());
+        for(int i = 0; i < 6; i++)
+            System.out.println(hand[i] == null);
         if(hand[0] == null)
             firstInHand.setImage(null);
         if(hand[0] != null)
@@ -1143,13 +1162,13 @@ public class GamePage implements Initializable {
             fifthRival.setImage(null);
         }
         if(hand[4] !=null){
-            firstRival.setImage(notShownImage.getImage());
+            fifthRival.setImage(notShownImage.getImage());
         }
         if(hand[5] == null){
             sixthRival.setImage(null);
         }
         if(hand[5] !=null){
-            fifthRival.setImage(notShownImage.getImage());
+            sixthRival.setImage(notShownImage.getImage());
         }
         MonsterField[] monsterFields = Board.getBoardByPlayer(myTurn).getMonstersInField();
         if(monsterFields[0] == null)
@@ -1260,10 +1279,13 @@ public class GamePage implements Initializable {
         }
         myLifePoint.setText(String.valueOf(Board.getBoardByPlayer(notMyTurn).getLifePoint()));
         rivalLifePoint.setText(String.valueOf(Board.getBoardByPlayer(myTurn).getLifePoint()));
+        myNames.setText("username : " + notMyTurn.getUsername() + "\n" + "nickname : " + notMyTurn.getNickname());
+        rivalNames.setText("username : " + myTurn.getUsername() + "\n" + "nickname : " + myTurn.getNickname());
 
 
 
     }
+
 
     public void disappearBattlePhaseLabel(MouseEvent event) {
         battlePhaseLabel.setText(null);
@@ -1280,5 +1302,31 @@ public class GamePage implements Initializable {
             mainPhase2Label.setText("not allowed");
 
         }
+    }
+    @FXML
+    void showMyGraveYard(MouseEvent event) throws IOException {
+        Player.setGraveYard(myTurn);
+        ViewManager viewManager = new ViewManager(new Stage());
+        viewManager.createStage("/sample/graveyardPage.fxml");
+     //   Logic.viewManager.changeScene("/sample/graveyardPage.fxml");
+
+
+    }
+
+    @FXML
+    void showRivalGraveYard(MouseEvent event) throws IOException {
+        Player.setGraveYard(notMyTurn);
+        ViewManager viewManager = new ViewManager(new Stage());
+        viewManager.createStage("/sample/graveyardPage.fxml");
+       // Logic.viewManager.changeScene("/sample/graveyardPage.fxml");
+
+
+    }
+
+    @FXML
+    void showSetting(MouseEvent event) throws IOException {
+        ViewManager viewManager = new ViewManager(new Stage());
+        viewManager.createStage("/sample/gamePausePage.fxml");
+
     }
 }

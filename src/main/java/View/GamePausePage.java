@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import Controller.GameController;
 import javafx.scene.text.Text;
 import Controller.DualMenu;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,39 +34,33 @@ public class GamePausePage implements Initializable {
     private ImageView sound;
 
     @FXML
-    private Text now;
+    private Text p1;
 
+    @FXML
+    private Text p2;
 
     public void backToMainMenu() throws IOException {
-       // StartPage.click.play();
+        // StartPage.click.play();
         Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
     }
 
-    public void changeSound(){
-       // StartPage.click.play();
-
-        //need some change after add background music
-        if (sound.equals(soundON))
-            sound = soundOFF;
-        else
-            sound = soundON;
-    }
-
     public void continueGame(){
-       // StartPage.click.play();
+
+        // StartPage.click.play();
         //back to gamePage
     }
 
     public void surrender(){
         //StartPage.click.play();
-        GameController.getInstance().setSurrendered(true);
+        //GameController.getInstance().setSurrendered(true);
         //GameController.getInstance().playGame();
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        now.setText(DualMenu.getInstance().getMe().getNickname() + "*" + Board.getBoardByPlayer(DualMenu.getInstance().getMe()).getLifePoint()
-        + "***" + Board.getBoardByPlayer(DualMenu.getInstance().getRival()).getLifePoint() + "*" + DualMenu.getInstance().getRival().getNickname());
+        p1.setText(DualMenu.getInstance().getMe().getUsername() + "\n" + Board.getBoardByPlayer(DualMenu.getInstance().getMe()).getLifePoint());
+        p2.setText(DualMenu.getInstance().getRival().getUsername() + "\n" + Board.getBoardByPlayer(DualMenu.getInstance().getRival()).getLifePoint());
+
     }
 }

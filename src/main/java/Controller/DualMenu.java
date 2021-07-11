@@ -106,10 +106,8 @@ public class DualMenu {
     }
 
     private void setGame(Player playerOne, Player playerTwo) {
-        System.out.println("enter this function");
         Board.getBoardByPlayer(playerOne).createHand();
         Board.getBoardByPlayer(playerTwo).createHand();
-        System.out.println("exit this function");
     }
 
 }

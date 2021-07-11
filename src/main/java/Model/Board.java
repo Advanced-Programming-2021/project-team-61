@@ -98,6 +98,7 @@ public class Board {
         if (isCanGetCardFromDeck()) {
             String cardName = mainDeck.get(0).getCardName();
             hand[index] = mainDeck.get(0);
+            mainDeck.remove(0);
             return cardName;
         }else {
             GameView.getInstance().printMessage(GameView.Command.cantGetCardFromDeck);

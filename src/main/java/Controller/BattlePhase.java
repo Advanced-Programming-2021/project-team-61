@@ -87,14 +87,13 @@ public class BattlePhase {
 
     public int attackOO(int myIndex, int rivalIndex, Board myBoard, Board rivalBoard){
         gameController = GameController.getInstance();
-        System.out.println("enter oo attack");
      //   if(!rivalBoard.canAttack(rivalMonster))
       //      view.printMessage(BattlePhaseView.Commands.cannotBeAttacked,0,"");
        // else{
           MonsterField myMonster = myBoard.getMonsterByIndex(myIndex);
           MonsterField rivalMonster = rivalBoard.getMonsterByIndex(rivalIndex);
             if(myMonster.getMonsterCard().getAttack() + myMonster.getExtraAttackPoint() >rivalMonster.getMonsterCard() .getAttack() + rivalMonster.getExtraAttackPoint()){
-                System.out.println("my monster attack > rival monster attack");
+
                 int damage = myMonster.getMonsterCard().getAttack()+myMonster.getExtraAttackPoint() - rivalMonster.getMonsterCard().getAttack() - rivalMonster.getExtraAttackPoint();
          //       checkSuspiciousCardAfterAttack(rivalMonster.getMonsterCard(),myBoard);
                 rivalBoard.destroyMonsterCardByIndex(rivalIndex);
@@ -139,7 +138,6 @@ public class BattlePhase {
         }
 
     public int attackDO(int myIndex, int rivalIndex, Board myBoard, Board rivalBoard){
-        System.out.println("entered do attack");
         gameController = GameController.getInstance();
       //  if(!rivalBoard.canAttack(rivalMonster))
       //      view.printMessage(BattlePhaseView.Commands.cannotBeAttacked,0,"");
@@ -147,7 +145,7 @@ public class BattlePhase {
         MonsterField myMonster = myBoard.getMonsterByIndex(myIndex);
         MonsterField rivalMonster = rivalBoard.getMonsterByIndex(rivalIndex);
             if(rivalMonster.getMonsterCard().getDefense() + rivalMonster.getExtraDefensePoint() < myMonster.getMonsterCard().getAttack() + myMonster.getExtraAttackPoint()){
-                System.out.println("my monster attack > rival monster defense");
+
            //     checkSuspiciousCardAfterAttack(rivalMonster.getMonsterCard(),myBoard);
                 rivalBoard.destroyMonsterCardByIndex(rivalIndex);
                 myMonster.setHasAttackedInTurn(true);
@@ -169,7 +167,7 @@ public class BattlePhase {
              //   Select.getInstance().deSelect();
             }
             else if(rivalMonster.getMonsterCard().getDefense() + rivalMonster.getExtraDefensePoint() > myMonster.getMonsterCard().getAttack() + myMonster.getExtraAttackPoint()){
-                System.out.println("rival defense > my attack");
+
 
                 int damage = rivalMonster.getMonsterCard().getDefense() - myMonster.getMonsterCard().getAttack();
                 System.out.println(damage);

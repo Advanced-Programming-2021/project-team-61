@@ -21,6 +21,15 @@ public class ViewManager {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+    public void createStage(String url) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        Parent root = FXMLLoader.load(getClass().getResource(url));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
 
 
 }

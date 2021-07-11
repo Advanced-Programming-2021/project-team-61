@@ -39,20 +39,19 @@
             <SepiaTone />
          </effect>
       </Button>
-      <ImageView fx:id="soundON" fitHeight="100.0" fitWidth="100.0" layoutX="68.0" layoutY="577.0">
-         <image>
-            <Image url="@../soundON.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="soundOFF" fitHeight="100.0" fitWidth="100.0" layoutX="68.0" layoutY="686.0">
-         <image>
-            <Image url="@../soundOFF.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="sound" fitHeight="100.0" fitWidth="100.0" layoutX="68.0" layoutY="448.0" onMouseClicked="#changeSound" pickOnBounds="true" preserveRatio="true" />
-      <Text fx:id="now" fill="#612929" layoutX="146.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="1028.0000027865171">
+      <Text fx:id="p1" layoutX="354.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
-            <Font size="30.0" />
+            <Font name="Eras Light ITC" size="60.0" />
+         </font>
+      </Text>
+      <Text fx:id="p2" layoutX="876.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font name="Eras Light ITC" size="60.0" />
+         </font>
+      </Text>
+      <Text layoutX="622.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VS">
+         <font>
+            <Font name="Eras Light ITC" size="70.0" />
          </font>
       </Text>
    </children>

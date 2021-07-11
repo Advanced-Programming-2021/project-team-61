@@ -17,6 +17,7 @@ public class Player {
     private ArrayList<Deck> allDecks = new ArrayList<>();
     private static ArrayList<Card> playerCards = new ArrayList<>();
     private static Player loggedPlayer;
+    private static Player graveYard;
 
 
     public Player(String username, String nickname, String password) {
@@ -209,6 +210,14 @@ public class Player {
 
     public Image getImage(){
         return this.image;
+    }
+
+    public static Player getGraveYard() {
+        return graveYard;
+    }
+
+    public static void setGraveYard(Player graveYard) {
+        Player.graveYard = graveYard;
     }
 }
 

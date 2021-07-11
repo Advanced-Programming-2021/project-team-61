@@ -410,6 +410,9 @@ public class MainPhase1 {
     }
 
     private boolean isPositionChangedInTurn(Board board,int index) {
+        System.out.println(board.getPlayer().getUsername());
+        System.out.println(index);
+        System.out.println(board.getMonsterByIndex(index) ==null);
         return board.getMonsterByIndex(index).isStatusChangedInTurn();
     }
 
