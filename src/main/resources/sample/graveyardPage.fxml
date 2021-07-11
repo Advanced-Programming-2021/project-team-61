@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<ScrollPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GraveyardPage">
+   <content>
+      <AnchorPane prefHeight="850.0" prefWidth="1300.0">
+         <children>
+            <ImageView fx:id="pr" fitHeight="200.0" fitWidth="139.0" layoutX="19.0" layoutY="343.0">
+               <image>
+                  <Image url="@../monsterCards/Unknown.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="850.0" fitWidth="1300.0">
+               <image>
+                  <Image url="@../50061.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="g1" fitHeight="200.0" fitWidth="170.0" layoutX="75.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g2" fitHeight="200.0" fitWidth="170.0" layoutX="320.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g3" fitHeight="200.0" fitWidth="170.0" layoutX="565.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g4" fitHeight="200.0" fitWidth="170.0" layoutX="810.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g5" fitHeight="200.0" fitWidth="170.0" layoutX="1055.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g6" fitHeight="200.0" fitWidth="170.0" layoutX="75.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g7" fitHeight="200.0" fitWidth="170.0" layoutX="320.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g8" fitHeight="200.0" fitWidth="170.0" layoutX="565.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g9" fitHeight="200.0" fitWidth="170.0" layoutX="810.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g10" fitHeight="200.0" fitWidth="170.0" layoutX="1055.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g11" fitHeight="200.0" fitWidth="170.0" layoutX="75.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g12" fitHeight="200.0" fitWidth="170.0" layoutX="320.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g13" fitHeight="200.0" fitWidth="170.0" layoutX="565.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g14" fitHeight="200.0" fitWidth="170.0" layoutX="810.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g15" fitHeight="200.0" fitWidth="170.0" layoutX="1055.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g16" fitHeight="200.0" fitWidth="170.0" layoutX="75.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g17" fitHeight="200.0" fitWidth="170.0" layoutX="320.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g18" fitHeight="200.0" fitWidth="170.0" layoutX="565.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g19" fitHeight="200.0" fitWidth="170.0" layoutX="810.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="g20" fitHeight="200.0" fitWidth="170.0" layoutX="1055.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="back" layoutX="1249.0" mnemonicParsing="false" onAction="#back" text="back">
+               <effect>
+                  <SepiaTone />
+               </effect>
+            </Button>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
