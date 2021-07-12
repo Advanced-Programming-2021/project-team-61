@@ -23,7 +23,7 @@ public class StartPage implements Initializable {
 
 
     public void signup() throws IOException {
-        //click.play();
+        click.play();
         Logic.viewManager.changeScene("/sample/signupPage.fxml");
     }
 
