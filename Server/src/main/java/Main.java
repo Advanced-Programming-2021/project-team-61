@@ -1,4 +1,5 @@
 import Controller.RegisterMenu;
+import Controller.ScoreBoardController;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -51,7 +52,8 @@ public class Main {
     static String process(String command) {
         if (command.startsWith("1."))
             return RegisterMenu.getInstance().checkCommand(command);
-
+        if (command.startsWith("5."))
+            return ScoreBoardController.getInstance().checkCommand(command);
         return "";
     }
 
