@@ -1460,46 +1460,92 @@ public class ShopPage implements Initializable {
             case "Horn Imp" : {
                 return hornNumbers;
             }
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-            case
-
-
-
-
-
-
-
-
-
-
-
+            case "Leotron" : {
+                return leotronNumbers;
+            }
+            case "Man-Eater Bug" : {
+                return manEaterNumbers;
+            }
+            case "Marshmallon" : {
+                return marshmallonNumbers;
+            }
+            case "Silver Fang" : {
+                return silverNumbers;
+            }
+            case "Slot Machine" : {
+                return slotNumbers;
+            }
+            case "Spiral Serpent" : {
+                return spiralNumbers;
+            }
+            case "The Calculator" : {
+                return calculatorNumbers;
+            }
+            case "Warrior Dai Grepher" : {
+                return warriorNumbers;
+            }
+            case "Wattaildragon" : {
+                return wattiNumbers;
+            }
+            case "Wattkid" : {
+                return wattkidNumbers;
+            }
+            case "Yomi Ship" : {
+                return yomiNumbers;
+            }
+            case "Time Seal" : {
+                return timesealNumbers;
+            }
+            case "Mind Crush" : {
+                return mindCrushNumbers;
+            }
+            case "Mirror Force" : {
+                return mirrorNumbers;
+            }
+            case "Call of The Haunted" : {
+                return callOfNumbers;
+            }
+            case "Torrential Tribute" : {
+                return torrentialNumbers;
+            }
+            case "Negate Attack" : {
+                return negateNumbers;
+            }
+            case "Dark Hole" : {
+                return darkHoleNumbers;
+            }
+            case "Forest" : {
+                return forestNumbers;
+            }
+            case "Messenger of peace" : {
+                return messengerNumbers;
+            }
+            case "Monster Reborn" : {
+                return monsterRebornNumbers;
+            }
+            case "Mystical space typhoon" : {
+                return mysticalNumbers;
+            }
+            case "Raigeki" : {
+                return raigekiNumbers;
+            }
+            case "Spell Absorption" : {
+                return spellNumbers;
+            }
+            case "Terraforming" : {
+                return terraNumbers;
+            }
+            case "Twin Twisters" : {
+                return twinNumbers;
+            }
+            case "Umiiruka" : {
+                return umirukaNumbers;
+            }
+            case "Yami" : {
+                return yamiNumbers;
+            }
+            default:
+                return null;
         }
     }
 }
