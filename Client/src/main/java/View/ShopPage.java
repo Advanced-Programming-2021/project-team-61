@@ -1,6 +1,6 @@
 package View;
 
-import Model.Card;
+//import Model.Card;
 import Model.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,18 +8,23 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import Controller.ShopMenu;
+//import Controller.ShopMenu;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ShopPage implements Initializable {
     private ShopMenu shopMenu = ShopMenu.getInstance();
     private Player player = Player.getLoggedPlayer();
+
+    private ShopClientController shopClientController;
+    private static Socket shopSocket;
+
 
     @FXML
     private Button CommandKnightBuy;
@@ -1120,10 +1125,19 @@ public class ShopPage implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            shopSocket = new Socket("localhost", 7778);
+            shopClientController = new ShopClientController(shopSocket);
+            Thread thread = new Thread(shopClientController);
+            thread.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         //shopMenu = ShopMenu.getInstance();
         //player = Player.getLoggedPlayer();
         availableCoin.setText(String.valueOf(player.getCoin()));
-        alexNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Alexandrite Dragon")));
+       /* alexNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Alexandrite Dragon")));
         axeNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Axe Raider")));
         battleOxNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Battle OX")));
         babyNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Baby dragon")));
@@ -1169,7 +1183,7 @@ public class ShopPage implements Initializable {
         wattiNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Wattaildragon")));
         wattkidNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Wattkid")));
         yamiNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Yami")));
-        yomiNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Yomi Ship")));
+        yomiNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Yomi Ship")));*/
         setButt();
     }
 
