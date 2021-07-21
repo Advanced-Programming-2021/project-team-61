@@ -15,9 +15,10 @@ public class Player {
     private int score;
     private int coin = 100000;
     private Image image;
-    //private ArrayList<Deck> allDecks = new ArrayList<>();
-    //private static ArrayList<Card> playerCards = new ArrayList<>();
+    private ArrayList<Deck> allDecks = new ArrayList<>();
+    private static ArrayList<Card> playerCards = new ArrayList<>();
     private static ArrayList<String> loggedPlayersNickName = new ArrayList<>();
+    private static ArrayList<String> requestedPlayersUsername = new ArrayList<>();
     private static Player graveYard;
 
 
@@ -107,30 +108,30 @@ public class Player {
         return allNickName;
     }
 
-    /*public void addDeck(Deck deck) {
+    public void addDeck(Deck deck) {
         allDecks.add(deck);
-    }*/
+    }
 
-    /*public void removeDeck(Deck deck) {
+    public void removeDeck(Deck deck) {
         allDecks.remove(deck);
-    }*/
+    }
 
-    /*public ArrayList<Deck> getAllDecks() {
+    public ArrayList<Deck> getAllDecks() {
         return allDecks;
-    }*/
+    }
 
-    /*public void addCard(Card card) {
+    public void addCard(Card card) {
         playerCards.add(card);
-    }*/
+    }
 
-    /*public void buyCard(Card card) {
+    public void buyCard(Card card) {
         this.setCoin(card.getPrice());
         addCard(card);
-    }*/
+    }
 
-    /*public ArrayList<Card> getPlayerCards() {
+    public ArrayList<Card> getPlayerCards() {
         return playerCards;
-    }*/
+    }
 
     /*public boolean doesPlayerHaveSpecialCard(String cardName) {
         for (Card card : playerCards) {
@@ -168,19 +169,19 @@ public class Player {
     public static String getLoggedPlayers(){
         StringBuilder s = new StringBuilder();
         for (String st:loggedPlayersNickName) {
-            s.append(st + "#");
+            s.append(st + '#');
         }
         return s.toString();
     }
 
-    /*public int numberOfSpecialCard(String cardName) {
+    public int numberOfSpecialCard(String cardName) {
         int num = 0;
         for (Card card : playerCards) {
             if (card.getCardName().equals(cardName))
                 num++;
         }
         return num;
-    }*/
+    }
 
     /*public int numberOfCardsInAndOutDecks(String cardName) {
         int num = numberOfSpecialCard(cardName);
@@ -228,4 +229,18 @@ public class Player {
     public static void setGraveYard(Player graveYard) {
         Player.graveYard = graveYard;
     }
+
+    public static void addToRequestedPlayersUsername(String username){
+        requestedPlayersUsername.add(username);
+    }
+
+    public static void removeRequestedPlayersUsername(String username){
+        requestedPlayersUsername.remove(username);
+    }
+
+    public static ArrayList<String> getRequestedPlayersUsername(){
+        return requestedPlayersUsername;
+    }
+
+
 }

@@ -30,7 +30,7 @@ public class LoginPage {
         //RegisterMenu.getInstance().loginProcess(username.getText(), password.getText());
         String s = "1.login " + username.getText() + " " + password.getText();
         String r = AppController.getServerOutput(s);
-        checkResult(r,username.getText());
+        checkResult(r);
 
     }
 
@@ -39,12 +39,13 @@ public class LoginPage {
         Logic.viewManager.changeScene("/sample/startPage.fxml");
     }
 
-    public void checkResult(String s,String username) throws IOException {
+    public void checkResult(String s) throws IOException {
         if (s.contains("success")){
             JOptionPane.showConfirmDialog(null,"user logged in successfully!","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             String[] split = s.split("\\s");
             AppController.setToken(split[1]);
             //set as logged player
+            AppController.setUsername(username.getText());
             Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
         }else
             JOptionPane.showConfirmDialog(null,s,"Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);

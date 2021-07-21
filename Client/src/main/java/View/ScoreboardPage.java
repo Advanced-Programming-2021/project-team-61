@@ -1,6 +1,5 @@
 package View;
 
-import Model.Player;
 import Controller.AppController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,9 +7,9 @@ import javafx.fxml.Initializable;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
-import Controller.ScoreBoardMenu;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -33,36 +32,41 @@ public class ScoreboardPage implements Initializable {
     private Button refresh;
 
     public void back() throws IOException {
-      //  StartPage.click.play();
+        //  StartPage.click.play();
         Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
     }
 
     public void refresh(){
-        ArrayList<String> names = AppController.getServerOutput("5.nickname").split("#");
-        ArrayList<String> scores = AppController.getServerOutput("5.score").split("#");
-        ArrayList<String> online = AppController.getServerOutput("5.online").split("#");
-        setTexts(names,scores,online);
+        ref();
+    }
+
+    private void ref() {
+        String[] name = AppController.getServerOutput("5.nickname").split("#");
+        String[] score = AppController.getServerOutput("5.score").split("%");
+        String[] online = AppController.getServerOutput("5.online").split("#");
+        ArrayList<String> names = new ArrayList<>();
+        names.addAll(Arrays.asList(name));
+        ArrayList<String> scores = new ArrayList<>();
+        scores.addAll(Arrays.asList(score));
+        ArrayList<String> onlines = new ArrayList<>();
+        onlines.addAll(Arrays.asList(online));
+        setTexts(names,scores,onlines);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //List[] name = AppController.getServerOutput("5.nickname").split("#");
-        ArrayList<String> names = AppController.getServerOutput("5.nickname").split("#");
-        //List[] score = AppController.getServerOutput("5.score").split("#");
-        ArrayList<String> scores = AppController.getServerOutput("5.score").split("#");
-        //List[] online = AppController.getServerOutput("5.online").split("#");
-        ArrayList<String> online = AppController.getServerOutput("5.online").split("#");
-        //ScoreBoardMenu.getInstance().sortByNickname();
-        //ScoreBoardMenu.getInstance().sortByScore();
-        setTexts(names,scores,online);
+        ref();
     }
 
-    public void setTexts(ArrayList<String> names, ArrayList<String> scores, ArrayList<String> online) {
+    public void setTexts(ArrayList<String> names, ArrayList<String> scores, ArrayList<String> onlines) {
+        System.out.println(names);
+        System.out.println(scores);
+        System.out.println(onlines);
         int rank = 1;
         int j=1;
         for (int i = 0; i < names.size(); i++) {
             String string = "";
-            if (online.contains(names.get(i))) {
+            if (onlines.contains(names.get(i))) {
                 string = rank + " : " + "nickName : " + names.get(i) + " Score: " + scores.get(i) + " online";
             }else {
                 string = rank + " : " + "nickName : " + names.get(i) + " Score: " + scores.get(i) + " offline";
@@ -74,7 +78,7 @@ public class ScoreboardPage implements Initializable {
             //    text.setFill(Color.RED);
             all.getChildren().add(text);
             if (i < names.size() - 1 && Integer.parseInt(scores.get(i)) != Integer.parseInt(scores.get(i+1)));
-                rank++;
+            rank++;
             j++;
         }
     }

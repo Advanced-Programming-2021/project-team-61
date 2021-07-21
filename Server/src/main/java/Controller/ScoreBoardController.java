@@ -37,26 +37,28 @@ public class ScoreBoardController {
 
 
     public String getNick(){
-        sortByNickname();
-        sortByScore();
         StringBuilder s = new StringBuilder();
+        System.out.println(allPlayerNickName);//
         for (String st:allPlayerNickName) {
-            s.append(st + "#");
+            s.append(st + '#');
         }
         return s.toString();
     }
 
     public String getScore(){
-        sortByNickname();
-        sortByScore();
-        StringBuilder s = new StringBuilder();
+        StringBuilder p = new StringBuilder();
+        System.out.println(allPlayerNickName);//
         for (String st:allPlayerNickName) {
-            s.append(Player.getScoreByNickname(st) + "#");
+            p.append(Player.getScoreByNickname(st) + "%");
         }
-        return s.toString();
+        System.out.println(p.toString());//
+        return p.toString();
     }
 
     public String checkCommand(String command){
+        forTest();
+        sortByNickname();
+        sortByScore();
         switch (command) {
             case "5.nickname":
                 return getNick();
@@ -69,4 +71,17 @@ public class ScoreBoardController {
         }
     }
 
+    public void forTest(){
+        new Player("ahmad","ahmad","ahmad").setScore(200);
+        new Player("sara","sara","sara").setScore(150);
+        new Player("mmd","mmd","mmd").setScore(100);
+        new Player("reza","reza","reza").setScore(220);
+        new Player("ali","ali","ali").setScore(80);
+        //Player.getPlayerByUsername("ahmad").setScore(200);
+        //Player.getPlayerByUsername("mmd").setScore(100);
+        //Player.getPlayerByUsername("sara").setScore(150);
+        //Player.getPlayerByUsername("ali").setScore(80);
+        //Player.getPlayerByUsername("reza").setScore(220);
+
+    }
 }

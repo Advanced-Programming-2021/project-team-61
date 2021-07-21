@@ -19,6 +19,7 @@ public class AppController {
     private static DataInputStream dataInputStream;
     private static DataOutputStream dataOutputStream;
     private static String token;
+    private static String username;
 
     public static void setupConnection() {
         try {
@@ -58,5 +59,13 @@ public class AppController {
     public static void chatRequest(String message) throws IOException {
         dataOutputStream.writeUTF(message);
         dataOutputStream.flush();
+    }
+
+    public static String getUsername() {
+        return username;
+    }
+
+    public static void setUsername(String username) {
+        AppController.username = username;
     }
 }

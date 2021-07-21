@@ -1,15 +1,24 @@
 import Controller.ChatRoomMenu;
+import Controller.GameRequestController;
 import Controller.RegisterMenu;
 import Controller.ScoreBoardController;
+import Model.Database;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Main {
     public static void main(String[] args) {
+        File f = new File("src\\main\\resources\\Monster.csv");
+        String absolute = f.getAbsolutePath();
+        File f2 = new File("src\\main\\resources\\SpellTrap.csv");
+        String absolute2 = f2.getAbsolutePath();
+        Database.readDataLineByLine(absolute, absolute2);
+        Database.setupForTest();
         runApp();
     }
 
@@ -78,6 +87,8 @@ public class Main {
 
         if (command.startsWith("5."))
             return ScoreBoardController.getInstance().checkCommand(command);
+        if (command.startsWith("6."))
+            return GameRequestController.getInstance().checkCommand(command);
         return "";
     }
     public static boolean isInChatRoom() {

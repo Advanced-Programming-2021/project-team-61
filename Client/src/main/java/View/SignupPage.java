@@ -46,8 +46,7 @@ public class SignupPage {
         if (s.equals("success")){
             JOptionPane.showConfirmDialog(null,"user created successfully!","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //to be changed
-            new Player(username.getText(),nickname.getText(),password.getText());
-            //set as logged player
+            AppController.setUsername(username.getText());
             Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
         }else
             JOptionPane.showConfirmDialog(null,s,"Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
