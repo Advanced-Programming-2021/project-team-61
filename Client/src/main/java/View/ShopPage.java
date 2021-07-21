@@ -21,6 +21,54 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ShopPage implements Initializable {
+    public Label commandNumbers;
+    public Label alexNumbers;
+    public Label axeNumbers;
+    public Label babyNumbers;
+    public Label battleOxNumbers;
+    public Label battleWarriorNumbers;
+    public Label bitronNumbers;
+    public Label blueEyesNumbers;
+    public Label crawlingNumbers;
+    public Label curtainNumbers;
+    public Label darkBladeNumbers;
+    public Label darkMagitionNumber;
+    public Label exploderNumbers;
+    public Label feralNumbers;
+    public Label fireYarouNumbers;
+    public Label flameNUmbers;
+    public Label haniwaNumbers;
+    public Label heroNumbers;
+    public Label hornNumbers;
+    public Label leotronNumbers;
+    public Label manEaterNumbers;
+    public Label marshmallonNumbers;
+    public Label silverNumbers;
+    public Label slotNumbers;
+    public Label spiralNumbers;
+    public Label calculatorNumbers;
+    public Label warriorNumbers;
+    public Label wattiNumbers;
+    public Label wattkidNumbers;
+    public Label yomiNumbers;
+    public Label timesealNumbers;
+    public Label mindCrushNumbers;
+    public Label mirrorNumbers;
+    public Label callOfNumbers;
+    public Label torrentialNumbers;
+    public Label negateNumbers;
+    public Label darkHoleNumbers;
+    public Label forestNumbers;
+    public Label messengerNumbers;
+    public Label monsterRebornNumbers;
+    public Label mysticalNumbers;
+    public Label raigekiNumbers;
+    public Label spellNumbers;
+    public Label terraNumbers;
+    public Label twinNumbers;
+    public Label umirukaNumbers;
+    public Label yamiNumbers;
+    public TextField availableCoin;
     private ShopMenu shopMenu = ShopMenu.getInstance();
     private Player player = Player.getLoggedPlayer();
 
@@ -28,7 +76,7 @@ public class ShopPage implements Initializable {
     private static Socket shopSocket;
     JFrame f;
 
-    @FXML
+ /*   @FXML
     private Button CommandKnightBuy;
 
     @FXML
@@ -317,12 +365,13 @@ public class ShopPage implements Initializable {
     private Button back;
 
     @FXML
-    private Button adminPanel;
+    private Button adminPanel;*/
 
 
     @FXML
     void buyAlexCard(MouseEvent event) {
         shopClientController.sendMessage("buy card #Alexandrite Dragon#"+AppController.getToken());
+
         //   StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Alexandrite Dragon",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
@@ -1351,5 +1400,106 @@ public class ShopPage implements Initializable {
             umirukaBuy.setDisable(true);
         if (player.getCoin()<Card.getCardByName("Yami").getPrice())
             yamiBuy.setDisable(true);
+    }
+    public Label getLabelByCardName(String cardName){
+        switch (cardName){
+            case "Command Knight" : {
+                return commandNumbers;
+            }
+            case "Alexandrite Dragon":{
+                return alexNumbers;
+            }
+            case "Axe Raider" : {
+                return axeNumbers;
+            }
+            case "Baby dragon" : {
+                return babyNumbers;
+            }
+            case "Battle OX" : {
+                return battleOxNumbers;
+            }
+            case "Battle warrior" : {
+                return battleWarriorNumbers;
+            }
+            case "Bitron" : {
+                return bitronNumbers;
+            }
+            case "Blue-Eyes white dragon" : {
+                return blueEyesNumbers;
+            }
+            case "Crawling dragon" : {
+                return crawlingNumbers;
+            }
+            case "Curtain of the dark ones" : {
+                return curtainNumbers;
+            }
+            case "Dark Blade" : {
+                return darkBladeNumbers;
+            }
+            case "Dark magician" : {
+                return darkMagitionNumber;
+            }
+            case "Exploder Dragon" : {
+                return exploderNumbers;
+            }
+            case "Feral Imp" : {
+                return feralNumbers;
+            }
+            case "Fireyarou" : {
+                return fireYarouNumbers;
+            }
+            case "Flame manipulator" : {
+                return flameNUmbers;
+            }
+            case "Haniwa" : {
+                return haniwaNumbers;
+            }
+            case "Hero of the east" : {
+                return heroNumbers;
+            }
+            case "Horn Imp" : {
+                return hornNumbers;
+            }
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+            case
+
+
+
+
+
+
+
+
+
+
+
+        }
     }
 }
