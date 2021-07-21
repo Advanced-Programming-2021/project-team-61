@@ -1,6 +1,7 @@
 package View;
 
 //import Model.Card;
+import Model.Card;
 import Model.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 //import Controller.ShopMenu;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import Controller.AppController;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -317,6 +319,7 @@ public class ShopPage implements Initializable {
 
     @FXML
     void buyAlexCard(MouseEvent event) {
+        shopClientController.sendMessage("buy card #Alexandrite Dragon"+"#"+AppController.getToken());
         //   StartPage.click.play();
         if(!shopMenu.isMoneyEnough("Alexandrite Dragon",player)){
             JOptionPane.showConfirmDialog(null,"no enough money","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
@@ -1189,7 +1192,7 @@ public class ShopPage implements Initializable {
 
     public void setButt(){
 
-        if (player.getCoin()<Card.getCardByName("Command Knight").getPrice())
+        if (player.getCoin()< Card.getCardByName("Command Knight").getPrice())
             CommandKnightBuy.setDisable(true);
         if (player.getCoin()<Card.getCardByName("Alexandrite Dragon").getPrice())
             alexandriteBuy.setDisable(true);
