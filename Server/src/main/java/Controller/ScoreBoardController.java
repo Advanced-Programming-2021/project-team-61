@@ -38,7 +38,7 @@ public class ScoreBoardController {
 
     public String getNick(){
         StringBuilder s = new StringBuilder();
-        System.out.println(allPlayerNickName);//
+        System.out.println("players to get by nickname:"+allPlayerNickName);//
         for (String st:allPlayerNickName) {
             s.append(st + '#');
         }
@@ -47,7 +47,7 @@ public class ScoreBoardController {
 
     public String getScore(){
         StringBuilder p = new StringBuilder();
-        System.out.println(allPlayerNickName);//
+        System.out.println("players to get scores :"+allPlayerNickName);//
         for (String st:allPlayerNickName) {
             p.append(Player.getScoreByNickname(st) + "%");
         }
@@ -56,16 +56,19 @@ public class ScoreBoardController {
     }
 
     public String checkCommand(String command){
-        forTest();
+
         sortByNickname();
         sortByScore();
         switch (command) {
-            case "5.nickname":
-                return getNick();
-            case "5.score":
+            case "5.nickname":{
+
+                return getNick();}
+            case "5.score":{
                 return getScore();
-            case "5.online":
+            }
+            case "5.online":{
                 return Player.getLoggedPlayers();
+            }
             default:
                 return "invalid";
         }

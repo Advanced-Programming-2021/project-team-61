@@ -95,7 +95,12 @@ public class Database {
     }
 
     public static void setupForTest(){
-        new Player("amir","amir","amir");
+        new Player("ahmad","ahmad","ahmad").setScore(200);
+        new Player("sara","sara","sara").setScore(150);
+        new Player("mmd","mmd","mmd").setScore(100);
+        new Player("reza","reza","reza").setScore(220);
+        new Player("ali","ali","ali").setScore(80);
+       /* new Player("amir","amir","amir");
         new Deck("amir","amir");
         Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Battle OX");
         Deck.getDeckByName("amir",Player.getPlayerByUsername("amir")).addCardToMainDeck_Deck("Battle OX");
@@ -140,7 +145,7 @@ public class Database {
 
         Deck.activateDeck("amir",Player.getPlayerByUsername("amir"));
 
-        new Player("ali","ali","ali");
+       // new Player("ali","ali","ali");
         new Deck("ali","ali");
         Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Battle Ox");
         Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Battle Ox");
@@ -183,7 +188,7 @@ public class Database {
         Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Alexandrite Dragon");
         Deck.getDeckByName("ali",Player.getPlayerByUsername("ali")).addCardToMainDeck_Deck("Alexandrite Dragon");
 
-        Deck.activateDeck("ali",Player.getPlayerByUsername("ali"));
+        Deck.activateDeck("ali",Player.getPlayerByUsername("ali"));*/
     }
 
 }
