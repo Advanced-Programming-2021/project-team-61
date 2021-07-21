@@ -980,7 +980,13 @@ public class ShopPage implements Initializable {
         wattkidNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Wattkid")));
         yamiNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Yami")));
         yomiNumbers.setText(String.valueOf(player.numberOfCardsInAndOutDecks("Yomi Ship")));*/
-        setButt();
+        int coins = 0;
+        try {
+            coins = shopClientController.getCoins("give coins#"+ AppController.getToken());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        setButt(coins);
     }
 
     public void setButt(int coins){

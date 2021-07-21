@@ -11,6 +11,7 @@ public class ViewManager {
 
     Stage stage;
    private static ChatRoomPage chatRoomPage;
+   private static ShopPage shopPage;
 
     public ViewManager(Stage stage) {
         this.stage = stage;
@@ -27,6 +28,8 @@ public class ViewManager {
         Scene scene = new Scene(firstPage);
         if(loader.getController() instanceof ChatRoomPage)
            chatRoomPage = loader.getController();
+        if(loader.getController() instanceof ShopPage)
+            shopPage = loader.getController();
         stage.setTitle("Hello World");
         stage.setScene(scene);
     }
@@ -40,6 +43,9 @@ public class ViewManager {
     }
     public static ChatRoomPage getChatRoomPage(){
         return chatRoomPage;
+    }
+    public static ShopPage getShopPage(){
+        return shopPage;
     }
 
 

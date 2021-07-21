@@ -468,7 +468,7 @@ public class ShopAdminPage{
             //available.setText("available : " + loggedPlayer.numberOfSpecialCard(cardName));
             //sideDeck.setText("sideDeck : " + Deck.getDeckByName(deckName,loggedPlayer).numberOfSpecialCardInSideDeck(cardName));
             //mainDeck.setText("mainDeck : " + Deck.getDeckByName(deckName,loggedPlayer).numberOfSpecialCardInMainDeck(cardName));
-            available.setText();////
+            available.setText(cardName);////
         }
 
 
@@ -494,8 +494,9 @@ public class ShopAdminPage{
             available.setText(String.valueOf(Integer.parseInt(available.getText()) - 1));
         }
 
-        public void positive(){
+        public void positive() throws IOException {
             available.setText(String.valueOf(Integer.parseInt(available.getText()) + 1));
+            ViewManager.getShopPage().getShopClientController().sendIncreaseCard(currentCardName);
         }
 }
 

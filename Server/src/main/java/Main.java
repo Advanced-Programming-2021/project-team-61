@@ -1,7 +1,4 @@
-import Controller.ChatRoomMenu;
-import Controller.GameRequestController;
-import Controller.RegisterMenu;
-import Controller.ScoreBoardController;
+import Controller.*;
 import Model.Database;
 
 import java.io.DataInputStream;
@@ -30,6 +27,7 @@ public class Main {
         System.out.println("run");
         try {
             ChatRoomMenu.getInstance().setChatServerSocket(new ServerSocket(7777));
+            ShopMenu.getInstance().setShopServerSocket(new ServerSocket(7778));
             ServerSocket serverSocket = new ServerSocket(7776);
             while (true) {
                 Socket socket = serverSocket.accept();

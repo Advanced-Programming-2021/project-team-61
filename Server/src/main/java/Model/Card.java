@@ -15,6 +15,7 @@ public class Card {
     protected int price;
     protected boolean isSelected = false;
     protected static ArrayList<Card> allCards = new ArrayList<>();
+    private int numberOfCardsInShop;
 
 
     protected Card(String cardName, String cardType, String description, int price) {
@@ -22,6 +23,7 @@ public class Card {
         this.cardType = cardType;
         this.description = description;
         this.price = price;
+        this.numberOfCardsInShop = 10;
     }
     public static Image getImageByCardName(String cardName){
         String path = "file:" + System.getProperty("user.dir") + "/src/main/resources/";
@@ -75,6 +77,16 @@ public class Card {
 
     public String getCardType() {
         return cardType;
+    }
+
+    public int getNumberOfCardsInShop(){
+        return numberOfCardsInShop;
+    }
+    public void decreaseNumberOfCards(){
+        this.numberOfCardsInShop = numberOfCardsInShop - 1;
+    }
+    public void increaseNumberOfCards(){
+        this.numberOfCardsInShop = numberOfCardsInShop + 1;
     }
 
     public String getDescription() {
