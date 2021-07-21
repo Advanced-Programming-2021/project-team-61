@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ShopAdminPage">
+    <content>
+        <AnchorPane prefHeight="850.0" prefWidth="1500.0">
+            <children>
+                <ImageView fitHeight="850.0" fitWidth="1500.0">
+                    <image>
+                        <Image url="@../GUI_T_Detail_ComboBase01.dds1.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="AlexandriteDragon" fitHeight="200.0" fitWidth="137.0" layoutX="1363.0" onMouseClicked="#AlexandriteDragon">
+                    <image>
+                        <Image url="@../monsterCards/Alexandrite Dragon.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="AxeRaider" fitHeight="200.0" fitWidth="137.0" layoutX="1228.0" onMouseClicked="#AxeRaider">
+                    <image>
+                        <Image url="@../monsterCards/Axe Raider.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="BabyDragon" fitHeight="200.0" fitWidth="137.0" layoutX="1091.0" onMouseClicked="#BabyDragon">
+                    <image>
+                        <Image url="@../monsterCards/Baby dragon.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="BattleOX" fitHeight="200.0" fitWidth="137.0" layoutX="958.0" onMouseClicked="#BattleOX">
+                    <image>
+                        <Image url="@../monsterCards/Battle OX.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="BattleWarrior" fitHeight="200.0" fitWidth="137.0" layoutX="821.0" onMouseClicked="#BattleWarrior">
+                    <image>
+                        <Image url="@../monsterCards/Battle warrior.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="Bitron" fitHeight="200.0" fitWidth="137.0" layoutX="684.0" onMouseClicked="#Bitron">
+                    <image>
+                        <Image url="@../monsterCards/Bitron.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="BlueEyesWhiteDragon" fitHeight="200.0" fitWidth="137.0" layoutX="547.0" onMouseClicked="#BlueEyesWhiteDragon">
+                    <image>
+                        <Image url="@../monsterCards/Blue-Eyes white dragon.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="CommandKnight" fitHeight="200.0" fitWidth="137.0" layoutX="410.0" onMouseClicked="#CommandKnight">
+                    <image>
+                        <Image url="@../monsterCards/Command Knight.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="CrawlingDragon" fitHeight="200.0" fitWidth="137.0" layoutX="273.0" onMouseClicked="#CrawlingDragon">
+                    <image>
+                        <Image url="@../monsterCards/Crawling dragon.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="CurtainOfTheDarkOnes" fitHeight="200.0" fitWidth="137.0" layoutX="136.0" onMouseClicked="#CurtainOfTheDarkOnes">
+                    <image>
+                        <Image url="@../monsterCards/Curtain of the dark ones.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="DarkBlade" fitHeight="200.0" fitWidth="137.0" layoutX="1.0" onMouseClicked="#DarkBlade">
+                    <image>
+                        <Image url="@../monsterCards/Dark Blade.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="DarkMagician" fitHeight="200.0" fitWidth="137.0" layoutX="1363.0" layoutY="150.0" onMouseClicked="#DarkMagician">
+                    <image>
+                        <Image url="@../monsterCards/Dark magician.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="ExploderDragon" fitHeight="200.0" fitWidth="137.0" layoutX="1228.0" layoutY="150.0" onMouseClicked="#ExploderDragon">
+                    <image>
+                        <Image url="@../monsterCards/Exploder Dragon.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="FeralImp" fitHeight="200.0" fitWidth="137.0" layoutX="1091.0" layoutY="150.0" onMouseClicked="#FeralImp">
+                    <image>
+                        <Image url="@../monsterCards/Feral Imp.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="Fireyarou" fitHeight="200.0" fitWidth="137.0" layoutX="954.0" layoutY="150.0" onMouseClicked="#Fireyarou">
+                    <image>
+                        <Image url="@../monsterCards/Fireyarou.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="FlameManipulator" fitHeight="200.0" fitWidth="137.0" layoutX="817.0" layoutY="150.0" onMouseClicked="#FlameManipulator">
+                    <image>
+                        <Image url="@../monsterCards/Flame manipulator.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="Haniwa" fitHeight="200.0" fitWidth="137.0" layoutX="680.0" layoutY="150.0" onMouseClicked="#Haniwa">
+                    <image>
+                        <Image url="@../monsterCards/Haniwa.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="HeroOfTheEast" fitHeight="200.0" fitWidth="137.0" layoutX="543.0" layoutY="150.0" onMouseClicked="#HeroOfTheEast">
+                    <image>
+                        <Image url="@../monsterCards/Hero of the east.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="HornImp" fitHeight="200.0" fitWidth="137.0" layoutX="408.0" layoutY="150.0" onMouseClicked="#HornImp">
+                    <image>
+                        <Image url="@../monsterCards/Horn Imp.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="Leotron" fitHeight="200.0" fitWidth="137.0" layoutX="274.0" layoutY="150.0" onMouseClicked="#Leotron">
+                    <image>
+                        <Image url="@../monsterCards/Leotron.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="ManEaterBug" fitHeight="200.0" fitWidth="137.0" layoutX="1363.0" layoutY="299.0" onMouseClicked="#ManEaterBug">
+                    <image>
+                        <Image url="@../monsterCards/Man-Eater Bug.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="Marshmallon" fitHeight="200.0" fitWidth="137.0" layoutX="1228.0" layoutY="299.0" onMouseClicked="#Marshmallon">
+                    <image>
+                        <Image url="@../monsterCards/Marshmallon.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="SilverFang" fitHeight="200.0" fitWidth="137.0" layoutX="1091.0" layoutY="299.0" onMouseClicked="#SilverFang">
+                    <image>
+                        <Image url="@../monsterCards/Silver Fang.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="SlotMachine" fitHeight="200.0" fitWidth="137.0" layoutX="954.0" layoutY="299.0" onMouseClicked="#SlotMachine">
+                    <image>
+                        <Image url="@../monsterCards/Slot Machine.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="SpiralSerpent" fitHeight="200.0" fitWidth="137.0" layoutX="817.0" layoutY="299.0" onMouseClicked="#SpiralSerpent">
+                    <image>
+                        <Image url="@../monsterCards/Spiral Serpent.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="TheCalculator" fitHeight="200.0" fitWidth="137.0" layoutX="680.0" layoutY="299.0" onMouseClicked="#TheCalculator">
+                    <image>
+                        <Image url="@../monsterCards/The Calculator.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="WarriorDaiGrepher" fitHeight="200.0" fitWidth="137.0" layoutX="543.0" layoutY="299.0" onMouseClicked="#WarriorDaiGrepher">
+                    <image>
+                        <Image url="@../monsterCards/Warrior Dai Grepher.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="WattailDragon" fitHeight="200.0" fitWidth="137.0" layoutX="408.0" layoutY="299.0" onMouseClicked="#WattailDragon">
+                    <image>
+                        <Image url="@../monsterCards/Wattaildragon.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="Wattkid" fitHeight="200.0" fitWidth="137.0" layoutX="273.0" layoutY="299.0" onMouseClicked="#Wattkid">
+                    <image>
+                        <Image url="@../monsterCards/Wattkid.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="YomiShip" fitHeight="200.0" fitWidth="137.0" layoutX="1363.0" layoutY="447.0" onMouseClicked="#YomiShip">
+                    <image>
+                        <Image url="@../monsterCards/Yomi Ship.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="DarkHole" fitHeight="200.0" fitWidth="137.0" layoutX="1091.0" layoutY="447.0" onMouseClicked="#DarkHole">
+                    <image>
+                        <Image url="@../spellCards/Dark Hole.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="Forest" fitHeight="200.0" fitWidth="137.0" layoutX="954.0" layoutY="447.0" onMouseClicked="#Forest">
+                    <image>
+                        <Image url="@../spellCards/Forest.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="MessengerOfPeace" fitHeight="200.0" fitWidth="137.0" layoutX="817.0" layoutY="447.0" onMouseClicked="#MessengerOfPeace">
+                    <image>
+                        <Image url="@../spellCards/Messenger of peace.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="MindCrush" fitHeight="200.0" fitWidth="137.0" layoutX="680.0" layoutY="447.0" onMouseClicked="#MindCrush">
+                    <image>
+                        <Image url="@../spellCards/Mind Crush.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="MirrorForce" fitHeight="200.0" fitWidth="137.0" layoutX="543.0" layoutY="447.0" onMouseClicked="#MirrorForce">
+                    <image>
+                        <Image url="@../spellCards/Mirror Force.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="MonsterReborn" fitHeight="200.0" fitWidth="137.0" layoutX="408.0" layoutY="447.0" onMouseClicked="#MonsterReborn">
+                    <image>
+                        <Image url="@../spellCards/Monster Reborn.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="TorrentialTribute" fitHeight="200.0" fitWidth="137.0" layoutX="680.0" layoutY="595.0" onMouseClicked="#TorrentialTribute">
+                    <image>
+                        <Image url="@../spellCards/Torrential Tribute.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="MysticalSpaceTyphoon" fitHeight="200.0" fitWidth="137.0" layoutX="273.0" layoutY="447.0" onMouseClicked="#MysticalSpaceTyphoon">
+                    <image>
+                        <Image url="@../spellCards/Mystical space typhoon.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="NegateAttack" fitHeight="200.0" fitWidth="137.0" layoutX="1363.0" layoutY="595.0" onMouseClicked="#NegateAttack">
+                    <image>
+                        <Image url="@../spellCards/Negate Attack.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="SpellAbsorption" fitHeight="200.0" fitWidth="137.0" layoutX="1091.0" layoutY="595.0" onMouseClicked="#SpellAbsorption">
+                    <image>
+                        <Image url="@../spellCards/Spell Absorption.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="Terraforming" fitHeight="200.0" fitWidth="137.0" layoutX="954.0" layoutY="595.0" onMouseClicked="#Terraforming">
+                    <image>
+                        <Image url="@../spellCards/Terraforming.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="TimeSeal" fitHeight="200.0" fitWidth="137.0" layoutX="817.0" layoutY="595.0" onMouseClicked="#TimeSeal">
+                    <image>
+                        <Image url="@../spellCards/Time Seal.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="CallOfTheHaunted" fitHeight="200.0" fitWidth="137.0" layoutX="1228.0" layoutY="447.0" onMouseClicked="#CallOfTheHaunted">
+                    <image>
+                        <Image url="@../spellCards/Call of The Haunted.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="TwinTwisters" fitHeight="200.0" fitWidth="137.0" layoutX="543.0" layoutY="595.0" onMouseClicked="#TwinTwisters">
+                    <image>
+                        <Image url="@../spellCards/Twin Twisters.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="Umiiruka" fitHeight="200.0" fitWidth="137.0" layoutX="273.0" layoutY="595.0" onMouseClicked="#Umiiruka">
+                    <image>
+                        <Image url="@../spellCards/Umiiruka.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="Yami" fitHeight="200.0" fitWidth="137.0" layoutX="408.0" layoutY="595.0" onMouseClicked="#Yami">
+                    <image>
+                        <Image url="@../spellCards/Yami.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="card" fitHeight="400.0" fitWidth="274.0" layoutX="-1.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="Raigeki" fitHeight="200.0" fitWidth="137.0" layoutX="1228.0" layoutY="595.0" onMouseClicked="#Raigeki">
+                    <image>
+                        <Image url="@../spellCards/Raigeki.jpg" />
+                    </image>
+                </ImageView>
+                <Button fx:id="back" layoutX="85.0" layoutY="789.0" mnemonicParsing="false" onAction="#back" text="back">
+                    <effect>
+                        <SepiaTone />
+                    </effect>
+                    <font>
+                        <Font name="Eras Light ITC" size="15.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </content>
+</ScrollPane>
