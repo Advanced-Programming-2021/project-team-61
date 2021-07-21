@@ -1,6 +1,7 @@
 package View;
 
 import Controller.AppController;
+import Model.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -29,7 +30,7 @@ public class LoginPage {
         //RegisterMenu.getInstance().loginProcess(username.getText(), password.getText());
         String s = "1.login " + username.getText() + " " + password.getText();
         String r = AppController.getServerOutput(s);
-        checkResult(r);
+        checkResult(r,username.getText());
 
     }
 
@@ -38,9 +39,11 @@ public class LoginPage {
         Logic.viewManager.changeScene("/sample/startPage.fxml");
     }
 
-    public void checkResult(String s) throws IOException {
-        if (s.equals("success")){
+    public void checkResult(String s,String username) throws IOException {
+        if (s.contains("success")){
             JOptionPane.showConfirmDialog(null,"user logged in successfully!","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+            String[] split = s.split("\\s");
+            AppController.setToken(split[1]);
             //set as logged player
             Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
         }else

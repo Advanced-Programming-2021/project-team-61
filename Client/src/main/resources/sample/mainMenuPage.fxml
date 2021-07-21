@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane pannable="true" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainMenuPage">
+<ScrollPane pannable="true" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainMenuPage">
    <content>
       <AnchorPane prefHeight="850.0" prefWidth="1300.0">
          <children>
@@ -64,6 +64,14 @@
                <font>
                   <Font name="Eras Light ITC" size="15.0" />
                </font></Button>
+            <Button fx:id="chatRoom" layoutX="1111.0" layoutY="172.0" mnemonicParsing="false" onAction="#chatRoom" text="chat room">
+               <font>
+                  <Font name="Eras Light ITC" size="25.0" />
+               </font>
+               <effect>
+                  <SepiaTone />
+               </effect>
+            </Button>
          </children>
       </AnchorPane>
    </content>

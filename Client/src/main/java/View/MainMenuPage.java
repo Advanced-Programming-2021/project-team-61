@@ -1,12 +1,17 @@
 package View;
 
 //import Model.Player;
+import Controller.AppController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MainMenuPage {
+
 
     @FXML
     private Button newGame;
@@ -57,4 +62,14 @@ public class MainMenuPage {
         Logic.viewManager.changeScene("/sample/startPage.fxml");
         //Player.setLoggedPlayer(null);
     }
+
+    public void chatRoom(ActionEvent actionEvent) throws IOException {
+
+        Logic.viewManager.changeScene("/sample/chatRoom.fxml");
+        AppController.chatRequest("enter chat");
+       // AppController.getServerOutput("enter chat");
+    }
+
+
+
 }

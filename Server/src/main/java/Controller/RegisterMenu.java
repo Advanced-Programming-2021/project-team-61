@@ -4,6 +4,9 @@ import Model.Player;
 //import View.MainView;
 //import View.RegisterView;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,6 +14,7 @@ public class RegisterMenu {
     private static RegisterMenu r = null;
     //private RegisterView view;
     private Matcher matcher;
+    private static HashMap<String,Player> loggedinUsers = new HashMap<>();
 
 
     private RegisterMenu() {
@@ -32,7 +36,6 @@ public class RegisterMenu {
     }
 
     public String userCreateProcess(Matcher matcher) {
-        System.out.println("enter");
         //view = RegisterView.getInstance();
         if (Player.isUserNameExists(matcher.group(1)))
             //view.printMessage(RegisterView.Commands.userExistsWithUsername, matcher.group(1));
@@ -54,8 +57,14 @@ public class RegisterMenu {
         else if (!Player.getPlayerByUsername(matcher.group(1)).getPassword().equals(matcher.group(2)))
             //view.printMessage(RegisterView.Commands.noMatch, "");
             return "Username and password didn't match!";
-        else
-            return "success";
+        else{
+            String token = UUID.randomUUID().toString();
+            loggedinUsers.put(token,Player.getPlayerByUsername(matcher.group(1)));
+
+
+            return "success"+" "+token;
+
+        }
     }
 
     private void CreatePlayer(String username, String nickname, String password){
@@ -66,5 +75,14 @@ public class RegisterMenu {
         Pattern p = Pattern.compile(regex);
         return p.matcher(input);
 
+    }
+    public static String getUsernameByToken(String token){
+        for(Map.Entry loggedInUser : loggedinUsers.entrySet()){
+            if(loggedInUser.getKey().equals(token)){
+                Player p = (Player) loggedInUser.getValue();
+                return p.getUsername();
+            }
+        }
+        return null;
     }
 }

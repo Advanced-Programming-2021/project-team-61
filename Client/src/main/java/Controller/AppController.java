@@ -18,6 +18,7 @@ public class AppController {
     private static Socket socket;
     private static DataInputStream dataInputStream;
     private static DataOutputStream dataOutputStream;
+    private static String token;
 
     public static void setupConnection() {
         try {
@@ -31,17 +32,14 @@ public class AppController {
 
     public static String getServerOutput(String input) {
          try {
-            System.out.println("mmd");
             dataOutputStream.writeUTF(input);
-             System.out.println("mmd2");
             dataOutputStream.flush();
             String result = dataInputStream.readUTF();
-             System.out.println("mmd3");
+
 
             //dataOutputStream.close();
-             System.out.println("mmd4");
             //socket.close();
-             System.out.println("mmd5");
+
             return result;
         }catch (IOException ignored) {
             return "SERVER CONNECTION FAILED";
@@ -49,4 +47,16 @@ public class AppController {
         //return "";
     }
 
+    public static void setToken(String token) {
+        AppController.token = token;
+    }
+
+    public static String getToken() {
+        return token;
+    }
+
+    public static void chatRequest(String message) throws IOException {
+        dataOutputStream.writeUTF(message);
+        dataOutputStream.flush();
+    }
 }

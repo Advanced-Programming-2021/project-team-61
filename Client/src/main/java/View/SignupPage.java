@@ -1,6 +1,7 @@
 package View;
 
 import Controller.AppController;
+import Model.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -44,6 +45,8 @@ public class SignupPage {
     public void checkResult(String s) throws IOException {
         if (s.equals("success")){
             JOptionPane.showConfirmDialog(null,"user created successfully!","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+            //to be changed
+            new Player(username.getText(),nickname.getText(),password.getText());
             //set as logged player
             Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
         }else
