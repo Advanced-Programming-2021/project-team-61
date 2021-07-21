@@ -1183,4 +1183,7 @@ public class ShopPage implements Initializable {
                 return null;
         }
     }
+    public ShopClientController getShopClientController(){
+        return shopClientController;
+    }
 }
