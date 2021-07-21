@@ -1,5 +1,6 @@
 import Controller.ChatRoomMenu;
 import Controller.RegisterMenu;
+import Controller.ScoreBoardController;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -17,6 +18,7 @@ public class Main {
     private static boolean inChatRoom = false;
 
     private static void runApp() {
+        System.out.println("run");
         try {
             ChatRoomMenu.getInstance().setChatServerSocket(new ServerSocket(7777));
             ServerSocket serverSocket = new ServerSocket(7776);
@@ -74,6 +76,8 @@ public class Main {
             return "OK!";
         }
 
+        if (command.startsWith("5."))
+            return ScoreBoardController.getInstance().checkCommand(command);
         return "";
     }
     public static boolean isInChatRoom() {

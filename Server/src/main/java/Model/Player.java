@@ -17,7 +17,7 @@ public class Player {
     private Image image;
     //private ArrayList<Deck> allDecks = new ArrayList<>();
     //private static ArrayList<Card> playerCards = new ArrayList<>();
-    private static Player loggedPlayer;
+    private static ArrayList<String> loggedPlayersNickName = new ArrayList<>();
     private static Player graveYard;
 
 
@@ -157,12 +157,20 @@ public class Player {
         return nickname;
     }
 
-    public static void setLoggedPlayer(Player player) {
-        loggedPlayer = player;
+    public static void addLoggedPlayer(String nickname){
+        loggedPlayersNickName.add(nickname);
     }
 
-    public static Player getLoggedPlayer() {
-        return loggedPlayer;
+    public static void removeLoggedPlayer(String nickname) {
+        loggedPlayersNickName.remove(nickname);
+    }
+
+    public static String getLoggedPlayers(){
+        StringBuilder s = new StringBuilder();
+        for (String st:loggedPlayersNickName) {
+            s.append(st + "#");
+        }
+        return s.toString();
     }
 
     /*public int numberOfSpecialCard(String cardName) {
