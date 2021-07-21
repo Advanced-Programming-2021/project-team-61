@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="087651a8-6183-452f-81ab-5bf8c2801d0f" name="Default Changelist" comment="abc" />
+    <list default="true" id="087651a8-6183-452f-81ab-5bf8c2801d0f" name="Default Changelist" comment="abc">
+      <change beforePath="$PROJECT_DIR$/../Client/src/main/java/View/ShopClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/main/java/View/ShopClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/main/java/View/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/main/java/View/ViewManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Card.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +37,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Client" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -41,6 +46,19 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Server" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -72,7 +90,7 @@
       <workItem from="1626791554077" duration="684000" />
       <workItem from="1626794519561" duration="4442000" />
       <workItem from="1626805020747" duration="7430000" />
-      <workItem from="1626844873260" duration="10057000" />
+      <workItem from="1626844873260" duration="14962000" />
     </task>
     <task id="LOCAL-00001" summary="abc">
       <created>1626349061277</created>
