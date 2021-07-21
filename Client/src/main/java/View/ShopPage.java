@@ -383,7 +383,8 @@ public class ShopPage implements Initializable {
         //  StartPage.click.play();
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -394,8 +395,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -404,8 +405,8 @@ public class ShopPage implements Initializable {
         //  StartPage.click.play();
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -417,7 +418,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -427,7 +429,8 @@ public class ShopPage implements Initializable {
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
 
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -436,7 +439,8 @@ public class ShopPage implements Initializable {
         // StartPage.click.play();
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -446,7 +450,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -458,7 +463,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -470,7 +476,8 @@ public class ShopPage implements Initializable {
             //System.out.println("Card added successfully");
 
 
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -481,7 +488,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -491,7 +499,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -503,7 +512,8 @@ public class ShopPage implements Initializable {
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
 
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -513,7 +523,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -524,7 +535,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -536,7 +548,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -546,7 +559,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -556,7 +570,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -566,7 +581,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -576,7 +592,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -586,7 +603,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -596,7 +614,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -606,7 +625,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -616,7 +636,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -625,7 +646,8 @@ public class ShopPage implements Initializable {
         //  StartPage.click.play();
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -635,7 +657,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -644,7 +667,8 @@ public class ShopPage implements Initializable {
         // StartPage.click.play();
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -654,7 +678,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -664,7 +689,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -673,7 +699,8 @@ public class ShopPage implements Initializable {
         // StartPage.click.play();
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -683,7 +710,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -693,7 +721,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -703,7 +732,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -713,7 +743,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -723,7 +754,8 @@ public class ShopPage implements Initializable {
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
 
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -734,7 +766,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -744,7 +777,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -754,7 +788,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -764,7 +799,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -774,7 +810,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -784,7 +821,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -795,7 +833,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -806,7 +845,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -817,7 +857,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -827,7 +868,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -837,7 +879,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
 
     @FXML
@@ -847,7 +890,8 @@ public class ShopPage implements Initializable {
 
             JOptionPane.showConfirmDialog(null,"Card added successfully","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
             //System.out.println("Card added successfully");
-        setButt();
+        int coins = shopClientController.getCoins("give coins#"+AppController.getToken());
+        setButt(coins);
     }
     private void addToAvailableCards(Label label){
         int x = Integer.parseInt(label.getText());
@@ -941,99 +985,99 @@ public class ShopPage implements Initializable {
 
     public void setButt(int coins){
       //if(coins < Card.getCardByName(.....).getPrice
-        if (player.getCoin()< Card.getCardByName("Command Knight").getPrice())
+        if (coins < Card.getCardByName("Command Knight").getPrice())
             CommandKnightBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Alexandrite Dragon").getPrice())
+        if (coins < Card.getCardByName("Alexandrite Dragon").getPrice())
             alexandriteBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Axe Raider").getPrice())
+        if (coins < Card.getCardByName("Axe Raider").getPrice())
             axeRaiderBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Baby dragon").getPrice())
+        if (coins < Card.getCardByName("Baby dragon").getPrice())
             babyDragonBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Battle OX").getPrice())
+        if (coins < Card.getCardByName("Battle OX").getPrice())
             battleOxBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Battle warrior").getPrice())
+        if (coins < Card.getCardByName("Battle warrior").getPrice())
             battleWarriorBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Bitron").getPrice())
+        if (coins < Card.getCardByName("Bitron").getPrice())
             bitronBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Blue-Eyes white dragon").getPrice())
+        if (coins < Card.getCardByName("Blue-Eyes white dragon").getPrice())
             blueEyesBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Crawling dragon").getPrice())
+        if (coins < Card.getCardByName("Crawling dragon").getPrice())
             crawlingDragonBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Curtain of the dark ones").getPrice())
+        if (coins < Card.getCardByName("Curtain of the dark ones").getPrice())
             curtainBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Dark Blade").getPrice())
+        if (coins < Card.getCardByName("Dark Blade").getPrice())
             darkBladeBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Dark magician").getPrice())
+        if (coins < Card.getCardByName("Dark magician").getPrice())
             darkMagitionBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Exploder Dragon").getPrice())
+        if (coins < Card.getCardByName("Exploder Dragon").getPrice())
             exploderDragonBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Feral Imp").getPrice())
+        if (coins < Card.getCardByName("Feral Imp").getPrice())
             feralBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Fireyarou").getPrice())
+        if (coins < Card.getCardByName("Fireyarou").getPrice())
             fireYarouBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Flame manipulator").getPrice())
+        if (coins < Card.getCardByName("Flame manipulator").getPrice())
             flameBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Haniwa").getPrice())
+        if (coins < Card.getCardByName("Haniwa").getPrice())
             haniwaBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Hero of the east").getPrice())
+        if (coins < Card.getCardByName("Hero of the east").getPrice())
             heroOfTheEastBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Horn Imp").getPrice())
+        if (coins < Card.getCardByName("Horn Imp").getPrice())
             hornImpBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Leotron").getPrice())
+        if (coins < Card.getCardByName("Leotron").getPrice())
             leotronBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Man-Eater Bug").getPrice())
+        if (coins < Card.getCardByName("Man-Eater Bug").getPrice())
             manEaterBugBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Marshmallon").getPrice())
+        if (coins < Card.getCardByName("Marshmallon").getPrice())
             marshmallonBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Silver Fang").getPrice())
+        if (coins < Card.getCardByName("Silver Fang").getPrice())
             silverFangBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Slot Machine").getPrice())
+        if (coins < Card.getCardByName("Slot Machine").getPrice())
             slotMachineBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Spiral Serpent").getPrice())
+        if (coins < Card.getCardByName("Spiral Serpent").getPrice())
             spiralBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("The Calculator").getPrice())
+        if (coins < Card.getCardByName("The Calculator").getPrice())
             theCalculatorBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Warrior Dai Grepher").getPrice())
+        if (coins < Card.getCardByName("Warrior Dai Grepher").getPrice())
             warriorBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Wattaildragon").getPrice())
+        if (coins < Card.getCardByName("Wattaildragon").getPrice())
             wattailBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Wattkid").getPrice())
+        if (coins < Card.getCardByName("Wattkid").getPrice())
             wattkidBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Yomi Ship").getPrice())
+        if (coins < Card.getCardByName("Yomi Ship").getPrice())
             yomiShipBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Time Seal").getPrice())
+        if (coins < Card.getCardByName("Time Seal").getPrice())
             timeSealBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Mind Crush").getPrice())
+        if (coins < Card.getCardByName("Mind Crush").getPrice())
             mindCrushBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Mirror Force").getPrice())
+        if (coins < Card.getCardByName("Mirror Force").getPrice())
             mirrorForceBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Call of The Haunted").getPrice())
+        if (coins < Card.getCardByName("Call of The Haunted").getPrice())
             callOfTheHauntedBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Torrential Tribute").getPrice())
+        if (coins < Card.getCardByName("Torrential Tribute").getPrice())
             torrentialTributeBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Negate Attack").getPrice())
+        if (coins < Card.getCardByName("Negate Attack").getPrice())
             negateAttackBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Dark Hole").getPrice())
+        if (coins < Card.getCardByName("Dark Hole").getPrice())
             darkHoleBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Forest").getPrice())
+        if (coins < Card.getCardByName("Forest").getPrice())
             forestBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Messenger of peace").getPrice())
+        if (coins < Card.getCardByName("Messenger of peace").getPrice())
             messengerBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Monster Reborn").getPrice())
+        if (coins < Card.getCardByName("Monster Reborn").getPrice())
             monsterRebornBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Mystical space typhoon").getPrice())
+        if (coins < Card.getCardByName("Mystical space typhoon").getPrice())
             mysticalBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Raigeki").getPrice())
+        if (coins < Card.getCardByName("Raigeki").getPrice())
             raigekiBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Spell Absorption").getPrice())
+        if (coins < Card.getCardByName("Spell Absorption").getPrice())
             spellAbsorptionBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Terraforming").getPrice())
+        if (coins < Card.getCardByName("Terraforming").getPrice())
             terraformingBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Twin Twisters").getPrice())
+        if (coins < Card.getCardByName("Twin Twisters").getPrice())
             twinBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Umiiruka").getPrice())
+        if (coins < Card.getCardByName("Umiiruka").getPrice())
             umirukaBuy.setDisable(true);
-        if (player.getCoin()<Card.getCardByName("Yami").getPrice())
+        if (coins < Card.getCardByName("Yami").getPrice())
             yamiBuy.setDisable(true);
     }
     public Label getLabelByCardName(String cardName){
