@@ -1,3 +1,4 @@
+import Controller.ChatRoomMenu;
 import Controller.RegisterMenu;
 
 import java.io.DataInputStream;
@@ -11,9 +12,13 @@ public class Main {
         runApp();
     }
 
+
+
+    private static boolean inChatRoom = false;
+
     private static void runApp() {
-        System.out.println("run");
         try {
+            ChatRoomMenu.getInstance().setChatServerSocket(new ServerSocket(7777));
             ServerSocket serverSocket = new ServerSocket(7776);
             while (true) {
                 Socket socket = serverSocket.accept();
@@ -42,17 +47,41 @@ public class Main {
         while (true) {
             String input = dataInputStream.readUTF();
             String result = process(input);
-            if (result.equals("")) break;
+            if (result.equals("") && !inChatRoom) break;
+            inChatRoom = false;
             dataOutputStream.writeUTF(result);
             dataOutputStream.flush();
         }
     }
 
-    static String process(String command) {
+    static String process(String command) throws IOException {
         if (command.startsWith("1."))
             return RegisterMenu.getInstance().checkCommand(command);
+        if(command.equals("loaddata")){
+            inChatRoom = true;
+           // return ChatRoomMenu.getMessages();
+
+        }
+        if(command.equals("enter chat")){
+            ChatRoomMenu.getInstance().runChatRoom();}
+        if(command.contains("give")){
+            String[] split = command.split("\\s");
+            return RegisterMenu.getUsernameByToken(split[1]);
+        }
+        if(command.contains("save message")){
+            String[] split = command.split("\\-");
+          //  ChatRoomMenu.saveMessage(split[1]);
+            return "OK!";
+        }
 
         return "";
+    }
+    public static boolean isInChatRoom() {
+        return inChatRoom;
+    }
+
+    public static void setInChatRoom(boolean inChatRoom) {
+        Main.inChatRoom = inChatRoom;
     }
 
 
