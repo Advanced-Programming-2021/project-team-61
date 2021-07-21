@@ -15,7 +15,18 @@ import java.util.ResourceBundle;
 public class ShopAdminPage{
 
         private String currentCardName;
-        Player loggedPlayer;
+
+        @FXML
+        private Button positive;
+
+        @FXML
+        private Button negative;
+
+        @FXML
+        private TextField available;
+
+        @FXML
+        private Button able;
 
         @FXML
         private ImageView AlexandriteDragon;
@@ -454,11 +465,12 @@ public class ShopAdminPage{
         }
 
         public void setTexts(String cardName){
-            available.setText("available : " + loggedPlayer.numberOfSpecialCard(cardName));
-            sideDeck.setText("sideDeck : " + Deck.getDeckByName(deckName,loggedPlayer).numberOfSpecialCardInSideDeck(cardName));
-            mainDeck.setText("mainDeck : " + Deck.getDeckByName(deckName,loggedPlayer).numberOfSpecialCardInMainDeck(cardName));
-
+            //available.setText("available : " + loggedPlayer.numberOfSpecialCard(cardName));
+            //sideDeck.setText("sideDeck : " + Deck.getDeckByName(deckName,loggedPlayer).numberOfSpecialCardInSideDeck(cardName));
+            //mainDeck.setText("mainDeck : " + Deck.getDeckByName(deckName,loggedPlayer).numberOfSpecialCardInMainDeck(cardName));
+            available.setText();////
         }
+
 
 
         public void setCurrentCardName(String cardName){
@@ -472,6 +484,18 @@ public class ShopAdminPage{
         public void back() throws IOException {
             //  StartPage.click.play();
             Logic.viewManager.changeScene("/sample/shopPage.fxml");
+        }
+
+        public void able(){
+
+        }
+
+        public void negative(){
+            available.setText(String.valueOf(Integer.parseInt(available.getText()) - 1));
+        }
+
+        public void positive(){
+            available.setText(String.valueOf(Integer.parseInt(available.getText()) + 1));
         }
 }
 
