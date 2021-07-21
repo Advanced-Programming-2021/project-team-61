@@ -45,6 +45,7 @@ public class RegisterMenu {
             return  "user with nickname " + matcher.group(2) + " already exists";
         else {
             CreatePlayer(matcher.group(1), matcher.group(2), matcher.group(3));
+            Player.addLoggedPlayer(matcher.group(2));
             return "success";
         }
     }
@@ -60,7 +61,7 @@ public class RegisterMenu {
         else{
             String token = UUID.randomUUID().toString();
             loggedinUsers.put(token,Player.getPlayerByUsername(matcher.group(1)));
-
+            Player.addLoggedPlayer(Player.getPlayerByUsername(matcher.group(1)).getNickname());
 
             return "success"+" "+token;
 
