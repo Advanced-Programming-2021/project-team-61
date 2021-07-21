@@ -26,7 +26,7 @@ public class ShopPage implements Initializable {
 
     private ShopClientController shopClientController;
     private static Socket shopSocket;
-
+    JFrame f;
 
     @FXML
     private Button CommandKnightBuy;
@@ -315,6 +315,9 @@ public class ShopPage implements Initializable {
 
     @FXML
     private Button back;
+
+    @FXML
+    private Button adminPanel;
 
 
     @FXML
@@ -1172,6 +1175,22 @@ public class ShopPage implements Initializable {
         // StartPage.click.play();
         Logic.viewManager.changeScene("/sample/mainMenuPage.fxml");
     }
+
+    public void adminPanel() throws IOException {
+        OptionPaneExample();
+    }
+
+    private void OptionPaneExample() throws IOException {
+        f=new JFrame();
+        String name=JOptionPane.showInputDialog(f,"Enter Password:");
+        if (name.equals("9999")) {
+            JOptionPane.showConfirmDialog(null, "password is correct...", "Message", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            Logic.viewManager.changeScene("sample/shopAdminPage.fxml");
+        }
+        else
+            JOptionPane.showConfirmDialog(null,"password is wrong...","Message",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
